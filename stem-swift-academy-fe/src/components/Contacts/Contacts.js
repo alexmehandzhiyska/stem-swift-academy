@@ -23,9 +23,9 @@ const Contacts = () => {
         <section className="contact mx-10 px-10 py-8 text-white bg-blue-500 text-center">
           <h2 className="mb-4 text-3xl font-bold">Message Us</h2>
 
-          <p className="pt-2 text-lg">alex.mehandzhiyska@sat.academy.com</p>
-          <p className="pt-2 text-lg">john.doe@sat.academy.com</p>
-          <p className="pt-2 text-lg">luke.smith@sat.academy.com</p>
+          <p className="pt-2 text-lg">alex.mehandzhiyska@stemswift.com</p>
+          <p className="pt-2 text-lg">john.doe@stemswift.com</p>
+          <p className="pt-2 text-lg">luke.smith@stemswift.com</p>
         </section>
       </article>
 
