@@ -18,7 +18,6 @@ const Lecture = () => {
 
     lectureService.getOne(courseId, lectureId)
       .then(response => {
-        console.log(response.data.lecture);
         setLecture(response.data.lecture);
         setIsLoading(false);
       })
