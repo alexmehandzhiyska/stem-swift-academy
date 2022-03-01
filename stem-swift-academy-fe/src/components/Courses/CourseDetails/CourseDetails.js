@@ -25,7 +25,7 @@ const CourseDetails = () => {
   useEffect(() => {
     courseService.getOne(courseId)
       .then(result => {
-        console.log(result);
+        (result);
         result.data.course.start_date = formatDate(result.data.course.start_date);
         result.data.course.end_date = formatDate(result.data.course.end_date);
         setCourse(result.data.course);
