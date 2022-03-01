@@ -1,0 +1,5 @@
+header,
+footer {
+    height: 6vh;
+    min-width: 100vw;
+}

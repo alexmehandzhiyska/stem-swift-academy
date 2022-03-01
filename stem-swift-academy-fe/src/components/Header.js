@@ -41,7 +41,7 @@ const Header = () => {
     </>
   );
   return (
-    <header className="flex justify-between px-10 py-1 bg-blue-500 text-white">
+    <header className="flex justify-between px-10 py-1 bg-blue-500 text-white max-w-full">
       <section className="flex items-center">
         <Link to="/" className="flex items-center">
           <img className="w-14 mx-3"

@@ -1,48 +1,50 @@
 .text,
 .sv-root-modern {
-  height: 83vh;
-  overflow-y: scroll;
+    height: 83vh;
+    overflow-y: scroll;
+    max-width: 50vw;
 }
 
 .text {
-  min-width: 50vw;
+    min-width: 50vw;
 }
+
 .sv-root-modern {
-  width: 100vw;
+    width: 100vw;
 }
 
 .sv-footer {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 .sv-root-modern .sv-footer__complete-btn {
-  margin-right: 10em !important;
-  margin-bottom: 1.5em;
-  font-weight: normal;
-  width: 15vw;
-  height: 55px;
-  font-size: 20px;
-  border: none;
-  border-radius: 30px;
-  color: white;
-  background: #3b82f6 !important;
-  border: 3px solid transparent;
-  transition: 0.5s ease-in-out;
-  text-align: center;
+    margin-right: 10em !important;
+    margin-bottom: 1.5em;
+    font-weight: normal;
+    width: 15vw;
+    height: 55px;
+    font-size: 20px;
+    border: none;
+    border-radius: 30px;
+    color: white;
+    background: #3b82f6 !important;
+    border: 3px solid transparent;
+    transition: 0.5s ease-in-out;
+    text-align: center;
 }
 
 .sv-root-modern .sv-footer__complete-btn:hover {
-  border: 3px solid #3b82f6;
-  color: #3b82f6;
-  background: white !important;
+    border: 3px solid #3b82f6;
+    color: #3b82f6;
+    background: white !important;
 }
 
 .sv-question__title--answer {
-  background-color: #60a5fa !important;
+    background-color: #60a5fa !important;
 }
 
 .sv-item__decorator sv-selectbase__decorator sv-radio__decorator {
-  color: #60a5fa !important;
-  background-color: #60a5fa !important;
+    color: #60a5fa !important;
+    background-color: #60a5fa !important;
 }

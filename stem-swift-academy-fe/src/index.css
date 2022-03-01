@@ -1,110 +1,103 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 body {
-  --blue1: #3b82f6;
-  --blue2: #84ceeb;
-  --blue3: #5ab8eb;
-  --blue4: #c1c8e4;
-  --gray: #c7c7c7;
-  --purple: #8860d0;
-  /* --yellow: #ff9b14; */
-  --yellow: #727777;
-  font-family: Helvetica;
-  background: white;
-  min-height: 100vh;
-}
-
-main {
-  min-height: 83vh;
+    --blue1: #3b82f6;
+    --blue2: #84ceeb;
+    --blue3: #5ab8eb;
+    --blue4: #c1c8e4;
+    --gray: #c7c7c7;
+    --purple: #8860d0;
+    /* --yellow: #ff9b14; */
+    --yellow: #727777;
+    font-family: Helvetica;
+    background: white;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
 .heading {
-  font-size: 4rem;
-  font-weight: bold;
-  text-align: center;
-  margin: 50px 0 0 0;
-  padding-bottom: 50px;
-  color: var(--yellow);
+    font-size: 4rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 50px 0 0 0;
+    padding-bottom: 50px;
+    color: var(--yellow);
 }
 
 .title {
-  font-size: 5rem;
+    font-size: 5rem;
 }
 
 .btn {
-  width: 15vw;
-  height: 48px;
-  font-size: 20px;
-  border: none;
-  border-radius: 30px;
-  color: white;
-  background: var(--blue1);
-  border: 3px solid transparent;
-  transition: 0.5s ease-in-out;
+    width: 15vw;
+    height: 48px;
+    font-size: 20px;
+    border: none;
+    border-radius: 30px;
+    color: white;
+    background: var(--blue1);
+    border: 3px solid transparent;
+    transition: 0.5s ease-in-out;
 }
 
 .btn:hover {
-  border: 3px solid var(--blue1);
-  color: var(--blue1);
-  background: white;
+    border: 3px solid var(--blue1);
+    color: var(--blue1);
+    background: white;
 }
 
 .btn:disabled {
-  background: #749af7;
-  transition: none;
+    background: #749af7;
+    transition: none;
 }
 
 .btn:disabled:hover {
-  border: none;
-  color: white;
-  background: #749af7;
+    border: none;
+    color: white;
+    background: #749af7;
 }
 
 .secondary-btn {
-  border: 2px solid var(--blue1);
-  transition: 0.5s ease-in-out;
-  color: var(--blue1);
-  background: white;
+    border: 2px solid var(--blue1);
+    transition: 0.5s ease-in-out;
+    color: var(--blue1);
+    background: white;
 }
 
 .secondary-btn:hover {
-  border: 2px solid white;
-  color: white;
-  background: var(--blue1);
+    border: 2px solid white;
+    color: white;
+    background: var(--blue1);
 }
 
 select {
-  width: 12%;
-  padding: 0.3em;
-  font-size: 1.5rem;
-  text-align-last: center;
-  margin-bottom: 3.5em;
-  border: 3px solid var(--blue1);
-  border-radius: 40px;
-  color: var(--blue1);
-  text-align: center;
+    width: 12%;
+    padding: 0.3em;
+    font-size: 1.5rem;
+    text-align-last: center;
+    margin-bottom: 3.5em;
+    border: 3px solid var(--blue1);
+    border-radius: 40px;
+    color: var(--blue1);
+    text-align: center;
 }
 
 select:focus {
-  outline: none;
+    outline: none;
 }
 
 option {
-  text-align: center;
+    text-align: center;
 }
 
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }

@@ -3,7 +3,7 @@ import { faFacebook, faInstagram, faYoutube, faLinkedinIn } from '@fortawesome/f
 
 const Footer = () => {
   return (
-    <footer className="pr-20 pl-10 flex justify-between text-white bg-blue-500">
+    <footer className="pr-20 pl-10 flex justify-between text-white bg-blue-500 max-w-full">
       <section className="py-1 flex items-center">
         <a href="/"><img className="w-14 mx-3"
           src="https://res.cloudinary.com/drinka/image/upload/v1641821825/sat-academy/images/STEM_Swift_Academy_4_rs5k5m.png"

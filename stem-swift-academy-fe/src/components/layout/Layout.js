@@ -1,11 +1,13 @@
 import Header from '../Header';
 import Footer from '../Footer';
 
+import './Layout.css';
+
 const Layout = (props) => {
     return (
-        <div>
+        <div className="flex flex-col items-center h-screen min-w-full max-w-full">
             <Header></Header>
-            <main>{props.children}</main>
+            <main className="flex-grow min-w-full max-w-full">{props.children}</main>
             <Footer></Footer>
         </div>
     );

@@ -40,7 +40,7 @@ const AllExams = () => {
       {isLoading && <LottieAnimation />}
       {!isLoading &&
         <section className="flex flex-col items-center">
-          <h1 className="exams-heading heading capitalize">{subject} Practice Tests</h1>
+          <h1 className="heading capitalize">{subject} Practice Tests</h1>
 
           <select onChange={filterExams} name="subject-select" className="capitalize">
             <option value="all" className="capitalize" default>all</option>

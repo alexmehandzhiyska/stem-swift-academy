@@ -4,7 +4,6 @@ import './Plan.css';
 
 const Plan = ({ courseId, lectures, weeks }) => {
   const groupTopics = () => {
-    console.log(lectures);
     const content = [];
 
     for (let i = 1; i <= weeks; i++) {
@@ -18,7 +17,7 @@ const Plan = ({ courseId, lectures, weeks }) => {
 
 
   return (
-    <section className="study-plan px-56 lg:px-36">
+    <section className="study-plan flex flex-wrap justify-between items-center px-56 lg:px-36">
       {groupTopics()}
     </section>
   );

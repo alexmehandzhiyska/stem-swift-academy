@@ -1,13 +1,11 @@
 .banner {
-  min-height: 92vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url(https://res.cloudinary.com/drinka/image/upload/v1629913388/sat-academy/images/banner_rnmfqg.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
+    min-height: 94vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(https://res.cloudinary.com/drinka/image/upload/v1629913388/sat-academy/images/banner_rnmfqg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .main-title {
-  color: white;
-  text-shadow: 5px 0 var(--blue1), 0 5px var(--blue1), 1px 0 var(--blue1),
-    0 -1px var(--blue1);
+    color: white;
+    text-shadow: 5px 0 var(--blue1), 0 5px var(--blue1), 1px 0 var(--blue1), 0 -1px var(--blue1);
 }

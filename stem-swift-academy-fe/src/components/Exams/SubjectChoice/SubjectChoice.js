@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 const SubjectChoice = () => {
 
   return (
-    <section className="wrapper flex items-center mt-40">
-      <article className="w-1/2 flex flex-col items-center">
+    <section className="w-screen wrapper flex justify-center items-center mt-40">
+      <article className="mt-16 w-1/2 flex flex-col items-center">
         <section>
           <h1 className="cursive-text -mt-16 text-9xl">A</h1>
           <h2 className="cursive-text mt-24 text-2xl">B</h2>
@@ -17,7 +17,7 @@ const SubjectChoice = () => {
         </section>
       </article>
 
-      <article className="w-1/2 flex flex-col items-center">
+      <article className="mt-16 w-1/2 flex flex-col items-center">
         <section>
           <h1 className="cursive-text -mt-16 text-9xl">6</h1>
           <h2 className="cursive-text mt-24 text-2xl">1</h2>
