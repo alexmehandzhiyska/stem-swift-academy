@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Aguafina+Script&display=swap");
+
+.cursive-text {
+  font-family: "Aguafina Script", cursive;
+  color: var(--blue1);
+  text-shadow: 5px 0 var(--blue2), 0 5px var(--blue2), 1px 0 var(--blue2),
+    0 -1px var(--blue2);
+}
+
+h1.cursive-text {
+  font-size: 12rem;
+}
+
+h2.cursive-text {
+  font-size: 8rem;
+}
+
+h3.cursive-text {
+  font-size: 5rem;
+  margin-bottom: 12rem;
+}

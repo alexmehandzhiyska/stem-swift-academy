@@ -1,0 +1,71 @@
+.user {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 30px;
+  border-bottom: 2px solid var(--blue4);
+  transition: 0.5s ease-in-out;
+  background: white;
+}
+
+.user:hover {
+  background: var(--gray);
+}
+
+.user-name,
+.user-email {
+  font-size: 20px;
+  color: var(--blue1);
+}
+
+.user-name {
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.start-btn,
+.download-btn {
+  font-size: 18px;
+  padding: 8px 35px;
+  border-radius: 30px;
+}
+
+.start-btn {
+  border: none;
+  transition: 0.5s ease-in-out;
+  color: white;
+  background: var(--blue1);
+}
+
+.start-btn:hover {
+  border: 2px solid var(--blue1);
+  color: var(--blue1);
+  background: white;
+}
+
+.download-btn {
+  border: 2px solid var(--blue1);
+  transition: 0.5s ease-in-out;
+  color: var(--blue1);
+  background: white;
+}
+
+.download-btn:hover {
+  color: white;
+  background: var(--blue1);
+}
+
+.btns-wrapper {
+  display: flex;
+  flex-basis: 33%;
+  justify-content: space-between;
+}
+
+.fa-check-circle {
+  font-size: 25px;
+  color: var(--blue1);
+}
+
+.user-role {
+  margin: 0.6em 0 !important;
+}

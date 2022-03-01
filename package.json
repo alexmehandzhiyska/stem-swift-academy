@@ -1,0 +1,40 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "STEM Swift Academy server",
+  "main": "index.js",
+  "engines": {
+    "node": "14.15.4",
+    "npm": "8.0.0"
+  },
+  "scripts": {
+    "start": "nodemon ./src/index.js",
+    "heroku-postbuild": "cd sat-academy-fe && npm install && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "sat-academy"
+  },
+  "author": "Alexandrina Mehandzhiyska",
+  "license": "MIT",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.4",
+    "bcrypt": "^5.0.1",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.4",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
+    "mongoose": "^6.0.10",
+    "nodemailer": "^6.7.2",
+    "nodemon": "^2.0.13",
+    "pg": "^8.7.1",
+    "swagger-jsdoc": "^6.1.0",
+    "swagger-ui-express": "^4.3.0",
+    "tailwindcss": "^2.2.17",
+    "validator": "^13.6.0"
+  }
+}

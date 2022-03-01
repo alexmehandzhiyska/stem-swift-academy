@@ -1,0 +1,22 @@
+.study-plan {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.study-plan ul {
+  flex: 0 0 33%;
+}
+
+.week {
+  border-radius: 30px;
+}
+
+.lectures-shown {
+  display: block;
+  color: #3b82f6;
+  background: white;
+  padding: 0.5em;
+  border-bottom-right-radius: 20px;
+}

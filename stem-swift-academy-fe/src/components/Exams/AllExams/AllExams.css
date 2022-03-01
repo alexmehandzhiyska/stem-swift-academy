@@ -1,0 +1,27 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heading {
+  text-transform: capitalize;
+}
+
+.test-name {
+  width: 30%;
+}
+
+select {
+  margin: 2em 0 1.5em 0;
+}
+
+.tests {
+  width: 80vw;
+  margin: 3em auto 90px auto;
+  border: 2px solid var(--blue1);
+}
+
+.hidden {
+  display: none;
+}

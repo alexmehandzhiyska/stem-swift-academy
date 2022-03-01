@@ -1,0 +1,25 @@
+import { baseUrl } from '../constants';
+
+const getAll = async () => {
+  const response = await fetch(`${baseUrl}/courses/lectures`, { credentials: 'include' });
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data);
+  }
+
+  return data;
+}
+
+const getOne = async (courseId, lectureId) => {
+  const response = await fetch(`${baseUrl}/courses/${courseId}/lectures/${lectureId}`);
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data);
+  }
+
+  return data;
+}
+
+export const lectureService = { getAll, getOne };

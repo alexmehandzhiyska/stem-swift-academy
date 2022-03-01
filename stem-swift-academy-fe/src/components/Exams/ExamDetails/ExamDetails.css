@@ -1,0 +1,33 @@
+.section-start {
+  text-align: center;
+  height: 72vh;
+}
+
+.heading {
+  text-transform: capitalize;
+  padding-bottom: 10px;
+}
+
+.subheading {
+  font-size: 20px;
+  color: var(--blue1);
+}
+
+.directions {
+  padding: 20px 250px 0 250px;
+  color: var(--blue1);
+}
+
+.directions-heading {
+  font-size: 30px;
+}
+
+.directions-text {
+  font-size: 18px;
+}
+
+.btns {
+  display: flex;
+  justify-content: space-between;
+  margin: 75px 500px 0 500px;
+}

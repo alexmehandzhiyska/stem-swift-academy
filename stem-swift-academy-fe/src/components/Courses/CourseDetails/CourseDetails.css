@@ -1,0 +1,7 @@
+.registered,
+.registered:hover {
+  color: white;
+  background: #60A5FA;
+  border: 2px solid #60A5FA;
+  cursor:not-allowed;
+}

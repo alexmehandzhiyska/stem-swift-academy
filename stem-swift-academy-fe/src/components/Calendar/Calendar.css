@@ -1,0 +1,12 @@
+.calendar {
+  height: 100vh;
+  margin: 3em;
+}
+
+.rbc-event {
+  background-color: #cacaca;
+}
+.rbc-calendar *,
+.rbc-toolbar button {
+  color: #3b82f6;
+}
