@@ -17,7 +17,7 @@ const AllCourses = () => {
         setCourses(courses);
         setIsLoading(false);
       })
-      .catch(error => {
+      .catch(() => {
         errorNotification('There was an error loading the courses. Please try again later!');
       });
   }, []);
@@ -29,7 +29,7 @@ const AllCourses = () => {
         <section>
           <h1 className="heading courses-heading">Choose a Course</h1>
 
-          <section className="mt-10 flex justify-evenly text-white ">
+          <section className="mt-28 flex justify-evenly text-white ">
             {courses.length === 0 ? <h1 className="heading">No courses yet!</h1> : courses.map(course => <CourseCard key={course.id} course={course}></CourseCard>)}
           </section>
         </section>
