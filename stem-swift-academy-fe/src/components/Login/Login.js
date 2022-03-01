@@ -28,7 +28,7 @@ const Login = () => {
   }
 
   return (
-    <>
+    <section className="mt-40">
       <h1 className="heading">Log In</h1>
 
       <form onSubmit={handleSubmit(onSubmit)} className="login-form flex flex-col justify-center items-center text-blue-500" method="POST">
@@ -43,11 +43,11 @@ const Login = () => {
           <input name="password" {...register('password', { required: { value: true, message: 'Password is required!' } })} className="h-14 pl-16 text-xl bg-transparent border-blue-500 border-b-4 placeholder-blue-500 focus:outline-none" type="password" placeholder="Password" />
           {errors.password && <p>{errors.password.message}</p>}
         </article>
-        <p className="mt-4">Don't have an account? <Link to="/register"><strong>Login</strong></Link></p>
+        <p className="mt-4">Don't have an account? <Link to="/register"><strong>Sign Up</strong></Link></p>
 
         <input type="submit" value="Log In" className="btn mt-20 " />
       </form>
-    </>
+    </section>
   );
 }
 

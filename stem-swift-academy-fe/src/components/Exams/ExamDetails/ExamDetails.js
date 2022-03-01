@@ -21,7 +21,7 @@ const ExamDetails = () => {
         setExam(response.data.exam);
         setIsLoading(false);
       })
-      .catch(error => {
+      .catch(() => {
         errorNotification('There is an error loading the exam details. Please try again later!');
       });
   }, [examId, subject]);
