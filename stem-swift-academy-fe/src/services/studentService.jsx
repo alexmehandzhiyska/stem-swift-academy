@@ -1,7 +1,5 @@
-import { baseUrl } from '../constants';
-
 const getExams = async (studentId) => {
-  const response = await fetch(`${baseUrl}/students/${studentId}`);
+  const response = await fetch(`/students/${studentId}`);
   const data = await response.json();
 
   if (!response.ok) {

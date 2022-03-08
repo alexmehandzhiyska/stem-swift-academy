@@ -1,7 +1,5 @@
-import { baseUrl } from '../constants';
-
 const getAll = async (subject) => {
-  const response = await fetch(`${baseUrl}/exams/${subject}`);
+  const response = await fetch(`/exams/${subject}`);
   const data = await response.json();
 
   if (!response.ok) {
@@ -12,7 +10,7 @@ const getAll = async (subject) => {
 }
 
 const getOne = async (subject, examId) => {
-  const response = await fetch(`${baseUrl}/exams/${subject}/${examId}`);
+  const response = await fetch(`/exams/${subject}/${examId}`);
   const data = await response.json();
 
   if (!response.ok) {
@@ -22,7 +20,7 @@ const getOne = async (subject, examId) => {
 }
 
 const createOne = async (exam) => {
-  const response = await fetch(`${baseUrl}/exams`, {
+  const response = await fetch(`/exams`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -41,7 +39,7 @@ const createOne = async (exam) => {
 }
 
 const updateOne = async (subject, examId, exam) => {
-  const response = await fetch(`${baseUrl}/exams/${subject}/${examId}`, {
+  const response = await fetch(`/exams/${subject}/${examId}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
@@ -60,7 +58,7 @@ const updateOne = async (subject, examId, exam) => {
 }
 
 const deleteOne = async (subject, examId) => {
-  const response = await fetch(`${baseUrl}/exams/${subject}/${examId}`, {
+  const response = await fetch(`/exams/${subject}/${examId}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
@@ -78,7 +76,7 @@ const deleteOne = async (subject, examId) => {
 }
 
 const getQuestions = async (subject, examId, shuffled) => {
-  const response = await fetch(`${baseUrl}/exams/${subject}/${examId}/questions?shuffled=${shuffled}`);
+  const response = await fetch(`/exams/${subject}/${examId}/questions?shuffled=${shuffled}`);
   const data = await response.json();
 
   if (!response.ok) {
@@ -89,7 +87,7 @@ const getQuestions = async (subject, examId, shuffled) => {
 }
 
 const submitAnswers = async (subject, examId, userAnswers) => {
-  const response = await fetch(`${baseUrl}/exams/${subject}/${examId}/questions`, {
+  const response = await fetch(`/exams/${subject}/${examId}/questions`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -108,7 +106,7 @@ const submitAnswers = async (subject, examId, userAnswers) => {
 }
 
 const getScore = async (subject, examId) => {
-  const response = await fetch(`${baseUrl}/exams/${subject}/${examId}/results`, { credentials: 'include' });
+  const response = await fetch(`/exams/${subject}/${examId}/results`, { credentials: 'include' });
   const data = await response.json();
 
   if (!response.ok) {

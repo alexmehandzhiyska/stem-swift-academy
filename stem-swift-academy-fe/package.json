@@ -1,68 +1,69 @@
 {
-  "name": "demo",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@craco/craco": "^6.4.0",
-    "@fortawesome/fontawesome-svg-core": "^1.2.36",
-    "@fortawesome/free-brands-svg-icons": "^5.15.4",
-    "@fortawesome/free-regular-svg-icons": "^5.15.4",
-    "@fortawesome/free-solid-svg-icons": "^5.15.4",
-    "@fortawesome/react-fontawesome": "^0.1.16",
-    "@reduxjs/toolkit": "^1.7.1",
-    "@testing-library/jest-dom": "^5.15.0",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
-    "@visx/group": "^2.1.0",
-    "@visx/mock-data": "^2.1.2",
-    "@visx/scale": "^2.2.2",
-    "@visx/shape": "^2.4.0",
-    "autoprefixer": "^9.8.8",
-    "lodash": "^4.17.21",
-    "moment": "^2.29.1",
-    "postcss": "^7.0.39",
-    "puppeteer": "^13.0.0",
-    "react": "^17.0.2",
-    "react-big-calendar": "^0.38.1",
-    "react-dom": "^17.0.2",
-    "react-hook-form": "^7.22.1",
-    "react-lodash": "^0.1.2",
-    "react-lottie": "^1.2.3",
-    "react-redux": "^7.2.6",
-    "react-router": "^6.0.1",
-    "react-router-dom": "^6.0.1",
-    "react-scripts": "4.0.3",
-    "recharts": "^2.1.6",
-    "redux": "^4.1.2",
-    "survey-react": "^1.9.1",
-    "sweetalert2": "^11.3.0",
-    "sweetalert2-react": "^0.8.3",
-    "sweetalert2-react-content": "^4.2.0",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17",
-    "web-vitals": "^1.1.2"
-  },
-  "scripts": {
-    "start": "craco start",
-    "build": "craco build",
-    "test": "craco test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+    "name": "demo",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "@craco/craco": "^6.4.0",
+        "@fortawesome/fontawesome-svg-core": "^1.2.36",
+        "@fortawesome/free-brands-svg-icons": "^5.15.4",
+        "@fortawesome/free-regular-svg-icons": "^5.15.4",
+        "@fortawesome/free-solid-svg-icons": "^5.15.4",
+        "@fortawesome/react-fontawesome": "^0.1.16",
+        "@reduxjs/toolkit": "^1.7.1",
+        "@testing-library/jest-dom": "^5.15.0",
+        "@testing-library/react": "^11.2.7",
+        "@testing-library/user-event": "^12.8.3",
+        "@visx/group": "^2.1.0",
+        "@visx/mock-data": "^2.1.2",
+        "@visx/scale": "^2.2.2",
+        "@visx/shape": "^2.4.0",
+        "autoprefixer": "^9.8.8",
+        "lodash": "^4.17.21",
+        "moment": "^2.29.1",
+        "postcss": "^7.0.39",
+        "puppeteer": "^13.5.0",
+        "react": "^17.0.2",
+        "react-big-calendar": "^0.38.1",
+        "react-dom": "^17.0.2",
+        "react-hook-form": "^7.22.1",
+        "react-lodash": "^0.1.2",
+        "react-lottie": "^1.2.3",
+        "react-redux": "^7.2.6",
+        "react-router": "^6.0.1",
+        "react-router-dom": "^6.0.1",
+        "react-scripts": "4.0.3",
+        "recharts": "^2.1.6",
+        "redux": "^4.1.2",
+        "survey-react": "^1.9.1",
+        "sweetalert2": "^11.3.0",
+        "sweetalert2-react": "^0.8.3",
+        "sweetalert2-react-content": "^4.2.0",
+        "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17",
+        "web-vitals": "^1.1.2"
+    },
+    "scripts": {
+        "start": "craco start",
+        "build": "craco build",
+        "test": "craco test",
+        "eject": "react-scripts eject"
+    },
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ]
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "proxy": "http://localhost:5500"
 }

@@ -3,176 +3,181 @@ import puppeteer from 'puppeteer';
 let browser, page;
 const baseUrl = 'http://localhost:3000';
 
-beforeAll(async () => {
-  browser = await puppeteer.launch({
-    headless: false,
-    slowMo: 200
-  });
+beforeAll(async() => {
+    browser = await puppeteer.launch({
+        headless: false,
+        slowMo: 200
+    });
 
-  page = await browser.newPage();
+    page = await browser.newPage();
+}, 60000);
+
+test('home loads correctly', async() => {
+    await page.goto(`/`);
+
+    const title = await page.$eval('h1', el => el.textContent);
+
+    expect(title).toBe('STEM Swift Academy');
 });
 
-test('home loads correctly', async () => {
-  await page.goto(`${baseUrl}/`);
+test('contacts loads correctly', async() => {
+    await page.goto(`/contacts`);
 
-  const title = await page.$eval('h1', el => el.textContent);
+    const contactsSection = await page.$eval('article.contacts', el => el.textContent.includes('alex.mehandzhiyska@stemswift.com'));
+    expect(contactsSection).toBe(true);
 
-  expect(title).toBe('STEM Swift Academy');
+    const mapSection = await page.$eval('iframe', el => el.tagName);
+    expect(mapSection).toBe('IFRAME');
 });
 
-test('contacts loads correctly', async () => {
-  await page.goto(`${baseUrl}/contacts`);
+test('login works correctly when passed valid data', async() => {
+    await page.waitForTimeout(5000);
 
-  const contactsSection = await page.$eval('article.contacts', el => el.textContent.includes('Blagoevgrad, Bulgaria, ul. PirovPlovdiv, Bulgaria, ul. BonevVarna, Bulgaria, ul. Podvis+3598 636 217 12alex.mehandzhiyska@sat.academy.comAlexandrina Mehandzhiyska'));
-  expect(contactsSection).toBe(true);
+    await page.goto(`/login`);
 
-  const mapSection = await page.$eval('iframe', el => el.tagName);
-  expect(mapSection).toBe('IFRAME');
-});
+    await page.waitForSelector('form');
 
-// test('register works correctly', async () => {
-//   await page.goto(`${baseUrl}/auth/register`);
+    await page.click('input[name="email"]');
+    await page.type('input[name="email"]', 'alexandrina.mehandzhiyska1@gmail.com');
 
-//   await page.waitForSelector('form');
+    await page.click('input[name="password"]');
+    await page.type('input[name="password"]', "asdasd");
 
-//   await page.click('input[name="name"]');
-//   await page.type('input[name="name"]', 'random guy');
+    await page.click('input[type="submit"]');
 
-//   await page.click('input[name="email"]');
-//   await page.type('input[name="email"]', 'random@abv.bg');
+    await page.waitForTimeout(5000);
 
-//   await page.click('input[name="password"]');
-//   await page.type('input[name="password"]', "randpass");
-
-//   await page.click('input[type="submit"]');
-//   await page.waitForSelector('h2.swal2-title');
-
-//   const successTitle = await page.$eval('h2.swal2-title', el => el.textContent);
-//   expect(successTitle).toBe('Successfully created account!');
-// }, 60000);
-
-test('login works correctly when passed valid data', async () => {
-  await page.goto(`${baseUrl}/auth/login`);
-
-  await page.waitForSelector('form');
-
-  await page.click('input[name="email"]');
-  await page.type('input[name="email"]', 'alexandrina.mehandzhiyska1@gmail.com');
-
-  await page.click('input[name="password"]');
-  await page.type('input[name="password"]', "asdasd");
-
-  await page.click('input[type="submit"]');
-
-  await page.waitForTimeout(5000);
-
-  const title = await page.$eval('h1', el => el.textContent);
-  expect(title).toBe('STEM Swift Academy');
+    const title = await page.$eval('h1', el => el.textContent);
+    expect(title).toBe('STEM Swift Academy');
 }, 60000);
 
-test('login throws an error when passed invalid data', async () => {
-  await page.waitForSelector('li.logout-btn');
-  await page.click('li.logout-btn');
+test('login throws an error when passed invalid data', async() => {
+    await page.waitForSelector('li.logout-btn');
+    await page.click('li.logout-btn');
 
-  await page.goto(`${baseUrl}/auth/login`);
+    await page.goto(`/login`);
 
-  await page.waitForSelector('form');
+    await page.waitForSelector('form');
 
-  await page.click('input[name="email"]');
-  await page.type('input[name="email"]', 'alexandrina.mehandzhiyska1@gmail.com');
+    await page.click('input[name="email"]');
+    await page.type('input[name="email"]', 'alexandrina.mehandzhiyska1@gmail.com');
 
-  await page.click('input[name="password"]');
-  await page.type('input[name="password"]', "test");
+    await page.click('input[name="password"]');
+    await page.type('input[name="password"]', "test");
 
-  await page.click('input[type="submit"]');
-  await page.waitForSelector('h2.swal2-title');
+    await page.click('input[type="submit"]');
+    await page.waitForSelector('h2.swal2-title');
 
-  const errorName = await page.$eval('h2.swal2-title', el => el.textContent);
-  expect(errorName).toContain('Invalid username or password');
+    const errorName = await page.$eval('h2.swal2-title', el => el.textContent);
+    expect(errorName).toContain('Invalid username or password');
 }, 60000);
 
-test('subject page loads correctly', async () => {
-  await page.goto(`${baseUrl}/auth/login`);
+test('register works correctly when passed valid data', async() => {
+    await page.goto(`/register`);
 
-  await page.waitForSelector('form');
+    await page.waitForSelector('form');
 
-  await page.click('input[name="email"]');
-  await page.type('input[name="email"]', 'alexandrina.mehandzhiyska1@gmail.com');
+    await page.click('input[name="name"]');
+    await page.type('input[name="name"]', 'Test Testov');
 
-  await page.click('input[name="password"]');
-  await page.type('input[name="password"]', "asdasd");
+    await page.click('input[name="email"]');
+    await page.type('input[name="email"]', 'test@abv.bg');
 
-  await page.click('input[type="submit"]');
+    await page.click('input[name="password"]');
+    await page.type('input[name="password"]', 'asdasd');
 
-  await page.waitForTimeout(5000);
+    await page.click('input[type="submit"]');
 
-  const title = await page.$eval('h1', el => el.textContent);
-  expect(title).toBe('STEM Swift Academy');
+    await page.waitForTimeout(5000);
 
-  await page.goto(`${baseUrl}/exams`);
-  await page.waitForSelector('button.english-choice');
-  await page.waitForSelector('button.math-choice');
-
-  const englishBtn = await page.$eval('button.english-choice', el => el.textContent);
-  const mathBtn = await page.$eval('button.math-choice', el => el.textContent);
-
-  expect(englishBtn).toBe('English');
-  expect(mathBtn).toBe('Math');
+    const title = await page.$eval('h1', el => el.textContent);
+    expect(title).toBe('STEM Swift Academy');
 }, 60000);
 
-test('exams page loads correctly', async () => {
-  await page.goto(`${baseUrl}/exams/english`);
-  await page.waitForSelector('h1.exams-heading');
+test('subject page loads correctly', async() => {
+    await page.goto(`/exams`);
+    await page.waitForSelector('button.english-choice');
+    await page.waitForSelector('button.math-choice');
 
-  const examsHeading = await page.$eval('h1.exams-heading', el => el.textContent);
-  expect(examsHeading).toBe('english Practice Tests');
+    const englishBtn = await page.$eval('button.english-choice', el => el.textContent);
+    const mathBtn = await page.$eval('button.math-choice', el => el.textContent);
+
+    expect(englishBtn).toBe('English');
+    expect(mathBtn).toBe('Math');
 }, 60000);
 
-test('exam details page loads correctly', async () => {
-  await page.waitForSelector('section.test');
+test('exams page loads correctly', async() => {
+    await page.goto(`/exams/english`);
+    await page.waitForSelector('h1.exam-heading');
 
-  await page.click('button.start-btn');
-  await page.waitForSelector('h3.directions-heading');
-
-  const directionsHeading = await page.$eval('h3.directions-heading', el => el.textContent);
-  expect(directionsHeading).toBe('DIRECTIONS');
+    const examsHeading = await page.$eval('h1.exam-heading', el => el.textContent);
+    expect(examsHeading).toBe('english Practice Tests');
 }, 60000);
 
-test('question page loads correctly', async () => {
-  await page.goto(`${baseUrl}/exams/english/1/questions`);
+test('exam details page loads correctly', async() => {
+    await page.waitForSelector('section.test');
 
-  await page.waitForSelector('section.questions');
+    await page.click('button.start-btn');
+    await page.waitForSelector('h3.directions-heading');
+
+    const directionsHeading = await page.$eval('h3.directions-heading', el => el.textContent);
+    expect(directionsHeading).toBe('DIRECTIONS');
 }, 60000);
 
-test('courses page loads correctly', async () => {
-  await page.goto(`${baseUrl}/courses`);
-  await page.waitForSelector('h1.courses-heading');
+test('question page loads correctly', async() => {
+    await page.goto(`/exams/english/1/questions`);
 
-  const coursesHeading = await page.$eval('h1.courses-heading', el => el.textContent);
-  expect(coursesHeading).toBe('Choose a Course');
+    await page.waitForSelector('section.questions');
 }, 60000);
 
-test('course details page loads correctly', async () => {
-  await page.goto(`${baseUrl}/courses/1?userId=45`);
+test('courses page loads correctly', async() => {
+    await page.goto(`/courses`);
+    await page.waitForSelector('h1.courses-heading');
 
-  await page.waitForSelector('section.course-details');
+    const coursesHeading = await page.$eval('h1.courses-heading', el => el.textContent);
+    expect(coursesHeading).toBe('Choose a Course');
 }, 60000);
 
-test('users page loads correctly', async () => {
-  await page.goto(`${baseUrl}/users`);
+test('course details page loads correctly', async() => {
+    await page.goto(`/courses/1?userId=45`);
 
-  await page.waitForSelector('h1.users-heading');
-
-  const usersHeading = await page.$eval('h1.users-heading', el => el.textContent);
-  expect(usersHeading).toBe('All Users');
+    await page.waitForSelector('section.course-details');
 }, 60000);
 
-test('calendar page loads correctly', async () => {
-  await page.goto(`${baseUrl}/calendar`);
+test('users page loads correctly', async() => {
+    await page.waitForSelector('li.logout-btn');
+    await page.click('li.logout-btn');
 
-  await page.waitForSelector('.calendar');
+    await page.waitForTimeout(5000);
+
+    await page.goto(`/login`);
+
+    await page.waitForSelector('form');
+
+    await page.click('input[name="email"]');
+    await page.type('input[name="email"]', 'alexandrina.mehandzhiyska1@gmail.com');
+
+    await page.click('input[name="password"]');
+    await page.type('input[name="password"]', "asdasd");
+
+    await page.click('input[type="submit"]');
+
+    await page.waitForTimeout(5000);
+
+    await page.goto(`/users`);
+
+    await page.waitForSelector('h1.users-heading');
+
+    const usersHeading = await page.$eval('h1.users-heading', el => el.textContent);
+    expect(usersHeading).toBe('All Users');
+}, 60000);
+
+test('calendar page loads correctly', async() => {
+    await page.goto(`/calendar`);
+
+    await page.waitForSelector('.calendar');
 }, 30000);
 
-afterAll(async () => {
-  browser.close();
+afterAll(async() => {
+    browser.close();
 });

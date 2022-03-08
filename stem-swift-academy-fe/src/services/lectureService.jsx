@@ -1,7 +1,5 @@
-import { baseUrl } from '../constants';
-
 const getAll = async () => {
-  const response = await fetch(`${baseUrl}/courses/lectures`, { credentials: 'include' });
+  const response = await fetch(`/courses/lectures`, { credentials: 'include' });
   const data = await response.json();
 
   if (!response.ok) {
@@ -12,7 +10,7 @@ const getAll = async () => {
 }
 
 const getOne = async (courseId, lectureId) => {
-  const response = await fetch(`${baseUrl}/courses/${courseId}/lectures/${lectureId}`);
+  const response = await fetch(`/courses/${courseId}/lectures/${lectureId}`);
   const data = await response.json();
 
   if (!response.ok) {
