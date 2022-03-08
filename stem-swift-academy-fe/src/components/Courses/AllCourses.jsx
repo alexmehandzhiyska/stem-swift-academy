@@ -17,8 +17,9 @@ const AllCourses = () => {
         setCourses(courses);
         setIsLoading(false);
       })
-      .catch(() => {
-        errorNotification('There was an error loading the courses. Please try again later!');
+      .catch((err) => {
+        console.log(err);
+        errorNotification(err);
       });
   }, []);
 
