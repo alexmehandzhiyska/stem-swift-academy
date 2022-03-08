@@ -23,14 +23,14 @@ const CreateExam = () => {
     if (mode === 'edit') {
       examService.getOne(subject, examId)
         .then(response => setExam(response.data.exam))
-        .catch(error => errorNotification('There was an error loading the exam data. Please try again later!'));
+        .catch(() => errorNotification('There was an error loading the exam data. Please try again later!'));
 
       examService.getQuestions(subject, examId, false)
         .then(response => {
           setQuestions(response.data.questions)
           setIsLoading(false);
         })
-        .catch(error => errorNotification('There was an error loading the exam data. Please try again later!'));
+        .catch(() => errorNotification('There was an error loading the exam data. Please try again later!'));
     } else {
       setIsLoading(false);
     }
@@ -86,8 +86,8 @@ const CreateExam = () => {
               {errors.section && <p>{errors.section.message}</p>}
               <input name="instructions" {...register('instructions', { required: { value: true, message: 'Field is required!' } })} className="exam-input" placeholder="Instructions" type="text" defaultValue={mode === 'edit' ? exam.instructions : ''} />
               {errors.instructions && <p>{errors.instructions.message}</p>}
-              <input name="time" {...register('time', { required: { value: true, message: 'Field is required!' } })} className="exam-input" placeholder="Test time (in minutes)" type="number" defaultValue={mode === 'edit' ? exam.time : ''} />
-              {errors.time && <p>{errors.time.message}</p>}
+              <input name="duration" {...register('duration', { required: { value: true, message: 'Field is required!' } })} className="exam-input" placeholder="Test duration (in minutes)" type="number" defaultValue={mode === 'edit' ? exam.duration : ''} />
+              {errors.duration && <p>{errors.duration.message}</p>}
               <input name="pdfLink" {...register('pdfLink')} className="exam-input" placeholder="PDF link" type="text" defaultValue={mode === 'edit' ? exam.link : ''} />
             </fieldset>
 

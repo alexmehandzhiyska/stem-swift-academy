@@ -40,10 +40,10 @@ const getOne = async(req, res) => {
 
 
 const createOne = async(req, res) => {
-    const { subject, section, instructions, time, link, text, questions } = req.body;
+    const { subject, section, instructions, duration, link, text, questions } = req.body;
 
     try {
-        const exam = await examService.createOne(subject, section, instructions, time, text, link);
+        const exam = await examService.createOne(subject, section, instructions, duration, text, link);
         const result = await questionService.addQuestions(exam.id, Object.values(questions));
 
         res.status(201).json(result);
@@ -54,10 +54,10 @@ const createOne = async(req, res) => {
 
 const updateOne = async(req, res) => {
     const examId = req.params.examId;
-    const { subject, section, instructions, time, link, text, questions } = req.body;
+    const { subject, section, instructions, duration, link, text, questions } = req.body;
 
     try {
-        const exam = await examService.updateOne(examId, subject, section, instructions, time, text, link);
+        const exam = await examService.updateOne(examId, subject, section, instructions, duration, text, link);
         const result = await questionService.updateQuestions(exam.id, Object.values(questions));
 
         res.status(201).json(result);
@@ -73,6 +73,7 @@ const deleteOne = async(req, res) => {
         await examService.deleteOne(examId);
         res.status(200).json({ status: 'success' });
     } catch (error) {
+        console.log(error);
         res.status(400).json(error.message);
     }
 }

@@ -282,7 +282,7 @@ CREATE TABLE exams (
 );
 
 INSERT INTO
-  exams (subject, section, duration, instructions, text)
+  exams (subject, section, duration, instructions)
 VALUES
   (
     'math',
@@ -298,7 +298,7 @@ VALUES
   );
 
   INSERT INTO
-  exams (subject, section, duration, instructions)
+  exams (subject, section, duration, instructions, text)
 VALUES
   (
     'english',
@@ -344,7 +344,7 @@ VALUES
   (
     'Which reaction does Akira most fear from Chie?',
     'She will consider his proposal inappropriate.',
-    1
+    4
   ),
   (
     'Which choice provides the best evidence for the answer to the previous question?',
