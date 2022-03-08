@@ -33,7 +33,7 @@ const ExamDetails = () => {
         <section className="section-start">
           <article className="section-header">
             <h1 className="heading">{exam.section} Test</h1>
-            <h3 className="subheading">{exam.duration} minutes | 10 questions | {exam.difficulty} difficulty</h3>
+            <h3 className="subheading">{exam.duration} minutes | 10 questions | <span className="capitalize">{exam.difficulty}</span> difficulty</h3>
           </article>
 
           <article className="directions">
