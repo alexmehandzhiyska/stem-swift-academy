@@ -1,13 +1,8 @@
 const getAll = async () => {
   const response = await fetch(`/courses/lectures`, { credentials: 'include' });
   const data = await response.json();
-  console.log(data);
 
-  const text = await response.text();
-  console.log(text);
-  
   if (!response.ok) {
-    console.log(data);
     throw new Error(data);
   }
 
