@@ -88,11 +88,13 @@ const CreateExam = () => {
               {errors.instructions && <p>{errors.instructions.message}</p>}
               <input name="duration" {...register('duration', { required: { value: true, message: 'Field is required!' } })} className="exam-input" placeholder="Test duration (in minutes)" type="number" defaultValue={mode === 'edit' ? exam.duration : ''} />
               {errors.duration && <p>{errors.duration.message}</p>}
+              <input name="difficulty" {...register('difficulty', { required: { value: true, message: 'Field is required!' } })} className="exam-input" placeholder="Test difficulty (Low, Medium or High)" type="text" defaultValue={mode === 'edit' ? exam.difficulty : ''} />
+              {errors.difficulty && <p>{errors.difficulty.message}</p>}
               <input name="pdfLink" {...register('pdfLink')} className="exam-input" placeholder="PDF link" type="text" defaultValue={mode === 'edit' ? exam.link : ''} />
             </fieldset>
 
             <article className="english-inputs flex flex-col items-center">
-              <textarea name="text" {...register('text', { maxLength: { value: 2500, message: 'Text cannot be longer than 2500 characters!' } })} onChange={charactersChange} className={`exam-input ${subject === 'english' ? 'block' : 'hidden'}`} placeholder="Text" type="text" defaultValue={mode === 'edit' ? exam.text : ''}></textarea>
+              <textarea name="text" {...register('text', { maxLength: { value: 2500, message: 'Text cannot be longer than 2500 characters!' } })} onChange={charactersChange} className={`exam-input`} placeholder="Text" type="text" defaultValue={mode === 'edit' ? exam.text : ''}></textarea>
 
               {/* <h3 className="chars-left">Characters left: {charsLeft}</h3> */}
 

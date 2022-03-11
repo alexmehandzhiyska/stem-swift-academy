@@ -40,10 +40,10 @@ const getOne = async(req, res) => {
 
 
 const createOne = async(req, res) => {
-    const { subject, section, instructions, duration, link, text, questions } = req.body;
+    const { subject, section, instructions, duration, difficulty, link, text, questions } = req.body;
 
     try {
-        const exam = await examService.createOne(subject, section, instructions, duration, text, link);
+        const exam = await examService.createOne(subject, section, instructions, duration, difficulty, text, link);
         const result = await questionService.addQuestions(exam.id, Object.values(questions));
 
         res.status(201).json(result);
@@ -54,10 +54,10 @@ const createOne = async(req, res) => {
 
 const updateOne = async(req, res) => {
     const examId = req.params.examId;
-    const { subject, section, instructions, duration, link, text, questions } = req.body;
+    const { subject, section, instructions, duration, difficulty, link, text, questions } = req.body;
 
     try {
-        const exam = await examService.updateOne(examId, subject, section, instructions, duration, text, link);
+        const exam = await examService.updateOne(examId, subject, section, instructions, duration, difficulty, text, link);
         const result = await questionService.updateQuestions(exam.id, Object.values(questions));
 
         res.status(201).json(result);
