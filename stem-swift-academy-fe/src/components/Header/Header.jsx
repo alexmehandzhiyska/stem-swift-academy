@@ -16,22 +16,6 @@ const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [navVisibility, setNavVisibility] = useState('block');
-  const [menuIsOpen, setMenuIsOpen] = useState(false);
-
-  const displayMenu = () => {
-    setMenuIsOpen(!menuIsOpen);
-    console.log(menuIsOpen);
-    
-    if (menuIsOpen === true) {
-      console.log('in block');
-      setNavVisibility('block')
-    } else {
-      console.log('in hidden');
-      setNavVisibility('hidden');
-    }
-  }
-
   const onLogout = async () => {
     try {
       localStorage.removeItem('user');
@@ -72,14 +56,12 @@ const Header = () => {
       </section>
 
       <section className="flex items-center">
-        <nav className="{navVisibility} header-nav">
+        <nav className="header-nav">
           <ul className="flex">
             <li className="nav-item px-2 mx-4 text-xl"><Link to="/contacts">Contacts</Link></li>
             {user?.id ? userNav : guestNav}
           </ul>
         </nav>
-      <FontAwesomeIcon onClick={displayMenu} className="menu-bars"  icon={faBars} size="2x"></FontAwesomeIcon>
-
       </section>
     </header>
   );

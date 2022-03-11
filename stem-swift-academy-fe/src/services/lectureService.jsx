@@ -12,10 +12,8 @@ const getAll = async () => {
 const getOne = async (courseId, lectureId) => {
   const response = await fetch(`/courses/${courseId}/lectures/${lectureId}`);
   const data = await response.json();
-  console.log(data);
 
   if (!response.ok) {
-    console.log(data);
     throw new Error(data);
   }
 
