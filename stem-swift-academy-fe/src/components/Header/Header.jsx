@@ -4,11 +4,6 @@ import { logout } from "../../store";
 import { useDispatch, useSelector } from "react-redux";
 import { authService } from "../../services/authService";
 import { errorNotification } from "../notification";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons"
-
-import './Header.css';
-import { useState } from "react";
 
 const Header = () => {
   const stateUser = useSelector((state) => state.user.value)

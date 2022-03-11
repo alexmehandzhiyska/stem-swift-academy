@@ -6,6 +6,7 @@
 }
 
 .text {
+    word-wrap: normal;
     min-width: 50vw;
 }
 
