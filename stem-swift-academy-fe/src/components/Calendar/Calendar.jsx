@@ -35,7 +35,6 @@ const StudentCalendar = () => {
         setIsLoading(false);
       })
       .catch(error => {
-        console.log(error);
         errorNotification('There was an error loading your calendar. Please try again later!');
       });
   }, [])

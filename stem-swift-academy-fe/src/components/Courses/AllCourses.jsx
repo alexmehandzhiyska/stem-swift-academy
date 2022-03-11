@@ -18,7 +18,7 @@ const AllCourses = () => {
         setIsLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        (err);
         errorNotification(err);
       });
   }, []);
