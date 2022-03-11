@@ -13,7 +13,7 @@ const localizer = momentLocalizer(moment);
 const allViews = Object.keys(Views).map(k => Views[k])
 
 const StudentCalendar = () => {
-  const [lectures, setTopics] = useState([]);
+  const [lectures, setLectures] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -31,10 +31,11 @@ const StudentCalendar = () => {
           t.end.setUTCHours(t.time + 15, 0, 0);
         });
 
-        setTopics(allTopics);
+        setLectures(allTopics);
         setIsLoading(false);
       })
       .catch(error => {
+        console.log(error);
         errorNotification('There was an error loading your calendar. Please try again later!');
       });
   }, [])

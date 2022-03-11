@@ -4,7 +4,6 @@ const getAll = async () => {
   const courses = data.data.courses.sort((a, b) => a.duration - b.duration);
 
   if (!response.ok) {
-    console.log(data);
     throw new Error(data);
   }
 
