@@ -23,7 +23,7 @@ const RoleRoute = () => {
   const user = stateUser.id ? stateUser : JSON.parse(localStorage.getItem('user'));
   const role = user.role;
 
-  return role != 'student' ? <Outlet /> : <Navigate to="/" />
+  return role !== 'student' ? <Outlet /> : <Navigate to="/" />
 }
 
 const OwnerRoute = () => {

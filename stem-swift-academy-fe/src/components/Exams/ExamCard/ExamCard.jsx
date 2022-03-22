@@ -18,7 +18,7 @@ const ExamCard = ({ exam, subject, allExams, setNewExams }) => {
         .then(response => {
           if (response.status === 'success') {
             successNotification('Successfully deleted the exam!');
-            const examsLeft = allExams.filter(e => e.id != exam.id);
+            const examsLeft = allExams.filter(e => e.id !== exam.id);
             setNewExams(examsLeft);
           }
         });
@@ -38,7 +38,7 @@ const ExamCard = ({ exam, subject, allExams, setNewExams }) => {
       <p className="test-name">{exam.section}</p>
       <p className="test-time">{exam.duration} min</p>
 
-      {user?.role != 'student' &&
+      {user?.role !== 'student' &&
         <article className='admin-tools'>
           <Link to={`/exams/${subject}/${exam.id}/edit`}><FontAwesomeIcon icon={faEdit} className="mx-3 text-3xl text-blue-500"></FontAwesomeIcon></Link>
           <FontAwesomeIcon icon={faTrash} onClick={deleteExamHandler} className="mx-3 text-3xl text-blue-500"></FontAwesomeIcon>
@@ -47,7 +47,7 @@ const ExamCard = ({ exam, subject, allExams, setNewExams }) => {
 
       <article className="btns-wrapper">
         <Link to={`/exams/${exam.subject}/${exam.id}`}><button className="start-btn">Start</button></Link>
-        <a onClick={pdfHandler}><button className="download-btn">View as PDF</button></a>
+        <p onClick={pdfHandler}><button className="download-btn">View as PDF</button></p>
       </article>
     </section>
   );

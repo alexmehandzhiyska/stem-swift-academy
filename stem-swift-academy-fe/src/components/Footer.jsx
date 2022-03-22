@@ -13,19 +13,19 @@ const Footer = () => {
       <section className="flex items-center">
         <nav>
           <ul className="flex">
-            <li className="mx-4"><a href="https://www.facebook.com/stemswiftacademy/" target="_blank">
+            <li className="mx-4"><a href="https://www.facebook.com/stemswiftacademy/" target="_blank" rel="noreferrer">
               <FontAwesomeIcon icon={faFacebook} size="2x"></FontAwesomeIcon>
             </a></li>
 
-            <li className="mx-4"><a href="https://www.instagram.com/stemswiftacademy/" target="_blank">
+            <li className="mx-4"><a href="https://www.instagram.com/stemswiftacademy/" target="_blank" rel="noreferrer">
               <FontAwesomeIcon icon={faInstagram} size="2x"></FontAwesomeIcon>
             </a></li>
 
-            <li className="mx-4"><a href="https://www.youtube.com/channel/UCm45_C35c7M64fvscNwaW8A" target="_blank">
+            <li className="mx-4"><a href="https://www.youtube.com/channel/UCm45_C35c7M64fvscNwaW8A" target="_blank" rel="noreferrer">
               <FontAwesomeIcon icon={faYoutube} size="2x"></FontAwesomeIcon>
             </a></li>
 
-            <li className="mx-4"><a href="https://www.linkedin.com/in/alexandrina-mehandzhiyska/" target="_blank">
+            <li className="mx-4"><a href="https://www.linkedin.com/in/alexandrina-mehandzhiyska/" target="_blank" rel="noreferrer">
               <FontAwesomeIcon icon={faLinkedinIn} size="2x"></FontAwesomeIcon>
             </a></li>
           </ul>

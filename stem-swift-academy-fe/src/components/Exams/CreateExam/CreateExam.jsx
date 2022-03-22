@@ -25,15 +25,11 @@ const CreateExam = () => {
     if (mode === 'edit') {
       examService.getOne(examSubject, examId)
         .then(response => {
-          console.log(response.data);
-          console.log(response.data.exam);
-          console.log(response.data.exam.subject);
-          console.log(response.data.exam.duration);
           setExam(response.data.exam);
-          setCharsLeft(5000 - response.data.exam.text);
+          setCharsLeft(5000 - response.data.exam.text.length);
         })
-        .catch((error) => {
-          errorNotification(error)
+        .catch(() => {
+          errorNotification('There was an error processing the data. Please try again later!');
         });
 
       examService.getQuestions(examSubject, examId, false)
@@ -47,20 +43,18 @@ const CreateExam = () => {
     } else {
       setIsLoading(false);
     }
-  }, [examSubject, examId, mode]);
+  }, [subject, examSubject, examId, mode]);
 
 
   const submitExamHandler = (data) => {
     if (mode === 'edit') {
       examService.updateOne(examSubject, examId, data)
-        .then(response => {
+        .then(() => {
           successNotification('Exam edited successfully!');
           navigate(`/exams/${examSubject}/${examId}`);
         })
         .catch(error => {
-          console.log(error);
-          errorNotification(error);
-          // errorNotification('There was an error editing your exam. Please try again later.');
+          errorNotification('There was an error editing your exam. Please try again later.');
         });
     } else {
       examService.createOne(data)
@@ -110,9 +104,9 @@ const CreateExam = () => {
             </fieldset>
 
             <article className="english-inputs flex flex-col items-center">
-              <textarea name="text" {...register('text', { maxLength: { value: 5000, message: 'Text cannot be longer than 5000 characters!' } })} onChange={charactersChange} className={examSubject == 'english' ? 'exam-input' : 'hidden'} placeholder="Text" type="text" defaultValue={mode === 'edit' ? exam.text : ''}></textarea>
+              <textarea name="text" {...register('text', { maxLength: { value: 5000, message: 'Text cannot be longer than 5000 characters!' } })} onChange={charactersChange} className={examSubject === 'english' ? 'exam-input' : 'hidden'} placeholder="Text" type="text" defaultValue={mode === 'edit' ? exam.text : ''}></textarea>
 
-              <h3 className={examSubject == 'english' ? 'chars-left' : 'hidden'}>Characters left: {charsLeft}</h3>
+              <h3 className={examSubject === 'english' ? 'chars-left' : 'hidden'}>Characters left: {charsLeft}</h3>
 
             </article>
 

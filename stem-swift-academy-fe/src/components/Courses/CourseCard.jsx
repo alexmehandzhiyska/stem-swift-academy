@@ -1,18 +1,12 @@
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarCheck, faClock } from '@fortawesome/free-solid-svg-icons';
-import { useSelector } from 'react-redux';
 import { formatDate } from '../../utils';
 
 const CourseCard = ({ course }) => {
 
   const startDate = formatDate(course.start_date);
   const endDate = formatDate(course.end_date);
-
-  const stateUser = useSelector((state) => state.user.value);
-  const user = stateUser.id ? stateUser : JSON.parse(localStorage.getItem('user'));
-  const userId = user.id;
-
 
   return (
     <article className="flex flex-col items-center px-10 py-16 bg-blue-500 rounded-3xl">
