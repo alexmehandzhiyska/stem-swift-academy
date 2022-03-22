@@ -343,7 +343,7 @@ VALUES
   ),
   (
     'Which choice provides the best evidence for the answer to the previous question?',
-    ' Lines 39-42 ("Normally... community")',
+    'Lines 39-42 ("Normally... community")',
     2
   );
 
