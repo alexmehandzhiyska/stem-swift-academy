@@ -16,6 +16,16 @@ VALUES
     'owner'
   );
 
+INSERT INTO
+  users (name, email, password, role)
+VALUES
+  (
+    'Ivan Ivanov',
+    'ivan@abv.bg',
+    '$2b$10$Vdr37TXS1/kZZ3Y6nvJwiuOKz1B0ax7nEFQXIFvOuuAfFMGROtCmi',
+    'teacher'
+  );
+
 CREATE TABLE courses (
   id SERIAL PRIMARY KEY,
   start_date DATE NOT NULL,
@@ -36,25 +46,6 @@ CREATE TABLE topics (
   course_id INT REFERENCES courses(id),
   time INT
 );
-
-INSERT INTO
-  topics (title, subject, week_number, date, course_id)
-VALUES
-  ('Integrals', 'math', 1, '2021-12-03', 1),
-  (
-    'Subject-verb agreement',
-    'english',
-    1,
-    '2021-12-05',
-    1
-  ),
-  (
-    'Differential equations',
-    'math',
-    2,
-    '2021-12-20',
-    1
-  );
 
 INSERT INTO
   courses (
@@ -85,16 +76,6 @@ VALUES
     3,
     2
   );
-
-SELECT
-  start_date,
-  end_date,
-  title
-FROM
-  courses
-  JOIN topics ON topics.course_id = courses.id
-WHERE
-  week_number = 1;
 
 CREATE TABLE users_courses (
   user_id INT NOT NULL,
@@ -278,41 +259,30 @@ CREATE TABLE exams (
   duration INT NOT NULL,
   instructions VARCHAR(500) NOT NULL,
   text VARCHAR(2500),
-  link TEXT
+  link TEXT,
+  difficulty VARCHAR(40) NOT NULL
 );
 
 INSERT INTO
-  exams (subject, section, duration, instructions)
+  exams (subject, section, duration, instructions, text, link, difficulty)
 VALUES
   (
     'math',
     'nocalc',
     25,
-    'Solve each problem, choose the best answer from the choices provided, and fill in the corresponding circle on your answer sheet.'
+    'Solve each problem, choose the best answer from the choices provided, and fill in the corresponding circle on your answer sheet.',
+    NULL,
+   NULL,
+   'Medium'
   ),
-  (
-    'math',
-    'calc',
-    55,
-    'solve each problem, choose the best answer from the choices provided, and fill in the corresponding circle on your answer sheet.'
-  );
-
-  INSERT INTO
-  exams (subject, section, duration, instructions, text)
-VALUES
   (
     'english',
     'reading',
     65,
     'The passage below is followed by a number of questions. After reading the passage, choose the best answer to each question based on what is stated or implied in the passage and in any accompanying graphics (such as a table or graph).',
-    'Akira came directly, breaking all tradition. Was that it? Had he followed form? Had he asked his mother to speak to his father to approach a go between would Chie have been more receptive? He came on a winters eve. He pounded on the door while a cold rain beat on the shuttered veranda, so at first Chie thought him only the wind. The maid knew better. Chie heard her soft scuttling footsteps, the creak of the door. Then the maid brought a calling card to the drawing room, for Chie. Chie was reluctant to go to her guest; perhaps she was feeling too cozy. She and Naomi were reading at a low table set atop a charcoal brazier. A thick quilt spread over the sides of the table so their legs were tucked inside with the heat. "Who is it at this hour, in this weather?" Chie questioned as she picked the name card off the maids lacquer tray. "Shinoda, Akira. Kobe Dental College," she read. Naomi recognized the name. Chie heard a soft intake of air. "I think you should go," said Naomi.'
-  ),
-  (
-    'english',
-    'writing',
-    35,
-    'The passage below is accompanied by a number of questions. For some questions, you will consider how the passage might be revised to improve the expression of ideas. For other questions, you will consider how the passage might be edited to correct errors in sentence structure, usage, or punctuation. A passage or a question may be accompanied by one or more graphics (such as a table or graph) that you will consider as you make revising and editing decisions.',
-    'Greek yogurt—a strained form of cultured yogurt—has grown enormously in popularity in the United States since it was first introduced in the country in the late 1980s. From 2011 to 2012 alone, sales of Greek yogurt in the US increased by 50 percent. The resulting increase in Greek yogurt production has forced those involved in the business to address the detrimental effects that the yogurt-making process may be having on the environment. Fortunately, farmers and others in the Greek yogurt business have found many methods of controlling and eliminating most environmental threats. Given these solutions as well as the many health benefits of the food, the advantages of Greek yogurt outdo the potential drawbacks of its production. The main environmental problem caused by the production of Greek yogurt is the creation of acid whey as a by-product. Because it requires up to four times more milk to make than conventional yogurt does, Greek yogurt produces larger amounts of acid whey, which is difficult to dispose of. To address the problem of disposal, farmers have found a number of uses for acid whey. [4] They can add it to livestock feed as a protein supplement, and people can make their own Greek-style yogurt at home by straining regular yogurt. If it is improperly introduced into the environment, acid-whey runoff can pollute waterways, depleting the oxygen content of streams and rivers as it decomposes. Yogurt manufacturers, food scientists; and government officials are also working together to develop additional solutions for reusing whey.'
+    'Akira came directly, breaking all tradition. Was that it? Had he followed form? Had he asked his mother to speak to his father to approach a go between would Chie have been more receptive? He came on a winters eve. He pounded on the door while a cold rain beat on the shuttered veranda, so at first Chie thought him only the wind. The maid knew better. Chie heard her soft scuttling footsteps, the creak of the door. Then the maid brought a calling card to the drawing room, for Chie. Chie was reluctant to go to her guest; perhaps she was feeling too cozy. She and Naomi were reading at a low table set atop a charcoal brazier. A thick quilt spread over the sides of the table so their legs were tucked inside with the heat. "Who is it at this hour, in this weather?" Chie questioned as she picked the name card off the maids lacquer tray. "Shinoda, Akira. Kobe Dental College," she read. Naomi recognized the name. Chie heard a soft intake of air. "I think you should go," said Naomi.',
+   NULL,
+   'High'
   );
 
 CREATE TABLE questions (
@@ -329,53 +299,114 @@ VALUES
   (
     'Which choice best describes what happens in the passage?',
     'One character receives a surprising request from another character',
-    4
+    2
   ),
   (
     'Which choice best describes the developmental pattern of the passage?',
     'A detailed depiction of a meaningful encounter',
-    4
+    2
   ),
   (
     'As used in line 1 and line 65, "directly" most nearly means',
     'without mediation.',
-    4
+    2
   ),
   (
     'Which reaction does Akira most fear from Chie?',
     'She will consider his proposal inappropriate.',
-    4
+    2
   ),
   (
     'Which choice provides the best evidence for the answer to the previous question?',
     'Lines 63-64 ("Please... proposal")',
-    4
+    2
   ),
   (
     'In the passage, Akira addresses Chie with',
     'respect but not utter deference.',
-    4
+    2
   ),
   (
     'The main purpose of the first paragraph is to',
     'analyze a reaction.',
-    4
+    2
   ),
   (
     'As used in line 2, "form" most nearly means',
     'custom.',
-    4
+    2
   ),
   (
     'Why does Akira say his meeting with Chie is "a matter of urgency" (line 32)?',
     'He has been offered an attractive job in another country.',
-    4
+    2
   ),
   (
     'Which choice provides the best evidence for the answer to the previous question?',
     ' Lines 39-42 ("Normally... community")',
-    4
+    2
   );
+
+INSERT INTO
+  questions (title, correct_answer, exam_id)
+VALUES
+  (
+    '3 + 5 = ?',
+    '8',
+    1
+  ),
+  (
+    '1 + 4 = ?',
+    '5',
+    1
+  ),
+  (
+    '3 x 5 = ?',
+    '15',
+    1
+  ),
+  (
+    '1 x 1 = ?',
+    '1',
+    1
+  ),
+  (
+    '16 / 2 = ?',
+    '8',
+    1
+  ),
+  (
+    '15 / 3 = ?',
+    '5',
+    1
+  ),
+  (
+    '43 + 5 = ?',
+    '48',
+    1
+  ),
+  (
+    '30 - 5 = ?',
+    '25',
+    1
+  ),
+  (
+    '56 + 4 = ?',
+    '60',
+    1
+  ),
+  (
+    '5^2',
+    '25',
+    1
+  );
+
+
+
+
+
+
+
 
 CREATE TABLE answers (
   id SERIAL PRIMARY KEY,
@@ -483,6 +514,98 @@ VALUES
   ('Lines 39-42 ("Normally... community")', 10),
   ('Lines 58-59 ("Depending... Japan")', 10),
   ('Lines 72-73 ("I see... you")', 10);
+
+INSERT INTO
+  answers (content, question_id)
+VALUES
+  (
+    '8',
+    11
+  ),
+  (
+    '5',
+    11
+  ),
+  (
+    '3',
+    11
+  ),
+  (
+    '10',
+    11
+  ),
+  (
+    '5',
+    12
+  ),
+  (
+    '3',
+    12
+  ),
+  (
+    '25',
+    12
+  ),
+  (
+    '34',
+    12
+  ),
+  ('15', 13),
+  ('4', 13),
+  ('54', 13),
+  ('1', 13),
+  (
+    '1',
+    14
+  ),
+  (
+    '3',
+    14
+  ),
+  (
+    '5',
+    14
+  ),
+  (
+    '20',
+    14
+  ),
+  ('8', 15),
+  ('13', 15),
+  ('14', 15),
+  ('-3', 15),
+  ('5', 16),
+  ('3', 16),
+  ('67', 16),
+  ('43', 16),
+  ('48', 17),
+  ('3', 17),
+  ('43', 17),
+  ('10', 17),
+  ('25', 18),
+  ('54', 18),
+  ('4.', 18),
+  ('43', 18),
+  (
+    '60',
+    19
+  ),
+  (
+    '3',
+    19
+  ),
+  (
+    '43',
+    19
+  ),
+  (
+    '5',
+    19
+  ),
+  ('25', 20),
+  ('65', 20),
+  ('3', 20),
+  ('43', 20);
 
 ALTER TABLE
   questions DROP CONSTRAINT questions_exam_id_fkey,

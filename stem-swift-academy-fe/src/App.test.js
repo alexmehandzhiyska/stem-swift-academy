@@ -13,7 +13,7 @@ beforeAll(async() => {
 }, 60000);
 
 test('home loads correctly', async() => {
-    await page.goto(`/`);
+    await page.goto(`${baseUrl}/`);
 
     const title = await page.$eval('h1', el => el.textContent);
 
@@ -21,7 +21,7 @@ test('home loads correctly', async() => {
 });
 
 test('contacts loads correctly', async() => {
-    await page.goto(`/contacts`);
+    await page.goto(`${baseUrl}/contacts`);
 
     const contactsSection = await page.$eval('article.contacts', el => el.textContent.includes('alex.mehandzhiyska@stemswift.com'));
     expect(contactsSection).toBe(true);
@@ -33,7 +33,7 @@ test('contacts loads correctly', async() => {
 test('login works correctly when passed valid data', async() => {
     await page.waitForTimeout(5000);
 
-    await page.goto(`/login`);
+    await page.goto(`${baseUrl}/login`);
 
     await page.waitForSelector('form');
 
@@ -55,7 +55,7 @@ test('login throws an error when passed invalid data', async() => {
     await page.waitForSelector('li.logout-btn');
     await page.click('li.logout-btn');
 
-    await page.goto(`/login`);
+    await page.goto(`${baseUrl}/login`);
 
     await page.waitForSelector('form');
 
@@ -73,7 +73,7 @@ test('login throws an error when passed invalid data', async() => {
 }, 60000);
 
 test('register works correctly when passed valid data', async() => {
-    await page.goto(`/register`);
+    await page.goto(`${baseUrl}/register`);
 
     await page.waitForSelector('form');
 
@@ -95,7 +95,7 @@ test('register works correctly when passed valid data', async() => {
 }, 60000);
 
 test('subject page loads correctly', async() => {
-    await page.goto(`/exams`);
+    await page.goto(`${baseUrl}/exams`);
     await page.waitForSelector('button.english-choice');
     await page.waitForSelector('button.math-choice');
 
@@ -107,7 +107,7 @@ test('subject page loads correctly', async() => {
 }, 60000);
 
 test('exams page loads correctly', async() => {
-    await page.goto(`/exams/english`);
+    await page.goto(`${baseUrl}/exams/english`);
     await page.waitForSelector('h1.exam-heading');
 
     const examsHeading = await page.$eval('h1.exam-heading', el => el.textContent);
@@ -125,13 +125,13 @@ test('exam details page loads correctly', async() => {
 }, 60000);
 
 test('question page loads correctly', async() => {
-    await page.goto(`/exams/english/1/questions`);
+    await page.goto(`${baseUrl}/exams/english/1/questions`);
 
     await page.waitForSelector('section.questions');
 }, 60000);
 
 test('courses page loads correctly', async() => {
-    await page.goto(`/courses`);
+    await page.goto(`${baseUrl}/courses`);
     await page.waitForSelector('h1.courses-heading');
 
     const coursesHeading = await page.$eval('h1.courses-heading', el => el.textContent);
@@ -139,7 +139,7 @@ test('courses page loads correctly', async() => {
 }, 60000);
 
 test('course details page loads correctly', async() => {
-    await page.goto(`/courses/1?userId=45`);
+    await page.goto(`${baseUrl}/courses/1?userId=45`);
 
     await page.waitForSelector('section.course-details');
 }, 60000);
@@ -150,7 +150,7 @@ test('users page loads correctly', async() => {
 
     await page.waitForTimeout(5000);
 
-    await page.goto(`/login`);
+    await page.goto(`${baseUrl}/login`);
 
     await page.waitForSelector('form');
 
@@ -164,7 +164,7 @@ test('users page loads correctly', async() => {
 
     await page.waitForTimeout(5000);
 
-    await page.goto(`/users`);
+    await page.goto(`${baseUrl}/users`);
 
     await page.waitForSelector('h1.users-heading');
 
@@ -173,7 +173,7 @@ test('users page loads correctly', async() => {
 }, 60000);
 
 test('calendar page loads correctly', async() => {
-    await page.goto(`/calendar`);
+    await page.goto(`${baseUrl}/calendar`);
 
     await page.waitForSelector('.calendar');
 }, 30000);
