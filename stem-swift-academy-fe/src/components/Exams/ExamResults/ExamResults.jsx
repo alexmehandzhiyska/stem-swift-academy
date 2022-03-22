@@ -56,10 +56,10 @@ const ExamResults = () => {
             <h1 className="heading result-heading">{score / questions.length * 100}%</h1>
           </section>
 
-          <section>
+          <section className="mb-20">
             <h1 className="heading">Your Answers</h1>
 
-            {questions.map(question => <QuestionResult question={question} userAnswer={userAnswers.find(a => question.choices.includes(a))} />)}
+            {questions.map((question, i) => <QuestionResult key={question.id} number={i + 1} question={question} userAnswer={userAnswers.find(a => question.choices.includes(a))} />)}
           </section>
         </>
       }
