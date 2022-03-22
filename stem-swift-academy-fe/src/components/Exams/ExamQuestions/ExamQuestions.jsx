@@ -44,7 +44,7 @@ const ExamQuestions = () => {
 
     examService.submitAnswers(subject, examId, userAnswers)
       .then(() => {
-        navigate(`/exams/${subject}/${examId}/results`);
+        navigate(`/exams/${subject}/${examId}/results`, { state: {userAnswers: userAnswers } });
       })
       .catch(() => {
         errorNotification('There is an error loading the questions. Please try again later!');

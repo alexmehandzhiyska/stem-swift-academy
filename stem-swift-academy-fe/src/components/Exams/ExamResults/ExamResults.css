@@ -1,5 +1,11 @@
 .result-heading {
-  position: absolute;
-  font-size: 6rem;
-  top: 4em;
+    position: absolute;
+    font-size: 6rem;
+    top: 4em;
+}
+
+.question-title {
+    font-family: "Raleway";
+    font-weight: bold;
+    font-size: 1.5rem;
 }
