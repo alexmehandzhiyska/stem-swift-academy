@@ -44,9 +44,9 @@ const Header = () => {
     <header className="flex justify-between px-10 py-1 bg-blue-500 text-white max-w-full">
       <section className="flex items-center">
         <Link to="/" className="flex items-center">
-          <img className="w-56 mx-3 mt-7"
-            src="https://res.cloudinary.com/drinka/image/upload/v1646763768/sat-academy/images/ssa-logo-transparent_ov9o5n.png"
-            alt="STEM Swift Academy logo" />
+        <img className="w-56 mx-3"
+          src="https://res.cloudinary.com/drinka/image/upload/v1647941133/sat-academy/images/ssa-logo-shrinked_bgrqz1.png"
+          alt="STEM Swift Academy logo" />
         </Link>
       </section>
 
