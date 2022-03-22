@@ -24,7 +24,10 @@ const CreateExam = () => {
   useEffect(() => {
     if (mode === 'edit') {
       examService.getOne(examSubject, examId)
-        .then(response => setExam(response.data.exam))
+        .then(response => {
+          setExam(response.data.exam);
+          setCharsLeft(5000 - response.data.exam.text);
+        })
         .catch(() => errorNotification('There was an error loading the exam data. Please try again later!'));
 
       examService.getQuestions(examSubject, examId, false)
@@ -35,7 +38,6 @@ const CreateExam = () => {
         .catch(() => errorNotification('There was an error loading the exam data. Please try again later!'));
 
       setExamSubject(subject);
-      console.log(examSubject);
     } else {
       setIsLoading(false);
     }
