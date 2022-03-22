@@ -428,92 +428,92 @@ INSERT INTO
 VALUES
   (
     'One character argues with another character who intrudes on her home.',
-    1
+    11
   ),
   (
     'One character receives a surprising request from another character.',
-    1
+    11
   ),
   (
     'One character reminisces about choices she has made over the years.',
-    1
+    11
   ),
   (
     'One character criticizes another character for pursuing an unexpected course of action.',
-    1
+    11
   ),
   (
     'A careful analysis of a traditional practice',
-    2
+    12
   ),
   (
     'A detailed depiction of a meaningful encounter',
-    2
+    12
   ),
   (
     'A definitive response to a series of questions',
-    2
+    12
   ),
   (
     'A cheerful recounting of an amusing anecdote',
-    2
+    12
   ),
-  ('frankly.', 3),
-  ('confidently.', 3),
-  ('without mediation.', 3),
-  ('with precision.', 3),
+  ('frankly.', 13),
+  ('confidently.', 13),
+  ('without mediation.', 13),
+  ('with precision.', 13),
   (
     'She will consider his proposal inappropriate.',
-    4
+    14
   ),
   (
     'She will mistake his earnestness for immaturity.',
-    4
+    14
   ),
   (
     'She will consider his unscheduled visit an imposition.',
-    4
+    14
   ),
   (
     'She will underestimate the sincerity of his emotions.',
-    4
+    14
   ),
-  ('Line 33 ("His voice... refined")', 5),
-  ('Lines 49-51 ("You... mind")', 5),
-  ('Lines 63-64 ("Please... proposal")', 5),
-  ('Lines 71-72 ("Eager... face")', 5),
-  ('affection but not genuine love.', 6),
-  ('objectivity but not complete impartiality.', 6),
-  ('amusement but not mocking disparagement.', 6),
-  ('respect but not utter deference.', 6),
-  ('describe a culture.', 7),
-  ('criticize a tradition.', 7),
-  ('question a suggestion.', 7),
-  ('analyze a reaction.', 7),
-  ('appearance.', 8),
-  ('custom.', 8),
-  ('structure.', 8),
-  ('nature.', 8),
+  ('Line 33 ("His voice... refined")', 15),
+  ('Lines 49-51 ("You... mind")', 15),
+  ('Lines 63-64 ("Please... proposal")', 15),
+  ('Lines 71-72 ("Eager... face")', 15),
+  ('affection but not genuine love.', 16),
+  ('objectivity but not complete impartiality.', 16),
+  ('amusement but not mocking disparagement.', 16),
+  ('respect but not utter deference.', 16),
+  ('describe a culture.', 17),
+  ('criticize a tradition.', 17),
+  ('question a suggestion.', 17),
+  ('analyze a reaction.', 17),
+  ('appearance.', 18),
+  ('custom.', 18),
+  ('structure.', 18),
+  ('nature.', 18),
   (
     'He fears that his own parents will disapprove of Naomi.',
-    9
+    19
   ),
   (
     'He worries that Naomi will reject him and marry someone else.',
-    9
+    19
   ),
   (
     'He has been offered an attractive job in another country.',
-    9
+    19
   ),
   (
     'He knows that Chie is unaware of his feelings for Naomi.',
-    9
+    19
   ),
-  ('Line 39 ("I dont... you")', 10),
-  ('Lines 39-42 ("Normally... community")', 10),
-  ('Lines 58-59 ("Depending... Japan")', 10),
-  ('Lines 72-73 ("I see... you")', 10);
+  ('Line 39 ("I dont... you")', 20),
+  ('Lines 39-42 ("Normally... community")', 20),
+  ('Lines 58-59 ("Depending... Japan")', 20),
+  ('Lines 72-73 ("I see... you")', 20);
 
 INSERT INTO
   answers (content, question_id)
