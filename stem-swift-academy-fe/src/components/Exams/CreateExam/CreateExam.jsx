@@ -25,16 +25,15 @@ const CreateExam = () => {
     if (mode === 'edit') {
       examService.getOne(examSubject, examId)
         .then(response => {
-          console.log(response.data.exam);
-          setExam(response.data.exam);
-          setCharsLeft(5000 - response.data.exam.text);
-        })
-        .catch(() => {
+          console.log(response.data);
           console.log(response.data.exam);
           console.log(response.data.exam.subject);
           console.log(response.data.exam.duration);
-          errorNotification(response.data.exam)
-    
+          setExam(response.data.exam);
+          setCharsLeft(5000 - response.data.exam.text);
+        })
+        .catch((error) => {
+          errorNotification(error)
         });
 
       examService.getQuestions(examSubject, examId, false)
