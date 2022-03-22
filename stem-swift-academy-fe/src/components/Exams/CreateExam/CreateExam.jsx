@@ -11,7 +11,7 @@ const CreateExam = () => {
   const [exam, setExam] = useState(null);
   const [questions, setQuestions] = useState([]);
   const [examSubject, setExamSubject] = useState('english');
-  const [charsLeft, setCharsLeft] = useState(2500);
+  const [charsLeft, setCharsLeft] = useState(5000);
   const [isLoading, setIsLoading] = useState(true);
 
   const questionsArr = Array(10).fill(1);
@@ -67,12 +67,12 @@ const CreateExam = () => {
   const charactersChange = (e) => {
     const chars = e.target.value.length;
 
-    if (charsLeft <= 1) {
-      e.target.disabled = true;
+    if (charsLeft <= 2) {
+      e.target.value = e.target.value.slice(0, 4999);
     }
-    setCharsLeft(2500 - chars);
-  }
 
+    setCharsLeft(5000 - chars);
+  }
 
   return (
     <>
@@ -102,7 +102,7 @@ const CreateExam = () => {
             <article className="english-inputs flex flex-col items-center">
               <textarea name="text" {...register('text', { maxLength: { value: 5000, message: 'Text cannot be longer than 5000 characters!' } })} onChange={charactersChange} className={examSubject == 'english' ? 'exam-input' : 'hidden'} placeholder="Text" type="text" defaultValue={mode === 'edit' ? exam.text : ''}></textarea>
 
-              {/* <h3 className="chars-left">Characters left: {charsLeft}</h3> */}
+              <h3 className="chars-left">Characters left: {charsLeft}</h3>
 
             </article>
 
