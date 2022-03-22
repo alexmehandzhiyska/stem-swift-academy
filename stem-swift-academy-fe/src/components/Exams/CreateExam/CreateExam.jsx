@@ -52,11 +52,13 @@ const CreateExam = () => {
           navigate(`/exams/${examSubject}/${examId}`);
         })
         .catch(error => {
-          errorNotification('There was an error editing your exam. Please try again later.');
+          console.log(error);
+          errorNotification(error);
+          // errorNotification('There was an error editing your exam. Please try again later.');
         });
     } else {
       examService.createOne(data)
-        .then(response => {
+        .then(() => {
           successNotification('Exam created successfully!');
           navigate(`/exams/${data.subject}`)
         })
