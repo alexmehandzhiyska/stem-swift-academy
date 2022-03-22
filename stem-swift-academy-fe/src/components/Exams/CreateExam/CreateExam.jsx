@@ -102,7 +102,7 @@ const CreateExam = () => {
             <article className="english-inputs flex flex-col items-center">
               <textarea name="text" {...register('text', { maxLength: { value: 5000, message: 'Text cannot be longer than 5000 characters!' } })} onChange={charactersChange} className={examSubject == 'english' ? 'exam-input' : 'hidden'} placeholder="Text" type="text" defaultValue={mode === 'edit' ? exam.text : ''}></textarea>
 
-              <h3 className="chars-left">Characters left: {charsLeft}</h3>
+              <h3 className={examSubject == 'english' ? 'chars-left' : 'hidden'}>Characters left: {charsLeft}</h3>
 
             </article>
 
