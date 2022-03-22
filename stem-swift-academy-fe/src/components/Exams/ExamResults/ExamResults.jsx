@@ -7,6 +7,7 @@ import LottieAnimation from '../../LottieAnimation';
 
 import './ExamResults.css';
 import { errorNotification } from '../../notification';
+import QuestionResult from './QuestionResult';
 
 const ExamResults = () => {
   const [score, setScore] = useState(0);
@@ -57,6 +58,8 @@ const ExamResults = () => {
 
           <section>
             <h1 className="heading">Your Answers</h1>
+
+            {questions.map(question => <QuestionResult question={question} userAnswer={userAnswers.find(a => question.choices.includes(a))} />)}
           </section>
         </>
       }
