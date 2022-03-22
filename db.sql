@@ -607,6 +607,7 @@ VALUES
   ('3', 20),
   ('43', 20);
 
+
 ALTER TABLE
   questions DROP CONSTRAINT questions_exam_id_fkey,
 ADD
@@ -621,3 +622,154 @@ ALTER TABLE
   answers DROP CONSTRAINT answers_question_id_fkey,
 ADD
   CONSTRAINT answers_question_id_fkey FOREIGN KEY (question_id) REFERENCES questions(id) ON DELETE CASCADE;
+
+
+INSERT INTO questions (title, correct_answer, exam_id)
+VALUES
+(
+  'Which is the correct option?',
+  'outweigh',
+  4
+),
+(
+  'Which choice provides the most relevant detail?',
+  'supplement and convert it into gas to use as fuel in electricity production.',
+  4
+),
+(
+  'Which is the correct option?',
+  'NO CHANGE',
+  4
+),
+(
+  'Thich is the correct option?',
+  'scientists, and',
+  4
+),
+(
+  'To make this paragraph most logical, sentence 5 should be placed',
+  'after sentence 2',
+  4
+),
+(
+  'The writer is considering deleting the underlined sentence. Should the writer do this?',
+  'No, because it sets up the argument in the paragraph for the benefits of Greek yogurt.',
+  4
+),
+(
+  'Which is the correct option?',
+  'as',
+  4
+),
+(
+  'Which is the correct option?',
+  'contains',
+  4
+),
+(
+  'Which is the correct option?',
+  'NO CHANGE',
+  4
+),
+(
+  'Which is the correct option?',
+  'NO CHANGE',
+  4
+);
+
+INSERT INTO answers (content, question_id)
+VALUES
+('NO CHANGE', 71),
+('defeat', 71),
+('outperform', 71),
+('outweigh', 71),
+('NO CHANGE', 72),
+('supplement and convert it into gas to use as fuel in electricity production.', 72),
+('supplement, while sweet whey is more desirable as a food additive for humans.', 72),
+('supplement, which provides an important element of their diet', 72),
+('NO CHANGE', 73),
+('can pollute waterway''s,', 73),
+('could have polluted waterways,', 73),
+('has polluted waterway''s,', 73),
+('NO CHANGE', 74),
+('scientists: and', 74),
+('scientists, and', 74),
+('scientists, and,', 74),
+('where it is now.', 75),
+('after sentence 1.', 75),
+('after sentence 2.', 75),
+('after sentence 3.', 75),
+('Yes, because it does not provide a transition from the previous paragraph.', 76),
+('Yes, because it fails to support the main argument of the passage as introduced in the first paragraph.', 76),
+('No, because it continues the explanation of how acid whey can be disposed of safely.', 76),
+('No, because it sets up the argument in the paragraph for the benefits of Greek yogurt.', 76),
+('NO CHANGE', 77),
+('as', 77),
+('like', 77),
+('for', 77),
+('NO CHANGE', 78),
+('conatining', 78),
+('contains', 78),
+('will contain', 78),
+('NO CHANGE', 79),
+('In other words,', 79),
+('Therefore,', 79),
+('For instance,', 79),
+('NO CHANGE', 80),
+('fulfilled', 80),
+('complacent', 80),
+('sufficient', 80);
+
+UPDATE exams
+SET text = 'Akira came directly, breaking all tradition. Was that it? Had he followed form—had he asked his mother to speak to his father to approach a go-between—would Chie have been more receptive? He came on a winter''s eve. He pounded on the door while a cold rain beat on the shuttered veranda, so at first Chie thought him only the wind. The maid knew better. Chie heard her soft scuttling footsteps, the creak of the door. Then the maid brought a calling card to the drawing room, for Chie. Chie was reluctant to go to her guest; perhaps she was feeling too cozy. She and Naomi were reading at a low table set atop a charcoal brazier. A thick quilt spread over the sides of the table so their legs were tucked inside with the heat. "Who is it at this hour, in this weather?" Chie questioned as she picked the name card off the maid''s lacquer tray. "Shinoda, Akira. Kobe Dental College," she read. Naomi recognized the name. Chie heard a soft intake of air. "I think you should go," said Naomi. Akira was waiting in the entry. He was in his early twenties, slim and serious, wearing the black military-style uniform of a student. As he bowed—his hands hanging straight down, a black cap in one, a yellow oil-paper umbrella in the other—Chie glanced beyond him. In the glistening surface of the courtyard''s rain-drenched paving stones, she saw his reflection like a dark double. "Madame," said Akira, "forgive my disruption, but I come with a matter of urgency." His voice was soft, refined. He straightened and stole a deferential peek at her face. In the dim light his eyes shone with sincerity. Chie felt herself starting to like him. "Come inside, get out of this nasty night. Surely your business can wait for a moment or two." "I don''t want to trouble you. Normally I would approach you more properly but I''ve received word of a position. I''ve an opportunity to go to America, as dentist for Seattle''s Japanese community." "Congratulations," Chie said with amusement. "That is an opportunity, I''m sure. But how am I involved?" Even noting Naomi''s breathless reaction to the name card, Chie had no idea. Akira''s message, delivered like a formal speech, filled her with maternal amusement. You know how children speak so earnestly, so hurriedly, so endearingly about things that have no importance in an adult''s mind? That''s how she viewed him, as a child. It was how she viewed Naomi. Even though Naomi was eighteen and training endlessly in the arts needed to make a good marriage, Chie had made no effort to find her a husband. Akira blushed. "Depending on your response, I may stay in Japan. I''ve come to ask for Naomi''s hand." Suddenly Chie felt the dampness of the night. "Does Naomi know anything of your... ambitions?" "We have an understanding. Please don''t judge my candidacy by the unseemliness of this proposal. I ask directly because the use of a go-between takes much time. Either method comes down to the same thing: a matter of parental approval. If you give your consent, I become Naomi''s yoshi. We''ll live in the House of Fuji. Without your consent, I must go to America, to secure a new home for my bride." Eager to make his point, he''d been looking her full in the face. Abruptly, his voice turned gentle. "I see I''ve startled you. My humble apologies. I''ll take no more of your evening. My address is on my card. If you don''t wish to contact me, I''ll reapproach you in two weeks'' time. Until then, good night." He bowed and left. Taking her ease, with effortless grace, like a cat making off with a fish. "Mother?" Chie heard Naomi''s low voice and turned from the door. "He has asked you?" The sight of Naomi''s clear eyes, her dark brows gave Chie strength. Maybe his hopes were preposterous. "Where did you meet such a fellow? Imagine! He thinks he can marry the Fuji heir and take her to America all in the snap of his fingers!" Chie waited for Naomi''s ripe laughter. Naomi was silent. She stood a full half minute looking straight into Chie''s eyes. Finally, she spoke. "I met him at my literary meeting." Naomi turned to go back into the house, then stopped. "Mother." "Yes?" "I mean to have him."'
+WHERE id = 2;
+
+ALTER TABLE questions
+ADD COLUMN explanation VARCHAR(1000);
+
+UPDATE questions
+SET explanation = 'In the passage, a young man (Akira) asks a mother (Chie) for permission to marry her daughter (Naomi). The request was certainly surprising to the mother, as can be seen from line 47, which states that prior to Akira''s question Chie "had no idea" the request was coming. Choice A is incorrect because the passage depicts two characters engaged in a civil conversation, with Chie being impressed with Akira''s "sincerity" and finding herself "starting to like him." Choice C is incorrect because the passage is focused on the idea of Akira''s and Naomi''s present lives and possible futures. Choice D is incorrect because the interactions between Chie and Akira are polite, not critical; for example, Chie views Akira with "amusement," not animosity.'
+WHERE id = 1;
+ 
+UPDATE questions
+SET explanation = 'The passage centers on a night when a young man tries to ge tapproval to marry a woman''s daughter. The passage includes detailed descriptions of setting (a "winter''s eve" and a "cold rain," lines 5-6); character (Akira''s "soft, refined" voice, line 33; Akira''s eyes "shining with sincerity," line 35); and plot ("Naomi was silent. She stood a full half minute looking straight into Chie''s eyes. Finally, she spoke,", lines 88-89). Choice A is incorrect because the passage focuses on a nontraditional marriage proposal. Choice C is incorrect because the passage concludes without resolution to the question of whether Akira and Naomi will receive permission to marry. Choice D is incorrect becuase the passage repeatedly makes clear that for Chie, her encounter with Akira is momentous and unsettling, as when Akira acknowledges in line 73 that he has "startled" her.'
+WHERE id = 2;
+ 
+UPDATE questions
+SET explanation = 'Akira "came directly, breaking all tradition," (line 1) when he approached Chie and asked to maryr her daughter, and he "asked directly,", without "a go-between" (line 65) or "mediation," because doing otherwise would have taken too much time. Choices A, B, and D are incorrect because in these contexts, "directly" does not mean in a frank, confident, or precise manner.'
+WHERE id = 3;
+  
+UPDATE questions
+SET explanation = 'Choice A is the best answer. Akira is very concerned Chie will find his marriage proposal inappropriate because he did not follow traditional protocol and use a "go-between" (line 65). This is clear in lines 63-64, when Akira says to Chie "Please don''t judge my candidacy by the unseemliness of this proposal." Choice B is incorrect because there is no evidence in the passage that Akira worries that Chie will mistake his earnestness for immaturity. Choice C is incorrect because while Akira recognizes that his unscheduled visit is a nuisance, his larger concern is that Chie will reject him due to the inappropriateness of his proposal. Choice D is incorrect because there is no evidence in the passage that Akira worries Chie will underestimate the sincerity of his emotions.'
+WHERE id = 4;
+ 
+UPDATE questions
+SET explanation = 'In lines 63-63, Akira says to Chie, "Please don''t judge my candidacy by the unseemliness of this proposal." This reveals Akira''s concern that Chie may say no to the proposal simply because  Akira did not follow traditional practices. Choices A, B, and D do not provide the best evidence for the answer to the previous question. Choice A is incorrect because line 33 merely describes Akirs''s voice as "soft, refined." Choice B is incorrect because lines 49-51 reflect Chie''s perspective, not Akira''s. Choice D is incorrect because lines 71-72 indicate only that Akira was speaking in an eager and forthright matter.'
+WHERE id = 5;
+ 
+UPDATE questions
+SET explanation = 'Akira clearly treats Chie with respect, including "bowing" (line 26) to her, calling her "Madame" (line 31), and looking at her with "a deferential peek" (line 34). Akira does not offer Chie utter deference, though, as he asks to marry Naomi after he concedes that he is not following protocol and admits to being a "disruption" (line 31)'
+WHERE id = 6;
+ 
+UPDATE questions
+SET explanation = 'The first paragraph (lines 1-4) reflects on how Akira approached Chie to ask for her daughter''s hand in marriage. In these lines, tha narrator is wondering whether Chie would have been more likely to say yes to Akira''s proposal if Akira had followed tradition: "Akira came directly, breaking all tradition. Was that it? Had he followed form - had he asked his mother to speak to his father to approach a go-between - would Chie have been more receptive?" Thus, the main purpose of the first paragraph is to examine why Chie reacted a certain way to Akira''s proposal. Choice A is incorrect because the first paragraph describes only one aspect of Japanese culture (marriage proposals) but not the culture as a whole. Choice B is incorrect because the first paragraph implies a criticism of Akira''s individual marriage proposal but not the entire tradition of Japanese marriage proposals. Choice C is incorrect because the narrator does not question a suggestion.'
+WHERE id = 7;
+ 
+UPDATE questions
+SET explanation = 'In line 1, the narrator suggests that Akira''s direct approach broke "all tradition." The narrator then wonders if Akira had "followed form," or the tradition expected of him, would Chie have been more receptive to his proposal. In this context, following "form" thus means following a certain tradition or custom. Choices A, C, and D are incorrect because in this context "form" does not mean the way something looks (appearance), the way it is built (structure), or its essence (nature).'
+WHERE id = 8;
+ 
+UPDATE questions
+SET explanation = 'In line 1, the narrator suggests that Akira''s direct approach broke "all tradition." The narrator then wonders if Akira had "followed form," or the tradition expected of him, would Chie have been more receptive to his proposal. In this context, following "form" thus means following a certain tradition or custom. Choices A, C, and D are incorrect because in this context "form" does not mean the way something looks (appearance), the way it is built (structure), or its essence (nature).'
+WHERE id = 8;
+ 
+ 
+UPDATE questions
+SET explanation = 'Akira states that his unexpected meeting with Chie occured only because of a "matter of urgency," which he explains as "an opportunity to go to America, as dentist for Seattle''s Japanese community" (lines 41-42). Akira decides to directly speak to Chie because Chie''s response to his marriage proposal affects whether Akira accepts the job offer. Choice A is incorrect because there is no evidence in the passage that Akira is worried his parents will not approve of Naomi. Choice B is incorrect because Akira has "an understanding" with Naomi (line 63). Choice D is incorrect; while Akira may know that Chie is unaware of his feelings for Naomi, this is not what he is referring to when he mentions "a matter of urgency."'
+WHERE id = 9;
+ 
+UPDATE questions
+SET explanation = 'In lines 39-42, Akira clarifies that the "matter of urgency" is that he has "an opportunity to go to America, as dentist for Seattle''s Japanese community." Akira needs Chie''s answer to his marriage proposal so he can decide whether to accept the job in Seattle. Choices A, C, and D do not provide the best evidence for the answer to the previous question. Choice A is incorrect because in line 39 Akira apologizes for interrupting Chie''s quiet evening. Choice C is incorrect because lines 58-59 address the seriousness of Akira''s request, not its urgenty. Choice D is incorrect because line 73 shows only that Akira''s proposal has "startled" Chie and does not explain why his request is time-sensitive'
+WHERE id = 10;
+ 
+ 

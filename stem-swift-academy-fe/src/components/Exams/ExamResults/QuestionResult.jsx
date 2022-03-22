@@ -7,6 +7,7 @@ const QuestionResult = ({ number, question, userAnswer }) => {
             <p>{question.choices.map(answer => 
                 <li key={answer.id} className={answer == question.correct_answer ? "text-green-400 text-xl" : answer == userAnswer ? "text-red-500 text-xl" : "text-black text-xl"}>{answer}</li>
             )}</p>
+            <p>{question.explanation}</p>
         </article>
     );
 }
