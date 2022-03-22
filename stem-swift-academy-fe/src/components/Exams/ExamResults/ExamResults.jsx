@@ -40,7 +40,7 @@ const ExamResults = () => {
         setIsLoading(false);
       })
       .catch(() => {
-        console.log('There was an error loading the questions! Please try again later!');
+        errorNotification('There was an error loading the questions! Please try again later!');
       });
   }, [subject, examId]);
 

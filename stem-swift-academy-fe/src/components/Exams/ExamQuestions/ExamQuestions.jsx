@@ -68,7 +68,7 @@ const ExamQuestions = () => {
         <section className="questions flex justify-between">
           {text && <p className="text pt-10 px-8 text-lg w-1/2">{text}</p>}
 
-          <Survey.Survey className="survey min-w-full" model={survey} showCompletedPage={false} onComplete={examSubmitHandler} />
+          <Survey.Survey className="survey" model={survey} showCompletedPage={false} onComplete={examSubmitHandler} />
         </section>
       }
     </>
