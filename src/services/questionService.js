@@ -11,7 +11,7 @@ const getAll = async(examId, shuffled) => {
         question.choices = shuffled === 'true' ? _.shuffle(answers) : answers;
     }
 
-    return questions;
+    return questions.sort((a, b) => a.id - b.id);
 };
 
 

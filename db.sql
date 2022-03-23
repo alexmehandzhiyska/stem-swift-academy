@@ -283,7 +283,15 @@ VALUES
     'Akira came directly, breaking all tradition. Was that it? Had he followed form? Had he asked his mother to speak to his father to approach a go between would Chie have been more receptive? He came on a winters eve. He pounded on the door while a cold rain beat on the shuttered veranda, so at first Chie thought him only the wind. The maid knew better. Chie heard her soft scuttling footsteps, the creak of the door. Then the maid brought a calling card to the drawing room, for Chie. Chie was reluctant to go to her guest; perhaps she was feeling too cozy. She and Naomi were reading at a low table set atop a charcoal brazier. A thick quilt spread over the sides of the table so their legs were tucked inside with the heat. "Who is it at this hour, in this weather?" Chie questioned as she picked the name card off the maids lacquer tray. "Shinoda, Akira. Kobe Dental College," she read. Naomi recognized the name. Chie heard a soft intake of air. "I think you should go," said Naomi.',
    NULL,
    'High'
-  );
+  ),
+  (
+    'english',
+    'writing',
+    35,
+    'The passage below is accompanied by a number of questions. For some questions, you will consider how the passage might be revised to improve the expression of ideas. For other questions, you will consider how the passage might be edited to correct errors in sentence structure, usage, or punctuation. A passage or a question may be accompanied by one or more graphics (such as a table or graph) that you will consider as you make revising and editing decisions.',
+    'Greek yogurt—a strained form of cultured yogurt—has grown enormously in popularity in the United States since it was first introduced in the country in the late 1980s. From 2011 to 2012 alone, sales of Greek yogurt in the US increased by 50 percent. The resulting increase in Greek yogurt production has forced those involved in the business to address the detrimental effects that the yogurt-making process may be having on the environment. Fortunately, farmers and others in the Greek yogurt business have found many methods of controlling and eliminating most environmental threats. Given these solutions as well as the many health benefits of the food, the advantages of Greek yogurt (1.) outdo the potential drawbacks of its production. [1] The main environmental problem caused by the production of Greek yogurt is the creation of acid whey as a by-product. [2] Because it requires up to four times more milk to make than conventional yogurt does, Greek yogurt produces larger amounts of acid whey, which is difficult to dispose of. [3] To address the problem of disposal, farmers have found a number of uses for acid whey. [4] They can add it to livestock feed as a protein (2.) supplement, and people can make their own Greek-style yogurt at home by straining regular yogurt. [5] If it is improperly introduced into the environment, acid-whey runoff (3.) can pollute waterways, depleting the oxygen content of streams and rivers as it decomposes. [6] Yogurt manufacturers, food (4.) scientists; and government officials are also working together to develop additional solutions for reusing whey.(5.) (6.)Though these conservation methods can be costly and time-consuming, they are well worth the effort. Nutritionists consider Greek yogurt to be a healthy food: it is an excellent source of calcium and protein, serves (7.) to be a digestive aid, and (8.) it contains few calories in its unsweetened low- and non-fat forms. Greek yogurt is slightly lower in sugar and carbohydrates than conventional yogurt is. (9.) Also, because it is more concentrated, Greek yogurt contains slightly more protein per serving, thereby helping people stay (10.) satiated for longer periods of time. These health benefits have prompted Greek yogurt''s recent surge in popularity. In fact, Greek yogurt can be found in an increasing number of products such as snack food and frozen desserts. Because consumers reap the nutritional benefits of Greek yogurt and support those who make and sell it, therefore farmers and businesses should continue finding safe and effective methods of producing the food.',
+    NULL,
+    'Low');
 
 CREATE TABLE questions (
   id SERIAL PRIMARY KEY,
@@ -343,7 +351,7 @@ VALUES
   ),
   (
     'Which choice provides the best evidence for the answer to the previous question?',
-    'Lines 39-42 ("Normally... community")',
+    ' Lines 39-42 ("Normally... community")',
     2
   );
 
@@ -428,92 +436,92 @@ INSERT INTO
 VALUES
   (
     'One character argues with another character who intrudes on her home.',
-    11
+    1
   ),
   (
     'One character receives a surprising request from another character.',
-    11
+    1
   ),
   (
     'One character reminisces about choices she has made over the years.',
-    11
+    1
   ),
   (
     'One character criticizes another character for pursuing an unexpected course of action.',
-    11
+    1
   ),
   (
     'A careful analysis of a traditional practice',
-    12
+    2
   ),
   (
     'A detailed depiction of a meaningful encounter',
-    12
+    2
   ),
   (
     'A definitive response to a series of questions',
-    12
+    2
   ),
   (
     'A cheerful recounting of an amusing anecdote',
-    12
+    2
   ),
-  ('frankly.', 13),
-  ('confidently.', 13),
-  ('without mediation.', 13),
-  ('with precision.', 13),
+  ('frankly.', 3),
+  ('confidently.', 3),
+  ('without mediation.', 3),
+  ('with precision.', 3),
   (
     'She will consider his proposal inappropriate.',
-    14
+    4
   ),
   (
     'She will mistake his earnestness for immaturity.',
-    14
+    4
   ),
   (
     'She will consider his unscheduled visit an imposition.',
-    14
+    4
   ),
   (
     'She will underestimate the sincerity of his emotions.',
-    14
+    4
   ),
-  ('Line 33 ("His voice... refined")', 15),
-  ('Lines 49-51 ("You... mind")', 15),
-  ('Lines 63-64 ("Please... proposal")', 15),
-  ('Lines 71-72 ("Eager... face")', 15),
-  ('affection but not genuine love.', 16),
-  ('objectivity but not complete impartiality.', 16),
-  ('amusement but not mocking disparagement.', 16),
-  ('respect but not utter deference.', 16),
-  ('describe a culture.', 17),
-  ('criticize a tradition.', 17),
-  ('question a suggestion.', 17),
-  ('analyze a reaction.', 17),
-  ('appearance.', 18),
-  ('custom.', 18),
-  ('structure.', 18),
-  ('nature.', 18),
+  ('Line 33 ("His voice... refined")', 5),
+  ('Lines 49-51 ("You... mind")', 5),
+  ('Lines 63-64 ("Please... proposal")', 5),
+  ('Lines 71-72 ("Eager... face")', 5),
+  ('affection but not genuine love.', 6),
+  ('objectivity but not complete impartiality.', 6),
+  ('amusement but not mocking disparagement.', 6),
+  ('respect but not utter deference.', 6),
+  ('describe a culture.', 7),
+  ('criticize a tradition.', 7),
+  ('question a suggestion.', 7),
+  ('analyze a reaction.', 7),
+  ('appearance.', 8),
+  ('custom.', 8),
+  ('structure.', 8),
+  ('nature.', 8),
   (
     'He fears that his own parents will disapprove of Naomi.',
-    19
+    9
   ),
   (
     'He worries that Naomi will reject him and marry someone else.',
-    19
+    9
   ),
   (
     'He has been offered an attractive job in another country.',
-    19
+    9
   ),
   (
     'He knows that Chie is unaware of his feelings for Naomi.',
-    19
+    9
   ),
-  ('Line 39 ("I dont... you")', 20),
-  ('Lines 39-42 ("Normally... community")', 20),
-  ('Lines 58-59 ("Depending... Japan")', 20),
-  ('Lines 72-73 ("I see... you")', 20);
+  ('Line 39 ("I dont... you")', 10),
+  ('Lines 39-42 ("Normally... community")', 10),
+  ('Lines 58-59 ("Depending... Japan")', 10),
+  ('Lines 72-73 ("I see... you")', 10);
 
 INSERT INTO
   answers (content, question_id)
@@ -759,6 +767,10 @@ UPDATE questions
 SET explanation = 'In line 1, the narrator suggests that Akira''s direct approach broke "all tradition." The narrator then wonders if Akira had "followed form," or the tradition expected of him, would Chie have been more receptive to his proposal. In this context, following "form" thus means following a certain tradition or custom. Choices A, C, and D are incorrect because in this context "form" does not mean the way something looks (appearance), the way it is built (structure), or its essence (nature).'
 WHERE id = 8;
  
+UPDATE questions
+SET explanation = 'In line 1, the narrator suggests that Akira''s direct approach broke "all tradition." The narrator then wonders if Akira had "followed form," or the tradition expected of him, would Chie have been more receptive to his proposal. In this context, following "form" thus means following a certain tradition or custom. Choices A, C, and D are incorrect because in this context "form" does not mean the way something looks (appearance), the way it is built (structure), or its essence (nature).'
+WHERE id = 8;
+ 
  
 UPDATE questions
 SET explanation = 'Akira states that his unexpected meeting with Chie occured only because of a "matter of urgency," which he explains as "an opportunity to go to America, as dentist for Seattle''s Japanese community" (lines 41-42). Akira decides to directly speak to Chie because Chie''s response to his marriage proposal affects whether Akira accepts the job offer. Choice A is incorrect because there is no evidence in the passage that Akira is worried his parents will not approve of Naomi. Choice B is incorrect because Akira has "an understanding" with Naomi (line 63). Choice D is incorrect; while Akira may know that Chie is unaware of his feelings for Naomi, this is not what he is referring to when he mentions "a matter of urgency."'
@@ -768,4 +780,55 @@ UPDATE questions
 SET explanation = 'In lines 39-42, Akira clarifies that the "matter of urgency" is that he has "an opportunity to go to America, as dentist for Seattle''s Japanese community." Akira needs Chie''s answer to his marriage proposal so he can decide whether to accept the job in Seattle. Choices A, C, and D do not provide the best evidence for the answer to the previous question. Choice A is incorrect because in line 39 Akira apologizes for interrupting Chie''s quiet evening. Choice C is incorrect because lines 58-59 address the seriousness of Akira''s request, not its urgenty. Choice D is incorrect because line 73 shows only that Akira''s proposal has "startled" Chie and does not explain why his request is time-sensitive'
 WHERE id = 10;
  
+ 
+
+
+
+
+
+
+
+
+
+
+
+UPDATE questions
+SET explanation = '"Outweigh" is the only choice that appropriately reflects th erelationship the sentence sets up between "advantages" and "drawbacks". Choices A, B, and C are incorrect because each implies a competitive relationship that is inappropriate in this context.'
+WHERE id = 10;
+ 
+UPDATE questions
+SET explanation = 'Choice B offers a second action that farmers can undertake to address the problem of acid whey disposal, thus suporting the claim made in the previous sentence ("To address the problem of disposal, farmers have found a number of uses for acid whey". Choices A, C, and D are incorrect because they do not offer examples of how farmers could make use of acid whey.'
+WHERE id = 10;
+ 
+UPDATE questions
+SET explanation = 'Choice A results in a sentence that is gramatically correct and coherent. In choice A, "waterways," the correct plural form of "waterway," conveys the idea that acid whey could impact multiple bodies of water. Additionally, the compound verb "can pollute" suggests that acid whey represents an ongoing, potential problem. Choices B and D are incorrect because both use the possessive form of "waterway." Choice C is incorrect because it creates an unnecessary shift in verb tense. The present tense verb "can pollute" should be used instead, as it is consistent with the other verbs in the paragraph.'
+WHERE id = 10;
+ 
+UPDATE questions
+SET explanation = 'Choice C utilizes proper punctuation for items listed in a series. In this case those items are nouns: "Yogurt manufacturers, food scientists, and government officials." Choices A and B are incorrect because both fail to recognize that the items are a part of a series. Since a comma is used after "manufacturers," a semicolon or colon should not be used after "scientists." Choice D is incorrect because the comma after "and" is unnecessary and deviates from grammatical conventions for presenting items in a series.'
+WHERE id = 10;
+ 
+UPDATE questions
+SET explanation = 'Sentence 5 logically links sentence 2, which explains why Greek yogurt production yields large amoounts of acid whey, and sentence 3, which mentions the need to dispose of acid whey properly. Choices A, B, and D are incorrect because each would result in an illogical progression of sentences for this paragraph. If sentence 5 were left where it is or placed after sentence 3, it would appear illogically after the discussion of "the problem of disposal." If sentence 5 were placed after sentence 1, it would illogically discuss "acid-whey runoff" before the mention of acid whey begin "difficult to dispose of."'
+WHERE id = 10;
+ 
+UPDATE questions
+SET explanation = 'The paragraph includes several benefits of consuming Greek yogurt, particularly in regard to nutrition and satisfying hunger, to support the sentence''s claim that the conservation efforts are "well worth the effort." This transition echoes the passage''s earlier claim that "the advantages of Greek yogurt outweigh the potential drawbacks of its production." Choices A, B, and C are incorrect because they inaccurately describe the sentence in question.'
+WHERE id = 10;
+ 
+UPDATE questions
+SET explanation = 'Choice B proviides a grammatically standard preposition that connects the verb "serves" and noun "digestive aid" and accurately depicts their relationship. Choice A is incorrect because the infinitive form "to be" yields a gramatically incorrect verb construction: "serves to be." Choice C and D are incorrect because both present options that deviate from standard English usage.'
+WHERE id = 10;
+ 
+UPDATE questions
+SET explanation = 'Choice C presents a verb tense that is consistent in the context of the sentence. The choice is also free of the redundant "it." Choice A is incorrect because the subject "it" creates a redundacy. Choices B and D are incorrect because they present verb tenses that are inconsistent in the context of the sentence.'
+WHERE id = 10;
+
+UPDATE questions
+SET explanation = 'Choice A properly introduces an additional health benefit in a series of sentences that list health benefits. "Also" is the logical and coherent choice to communicate an addition. Choices B, C, and D are incorrect because none of the transitions they offer logically fits the content that precedes or follows the proposed choice.'
+WHERE id = 10;
+ 
+UPDATE questions
+SET explanation = '"satiated" is the only choice that communicates effectively that Greek yogurt will satisfy hunger for a longer period of time. Choices B, C, and D are incorrect because each is improper usage in this context. A person can be "fulfilled" spiritually or in other ways, but a person who has eaten until he or she is no longer hungry cannot be described as fulfilled. Neither can he or she be described as being "complacent" or "sufficient."'
+WHERE id = 10;
  
