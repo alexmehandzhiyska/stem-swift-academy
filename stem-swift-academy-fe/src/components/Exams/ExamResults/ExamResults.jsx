@@ -59,7 +59,7 @@ const ExamResults = () => {
           <section className="mb-20">
             <h1 className="heading">Your Answers</h1>
 
-            {questions.map((question, i) => <QuestionResult key={question.id} number={i + 1} question={question} userAnswer={userAnswers.find(a => question.choices.includes(a))} />)}
+            {questions.map((question, i) => <QuestionResult key={question.id} number={i + 1} question={question} userAnswer={userAnswers[i]} />)}
           </section>
         </>
       }
