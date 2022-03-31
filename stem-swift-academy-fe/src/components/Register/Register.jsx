@@ -45,7 +45,7 @@ const Register = () => {
           {errors.email && <p>{errors.email.message}</p>}
         </article>
 
-        <article className="my-2 flex justify-evenly">
+        <article className="my-2">
           <FontAwesomeIcon className="icon lock-icon text-blue-500" icon={faUnlockAlt}></FontAwesomeIcon>
           <input name="password" {...register('password', { required: { value: true, message: 'Password is required!' }, minLength: { value: 5, message: 'Your password should have at least 5 characters!' }, maxLength: { value: 30, message: 'Password cannot have more than 30 characters!' } })} className="h-14 pl-16 text-xl bg-transparent border-blue-500 border-b-4 text-blue-500 placeholder-blue-500 focus:outline-none" type="password" placeholder="Password" />
 
