@@ -27,9 +27,8 @@ const QuestionResult = ({ number, question, userAnswer }) => {
                 <p className="ml-5 mt-1 text-xl">Explanation</p>
             </section>
 
-            <button className="btn add-btn mt-5 px-2" onClick={() => navigate(`/notebooks/${userId}/create`, { state: { question: question.title, correctAnswer: question.correct_answer, userAnswer: userAnswer} })}>Add to notebook</button>
             <p className={explanationIsToggled ? "block mt-5" : "hidden"}>{question.explanation}</p>
-            
+            <button className="btn add-btn mt-5 px-2" onClick={() => navigate(`/notebooks/${userId}/create`, { state: { question: question.title, correctAnswer: question.correct_answer, userAnswer: userAnswer} })}>Add to notebook</button>
         </article>
     );
 }
