@@ -1,7 +1,5 @@
-import { baseUrl } from '../constants';
-
 const getByUser = async (userId) => {
-  const response = await fetch(`${baseUrl}/notebooks/${userId}`, { credentials: 'include' });
+  const response = await fetch(`/notebooks/${userId}`, { credentials: 'include' });
   const data = await response.json();
 
   if (!response.ok) {
@@ -12,7 +10,7 @@ const getByUser = async (userId) => {
 }
 
 const getOne = async (courseId) => {
-  const response = await fetch(`${baseUrl}/courses/${courseId}`);
+  const response = await fetch(`/courses/${courseId}`);
   const data = await response.json();
 
   if (!response.ok) {
@@ -23,7 +21,7 @@ const getOne = async (courseId) => {
 }
 
 const createOne = async (content, userId) => {
-  const response = await fetch(`${baseUrl}/notebooks/${userId}`, {
+  const response = await fetch(`/notebooks/${userId}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
