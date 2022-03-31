@@ -57,11 +57,12 @@ const updateOne = async(req, res) => {
     const { subject, section, instructions, duration, difficulty, link, text, questions } = req.body;
 
     try {
-        const exam = await examService.updateOne(examId, subject, section, instructions, duration, difficulty, text, link);
+        const exam = await examService.updateOne(examId, subject, section, instructions, duration, difficulty, link, text);
         const result = await questionService.updateQuestions(exam.id, Object.values(questions));
 
         res.status(201).json(result);
     } catch (error) {
+        console.log(error);
         res.status(400).json(error.message);
     }
 }
