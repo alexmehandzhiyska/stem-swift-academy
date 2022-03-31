@@ -9,3 +9,9 @@
     font-weight: bold;
     font-size: 1.5rem;
 }
+
+.add-btn {
+    font-size: 1rem !important;
+    width: 10vw;
+    height: 2em;
+}
