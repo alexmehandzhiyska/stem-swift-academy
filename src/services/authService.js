@@ -9,6 +9,8 @@ const register = async(name, email, password) => {
         'INSERT INTO users (name, email, password, role) VALUES ($1, $2, $3, $4) RETURNING *', [name, email, decodedPassword, 'student']
     );
 
+    await db.query('INSERT INTO notebooks (user_id) VALUES ($1)', [result.rows[0].id]);
+
     const user = result.rows[0];
 
     const token = jwtGenerator(user.id);
