@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
+import { faCaretRight, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -23,7 +23,7 @@ const QuestionResult = ({ number, question, userAnswer }) => {
             )}</p>
 
             <section className="flex mt-4">
-                <FontAwesomeIcon icon={faCaretRight} onClick={() => setExplanationIsToggled(!explanationIsToggled)} size="2x"></FontAwesomeIcon>
+                <FontAwesomeIcon icon={explanationIsToggled ? faCaretDown : faCaretRight} onClick={() => setExplanationIsToggled(!explanationIsToggled)} size="2x"></FontAwesomeIcon>
                 <p className="ml-5 mt-1 text-xl">Explanation</p>
             </section>
 

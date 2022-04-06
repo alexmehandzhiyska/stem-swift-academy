@@ -44,10 +44,7 @@ function App() {
           <Route element={<UserRoute />}>
             <Route path="/courses" exact element={<AllCourses />}></Route> </Route>
             <Route path="/courses/:courseId" element={<CourseDetails />}></Route> 
-            <Route
-              path="/courses/:courseId/lectures/:lectureId"
-              element={<Lecture />}
-            > </Route>
+            <Route path="/courses/:courseId/lectures/:lectureId" element={<Lecture />}> </Route>
             <Route path="/calendar" element={<StudentCalendar />}></Route>
             <Route path="/exams" element={<SubjectChoice />}></Route>
             <Route path="/exams/:subject" element={<AllExams />}></Route>
