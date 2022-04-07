@@ -45,11 +45,14 @@ const getOne = async(userId) => {
 }
 
 const updateUsers = async(users) => {
+    let result = [];
+
     for (const user of users) {
-        await db.query('UPDATE users SET role = $1 WHERE id = $2', [user.role, user.id]);
+        const currentUser = await db.query('UPDATE users SET role = $1 WHERE id = $2', [user.role, user.id]);
+        result.push(currentUser)
     }
 
-    return { status: 'success' }
+    return result;
 }
 
 module.exports = { register, login, getAll, getOne, updateUsers };

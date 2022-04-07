@@ -19,12 +19,12 @@ const getOne = async (courseId) => {
 }
 
 const registerUser = async (courseId, userId) => {
-  await db.query('INSERT INTO users_courses (user_id, course_id) VALUES ($1, $2)', [userId, courseId]);
+  const result = await db.query('INSERT INTO users_courses (user_id, course_id) VALUES ($1, $2)', [userId, courseId]);
   const user = await db.query('SELECT * FROM users WHERE id = $1', [userId]);
   const course = await db.query('SELECT * FROM courses WHERE id = $1', [courseId]);
 
   await sendEmail(user.rows[0], course.rows[0]);
-  return { status: 'success' };
+  return result;
 }
 
 const sendEmail = async (user, course) => {
