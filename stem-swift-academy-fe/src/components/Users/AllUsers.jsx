@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { authService } from '../../services/authService';
+import { userService } from '../../services/userService';
 import { errorNotification, successNotification, saveConfirmNotification } from '../notification'
 
 import UserCard from './UserCard';
@@ -17,10 +17,10 @@ const AllUsers = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    authService.getAll()
+    userService.getAll()
       .then(response => {
-        setUsers(response.data.users);
-        setFilteredUsers(response.data.users);
+        setUsers(response.results);
+        setFilteredUsers(response.results);
         setIsLoading(false);
       })
       .catch(error => {
@@ -37,7 +37,7 @@ const AllUsers = () => {
   }
 
   const saveChanges = () => {
-    authService.updateUsers(modifiedUsers)
+    userService.updateUsers(modifiedUsers)
       .then(response => {
         successNotification('Successfully saved new roles!');
         setModifiedUsers([]);
