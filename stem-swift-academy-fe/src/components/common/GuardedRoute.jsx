@@ -21,15 +21,15 @@ const GuestRoute = () => {
 const RoleRoute = () => {
   let stateUser = useSelector((state) => state.user.value)
   const user = stateUser.id ? stateUser : JSON.parse(localStorage.getItem('user'));
-  const role = user.role;
+  const role = user ? user.role : null;
 
-  return role !== 'student' ? <Outlet /> : <Navigate to="/" />
+  return role === 'teacher' || role === 'owner' ? <Outlet /> : <Navigate to="/" />
 }
 
 const OwnerRoute = () => {
   let stateUser = useSelector((state) => state.user.value)
   const user = stateUser.id ? stateUser : JSON.parse(localStorage.getItem('user'));
-  const role = user.role;
+  const role = user ? user.role : null;
 
   return role === 'owner' ? <Outlet /> : <Navigate to="/" />
 }
