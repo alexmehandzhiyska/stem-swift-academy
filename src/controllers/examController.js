@@ -44,9 +44,10 @@ const createOne = async(req, res) => {
 
     try {
         const exam = await examService.createOne(subject, section, instructions, duration, difficulty, link, text);
-        const result = await questionService.addQuestions(exam.id, Object.values(questions));
+        const examQuestions = await questionService.addQuestions(exam.id, Object.values(questions));
+        exam.questions = examQuestions
 
-        res.status(201).json(result);
+        res.status(201).json(exam);
     } catch (error) {
         res.status(400).json(error.message);
     }

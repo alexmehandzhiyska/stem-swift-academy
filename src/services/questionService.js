@@ -23,7 +23,7 @@ const addQuestions = async(examId, questions) => {
         await db.query('INSERT INTO answers (content, question_id) VALUES ($1, $5), ($2, $5), ($3, $5), ($4, $5)', [question.correctAnswer, question.wrongAnswer1, question.wrongAnswer2, question.wrongAnswer3, questionId])
     }
 
-    return { status: 'success' };
+    return questions;
 }
 
 const updateQuestions = async(examId, questions) => {
