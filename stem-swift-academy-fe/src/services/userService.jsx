@@ -1,7 +1,7 @@
 import { baseUrl } from '../constants';
 
 const getAll = async () => {
-    const response = await fetch(`${baseUrl}/users`);
+    const response = await fetch(`/users`);
     const data = await response.json();
   
     if (!response.ok) {
@@ -12,7 +12,7 @@ const getAll = async () => {
 }
   
 const getOne = async (userId) => {
-const response = await fetch(`${baseUrl}/users/${userId}`);
+const response = await fetch(`/users/${userId}`);
 const data = await response.json();
 
 if (!response.ok) {
@@ -23,7 +23,7 @@ return data;
 }
   
 const updateUsers = async (users) => {
-const response = await fetch(`${baseUrl}/users`, {
+const response = await fetch(`/users`, {
     method: 'PATCH',
     headers: {
     'Content-Type': 'application/json'
