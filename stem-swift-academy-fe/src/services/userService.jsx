@@ -1,5 +1,3 @@
-import { baseUrl } from '../constants';
-
 const getAll = async () => {
     const response = await fetch(`/users`);
     const data = await response.json();
