@@ -12,14 +12,14 @@ const getAll = async () => {
 }
   
 const getOne = async (userId) => {
-const response = await fetch(`/users/${userId}`);
-const data = await response.json();
+    const response = await fetch(`/users/${userId}`);
+    const data = await response.json();
 
-if (!response.ok) {
-    throw new Error(data);
-}
+    if (!response.ok) {
+        throw new Error(data);
+    }
 
-return data;
+    return data;
 }
   
 const updateUsers = async (users) => {

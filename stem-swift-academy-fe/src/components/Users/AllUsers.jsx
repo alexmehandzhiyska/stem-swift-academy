@@ -19,8 +19,8 @@ const AllUsers = () => {
     setIsLoading(true);
     userService.getAll()
       .then(response => {
-        setUsers(response.results);
-        setFilteredUsers(response.results);
+        setUsers(response);
+        setFilteredUsers(response);
         setIsLoading(false);
       })
       .catch(error => {
