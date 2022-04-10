@@ -1,7 +1,7 @@
 import { baseUrl } from '../constants';
 
 const getAll = async () => {
-    const response = await fetch(`${baseUrl}/users?page=1&limit=10`);
+    const response = await fetch(`${baseUrl}/users`);
     const data = await response.json();
   
     if (!response.ok) {

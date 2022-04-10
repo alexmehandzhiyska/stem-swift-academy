@@ -2,17 +2,17 @@ const router = require('express').Router();
 const userService = require('../services/userService');
 
 const getAll = async(req, res) => {
-    const page = req.query.page;
-    const limit = req.query.limit;
-    const startIndex = (page - 1) * limit;
-    const endIndex = page * limit;
+    // const page = req.query.page;
+    // const limit = req.query.limit;
+    // const startIndex = (page - 1) * limit;
+    // const endIndex = page * limit;
     
     try {
         const users = await userService.getAll();
         const sortedUsers = users.rows.sort((a, b) => a.name.localeCompare(b.name));
-        const result = sortedUsers.slice(startIndex, endIndex)
+        // const result = sortedUsers.slice(startIndex, endIndex)
 
-        res.status(200).json(result);
+        res.status(200).json(sortedUsers);
     } catch (error) {
         res.status(400).json(error.message);
     }
