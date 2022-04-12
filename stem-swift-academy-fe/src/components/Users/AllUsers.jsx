@@ -9,7 +9,6 @@ import './AllUsers.css'
 
 const AllUsers = () => {
   const [users, setUsers] = useState([]);
-  const [filteredUsers, setFilteredUsers] = useState([]);
   const [usersRole, setUsersRole] = useState('all');
   const [modifiedUsers, setModifiedUsers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -20,12 +19,10 @@ const AllUsers = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    console.log(usersRole);
     userService.getAll(currentPage, usersRole)
       .then(response => {
         setUsers(response.results);
         setPageInfo(response);
-        setFilteredUsers(response.results);
         setIsLoading(false);
       })
       .catch(error => {
@@ -35,19 +32,13 @@ const AllUsers = () => {
     return () => setModifiedUsers([]);
   }, [currentPage, usersRole]);
 
-  const filterUsers = (event) => {
-    const role = event.target.value;
-    const filtered = role === 'all' ? users : users.filter(e => e.role === role);
-    setFilteredUsers(filtered);
-  }
-
   const saveChanges = () => {
     userService.updateUsers(modifiedUsers)
-      .then(response => {
+      .then(() => {
         successNotification('Successfully saved new roles!');
         setModifiedUsers([]);
       })
-      .catch(error => {
+      .catch(() => {
         errorNotification('There was an error saving the new roles. Please try again later!');
       });
   }
@@ -59,10 +50,9 @@ const AllUsers = () => {
       if (confirmed) {
         saveChanges();
       }
-      navigate('/');
-    } else {
-      navigate('/');
-    }
+    } 
+    
+    navigate('/');
   }
 
   return (
@@ -72,15 +62,15 @@ const AllUsers = () => {
         <section className="flex flex-col items-center">
           <h1 className="heading users-heading">All Users</h1>
 
-          <select onChange={(e) => setUsersRole(e.target.value)} name="subject-select" className="capitalize">
-            <option value="all" className="capitalize" default>all</option>
+          <select onChange={(e) => setUsersRole(e.target.value)} defaultValue={usersRole} name="subject-select" className="capitalize">
+            <option value="all" className="capitalize">all</option>
             <option value="owner" className="capitalize">owner</option>
             <option value="teacher" className="capitalize">teacher</option>
             <option value="student" className="capitalize">student</option>
           </select>
 
           <article className="tests">
-            {filteredUsers.length === 0 ? 'No users yet!' : filteredUsers.map(u => <UserCard key={u.id} user={u} modifiedUsers={modifiedUsers} setModifiedUsers={setModifiedUsers}></UserCard>)}
+            {users.length === 0 ? 'No users yet!' : users.map(u => <UserCard key={u.id} user={u} modifiedUsers={modifiedUsers} setModifiedUsers={setModifiedUsers}></UserCard>)}
           </article>
 
           <article className="mt-5 mb-20 flex">
