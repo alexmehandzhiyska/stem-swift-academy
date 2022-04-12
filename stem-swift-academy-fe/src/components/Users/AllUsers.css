@@ -69,3 +69,13 @@
 .user-role {
   margin: 0.6em 0 !important;
 }
+
+.pagination-btn {
+  width: 150px;
+  height: 40px;
+}
+
+.pagination-btn:disabled {
+  background: #749af7;
+  transition: none;
+}

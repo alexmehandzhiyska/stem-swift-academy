@@ -1,5 +1,5 @@
-const getAll = async () => {
-    const response = await fetch(`/users`);
+const getAll = async (page) => {
+    const response = await fetch(`/users?page=${page}&limit=10`);
     const data = await response.json();
   
     if (!response.ok) {
