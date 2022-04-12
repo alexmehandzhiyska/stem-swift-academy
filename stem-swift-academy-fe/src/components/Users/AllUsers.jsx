@@ -10,6 +10,7 @@ import './AllUsers.css'
 const AllUsers = () => {
   const [users, setUsers] = useState([]);
   const [filteredUsers, setFilteredUsers] = useState([]);
+  const [usersRole, setUsersRole] = useState('all');
   const [modifiedUsers, setModifiedUsers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [pageInfo, setPageInfo] = useState({});
@@ -19,11 +20,11 @@ const AllUsers = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    userService.getAll(currentPage)
+    console.log(usersRole);
+    userService.getAll(currentPage, usersRole)
       .then(response => {
         setUsers(response.results);
         setPageInfo(response);
-        console.log(response);
         setFilteredUsers(response.results);
         setIsLoading(false);
       })
@@ -32,7 +33,7 @@ const AllUsers = () => {
       });
 
     return () => setModifiedUsers([]);
-  }, [currentPage]);
+  }, [currentPage, usersRole]);
 
   const filterUsers = (event) => {
     const role = event.target.value;
@@ -71,7 +72,7 @@ const AllUsers = () => {
         <section className="flex flex-col items-center">
           <h1 className="heading users-heading">All Users</h1>
 
-          <select onChange={filterUsers} name="subject-select" className="capitalize">
+          <select onChange={(e) => setUsersRole(e.target.value)} name="subject-select" className="capitalize">
             <option value="all" className="capitalize" default>all</option>
             <option value="owner" className="capitalize">owner</option>
             <option value="teacher" className="capitalize">teacher</option>

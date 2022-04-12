@@ -4,11 +4,12 @@ const userService = require('../services/userService');
 const getAll = async(req, res) => {
     const page = req.query.page;
     const limit = req.query.limit;
+    const role = req.query.role;
     const startIndex = (page - 1) * limit;
     const endIndex = page * limit;
     
     try {
-        const users = await userService.getAll();
+        const users = await userService.getAll(role);
         const sortedUsers = users.rows.sort((a, b) => a.name.localeCompare(b.name));
         const result = {};
 

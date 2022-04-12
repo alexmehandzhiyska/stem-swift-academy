@@ -1,6 +1,12 @@
 const db = require('../config/database');
 
-const getAll = async() => db.query('SELECT id, name, email, role FROM users');
+const getAll = async (role) => {
+    if (role == 'all') {
+        return db.query('SELECT id, name, email, role FROM users');
+    } else {
+        return db.query('SELECT id, name, email, role FROM users WHERE role = $1', [role]);
+    }
+}
 
 const getOne = async(userId) => {
     const response = await db.query('SELECT * FROM users WHERE id = $1', [userId]);
