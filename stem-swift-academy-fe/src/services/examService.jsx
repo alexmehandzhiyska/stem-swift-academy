@@ -34,7 +34,6 @@ const createOne = async (exam) => {
   if (!response.ok) {
     throw new Error(data);
   }
-
   return data;
 }
 

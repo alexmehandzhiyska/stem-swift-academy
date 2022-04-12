@@ -24,6 +24,8 @@ const ExamResults = () => {
     examService.getScore(subject, examId)
       .then(response => {
         setScore(response.data.score);
+        console.log(response.data.score);
+        console.log(userAnswers);
         setIsLoading(false);
       })
       .catch(() => {
@@ -37,6 +39,7 @@ const ExamResults = () => {
     examService.getQuestions(subject, examId, false)
       .then(response => {
         setQuestions(response.data.questions);
+        console.log(questions);
         setIsLoading(false);
       })
       .catch(() => {
