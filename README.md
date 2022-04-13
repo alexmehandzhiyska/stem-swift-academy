@@ -5,7 +5,7 @@
 STEM Swift Academy is an online exam preparation app which provides students with well-structured courses and official practice tests.
 <br />
 <br />
-<img align="center" alt="stem-swift-academy" src="https://res.cloudinary.com/drinka/image/upload/v1649836510/sat-academy/stem-swift-academy-home_abuqaq.png" />
+<img align="center" alt="stem-swift-academy" src="https://res.cloudinary.com/drinka/image/upload/v1649836838/sat-academy/ssa-home_j2bzev.png" />
 <br/>
 <br/>
 
