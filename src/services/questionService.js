@@ -22,7 +22,7 @@ const addQuestions = async(examId, questions) => {
 
         await db.query('INSERT INTO answers (content, question_id) VALUES ($1, $5), ($2, $5), ($3, $5), ($4, $5)', [question.correctAnswer, question.wrongAnswer1, question.wrongAnswer2, question.wrongAnswer3, questionId])
     }
-
+    
     return questions;
 }
 
@@ -44,7 +44,7 @@ const calculateScore = async(examId, userId, userAnswers) => {
     const correctAnswers = correctAnswersData.rows.map(a => a.correct_answer);
 
     const score = correctAnswers
-        .filter((a, index) => a === userAnswers[index])
+        .filter((a, index) => a === userAnswers[index + 1])
         .length;
 
     const currentScore = await db.query('SELECT score FROM users_exams WHERE user_id = $1 AND exam_id = $2', [userId, examId]);

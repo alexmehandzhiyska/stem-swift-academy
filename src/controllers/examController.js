@@ -101,7 +101,7 @@ const getQuestions = async(req, res) => {
 const submitAnswers = async(req, res) => {
     const userId = req.user.user;
     const examId = req.params.examId;
-    const { userAnswers } = req.body;
+    const userAnswers = req.body;
 
     try {
         const score = await questionService.calculateScore(examId, userId, userAnswers);

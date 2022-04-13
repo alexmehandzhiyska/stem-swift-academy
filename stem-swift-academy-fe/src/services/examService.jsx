@@ -92,7 +92,7 @@ const submitAnswers = async (subject, examId, userAnswers) => {
       'Content-Type': 'application/json',
     },
     credentials: 'include',
-    body: JSON.stringify({ userAnswers })
+    body: JSON.stringify(userAnswers)
   });
 
   const data = await response.json();

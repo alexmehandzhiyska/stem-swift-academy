@@ -40,11 +40,18 @@ const ExamQuestions = () => {
   }, [subject, examId]);
 
   const examSubmitHandler = (survey) => {
-    const userAnswers = Object.values(survey.data);
+    const userAnswers = {};
+
+    for (const entry of Object.entries(survey.data)) {
+      const questionNum = Number(entry[0].slice(8));
+      userAnswers[questionNum] = entry[1];
+    }
+
+    console.log(userAnswers);
 
     examService.submitAnswers(subject, examId, userAnswers)
       .then(() => {
-        navigate(`/exams/${subject}/${examId}/results`, { state: {userAnswers: userAnswers } });
+        navigate(`/exams/${subject}/${examId}/results`, { state: { userAnswers: userAnswers } });
       })
       .catch(() => {
         errorNotification('There is an error loading the questions. Please try again later!');
