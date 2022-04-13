@@ -43,7 +43,7 @@ const registerUser = async (courseId, userId) => {
     throw new Error(data);
   }
 
-  return data.status;
+  return data;
 }
 
 export const courseService = { getAll, getOne, registerUser, getCourses };

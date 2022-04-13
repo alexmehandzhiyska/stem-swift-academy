@@ -45,12 +45,10 @@ const CourseDetails = () => {
 
   const onRegister = async () => {
     try {
-      const status = await courseService.registerUser(courseId, user.id);
+      await courseService.registerUser(courseId, user.id);
 
-      if (status === 'success') {
-        successNotification('Successfully registered!');
-        setIsRegistered(true);
-      }
+      successNotification('Successfully registered!');
+      setIsRegistered(true);
     } catch (error) {
       errorNotification('There as a problem registering for the course. Please try again later!');
     }
