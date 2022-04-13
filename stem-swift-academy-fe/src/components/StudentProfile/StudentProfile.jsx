@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { studentService } from '../../services/studentService';
+import { userService } from '../../services/userService';
 import { useSelector } from 'react-redux';
 
 import ExamStatistics from './ExamStatistics';
@@ -18,14 +18,14 @@ const StudentProfile = () => {
   useEffect(() => {
     setIsLoading(true);
 
-    studentService.getExams(user.id)
+    userService.getUserExams(user.id)
       .then(response => {
         setSubjects(response.data.totalQuestions.map(s => s.subject));
         setExams(response.data.exams);
         setTotalQuestions(response.data.totalQuestions);
         setIsLoading(false);
       })
-      .catch(error => {
+      .catch(() => {
         errorNotification('There was an error loading your data. Please try again later!');
       });
   }, [user.id]);

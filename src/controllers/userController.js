@@ -49,6 +49,25 @@ const getOne = async(req, res) => {
     }
 }
 
+const getUserExams = async (req, res) => {
+    const userId = req.params.userId;
+  
+    try {
+      const result = await userService.getUserExams(userId);
+  
+      res.status(200).json({
+        status: 'success',
+        data: {
+          exams: result.exams,
+          totalQuestions: result.questions
+        }
+      });
+    } catch (error) {
+      console.log(error);
+      res.status(400).json(error.message);
+    }
+  }
+
 const updateRoles = async(req, res) => {
     const { users } = req.body;
 
@@ -64,5 +83,6 @@ const updateRoles = async(req, res) => {
 router.get('/', getAll);
 router.patch('/', updateRoles);
 router.get('/:userId', getOne);
+router.get('/:userId/exams', getUserExams);
 
 module.exports = router;
