@@ -9,8 +9,8 @@ const getAll = async () => {
   return data;
 }
 
-const getOne = async (courseId, lectureId) => {
-  const response = await fetch(`/courses/${courseId}/lectures/${lectureId}`);
+const getOne = async (courseId, topicId) => {
+  const response = await fetch(`/courses/${courseId}/lectures/${topicId}`);
   const data = await response.json();
 
   if (!response.ok) {

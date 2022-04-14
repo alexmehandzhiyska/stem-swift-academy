@@ -1,12 +1,12 @@
 const getAll = async () => {
   const response = await fetch(`/courses`, { credentials: 'include' });
   const data = await response.json();
-  const courses = data.data.courses.sort((a, b) => a.duration - b.duration);
-
+  
   if (!response.ok) {
     throw new Error(data);
   }
-
+  
+  const courses = data.sort((a, b) => a.duration - b.duration);
   return courses;
 }
 

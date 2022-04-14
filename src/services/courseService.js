@@ -1,30 +1,35 @@
-const db = require('../config/database');
+const Course = require('../models/Course');
+const UserCourse = require('../models/UserCourse');
 const nodemailer = require('nodemailer');
+const Topic = require('../models/Topic');
+const User = require('../models/User');
 
 const getAll = async (userId) => {
   if (!userId) {
-    const data = await db.query('SELECT * FROM courses');
-    return data.rows;
+    const data = await Course.findAll();
+    
+    return data.map(course => course.dataValues);
   }
 
-  const courseIds = await db.query('SELECT course_id FROM users_courses WHERE user_id = $1', [userId]);
-  return courseIds.rows.map(c => c.course_id);
+  const data = await UserCourse.findAll({ where: { userId } });
+  const courseIds = data.map(entry => entry.dataValues.courseId);
+  return courseIds;
 }
 
 const getOne = async (courseId) => {
-  const course = await db.query('SELECT * FROM courses WHERE id = $1', [courseId]);
-  const lectures = await db.query('SELECT * FROM topics WHERE course_id = $1', [courseId]);
-  const result = { course: course.rows[0], lectures: lectures.rows };
+  const course = await Course.findByPk(courseId);
+  const topics = await Topic.findAll({ where: { courseId: courseId } });
+  const result = { course: {...course.dataValues, topics: topics.map(topic => topic.dataValues)}};
   return result;
 }
 
 const registerUser = async (courseId, userId) => {
-  const result = await db.query('INSERT INTO users_courses (user_id, course_id) VALUES ($1, $2)', [userId, courseId]);
-  const user = await db.query('SELECT * FROM users WHERE id = $1', [userId]);
-  const course = await db.query('SELECT * FROM courses WHERE id = $1', [courseId]);
+  const result = await UserCourse.create({ userId, courseId });
+  const user = await User.findByPk(userId);
+  const course = await Course.findByPk(courseId);
 
-  await sendEmail(user.rows[0], course.rows[0]);
-  return result;
+  await sendEmail(user.dataValues, course.dataValues);
+  return result.dataValues;
 }
 
 const sendEmail = async (user, course) => {

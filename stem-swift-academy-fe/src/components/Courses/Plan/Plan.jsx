@@ -2,14 +2,14 @@ import Week from './Week';
 
 import './Plan.css';
 
-const Plan = ({ courseId, lectures, weeks }) => {
+const Plan = ({ courseId, topics, weeks }) => {
   const groupTopics = () => {
     const content = [];
 
     for (let i = 1; i <= weeks; i++) {
-      let weeklyTopics = lectures.filter(lecture => lecture.week_number === i);
+      let weeklyTopics = topics.filter(topic => topic.week_number === i);
 
-      content.push(<Week key={i} courseId={courseId} i={i} lectures={weeklyTopics}></Week>);
+      content.push(<Week key={i} courseId={courseId} i={i} topics={weeklyTopics}></Week>);
     }
 
     return content;

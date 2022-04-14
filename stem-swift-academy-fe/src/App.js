@@ -13,7 +13,7 @@ import ExamDetails from "./components/Exams/ExamDetails/ExamDetails";
 import ExamQuestions from "./components/Exams/ExamQuestions/ExamQuestions";
 import ExamResults from "./components/Exams/ExamResults/ExamResults";
 import Layout from "./components/layout/Layout";
-import Lecture from "./components/Courses/Plan/Lecture/Lecture";
+import Topic from "./components/Courses/Plan/Topic/Topic";
 import Login from "./components/Login/Login";
 import NotFound from "./components/NotFound";
 import Register from "./components/Register/Register";
@@ -44,7 +44,7 @@ function App() {
           <Route element={<UserRoute />}>
             <Route path="/courses" exact element={<AllCourses />}></Route> </Route>
             <Route path="/courses/:courseId" element={<CourseDetails />}></Route> 
-            <Route path="/courses/:courseId/lectures/:lectureId" element={<Lecture />}> </Route>
+            <Route path="/courses/:courseId/topics/:topicId" element={<Topic />}> </Route>
             <Route path="/calendar" element={<StudentCalendar />}></Route>
             <Route path="/exams" element={<SubjectChoice />}></Route>
             <Route path="/exams/:subject" element={<AllExams />}></Route>
