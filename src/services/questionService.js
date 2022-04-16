@@ -1,16 +1,18 @@
 const db = require('../config/database');
 const _ = require('lodash');
+const Question = require('../models/Question');
+const Answer = require('../models/Answer');
 
 const getAll = async(examId, shuffled) => {
-    const questionsData = await db.query('SELECT * FROM questions WHERE exam_id = $1', [examId]);
-    const questions = questionsData.rows;
+    const questionsData = await Question.findAll({ where: { examId: examId } });
+    const questions = questionsData.map(question => question.dataValues);
 
     for (const question of questions) {
-        const answersData = await db.query('SELECT content FROM answers WHERE question_id = $1', [question.id]);
-        const answers = answersData.rows.map(a => a.content);
+        const answersData = await Answer.findAll({ where: { questionId: question.id } });
+        const answers = answersData.map(a => a.dataValues.content);
         question.choices = shuffled === 'true' ? _.shuffle(answers) : answers;
     }
-
+    
     return questions.sort((a, b) => a.id - b.id);
 };
 

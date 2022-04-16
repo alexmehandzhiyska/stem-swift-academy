@@ -8,6 +8,10 @@ const User = require('./models/User');
 const Course = require('./models/Course');
 const UserCourse = require('./models/UserCourse');
 const Topic = require('./models/Topic');
+const Exam = require('./models/Exam');
+const Question = require('./models/Question');
+const Answer = require('./models/Answer');
+const UserExam = require('./models/UserExam');
 
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');

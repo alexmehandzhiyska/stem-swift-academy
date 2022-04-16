@@ -18,7 +18,7 @@ const ExamDetails = () => {
 
     examService.getOne(subject, examId)
       .then(response => {
-        setExam(response.data.exam);
+        setExam(response);
         setIsLoading(false);
       })
       .catch(() => {

@@ -1,6 +1,6 @@
 const db = require('../config/database');
-const Course = require('./Course');
 const User = require('./User');
+const Course = require('./Course');
 
 const UserCourse = db.define('users_courses', {}, {
     freezeTableName: true,

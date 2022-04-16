@@ -1,11 +1,19 @@
 const db = require('../config/database');
+const Exam = require('../models/Exam');
 
-const getAll = (subject) => db.query('SELECT * FROM exams WHERE subject = $1', [subject]);
-const getOne = (id) => db.query('SELECT * FROM exams WHERE id = $1', [id]);
+const getAll = async (subject) => {
+    const exams = await Exam.findAll({ where: { subject: subject } });
+    return exams.map(exam => exam.dataValues);
+}
+
+const getOne = async (id) => {
+    const exam = await Exam.findByPk(id);
+    return exam.dataValues;
+}
 
 const createOne = async(subject, section, instructions, duration, difficulty, link, text) => {
-    const exam = await db.query('INSERT INTO exams (subject, section, duration, instructions, text, link, difficulty) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *', [subject, section, duration, instructions, text, link, difficulty]);
-    return exam.rows[0];
+    const exams = await Exam.create({ subject, section, duration, instructions, text, link, difficulty });
+    return exams.map(exam => exam.dataValues);
 }
 
 const updateOne = async(examId, subject, section, instructions, duration, difficulty, link, text) => {

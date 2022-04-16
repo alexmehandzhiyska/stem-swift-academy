@@ -18,8 +18,8 @@ const AllExams = () => {
     setIsLoading(true);
     examService.getAll(subject)
       .then(response => {
-        setExams(response.data.exams);
-        setFilteredExams(response.data.exams);
+        setExams(response);
+        setFilteredExams(response);
         setIsLoading(false);
       })
       .catch(() => {

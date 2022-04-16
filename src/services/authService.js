@@ -16,8 +16,8 @@ const register = async(name, email, password) => {
 }
 
 const login = async(email, password) => {
-    const response = await db.query("SELECT * FROM users WHERE email = $1", [email]);
-    const user = response.rows[0];
+    const response = await User.findOne({ where: { email: email } });
+    const user = response.dataValues;
 
     if (!user) {
         throw new Error('Invalid username or password');
