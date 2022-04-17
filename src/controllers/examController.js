@@ -32,6 +32,7 @@ const createOne = async(req, res) => {
 
     try {
         const exam = await examService.createOne(subject, section, instructions, duration, difficulty, link, text);
+        console.log(exam);
         await questionService.addQuestions(exam.id, Object.values(questions));
 
         res.status(201).json(exam);
@@ -88,13 +89,9 @@ const submitAnswers = async(req, res) => {
     try {
         const score = await questionService.calculateScore(examId, userId, userAnswers);
 
-        res.status(201).json({
-            status: 'success',
-            data: {
-                score
-            }
-        })
+        res.status(201).json(score)
     } catch (error) {
+        console.log(error);
         res.status(400).json(error.message);
     }
 }
@@ -105,11 +102,9 @@ const getScore = async(req, res) => {
 
     try {
         const score = await questionService.getScore(userId, examId);
+        console.log(score);
 
-        res.status(200).json({
-            status: 'success',
-            data: { score }
-        });
+        res.status(200).json(score);
     } catch (error) {
         res.status(400).json(error.message);
     }

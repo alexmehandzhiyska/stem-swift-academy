@@ -12,6 +12,7 @@ const Exam = require('./models/Exam');
 const Question = require('./models/Question');
 const Answer = require('./models/Answer');
 const UserExam = require('./models/UserExam');
+const Kolb = require('./models/Kolb');
 
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');

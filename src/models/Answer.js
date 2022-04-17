@@ -21,6 +21,6 @@ const Answer = db.define('answer', {
     timestamps: true
 });
 
-Answer.belongsTo(Question, { as: 'Question', foreignKey: 'questionid' });
+Answer.belongsTo(Question, { as: 'Question', foreignKey: 'questionId', onUpdate: 'cascade', onDelete: 'cascade' });
 
 module.exports = Answer;

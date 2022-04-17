@@ -572,19 +572,19 @@ VALUES
 
 
 ALTER TABLE
-  questions DROP CONSTRAINT questions_exam_id_fkey,
+  questions DROP CONSTRAINT questions_examId_fkey,
 ADD
-  CONSTRAINT questions_exam_id_fkey FOREIGN KEY (exam_id) REFERENCES exams(id) ON DELETE CASCADE;
+  CONSTRAINT questions_examId_fkey FOREIGN KEY (examId) REFERENCES exams(id) ON DELETE CASCADE;
 
 ALTER TABLE
-  users_exams DROP CONSTRAINT users_exams_exam_id_fkey,
+  users_exams DROP CONSTRAINT users_exams_examId_fkey,
 ADD
-  CONSTRAINT users_exams_exam_id_fkey FOREIGN KEY (exam_id) REFERENCES exams(id) ON DELETE CASCADE;
+  CONSTRAINT users_exams_examId_fkey FOREIGN KEY (examId) REFERENCES exams(id) ON DELETE CASCADE;
 
 ALTER TABLE
-  answers DROP CONSTRAINT answers_question_id_fkey,
+  answers DROP CONSTRAINT answers_questionId_fkey,
 ADD
-  CONSTRAINT answers_question_id_fkey FOREIGN KEY (question_id) REFERENCES questions(id) ON DELETE CASCADE;
+  CONSTRAINT answers_questionId_fkey FOREIGN KEY (questionId) REFERENCES questions(id) ON DELETE CASCADE;
 
 CREATE TABLE notebooks
 (

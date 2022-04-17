@@ -1,7 +1,7 @@
-const db = require('../config/database');
 const _ = require('lodash');
 const Question = require('../models/Question');
 const Answer = require('../models/Answer');
+const UserExam = require('../models/UserExam');
 
 const getAll = async(examId, shuffled) => {
     const questionsData = await Question.findAll({ where: { examId: examId } });
@@ -16,13 +16,17 @@ const getAll = async(examId, shuffled) => {
     return questions.sort((a, b) => a.id - b.id);
 };
 
-
 const addQuestions = async(examId, questions) => {
     for (const question of questions) {
-        const questionData = await db.query('INSERT INTO questions (title, correct_answer, exam_id) VALUES ($1, $2, $3) RETURNING id', [question.title, question.correctAnswer, examId]);
-        const questionId = questionData.rows[0].id;
+        const questionData = await Question.create({ title: question.title, correctAnswer: question.correctAnswer, examId: examId });
+        const questionId = questionData.dataValues.id;
 
-        await db.query('INSERT INTO answers (content, question_id) VALUES ($1, $5), ($2, $5), ($3, $5), ($4, $5)', [question.correctAnswer, question.wrongAnswer1, question.wrongAnswer2, question.wrongAnswer3, questionId])
+        await Answer.bulkCreate([ 
+            { content: question.correctAnswer, questionId: questionId },
+            { content: question.wrongAnswer1, questionId: questionId },
+            { content: question.wrongAnswer2, questionId: questionId },
+            { content: question.wrongAnswer3, questionId: questionId }
+        ]);
     }
     
     return questions;
@@ -30,38 +34,44 @@ const addQuestions = async(examId, questions) => {
 
 const updateQuestions = async(examId, questions) => {
     for (const question of questions) {
-        const questionData = await db.query('SELECT id FROM questions WHERE exam_id = $1 AND title = $2', [examId, question.title]);
-        const questionId = questionData.rows[0].id;
+        const questionData = await Question.findOne({ where: { examId: examId, title: question.title } });
+        const questionId = questionData.dataValues.id;
 
-        await db.query('UPDATE questions SET title = $1, correct_answer = $2, exam_id = $3 WHERE id = $4', [question.title, question.correctAnswer, examId, questionId]);
-        await db.query('DELETE FROM answers WHERE question_id = $1', [questionId]);
-        await db.query('INSERT INTO answers (content, question_id) VALUES ($1, $5), ($2, $5), ($3, $5), ($4, $5)', [question.correctAnswer, question.wrongAnswer1, question.wrongAnswer2, question.wrongAnswer3, questionId]);
+        await Question.update({ title: question.title, correctAnswer: question.correctAnswer, examId: examId }, { where: { id: questionId } });
+
+        await Answer.destroy({ where: { questionId: questionId } });
+        await Answer.bulkCreate([
+            { content: question.correctAnswer, questionId: questionId },
+            { content: question.wrongAnswer1, questionId: questionId },
+            { content: question.wrongAnswer2, questionId: questionId },
+            { content: question.wrongAnswer3, questionId: questionId }
+        ]);
     }
 
     return { status: 'success' };
 }
 
 const calculateScore = async(examId, userId, userAnswers) => {
-    const correctAnswersData = await db.query('SELECT correct_answer FROM questions WHERE exam_id = $1', [examId]);
-    const correctAnswers = correctAnswersData.rows.map(a => a.correct_answer);
+    const questionsData = await Question.findAll({ where: { examId: examId } });
+    const correctAnswers = questionsData.map(question => question.dataValues.correctAnswer);
 
     const score = correctAnswers
         .filter((a, index) => a === userAnswers[index + 1])
         .length;
 
-    const currentScore = await db.query('SELECT score FROM users_exams WHERE user_id = $1 AND exam_id = $2', [userId, examId]);
-
-    if (currentScore.rows.length > 0) {
-        await db.query('UPDATE users_exams SET score = $1 WHERE user_id = $2 AND exam_id = $3', [score, userId, examId]);
+    const currentScoreData = await UserExam.findOne({ where: { userId: userId, examId: examId } });
+    
+    if (currentScoreData) {
+        await UserExam.update({ score }, { where: { userId, examId } });
     } else {
-        await db.query('INSERT INTO users_exams (user_id, exam_id, score) VALUES ($1, $2, $3)', [userId, examId, score]);
+        await UserExam.create({ userId, examId, score });
     }
     return score;
 }
 
 const getScore = async(userId, examId) => {
-    const scoreData = await db.query('SELECT score FROM users_exams WHERE user_id = $1 AND exam_id = $2', [userId, examId]);
-    const score = await scoreData.rows[0].score;
+    const scoreData = await UserExam.findOne({ where: { userId, examId } });
+    const score = scoreData.dataValues.score;
 
     return score;
 }
