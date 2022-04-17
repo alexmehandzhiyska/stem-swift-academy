@@ -238,7 +238,7 @@ CREATE TABLE questions (
 );
 
 INSERT INTO
-  questions (title, correct_answer, explanation, exam_id)
+  questions (title, "correctAnswer", explanation, "examId")
 VALUES
   (
     'Which choice best describes what happens in the passage?',
@@ -301,7 +301,7 @@ VALUES
     2
   );
 
-INSERT INTO questions (title, correct_answer, explanation, exam_id)
+INSERT INTO questions (title, "correctAnswer", explanation, "examId")
 VALUES
   ('If (x - 1) / 3 = k and k = 3, what is the value of x?', '10', 'Since k = 3, one can substitute 3 for k in the equation (x - 1) / 3 = k, which gives (x - 1) / 3 = 3. Multiplying both sides of (x - 1) / 3 by 3 gives x - 1 = 9 and then adding 1 to both sides of x - 1 = 9 gives x = 10. Choices A, B, and C are incorrect because the result of subtracting 1 from the value and dividing by 3 is not the given value of k, which is 3.', 1),
   ('For i = √-1, what is the sum (7 + 3i) + (-8 + 9i)?', '-1 + 12i', 'To calculate 7 + 3i + (-8 + 9i), add the real parts of each complex number, 7 + (-8) = -1, and then add the imaginary parts, 3i + 9i = 12i. The result is -1 + 12i. Choices B, C, and D are incorrect and likely result from common errors that arise when adding complex numbers. For example, choice B is the result of adding 3i and -9i, and choice C is the result of adding 7 and 8.', 1),
@@ -314,7 +314,7 @@ VALUES
   ('If 16 + 4x is 10 more than 14, what is the value of 8x?', '16', 'The description "16 + 4x is 10 more than 14" can be written as the equation 16 + 4x = 10 + 14, which is equivalent to 16 + 4x = 24. Subtracting 16 from each side gives 4x = 8. Since 8x is 2 times 4x, multiplying both sides of 4x = 8 by 2 gives 8x = 16. Therefore, the value of 8x is 16. Choice A is incorrect because it is the value of x, not 8x. Choices B and D are incorrect and may be the result of errors made when solving the equation 16 + 4x = 10 + 14 for x. For example, choice D could be the result of subtracting 16 from the left side of the equation and adding 16 to the right side of the equation 16 + 4x = 10 + 14, giving 4x = 40 and 8x = 80.', 1),
   ('A hospital stores one type of medicine in 2-decagram containers. Based on the information given in the box above, how many 1-milligram doses are there in one 2-decagram container? (1 decagram = 10 grams)', '20,000', 'Since there are 10 grams in 1 decagram, there are 2 x 10 = 20 grams in 2 decagrams. Since there are 1,000 milligrams in 1 gram, there are 20 x 1,000 = 20,000 milligrams in 20 grams. Therefore, 20,000 1-milligram doses of the medicine can be stored in a 2-decagram container. Choice A is incorrect; 0.002 is the number of grams in 2 milligrams. Choice B is incorrect; it could result from multiplying by 1m000 and dividing by 10 instead of multiplying by both 1,000 and 10 when converting from decagrams to milligrams. Choice C is incorrect; 2,000 is the number of milligrams in 2 grams, not the number of milligrams in 2 decagrams.', 1);
 
-INSERT INTO questions (title, correct_answer, explanation, exam_id)
+INSERT INTO questions (title, "correctAnswer", explanation, "examId")
 VALUES
 (
   'Which is the correct option?',
@@ -393,7 +393,7 @@ CREATE TABLE users_exams (
 );
 
 INSERT INTO
-  answers (content, question_id)
+  answers (content, "questionId")
 VALUES
   (
     'One character argues with another character who intrudes on her home.',
@@ -484,7 +484,7 @@ VALUES
   ('Lines 58-59 ("Depending... Japan")', 10),
   ('Lines 72-73 ("I see... you")', 10);
 
-INSERT INTO answers (content, question_id)
+INSERT INTO answers (content, "questionId")
 VALUES
   ('2', 11),
   ('4', 11),
@@ -527,7 +527,7 @@ VALUES
   ('2,000', 20),
   ('20,000', 20);
 
-  INSERT INTO answers (content, question_id)
+INSERT INTO answers (content, "questionId")
 VALUES
 ('NO CHANGE', 21),
 ('defeat', 21),
@@ -572,19 +572,19 @@ VALUES
 
 
 ALTER TABLE
-  questions DROP CONSTRAINT questions_exam_id_fkey,
+  questions DROP CONSTRAINT questions_examId_fkey,
 ADD
-  CONSTRAINT questions_exam_id_fkey FOREIGN KEY (exam_id) REFERENCES exams(id) ON DELETE CASCADE;
+  CONSTRAINT questions_examId_fkey FOREIGN KEY (examId) REFERENCES exams(id) ON DELETE CASCADE;
 
 ALTER TABLE
-  users_exams DROP CONSTRAINT users_exams_exam_id_fkey,
+  users_exams DROP CONSTRAINT users_exams_examId_fkey,
 ADD
-  CONSTRAINT users_exams_exam_id_fkey FOREIGN KEY (exam_id) REFERENCES exams(id) ON DELETE CASCADE;
+  CONSTRAINT users_exams_examId_fkey FOREIGN KEY (examId) REFERENCES exams(id) ON DELETE CASCADE;
 
 ALTER TABLE
-  answers DROP CONSTRAINT answers_question_id_fkey,
+  answers DROP CONSTRAINT answers_questionId_fkey,
 ADD
-  CONSTRAINT answers_question_id_fkey FOREIGN KEY (question_id) REFERENCES questions(id) ON DELETE CASCADE;
+  CONSTRAINT answers_questionId_fkey FOREIGN KEY (questionId) REFERENCES questions(id) ON DELETE CASCADE;
 
 CREATE TABLE notebooks
 (

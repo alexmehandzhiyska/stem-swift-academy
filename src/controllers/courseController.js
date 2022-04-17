@@ -6,15 +6,9 @@ const getAll = async(req, res) => {
     const userId = req.query.userId;
 
     try {
-        const result = await courseService.getAll(userId);
+        const courses = await courseService.getAll(userId);
 
-        res.status(200).json({
-            status: 'success',
-            results: result.length,
-            data: {
-                courses: result
-            }
-        });
+        res.status(200).json(courses);
     } catch (error) {
         console.log(error);
         res.status(400).json(error.message);
@@ -25,17 +19,9 @@ const getOne = async(req, res) => {
     const courseId = req.params.courseId;
 
     try {
-        const result = await courseService.getOne(courseId);
+        const course = await courseService.getOne(courseId);
 
-        res.status(200).json({
-            status: 'success',
-            data: {
-                course: {
-                    ...result.course,
-                    lectures: result.lectures
-                }
-            }
-        });
+        res.status(200).json(course);
     } catch (error) {
         console.log(error);
         res.status(400).json(error.message);
@@ -46,16 +32,9 @@ const getLectures = async(req, res) => {
     const userId = req.user.user;
 
     try {
-        const lecturesData = await lectureService.getAll(userId);
-        const lectures = lecturesData.rows;
+        const lectures = await lectureService.getAll(userId);
 
-        res.status(200).json({
-            status: 'success',
-            results: lectures.length,
-            data: {
-                lectures
-            }
-        });
+        res.status(200).json(lectures);
     } catch (error) {
         console.log(error);
         res.status(400).json(error.message);
@@ -63,17 +42,12 @@ const getLectures = async(req, res) => {
 }
 
 const getLecture = async(req, res) => {
-    const lectureId = req.params.lectureId;
+    const topicId = req.params.topicId;
 
     try {
-        const result = await lectureService.getOne(lectureId);
+        const topic = await lectureService.getOne(topicId);
 
-        res.status(200).json({
-            status: 'success',
-            data: {
-                lecture: result.rows[0]
-            }
-        });
+        res.status(200).json(topic);
     } catch (error) {
         console.log(error);
         res.status(400).json(error);
@@ -96,7 +70,7 @@ const registerUser = async(req, res) => {
 
 router.get('/', getAll);
 router.get('/lectures', getLectures);
-router.get('/:courseId/lectures/:lectureId', getLecture);
+router.get('/:courseId/lectures/:topicId', getLecture);
 router.get('/:courseId', getOne);
 router.post('/:courseId/register', registerUser);
 

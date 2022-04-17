@@ -1,18 +1,28 @@
-const db = require('../config/database');
+const Exam = require('../models/Exam');
 
-const getAll = (subject) => db.query('SELECT * FROM exams WHERE subject = $1', [subject]);
-const getOne = (id) => db.query('SELECT * FROM exams WHERE id = $1', [id]);
-
-const createOne = async(subject, section, instructions, duration, difficulty, link, text) => {
-    const exam = await db.query('INSERT INTO exams (subject, section, duration, instructions, text, link, difficulty) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *', [subject, section, duration, instructions, text, link, difficulty]);
-    return exam.rows[0];
+const getAll = async (subject) => {
+    const exams = await Exam.findAll({ where: { subject: subject } });
+    return exams.map(exam => exam.dataValues);
 }
 
-const updateOne = async(examId, subject, section, instructions, duration, difficulty, link, text) => {
-    const exam = await db.query('UPDATE exams SET subject = $1, section = $2, duration = $3, instructions = $4, text = $5, link = $6, difficulty = $7 WHERE id = $8 RETURNING *', [subject, section, duration, instructions, text, link, difficulty, examId]);
-    return exam.rows[0];
+const getOne = async (id) => {
+    const exam = await Exam.findByPk(id);
+    return exam.dataValues;
 }
 
-const deleteOne = (id) => db.query('DELETE FROM exams WHERE id = $1', [id]);
+const createOne = async (subject, section, instructions, duration, difficulty, link, text) => {
+    const exam = await Exam.create({ subject, section, duration, instructions, text, link, difficulty });
+    return exam.dataValues;
+}
+
+const updateOne = async (examId, subject, section, instructions, duration, difficulty, link, text) => {
+    const exam = await Exam.update({ subject, section, duration, instructions, text, link, difficulty }, { where: { id: examId }, returning: true });
+    return exam[1][0].dataValues;
+}
+
+const deleteOne = async (id) => {
+    const result = await Exam.destroy({ where: { id: id } });
+    return result;
+}
 
 module.exports = { getAll, getOne, createOne, updateOne, deleteOne };

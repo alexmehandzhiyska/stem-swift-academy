@@ -21,7 +21,7 @@ const StudentCalendar = () => {
 
     lectureService.getAll()
       .then(response => {
-        const allTopics = response.data.lectures;
+        const allTopics = response;
 
         allTopics.forEach(t => {
           t.start = new Date(t.date.slice(0, 10));

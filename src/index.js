@@ -2,6 +2,18 @@ const express = require('express');
 const app = express();
 const path = require('path');
 
+const sequelize = require('./config/database');
+
+const User = require('./models/User');
+const Course = require('./models/Course');
+const UserCourse = require('./models/UserCourse');
+const Topic = require('./models/Topic');
+const Exam = require('./models/Exam');
+const Question = require('./models/Question');
+const Answer = require('./models/Answer');
+const UserExam = require('./models/UserExam');
+const Kolb = require('./models/Kolb');
+
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 
@@ -37,7 +49,14 @@ if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, "../stem-swift-academy-fe/build")));
 }
 
-
 app.use(routes);
+
+sequelize.sync()
+    .then(() => {
+        console.log('Connected to db...');
+    })
+    .catch(err => {
+        console.log('Unable to connect to database: ', err);
+    });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}...`));

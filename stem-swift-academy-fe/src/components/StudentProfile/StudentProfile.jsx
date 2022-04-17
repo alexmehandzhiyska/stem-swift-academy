@@ -20,9 +20,11 @@ const StudentProfile = () => {
 
     userService.getUserExams(user.id)
       .then(response => {
-        setSubjects(response.data.totalQuestions.map(s => s.subject));
-        setExams(response.data.exams);
-        setTotalQuestions(response.data.totalQuestions);
+        const subjects = response.questions.map(question => question.subject);
+        setSubjects([...new Set(subjects)]);
+        console.log(response.results);
+        setExams(response.results);
+        setTotalQuestions(response.questions);
         setIsLoading(false);
       })
       .catch(() => {
@@ -39,12 +41,12 @@ const StudentProfile = () => {
           <h1 className="heading">{user.name}'s profile</h1>
 
           <article className="flex justify-center items-center">
-            {subjects.map(s =>
+            {subjects.map((s, i) =>
               <ExamStatistics
-                key={s}
+                key={i}
                 subject={s}
-                exams={exams.filter(e => e.subject === s)}
-                totalQuestions={totalQuestions.find(g => g.subject === s).count}
+                exams={exams.filter(e => e.exam.subject === s)}
+                totalQuestions={totalQuestions.filter(question => question.subject === s).length}
               />
             )}
           </article>

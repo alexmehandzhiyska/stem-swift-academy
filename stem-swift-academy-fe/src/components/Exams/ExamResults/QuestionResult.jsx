@@ -19,17 +19,17 @@ const QuestionResult = ({ number, question, userAnswer }) => {
         <article className="my-20 ml-36">
             <h1 className="my-6 question-title">{number}. {question.title} {!userAnswer && <span className="text-base">(Not answered)</span>}</h1>
             <p>{question.choices.map((answer, i) => 
-                <li key={i} className={answer == question.correct_answer ? "text-green-400 text-xl" : answer == userAnswer ? "text-red-500 text-xl" : "text-black text-xl"}>{answer}</li>
+                <li key={i} className={answer === question.correctAnswer ? "text-green-400 text-xl" : answer === userAnswer ? "text-red-500 text-xl" : "text-black text-xl"}>{answer}</li>
             )}</p>
 
             <section className="flex mt-4">
-            <FontAwesomeIcon icon={explanationIsToggled ? faCaretDown : faCaretRight} onClick={() => setExplanationIsToggled(!explanationIsToggled)} size="2x"></FontAwesomeIcon>
+                <FontAwesomeIcon icon={explanationIsToggled ? faCaretDown : faCaretRight} onClick={() => setExplanationIsToggled(!explanationIsToggled)} size="2x"></FontAwesomeIcon>
 
                 <p className="ml-5 mt-1 text-xl">Explanation</p>
             </section>
 
             <p className={explanationIsToggled ? "block mt-5" : "hidden"}>{question.explanation}</p>
-            <button className="btn add-btn mt-5 px-2" onClick={() => navigate(`/notebooks/${userId}/create`, { state: { question: question.title, correctAnswer: question.correct_answer, userAnswer: userAnswer} })}>Add to notebook</button>
+            <button className="btn add-btn mt-5 px-2" onClick={() => navigate(`/notebooks/${userId}/create`, { state: { question: question.title, correctAnswer: question.correctAnswer, userAnswer: userAnswer} })}>Add to notebook</button>
             
         </article>
     );

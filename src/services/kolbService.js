@@ -1,19 +1,13 @@
-const db = require('../config/database');
+const Kolb = require('../models/Kolb');
 
 const getByUser = async (userId) => {
-    const data = await db.query('SELECT id FROM notebooks WHERE user_id = $1', [userId]);
-    const notebookId = data.rows[0].id;
-
-    const kolbsData = await db.query('SELECT * FROM kolbs WHERE notebook_id = $1', [notebookId]);
-    return kolbsData.rows;
+    const kolbsData = await Kolb.findAll({ where: { userId: userId } });
+    return kolbsData.map(kolb => kolb.dataValues);
 }
 
 const createOne = async(content, userId) => {
-    const data = await db.query('SELECT id FROM notebooks WHERE user_id = $1', [userId]);
-    const notebookId = data.rows[0].id;
-
-    const kolb = await db.query('INSERT INTO kolbs (question, correct_answer, user_answer, what, why, how, notebook_id) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *', [content.question, content.correctAnswer, content.userAnswer, content.what, content.why, content.how, notebookId]);
-    return kolb.rows[0];
+    const kolbData = await Kolb.create({ question: content.question, correctAnswer: content.correctAnswer, userAnswer: content.userAnswer, what: content.what, why: content.why, how: content.how, userId: userId });
+    return kolbData.dataValues;
 }
 
 module.exports = { getByUser, createOne };

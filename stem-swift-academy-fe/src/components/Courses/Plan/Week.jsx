@@ -4,7 +4,7 @@ import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 
 import { Link } from 'react-router-dom'
 
-const Week = ({ courseId, i, lectures }) => {
+const Week = ({ courseId, i, topics }) => {
   const [infoToggled, setToggleMore] = useState(false);
 
   const toggleMoreInfo = () => setToggleMore(!infoToggled);
@@ -18,9 +18,9 @@ const Week = ({ courseId, i, lectures }) => {
       </article>
 
       <article className={infoToggled ? "lectures-shown" : "hidden"}>
-        {lectures.map(lecture =>
+        {topics.map(lecture =>
           <p key={lecture.id} className="pl-6 font-bold text-lg">
-            <Link to={`/courses/${courseId}/lectures/${lecture.id}`}>{lecture.subject[0].toUpperCase() + lecture.subject.slice(1)}: <span className="font-normal underline">{lecture.title}</span></Link>
+            <Link to={`/courses/${courseId}/topics/${lecture.id}`}>{lecture.subject[0].toUpperCase() + lecture.subject.slice(1)}: <span className="font-normal underline">{lecture.title}</span></Link>
           </p>
         )}
       </article>

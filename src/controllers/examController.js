@@ -6,16 +6,9 @@ const getAll = async(req, res) => {
     const subject = req.params.subject;
 
     try {
-        const result = await examService.getAll(subject);
-        const exams = result.rows;
+        const exams = await examService.getAll(subject);
 
-        res.status(200).json({
-            status: 'success',
-            results: exams.length,
-            data: {
-                exams: exams
-            }
-        });
+        res.status(200).json(exams);
     } catch (error) {
         res.status(400).json(error.message);
     }
@@ -25,14 +18,9 @@ const getOne = async(req, res) => {
     const examId = req.params.examId;
 
     try {
-        const result = await examService.getOne(examId);
+        const exam = await examService.getOne(examId);
 
-        res.status(200).json({
-            status: 'success',
-            data: {
-                exam: result.rows[0]
-            }
-        });
+        res.status(200).json(exam);
     } catch (error) {
         res.status(400).json(error.message);
     }
@@ -44,7 +32,7 @@ const createOne = async(req, res) => {
 
     try {
         const exam = await examService.createOne(subject, section, instructions, duration, difficulty, link, text);
-        await questionService.addQuestions(exam.id, Object.values(questions));
+        await questionService.addQuestions(exam.id, Object.values(questions), subject);
 
         res.status(201).json(exam);
     } catch (error) {
@@ -58,7 +46,7 @@ const updateOne = async(req, res) => {
 
     try {
         const exam = await examService.updateOne(examId, subject, section, instructions, duration, difficulty, link, text);
-        const result = await questionService.updateQuestions(exam.id, Object.values(questions));
+        const result = await questionService.updateQuestions(exam.id, Object.values(questions), subject);
 
         res.status(201).json(result);
     } catch (error) {
@@ -84,15 +72,9 @@ const getQuestions = async(req, res) => {
     const shuffled = req.query.shuffled;
 
     try {
-        const result = await questionService.getAll(examId, shuffled);
+        const questions = await questionService.getAll(examId, shuffled);
 
-        res.status(200).json({
-            status: 'success',
-            results: result.length,
-            data: {
-                questions: result
-            }
-        });
+        res.status(200).json(questions);
     } catch (error) {
         res.status(400).json(error.message);
     }
@@ -106,13 +88,9 @@ const submitAnswers = async(req, res) => {
     try {
         const score = await questionService.calculateScore(examId, userId, userAnswers);
 
-        res.status(201).json({
-            status: 'success',
-            data: {
-                score
-            }
-        })
+        res.status(201).json(score)
     } catch (error) {
+        console.log(error);
         res.status(400).json(error.message);
     }
 }
@@ -123,11 +101,9 @@ const getScore = async(req, res) => {
 
     try {
         const score = await questionService.getScore(userId, examId);
+        console.log(score);
 
-        res.status(200).json({
-            status: 'success',
-            data: { score }
-        });
+        res.status(200).json(score);
     } catch (error) {
         res.status(400).json(error.message);
     }

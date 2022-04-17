@@ -25,11 +25,11 @@ const CourseDetails = () => {
   useEffect(() => {
     courseService.getOne(courseId)
       .then(result => {
-        result.data.course.start_date = formatDate(result.data.course.start_date);
-        result.data.course.end_date = formatDate(result.data.course.end_date);
-        setCourse(result.data.course);
+        result.course.start_date = formatDate(result.course.start_date);
+        result.course.end_date = formatDate(result.course.end_date);
+        setCourse(result.course);
       })
-      .catch(error => {
+      .catch(() => {
         errorNotification('There was an error loading the course details. Please try again later!');
       })
   }, [courseId]);
@@ -37,7 +37,7 @@ const CourseDetails = () => {
   useEffect(() => {
     courseService.getCourses(user.id, true)
       .then(response => {
-        const courses = response.data.courses;
+        const courses = response;
         setIsRegistered(courses.includes(Number(courseId)));
         setIsLoading(false);
       });
@@ -99,7 +99,7 @@ const CourseDetails = () => {
           <section className="study-plan-wrapper">
             <h1 className="heading font-bold">Study Plan</h1>
 
-            <Plan courseId={course.id} lectures={course.lectures} weeks={course.duration * 4}></Plan>
+            <Plan courseId={course.id} topics={course.topics} weeks={course.duration * 4}></Plan>
           </section>
 
 

@@ -15,7 +15,7 @@ const AllKolbs = () => {
     useEffect(() => {
         kolbService.getByUser(userId)
         .then(response => {
-            setKolbs(response.data.kolbs);
+            setKolbs(response);
         })
         .catch(() => {
             errorNotification('There was an error loading your kolbs. Please try again later!');
@@ -27,7 +27,7 @@ const AllKolbs = () => {
             <h1 className="heading">Notebook</h1>
 
             <section className="user-kolbs mb-20">
-                {kolbs.length == 0 ? <h1 className="heading">You do not have any notes yet!</h1> : kolbs.map((kolb, id) => 
+                {kolbs.length === 0 ? <h1 className="heading">You do not have any notes yet!</h1> : kolbs.map((kolb, id) => 
                     <article className="flex flex-col text-lg my-10">
                         <table>
                             <tbody>
@@ -38,12 +38,12 @@ const AllKolbs = () => {
 
                                 <tr>
                                     <td className="font-bold text-blue-500">Correct Answer:</td>
-                                    <td>{kolb.correct_answer}</td>
+                                    <td>{kolb.correctAnswer}</td>
                                 </tr>
 
                                 <tr>
                                     <td className="font-bold text-blue-500">Your Answer:</td>
-                                    <td>{kolb.user_answer}</td>
+                                    <td>{kolb.userAnswer}</td>
                                 </tr>
 
                                 <tr>

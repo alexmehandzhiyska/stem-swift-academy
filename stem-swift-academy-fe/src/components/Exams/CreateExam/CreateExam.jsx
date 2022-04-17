@@ -25,17 +25,17 @@ const CreateExam = () => {
     if (mode === 'edit') {
       examService.getOne(examSubject, examId)
         .then(response => {
-          setExam(response.data.exam);
-          setCharsLeft(5000 - response.data.exam.text.length);
+          setExam(response);
+          setCharsLeft(5000 - response.text.length);
         })
         .catch(() => errorNotification('There was an error loading the exam data. Please try again later!'));
 
       examService.getQuestions(examSubject, examId, false)
         .then(response => {
-          const questions = response.data.questions;
+          const questions = response;
 
           questions.forEach(q => {
-            q.choices = q.choices.filter(ch => ch != q.correct_answer);
+            q.choices = q.choices.filter(ch => ch !== q.correctAnswer);
           });
 
           setQuestions(questions);
@@ -66,7 +66,7 @@ const CreateExam = () => {
           successNotification('Exam created successfully!');
           navigate(`/exams/${data.subject}`)
         })
-        .catch(error => {
+        .catch(() => {
           errorNotification('There was an error creating your exam. Please try again later.');
         });
     }
@@ -108,9 +108,9 @@ const CreateExam = () => {
             </fieldset>
 
             <article className="english-inputs flex flex-col items-center">
-              <textarea name="text" {...register('text', { maxLength: { value: 5000, message: 'Text cannot be longer than 5000 characters!' } })} onChange={charactersChange} className={examSubject == 'english' ? 'exam-input' : 'hidden'} placeholder="Text" type="text" defaultValue={mode === 'edit' ? exam.text : ''}></textarea>
+              <textarea name="text" {...register('text', { maxLength: { value: 5000, message: 'Text cannot be longer than 5000 characters!' } })} onChange={charactersChange} className={examSubject === 'english' ? 'exam-input' : 'hidden'} placeholder="Text" type="text" defaultValue={mode === 'edit' ? exam.text : ''}></textarea>
 
-              <h3 className={examSubject == 'english' ? 'chars-left' : 'hidden'}>Characters left: {charsLeft}</h3>
+              <h3 className={examSubject === 'english' ? 'chars-left' : 'hidden'}>Characters left: {charsLeft}</h3>
 
             </article>
 
@@ -120,7 +120,7 @@ const CreateExam = () => {
 
                 <input {...register(`questions.question-${i + 1}.title`, { required: { value: true, message: 'Field is required!' } })} className="exam-input" type="text" placeholder="Question" name={`questions.question-${i + 1}.title`} defaultValue={mode === 'edit' ? questions[i].title : ''} />
                 {errors[`questions.question-${i + 1}.title`] && <p className="text-blue-500">{errors[`questions.question-${i + 1}.title`].message}</p>}
-                <input {...register(`questions.question-${i + 1}.correctAnswer`, { required: { value: true, message: 'Field is required!' } })} className="exam-input" type="text" placeholder="Correct Answer" name={`questions.question-${i + 1}.correctAnswer`} defaultValue={mode === 'edit' ? questions[i].correct_answer : ''} />
+                <input {...register(`questions.question-${i + 1}.correctAnswer`, { required: { value: true, message: 'Field is required!' } })} className="exam-input" type="text" placeholder="Correct Answer" name={`questions.question-${i + 1}.correctAnswer`} defaultValue={mode === 'edit' ? questions[i].correctAnswer : ''} />
                 {errors[`questions.question-${i + 1}.correctAnswer`] && <p className="text-blue-500">{errors[`questions.question-${i + 1}.correctAnswer`].message}</p>}
                 <input {...register(`questions.question-${i + 1}.wrongAnswer1`, { required: { value: true, message: 'Field is required!' } })} className="exam-input" type="text" placeholder="First wrong answer" name={`questions.question-${i + 1}.wrongAnswer1`} defaultValue={mode === 'edit' ? questions[i].choices[0] : ''} />
                 {errors[`questions.question-${i + 1}.wrongAnswer1`] && <p className="text-blue-500">{errors[`questions.question-${i + 1}.wrongAnswer1`].message}</p>}

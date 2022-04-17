@@ -25,15 +25,15 @@ const ExamQuestions = () => {
 
     examService.getQuestions(subject, examId, true)
       .then(response => {
-        setQuestions(response.data.questions);
+        setQuestions(response);
       });
   }, [subject, examId]);
 
   useEffect(() => {
     examService.getOne(subject, examId)
       .then(response => {
-        if (response.data.exam.text) {
-          setText(response.data.exam.text);
+        if (response.text) {
+          setText(response.text);
         }
         setIsLoading(false);
       });
@@ -46,8 +46,6 @@ const ExamQuestions = () => {
       const questionNum = Number(entry[0].slice(8));
       userAnswers[questionNum] = entry[1];
     }
-
-    console.log(userAnswers);
 
     examService.submitAnswers(subject, examId, userAnswers)
       .then(() => {
