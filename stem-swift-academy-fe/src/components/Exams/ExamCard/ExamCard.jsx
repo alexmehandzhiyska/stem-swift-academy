@@ -8,7 +8,7 @@ import { deleteConfirmNotification, errorNotification, successNotification } fro
 import './ExamCard.css';
 
 const ExamCard = ({ exam, subject, allExams, setNewExams }) => {
-  const user = useSelector((state) => state.user.value);
+  const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
 
   const deleteExamHandler = async () => {
     const confirmed = await deleteConfirmNotification('Are you sure you want to delete this exam?');

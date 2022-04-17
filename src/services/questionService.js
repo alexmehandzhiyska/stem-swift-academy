@@ -2,7 +2,6 @@ const _ = require('lodash');
 const Question = require('../models/Question');
 const Answer = require('../models/Answer');
 const UserExam = require('../models/UserExam');
-const Exam = require('../models/Exam');
 
 const getAll = async(examId, shuffled) => {
     const questionsData = await Question.findAll({ where: { examId: examId } });
@@ -13,7 +12,7 @@ const getAll = async(examId, shuffled) => {
         const answers = answersData.map(a => a.dataValues.content);
         question.choices = shuffled === 'true' ? _.shuffle(answers) : answers;
     }
-    
+
     return questions.sort((a, b) => a.id - b.id);
 };
 
@@ -54,11 +53,15 @@ const updateQuestions = async(examId, questions, subject) => {
 
 const calculateScore = async(examId, userId, userAnswers) => {
     const questionsData = await Question.findAll({ where: { examId: examId } });
-    const correctAnswers = questionsData.map(question => question.dataValues.correctAnswer);
+    const correctAnswers = questionsData
+        .sort((a, b) => a.id - b.id)
+        .map(question => question.dataValues.correctAnswer);
 
     const score = correctAnswers
         .filter((a, index) => a === userAnswers[index + 1])
         .length;
+
+    console.log(score);
 
     const currentScoreData = await UserExam.findOne({ where: { userId: userId, examId: examId } });
     
