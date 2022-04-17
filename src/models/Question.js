@@ -18,6 +18,10 @@ const Question = db.define('question', {
     explanation: {
         type: DataTypes.STRING(2000)
     },
+    subject: {
+        type: DataTypes.STRING(30),
+        allowNull: false
+    },
     examId: {
         type: DataTypes.INTEGER,
         references: {

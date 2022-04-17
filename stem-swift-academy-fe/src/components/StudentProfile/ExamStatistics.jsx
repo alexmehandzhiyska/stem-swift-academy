@@ -3,7 +3,7 @@ import AvgResultChart from './AvgResultChart';
 
 const ExamStatistics = ({ subject, exams, totalQuestions }) => {
   const avgScore = useMemo(() => exams.reduce((sum, exam) => sum + exam.score, 0) / exams.length, [exams]);
-
+  
   return (
     <>
       <section className="flex flex-col items-center">

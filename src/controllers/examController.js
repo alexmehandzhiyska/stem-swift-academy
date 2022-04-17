@@ -32,8 +32,7 @@ const createOne = async(req, res) => {
 
     try {
         const exam = await examService.createOne(subject, section, instructions, duration, difficulty, link, text);
-        console.log(exam);
-        await questionService.addQuestions(exam.id, Object.values(questions));
+        await questionService.addQuestions(exam.id, Object.values(questions), subject);
 
         res.status(201).json(exam);
     } catch (error) {
@@ -47,7 +46,7 @@ const updateOne = async(req, res) => {
 
     try {
         const exam = await examService.updateOne(examId, subject, section, instructions, duration, difficulty, link, text);
-        const result = await questionService.updateQuestions(exam.id, Object.values(questions));
+        const result = await questionService.updateQuestions(exam.id, Object.values(questions), subject);
 
         res.status(201).json(result);
     } catch (error) {

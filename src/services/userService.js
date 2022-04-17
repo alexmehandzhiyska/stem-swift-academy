@@ -1,35 +1,37 @@
-const db = require('../config/database');
+const { Op } = require('sequelize');
+const Exam = require('../models/Exam');
+const User = require('../models/User');
+const Question = require('../models/Question');
+const UserExam = require('../models/UserExam');
 
 const getAll = async (role) => {
-    if (role == 'all') {
-        return db.query('SELECT id, name, email, role FROM users');
-    } else {
-        return db.query('SELECT id, name, email, role FROM users WHERE role = $1', [role]);
-    }
+    const usersData = role == 'all' ? await User.findAll() : await User.findAll({ where: { role } });
+    return usersData.map(user => user.dataValues);
 }
 
-const getOne = async(userId) => {
-    const response = await db.query('SELECT * FROM users WHERE id = $1', [userId]);
-    const user = response.rows[0];
-    return user;
+const getOne = async (userId) => {
+    const userData = await User.findByPk(userId);
+    return userData.dataValues;
 }
 
 const getUserExams = async (userId) => {
-    const examsData = await db.query('SELECT exams.id, subject, score FROM users_exams JOIN exams ON users_exams.exam_id = exams.id WHERE user_id = $1', [userId]);
-    const exams = examsData.rows;
+    const userExamsData = await UserExam.findAll({ where: { userId }, include: Exam });
+    const userExams = userExamsData.map(userExam => userExam.dataValues);
+    const exams = userExams.map(userExam => userExam.exam.dataValues);
   
-    const questionsData = await db.query('SELECT COUNT(questions.id), subject FROM questions JOIN exams ON questions.exam_id = exams.id WHERE exams.id IN (SELECT exam_id FROM users_exams WHERE user_id = $1) GROUP BY subject', [userId]);
-    const questions = questionsData.rows;
-  
-    return { exams, questions };
+    const questionsData = await Question.findAll({ where: { examId: { [Op.in]: exams.map(e => e.id) } } });
+    const questions = questionsData.map(question => question.dataValues);
+
+    return { results: userExams, questions };
 }
 
 const updateUsers = async(users) => {
     let result = [];
 
     for (const user of users) {
-        const currentUser = await db.query('UPDATE users SET role = $1 WHERE id = $2', [user.role, user.id]);
-        result.push(currentUser)
+        const currentUserData = await User.update({ role: user.role }, { where: { id: user.id }, returning: true });
+        const currentUser = currentUserData[1][0].dataValues;
+        result.push(currentUser);
     }
 
     return result;

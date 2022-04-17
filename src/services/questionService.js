@@ -2,6 +2,7 @@ const _ = require('lodash');
 const Question = require('../models/Question');
 const Answer = require('../models/Answer');
 const UserExam = require('../models/UserExam');
+const Exam = require('../models/Exam');
 
 const getAll = async(examId, shuffled) => {
     const questionsData = await Question.findAll({ where: { examId: examId } });
@@ -16,9 +17,9 @@ const getAll = async(examId, shuffled) => {
     return questions.sort((a, b) => a.id - b.id);
 };
 
-const addQuestions = async(examId, questions) => {
+const addQuestions = async(examId, questions, subject) => {
     for (const question of questions) {
-        const questionData = await Question.create({ title: question.title, correctAnswer: question.correctAnswer, examId: examId });
+        const questionData = await Question.create({ title: question.title, correctAnswer: question.correctAnswer, explanation: question.explanation, subject: subject, examId: examId });
         const questionId = questionData.dataValues.id;
 
         await Answer.bulkCreate([ 
@@ -32,12 +33,12 @@ const addQuestions = async(examId, questions) => {
     return questions;
 }
 
-const updateQuestions = async(examId, questions) => {
+const updateQuestions = async(examId, questions, subject) => {
     for (const question of questions) {
         const questionData = await Question.findOne({ where: { examId: examId, title: question.title } });
         const questionId = questionData.dataValues.id;
 
-        await Question.update({ title: question.title, correctAnswer: question.correctAnswer, examId: examId }, { where: { id: questionId } });
+        await Question.update({ title: question.title, correctAnswer: question.correctAnswer, explanation: question.explanation, subject: subject, examId: examId }, { where: { id: questionId } });
 
         await Answer.destroy({ where: { questionId: questionId } });
         await Answer.bulkCreate([

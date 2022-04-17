@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { useLocalStorage } = require('adminjs');
 const userService = require('../services/userService');
 
 const getAll = async(req, res) => {
@@ -10,11 +11,11 @@ const getAll = async(req, res) => {
     
     try {
         const users = await userService.getAll(role);
-        const sortedUsers = users.rows.sort((a, b) => a.name.localeCompare(b.name));
+        const sortedUsers = users.sort((a, b) => a.name.localeCompare(b.name));
         const result = {};
 
         if (endIndex < sortedUsers.length) {
-            result.next = true
+            result.next = true;
         }
 
         if (startIndex > 0) {
@@ -53,18 +54,12 @@ const getUserExams = async (req, res) => {
     const userId = req.params.userId;
   
     try {
-      const result = await userService.getUserExams(userId);
+        const exams = await userService.getUserExams(userId);
   
-      res.status(200).json({
-        status: 'success',
-        data: {
-          exams: result.exams,
-          totalQuestions: result.questions
-        }
-      });
+        res.status(200).json(exams);
     } catch (error) {
-      console.log(error);
-      res.status(400).json(error.message);
+        console.log(error);
+        res.status(400).json(error.message);
     }
   }
 
