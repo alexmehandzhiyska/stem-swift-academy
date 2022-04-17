@@ -1,0 +1,24 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "admin",
+    "database": "stemswiftacademy",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "port": "5432"
+  },
+  "production": {
+    "url": "postgres://rtqzufvpoxwnmd:6d6cd22cbb768333a890417e61476396b354c4154b62e7cebe5267625ac88165@ec2-54-164-238-108.compute-1.amazonaws.com:5432/dhtgmrpl1m0jk",
+    "username": "rtqzufvpoxwnmd",
+    "password": "6d6cd22cbb768333a890417e61476396b354c4154b62e7cebe5267625ac88165",
+    "database": "dhtgmrpl1m0jk",
+    "host": "ec2-54-164-238-108.compute-1.amazonaws.com",
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
+  }
+}

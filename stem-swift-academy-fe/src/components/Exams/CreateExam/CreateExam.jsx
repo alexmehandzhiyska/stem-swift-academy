@@ -35,7 +35,7 @@ const CreateExam = () => {
           const questions = response;
 
           questions.forEach(q => {
-            q.choices = q.choices.filter(ch => ch !== q.correctAnswer);
+            q.choices = q.choices.filter(ch => ch !== q.correct_answer);
           });
 
           setQuestions(questions);
@@ -120,7 +120,7 @@ const CreateExam = () => {
 
                 <input {...register(`questions.question-${i + 1}.title`, { required: { value: true, message: 'Field is required!' } })} className="exam-input" type="text" placeholder="Question" name={`questions.question-${i + 1}.title`} defaultValue={mode === 'edit' ? questions[i].title : ''} />
                 {errors[`questions.question-${i + 1}.title`] && <p className="text-blue-500">{errors[`questions.question-${i + 1}.title`].message}</p>}
-                <input {...register(`questions.question-${i + 1}.correctAnswer`, { required: { value: true, message: 'Field is required!' } })} className="exam-input" type="text" placeholder="Correct Answer" name={`questions.question-${i + 1}.correctAnswer`} defaultValue={mode === 'edit' ? questions[i].correctAnswer : ''} />
+                <input {...register(`questions.question-${i + 1}.correctAnswer`, { required: { value: true, message: 'Field is required!' } })} className="exam-input" type="text" placeholder="Correct Answer" name={`questions.question-${i + 1}.correctAnswer`} defaultValue={mode === 'edit' ? questions[i].correct_answer : ''} />
                 {errors[`questions.question-${i + 1}.correctAnswer`] && <p className="text-blue-500">{errors[`questions.question-${i + 1}.correctAnswer`].message}</p>}
                 <input {...register(`questions.question-${i + 1}.wrongAnswer1`, { required: { value: true, message: 'Field is required!' } })} className="exam-input" type="text" placeholder="First wrong answer" name={`questions.question-${i + 1}.wrongAnswer1`} defaultValue={mode === 'edit' ? questions[i].choices[0] : ''} />
                 {errors[`questions.question-${i + 1}.wrongAnswer1`] && <p className="text-blue-500">{errors[`questions.question-${i + 1}.wrongAnswer1`].message}</p>}

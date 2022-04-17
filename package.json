@@ -20,8 +20,9 @@
     "license": "MIT",
     "dependencies": {
         "@adminjs/express": "^4.1.0",
+        "@adminjs/sequelize": "^2.1.5",
         "@fortawesome/fontawesome-free": "^5.15.4",
-        "adminjs": "^5.9.8",
+        "adminjs": "^5.9.9",
         "bcrypt": "^5.0.1",
         "cookie-parser": "^1.4.5",
         "cors": "^2.8.5",

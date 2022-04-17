@@ -23,6 +23,7 @@ const ExamResults = () => {
 
     examService.getScore(subject, examId)
       .then(response => {
+        console.log(response);
         setScore(response);
         setIsLoading(false);
       })
@@ -36,6 +37,8 @@ const ExamResults = () => {
 
     examService.getQuestions(subject, examId, false)
       .then(response => {
+        console.log(response);
+        console.log(userAnswers);
         setQuestions(response);
         setIsLoading(false);
       })

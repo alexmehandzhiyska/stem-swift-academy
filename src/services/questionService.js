@@ -1,15 +1,14 @@
 const _ = require('lodash');
-const Question = require('../models/Question');
-const Answer = require('../models/Answer');
-const UserExam = require('../models/UserExam');
-const Exam = require('../models/Exam');
+const Question = require('../../models/index').Question;
+const Answer = require('../../models/index').Answer;
+const UserExam = require('../../models/index').UserExam;
 
 const getAll = async(examId, shuffled) => {
-    const questionsData = await Question.findAll({ where: { examId: examId } });
+    const questionsData = await Question.findAll({ where: { exam_id: examId } });
     const questions = questionsData.map(question => question.dataValues);
 
     for (const question of questions) {
-        const answersData = await Answer.findAll({ where: { questionId: question.id } });
+        const answersData = await Answer.findAll({ where: { question_id: question.id } });
         const answers = answersData.map(a => a.dataValues.content);
         question.choices = shuffled === 'true' ? _.shuffle(answers) : answers;
     }
@@ -19,14 +18,14 @@ const getAll = async(examId, shuffled) => {
 
 const addQuestions = async(examId, questions, subject) => {
     for (const question of questions) {
-        const questionData = await Question.create({ title: question.title, correctAnswer: question.correctAnswer, explanation: question.explanation, subject: subject, examId: examId });
+        const questionData = await Question.create({ title: question.title, correct_answer: question.correctAnswer, explanation: question.explanation, subject: subject, exam_id: examId });
         const questionId = questionData.dataValues.id;
 
         await Answer.bulkCreate([ 
-            { content: question.correctAnswer, questionId: questionId },
-            { content: question.wrongAnswer1, questionId: questionId },
-            { content: question.wrongAnswer2, questionId: questionId },
-            { content: question.wrongAnswer3, questionId: questionId }
+            { content: question.correctAnswer, question_id: questionId },
+            { content: question.wrongAnswer1, question_id: questionId },
+            { content: question.wrongAnswer2, question_id: questionId },
+            { content: question.wrongAnswer3, question_id: questionId }
         ]);
     }
     
@@ -35,17 +34,17 @@ const addQuestions = async(examId, questions, subject) => {
 
 const updateQuestions = async(examId, questions, subject) => {
     for (const question of questions) {
-        const questionData = await Question.findOne({ where: { examId: examId, title: question.title } });
+        const questionData = await Question.findOne({ where: { exam_id: examId, title: question.title } });
         const questionId = questionData.dataValues.id;
 
-        await Question.update({ title: question.title, correctAnswer: question.correctAnswer, explanation: question.explanation, subject: subject, examId: examId }, { where: { id: questionId } });
+        await Question.update({ title: question.title, correct_answer: question.correctAnswer, explanation: question.explanation, subject: subject, exam_id: examId }, { where: { id: questionId } });
 
-        await Answer.destroy({ where: { questionId: questionId } });
+        await Answer.destroy({ where: { question_id: questionId } });
         await Answer.bulkCreate([
-            { content: question.correctAnswer, questionId: questionId },
-            { content: question.wrongAnswer1, questionId: questionId },
-            { content: question.wrongAnswer2, questionId: questionId },
-            { content: question.wrongAnswer3, questionId: questionId }
+            { content: question.correctAnswer, question_id: questionId },
+            { content: question.wrongAnswer1, question_id: questionId },
+            { content: question.wrongAnswer2, question_id: questionId },
+            { content: question.wrongAnswer3, question_id: questionId }
         ]);
     }
 
@@ -53,25 +52,28 @@ const updateQuestions = async(examId, questions, subject) => {
 }
 
 const calculateScore = async(examId, userId, userAnswers) => {
-    const questionsData = await Question.findAll({ where: { examId: examId } });
-    const correctAnswers = questionsData.map(question => question.dataValues.correctAnswer);
+    const questionsData = await Question.findAll({ where: { exam_id: examId } });
 
+    const correctAnswers = questionsData
+    .map(question => question.dataValues.correct_answer)
+    .sort((a, b) => a.id - b.id);
+    
     const score = correctAnswers
         .filter((a, index) => a === userAnswers[index + 1])
-        .length;
+        .length
 
-    const currentScoreData = await UserExam.findOne({ where: { userId: userId, examId: examId } });
+    const currentScoreData = await UserExam.findOne({ where: { user_id: userId, exam_id: examId } });
     
     if (currentScoreData) {
-        await UserExam.update({ score }, { where: { userId, examId } });
+        await UserExam.update({ score }, { where: { user_id: userId, exam_id: examId } });
     } else {
-        await UserExam.create({ userId, examId, score });
+        await UserExam.create({ user_id: userId, exam_id: examId, score });
     }
     return score;
 }
 
 const getScore = async(userId, examId) => {
-    const scoreData = await UserExam.findOne({ where: { userId, examId } });
+    const scoreData = await UserExam.findOne({ where: { user_id: userId, exam_id: examId } });
     const score = scoreData.dataValues.score;
 
     return score;

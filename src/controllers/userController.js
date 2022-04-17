@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const { useLocalStorage } = require('adminjs');
 const userService = require('../services/userService');
 
 const getAll = async(req, res) => {

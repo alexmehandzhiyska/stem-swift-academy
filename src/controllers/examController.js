@@ -36,6 +36,7 @@ const createOne = async(req, res) => {
 
         res.status(201).json(exam);
     } catch (error) {
+        console.log(error);
         res.status(400).json(error.message);
     }
 }
@@ -62,7 +63,6 @@ const deleteOne = async(req, res) => {
         await examService.deleteOne(examId);
         res.status(200).json({ status: 'success' });
     } catch (error) {
-        console.log(error);
         res.status(400).json(error.message);
     }
 }
@@ -76,6 +76,7 @@ const getQuestions = async(req, res) => {
 
         res.status(200).json(questions);
     } catch (error) {
+        console.log(error);
         res.status(400).json(error.message);
     }
 }

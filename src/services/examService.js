@@ -1,4 +1,4 @@
-const Exam = require('../models/Exam');
+const Exam = require('../../models/index').Exam;
 
 const getAll = async (subject) => {
     const exams = await Exam.findAll({ where: { subject: subject } });

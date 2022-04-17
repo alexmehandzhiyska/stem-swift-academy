@@ -20,7 +20,7 @@ const CreateKolbs = () => {
     const userId = user.id;
     
     const onSubmit = async (data) => {
-        const content = { question: data.question, correctAnswer, userAnswer, what: data.what, why: data.why, how: data.how};
+        const content = { question: data.question, correct_answer: correctAnswer, user_answer: userAnswer, what: data.what, why: data.why, how: data.how};
 
         kolbService.createOne(content, userId)
         .then(() => {

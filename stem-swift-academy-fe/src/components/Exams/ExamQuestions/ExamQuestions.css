@@ -1,3 +1,7 @@
+.questions {
+    max-width: 100vw;
+}
+
 .text,
 .sv-root-modern {
     height: 83vh;
@@ -34,6 +38,9 @@
     text-align: center;
 }
 
+.sv-action-bar.sv-footer.sv-body__footer.sv-clearfix {
+    display: flex !important;
+}
 .sv-root-modern .sv-footer__complete-btn:hover {
     border: 3px solid #3b82f6;
     color: #3b82f6;

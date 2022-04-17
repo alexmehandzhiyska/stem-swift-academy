@@ -1,4 +1,4 @@
-const { TOKEN_SECRET } = require('../config/config')["development"];
+const { TOKEN_SECRET } = require('../config/appConfig')["development"];
 const jwt = require('jsonwebtoken');
 
 const auth = function (req, res, next) {

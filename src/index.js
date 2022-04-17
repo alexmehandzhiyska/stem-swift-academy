@@ -2,17 +2,13 @@ const express = require('express');
 const app = express();
 const path = require('path');
 
-const sequelize = require('./config/database');
+const sequelize = require('../config/database');
 
-const User = require('./models/User');
-const Course = require('./models/Course');
-const UserCourse = require('./models/UserCourse');
-const Topic = require('./models/Topic');
-const Exam = require('./models/Exam');
-const Question = require('./models/Question');
-const Answer = require('./models/Answer');
-const UserExam = require('./models/UserExam');
-const Kolb = require('./models/Kolb');
+const AdminJS = require('adminjs')
+const AdminJSExpress = require('@adminjs/express')
+const AdminJSSequelize = require('@adminjs/sequelize')
+
+const models = require('../models/index');
 
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
@@ -45,13 +41,26 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(auth);
 
+AdminJS.registerAdapter(AdminJSSequelize);
+
+const adminJs = new AdminJS({
+    databases: [models],
+    rootPath: '/admin',
+    resources: [{
+        resource: models.User
+    }]
+});
+
+const router = AdminJSExpress.buildRouter(adminJs);
+
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, "../stem-swift-academy-fe/build")));
 }
 
 app.use(routes);
+app.use(adminJs.options.rootPath, router)
 
-sequelize.sync()
+models.sequelize.authenticate()
     .then(() => {
         console.log('Connected to db...');
     })

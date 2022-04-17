@@ -1,13 +1,13 @@
 const { Op } = require('sequelize');
-const Course = require('../models/Course');
-const UserCourse = require('../models/UserCourse');
-const Topic = require('../models/Topic');
+const Course = require('../../models/index').Course;
+const UserCourse = require('../../models/index').UserCourse;
+const Topic = require('../../models/index').Topic;
 
 const getAll = async (userId) => {
-    const coursesData = await UserCourse.findAll({ where: { userId }, include: [Course]})
-    const courseIds = coursesData.map(c => c.dataValues.course.dataValues.id);
+    const userCoursesData = await UserCourse.findAll({ where: { user_id: userId }});
+    const courseIds = userCoursesData.map(userCourse => userCourse.dataValues.course_id);
 
-    const topicsData = await Topic.findAll({ where: { courseId: { [Op.in]: courseIds } } });
+    const topicsData = await Topic.findAll({ where: { course_id: { [Op.in]: courseIds } } });
     return topicsData.map(topic => topic.dataValues);
 }
 const getOne = async (topicId) => {

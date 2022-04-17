@@ -1,8 +1,8 @@
-const Course = require('../models/Course');
-const UserCourse = require('../models/UserCourse');
+const Course = require('../../models/index').Course;
+const UserCourse = require('../../models/index').UserCourse;
 const nodemailer = require('nodemailer');
-const Topic = require('../models/Topic');
-const User = require('../models/User');
+const Topic = require('../../models/index').Topic;
+const User = require('../../models/index').User;
 
 const getAll = async (userId) => {
   if (!userId) {
@@ -11,20 +11,20 @@ const getAll = async (userId) => {
     return data.map(course => course.dataValues);
   }
 
-  const data = await UserCourse.findAll({ where: { userId } });
-  const courseIds = data.map(entry => entry.dataValues.courseId);
+  const data = await UserCourse.findAll({ where: { user_id: userId } });
+  const courseIds = data.map(entry => entry.dataValues.course_id);
   return courseIds;
 }
 
 const getOne = async (courseId) => {
   const course = await Course.findByPk(courseId);
-  const topics = await Topic.findAll({ where: { courseId: courseId } });
+  const topics = await Topic.findAll({ where: { course_id: courseId } });
   const result = { course: {...course.dataValues, topics: topics.map(topic => topic.dataValues)}};
   return result;
 }
 
 const registerUser = async (courseId, userId) => {
-  const result = await UserCourse.create({ userId, courseId });
+  const result = await UserCourse.create({ user_id: userId, course_id: courseId });
   const user = await User.findByPk(userId);
   const course = await Course.findByPk(courseId);
 

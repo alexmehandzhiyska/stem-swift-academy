@@ -38,12 +38,12 @@ const AllKolbs = () => {
 
                                 <tr>
                                     <td className="font-bold text-blue-500">Correct Answer:</td>
-                                    <td>{kolb.correctAnswer}</td>
+                                    <td>{kolb.correct_answer}</td>
                                 </tr>
 
                                 <tr>
                                     <td className="font-bold text-blue-500">Your Answer:</td>
-                                    <td>{kolb.userAnswer}</td>
+                                    <td>{kolb.user_answer}</td>
                                 </tr>
 
                                 <tr>

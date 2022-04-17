@@ -22,8 +22,7 @@ const StudentProfile = () => {
       .then(response => {
         const subjects = response.questions.map(question => question.subject);
         setSubjects([...new Set(subjects)]);
-        console.log(response.results);
-        setExams(response.results);
+        setExams(response.exams);
         setTotalQuestions(response.questions);
         setIsLoading(false);
       })
@@ -45,7 +44,7 @@ const StudentProfile = () => {
               <ExamStatistics
                 key={i}
                 subject={s}
-                exams={exams.filter(e => e.exam.subject === s)}
+                exams={exams.filter(e => e.subject === s)}
                 totalQuestions={totalQuestions.filter(question => question.subject === s).length}
               />
             )}
