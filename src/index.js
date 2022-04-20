@@ -47,7 +47,7 @@ const adminJs = new AdminJS({
     databases: [models],
     rootPath: '/admin',
     resources: [{
-        resource: models.User
+        resource: models.Course
     }]
 });
 

@@ -18,6 +18,7 @@
         "@visx/scale": "^2.2.2",
         "@visx/shape": "^2.4.0",
         "autoprefixer": "^9.8.8",
+        "cypress": "^9.5.4",
         "lodash": "^4.17.21",
         "moment": "^2.29.1",
         "postcss": "^7.0.39",
@@ -44,7 +45,7 @@
     "scripts": {
         "start": "craco start",
         "build": "craco build",
-        "test": "craco test",
+        "test": "cypress open",
         "eject": "react-scripts eject"
     },
     "eslintConfig": {
