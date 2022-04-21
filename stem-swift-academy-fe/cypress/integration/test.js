@@ -40,4 +40,26 @@ describe('Login page', () => {
 
         cy.get('#swal2-title').should('contain', 'Error: Invalid email or password');
     });
+});
+
+describe('Contacts page', () => {
+    it('Loads contacts page', () => {
+        cy.visit('/contacts');
+        cy.get('.contacts').should('exist');
+    });
+
+    it('Displays office locations', () => {
+        cy.visit('/contacts');
+        cy.get('.contacts').should('contain', 'Blagoevgrad, Bulgaria, ul. Pirov');
+    });
+
+    it('Displays phone numbers', () => {
+        cy.visit('/contacts');
+        cy.get('.contacts').should('contain', '+3598 636 217 12');
+    });
+
+    it('Displays phone numbers', () => {
+        cy.visit('/contacts');
+        cy.get('.contacts').should('contain', 'alex.mehandzhiyska@stemswift.com');
+    });
 })
