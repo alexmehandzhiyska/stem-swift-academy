@@ -7,6 +7,10 @@ export const mockData = {
         {
             email: 'ivan@abv.bg',
             password: 'asdasd'
+        },
+        {
+            email: 'hurmaqni@abv.bg',
+            password: 'asdasd'
         }
     ]
 }
