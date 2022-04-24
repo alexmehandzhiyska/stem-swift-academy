@@ -2,7 +2,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 const UserRoute = () => {
-  let stateUser = useSelector((state) => state.user.value)
+  let stateUser = useSelector((state) => state.user.value);
   const user = stateUser.id ? stateUser : JSON.parse(localStorage.getItem('user'));
   const isAuthenticated = user ? true : false;
 

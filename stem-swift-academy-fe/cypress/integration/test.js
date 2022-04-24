@@ -167,3 +167,141 @@ describe('Course details page', () => {
         cy.get('.register-btn').should('not.be.disabled');
     });
 });
+
+describe('Calendar page', () => {
+    it('Loads all topics on calendar when student is registered for course', () => {
+        cy.visit('/login');
+
+        cy.get('input[name=email]').type(mockData.users[2].email);
+        cy.get('input[name=password]').type(`${mockData.users[2].password}{enter}`);
+        cy.visit('/calendar');
+
+        cy.get('button').contains('Next').click();
+        cy.get('.rbc-event-content').first().should('exist');
+    });
+
+    it('Does NOT load topics on calendar when student is NOT registered for course', () => {
+        cy.visit('/login');
+
+        cy.get('input[name=email]').type(mockData.users[1].email);
+        cy.get('input[name=password]').type(`${mockData.users[1].password}{enter}`);
+        cy.visit('/calendar');
+
+        cy.get('button').contains('Next').click();
+        cy.get('.rbc-event-content').should('not.exist');
+    });
+});
+
+describe('Route guards', () => {
+    it('Register page does NOT load when user is already logged in', () => {
+        cy.visit('/login');
+
+        cy.get('input[name=email]').type(mockData.users[0].email);
+        cy.get('input[name=password]').type(`${mockData.users[0].password}{enter}`);
+
+        cy.visit('/register');
+        cy.url().should('include', '/');
+        cy.get('#main-title').should('exist');
+    });
+
+    it('Login page does NOT load when user is already logged in', () => {
+        cy.visit('/login');
+
+        cy.get('input[name=email]').type(mockData.users[0].email);
+        cy.get('input[name=password]').type(`${mockData.users[0].password}{enter}`);
+
+        cy.visit('/login');
+        cy.url().should('include', '/');
+        cy.get('#main-title').should('exist');
+    });
+
+    it('Courses page does NOT load when user is NOT logged in', () => {
+        cy.visit('/courses');
+        cy.url().should('include', '/login');
+    });
+    
+    it('Course details page does NOT load when user is NOT logged in', () => {
+        cy.visit('/courses/1');
+        cy.url().should('include', '/login');
+    });
+
+    it('Topic page does NOT load when user is NOT logged in', () => {
+        cy.visit('/courses/1/topics/1');
+        cy.url().should('include', '/login');
+    });
+ 
+    it('Calendar page does NOT load when user is NOT logged in', () => {
+        cy.visit('/calendar');
+        cy.url().should('include', '/login');
+    });
+ 
+    it('Exams page does NOT load when user is NOT logged in', () => {
+        cy.visit('/exams');
+        cy.url().should('include', '/login');
+    });   
+ 
+    it('Exam subjects page does NOT load when user is NOT logged in', () => {
+        cy.visit('/exams/english');
+        cy.url().should('include', '/login');
+    });   
+
+    it('Exam details page does NOT load when user is NOT logged in', () => {
+        cy.visit('/exams/english/7');
+        cy.url().should('include', '/login');
+    }); 
+  
+    it('Exam questions page does NOT load when user is NOT logged in', () => {
+        cy.visit('/exams/english/7/questions');
+        cy.url().should('include', '/login');
+    });  
+
+    it('Exam results page does NOT load when user is NOT logged in', () => {
+        cy.visit('/exams/english/7/results');
+        cy.url().should('include', '/login');
+    });
+
+    it('Student profile page does NOT load when user is NOT logged in', () => {
+        cy.visit('/students/2');
+        cy.url().should('include', '/login');
+    });  
+
+    it('Student notebook page does NOT load when user is NOT logged in', () => {
+        cy.visit('/notebooks/2');
+        cy.url().should('include', '/login');
+    });  
+
+    it('Kolb create page does NOT load when user is NOT logged in', () => {
+        cy.visit('/notebooks/2/create');
+        cy.url().should('include', '/login');
+    });  
+
+    it('Exam create page does NOT load when user is NOT teacher or owner', () => {
+        cy.visit('/login');
+
+        cy.get('input[name=email]').type(mockData.users[2].email);
+        cy.get('input[name=password]').type(`${mockData.users[2].password}{enter}`); 
+
+        cy.visit('/exams/create');
+        cy.url().should('not.include', '/exams/create');
+    });
+
+    it('Exam edit page does NOT load when user is NOT teacher or owner', () => {
+        cy.visit('/login');
+
+        cy.get('input[name=email]').type(mockData.users[2].email);
+        cy.get('input[name=password]').type(`${mockData.users[2].password}{enter}`); 
+
+        cy.visit('/exams/english/7/edit');
+        cy.url().should('not.include', '/exams/english/7/edit');
+    });
+
+    it('Users page does NOT load when user is NOT owner', () => {
+        cy.visit('/login');
+
+        cy.get('input[name=email]').type(mockData.users[1].email);
+        cy.get('input[name=password]').type(`${mockData.users[1].password}{enter}`); 
+
+        cy.visit('/users');
+        cy.url().should('not.include', '/users');
+    });
+});

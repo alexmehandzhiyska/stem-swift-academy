@@ -42,7 +42,7 @@ function App() {
             <Route path="/login" element={<Login />}></Route>
           </Route>
           <Route element={<UserRoute />}>
-            <Route path="/courses" exact element={<AllCourses />}></Route> </Route>
+            <Route path="/courses" exact element={<AllCourses />}></Route> 
             <Route path="/courses/:courseId" element={<CourseDetails />}></Route> 
             <Route path="/courses/:courseId/topics/:topicId" element={<Topic />}> </Route>
             <Route path="/calendar" element={<StudentCalendar />}></Route>
@@ -54,13 +54,14 @@ function App() {
             <Route path="/students/:studentId" element={<StudentProfile />}></Route>
             <Route path="/notebooks/:studentId" element={<AllKolbs />}></Route>
             <Route path="/notebooks/:studentId/create" element={<CreateKolbs />}></Route>
-            <Route element={<RoleRoute />}>
+          </Route>
+          <Route element={<RoleRoute />}>
               <Route path="/exams/create" element={<CreateExam mode="create" />}></Route>
               <Route  path="/exams/:subject/:examId/edit" element={<CreateExam mode="edit" />} ></Route>
               <Route element={<OwnerRoute />}>
                 <Route path="/users" element={<AllUsers />}> </Route>
               </Route>
-            </Route>
+          </Route>
           <Route path="*" element={<NotFound />}></Route>
         </Routes>
       </Layout>
