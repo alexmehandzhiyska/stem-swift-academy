@@ -6,17 +6,22 @@ import { errorNotification } from "../../notification";
 import './AllExams.css';
 import ExamCard from "../ExamCard/ExamCard";
 import LottieAnimation from "../../LottieAnimation";
+import { useLocation } from "react-router";
+import { faTruckLoading } from "@fortawesome/free-solid-svg-icons";
 
 const AllExams = () => {
   const [exams, setExams] = useState([]);
   const [filteredExams, setFilteredExams] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const { subject } = useParams();
+  const { examType } = useParams();
+  const { state } = useLocation();
+  const subject = state ? state.state.subject : null;
 
   useEffect(() => {
     setIsLoading(true);
-    examService.getAll(subject)
+    
+    examService.getAll(examType, subject)
       .then(response => {
         setExams(response);
         setFilteredExams(response);

@@ -15,13 +15,17 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       allowNull: false
     },
+    type: {
+      type: DataTypes.STRING(60),
+      allowNull: false
+    },
     subject: {
       type: DataTypes.STRING(30),
-      allowNull: false
+      allowNull: true
     },
     section: {
       type: DataTypes.STRING(40),
-      allowNull: false
+      allowNull: true
     },
     duration: {
       type: DataTypes.INTEGER,

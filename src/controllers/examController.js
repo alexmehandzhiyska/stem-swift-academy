@@ -3,10 +3,11 @@ const examService = require('../services/examService');
 const questionService = require('../services/questionService');
 
 const getAll = async(req, res) => {
-    const subject = req.params.subject;
+    const examType = req.params.examType;
+    const subject = req.query.subject;
 
     try {
-        const exams = await examService.getAll(subject);
+        const exams = await examService.getAll(examType, subject);
 
         res.status(200).json(exams);
     } catch (error) {
@@ -111,8 +112,8 @@ const getScore = async(req, res) => {
 }
 
 router.post('/', createOne);
-router.get('/:subject', getAll);
-router.get('/:subject/:examId', getOne);
+router.get('/:examType', getAll);
+router.get('/:examType/:examId', getOne);
 router.put('/:subject/:examId', updateOne);
 router.delete('/:subject/:examId', deleteOne);
 router.get('/:subject/:examId/questions', getQuestions);

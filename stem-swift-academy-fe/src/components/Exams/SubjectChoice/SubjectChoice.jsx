@@ -13,7 +13,7 @@ const SubjectChoice = () => {
         </section>
 
         <section className="btn-wrapper">
-          <Link to="/exams/english"><button className="btn english-choice">English</button></Link>
+          <Link to="/exams/sat" state={{ state: {subject: 'english'} }}><button className="btn english-choice">English</button></Link>
         </section>
       </article>
 
@@ -25,7 +25,7 @@ const SubjectChoice = () => {
         </section>
 
         <section>
-          <Link to="/exams/math"><button className="btn math-choice">Math</button></Link>
+          <Link to="/exams/sat" state={{ state: { subject: 'math' } }}><button className="btn math-choice">Math</button></Link>
         </section>
       </article>
     </section>

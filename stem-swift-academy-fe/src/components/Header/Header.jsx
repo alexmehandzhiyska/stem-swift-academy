@@ -1,15 +1,22 @@
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router";
-import { logout } from "../../store";
-import { useDispatch, useSelector } from "react-redux";
-import { authService } from "../../services/authService";
-import { errorNotification } from "../notification";
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
+
+import { logout } from '../../store';
+import { authService } from '../../services/authService';
+import { examTypes } from '../../constants';
+import { errorNotification } from '../notification';
+import { useState } from 'react';
 
 const Header = () => {
   const stateUser = useSelector((state) => state.user.value)
   const user = stateUser.id ? stateUser : JSON.parse(localStorage.getItem('user'));
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const [examSubmenuOpened, setExamSubmenuOpened] = useState(false);
 
   const onLogout = async () => {
     try {
@@ -31,7 +38,13 @@ const Header = () => {
 
   const userNav = (
     <>
-      <li className="nav-item px-2 mx-4 text-xl"><Link to="/exams">Practice tests</Link></li>
+      <li className="nav-item px-2 mx-4 text-xl">
+        <Link to="/exams">Practice Exams</Link>
+        <FontAwesomeIcon icon={faAngleDown} className="ml-3" onClick={() => setExamSubmenuOpened(!examSubmenuOpened)}></FontAwesomeIcon>
+        <ul className={`${examSubmenuOpened ? 'flex' : 'hidden'} flex-col absolute bg-blue-500 -mt-1 pt-4`}>
+          {examTypes.map((examType, i) => <li key={i} className="pt-2 pb-2 px-3" onClick={() => setExamSubmenuOpened(false)}><Link to={`/exams/${examType.endpoint}`}>{examType.name}</Link></li>)}
+        </ul>
+      </li>
       <li className="nav-item px-2 mx-4 text-xl"><Link to="/courses">Courses</Link></li>
       {user?.role === 'student' && <li className="nav-item px-2 mx-4 text-xl"><Link to="/calendar">Calendar</Link></li>}
       {user?.role === 'student' && <li className="nav-item px-2 mx-4 text-xl"><Link to={`/students/${user?.id}`}>My Profile</Link></li>}

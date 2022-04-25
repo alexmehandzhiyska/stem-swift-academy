@@ -1,5 +1,6 @@
-const getAll = async (subject) => {
-  const response = await fetch(`/exams/${subject}`);
+const getAll = async (examType, subject) => {
+  let url = subject ? `/exams/${examType}?subject=${subject}` : `/exams/${examType}`;
+  const response = await fetch(url);
   const data = await response.json();
 
   if (!response.ok) {

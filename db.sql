@@ -189,6 +189,7 @@ VALUES
 
 CREATE TABLE exams (
   id SERIAL PRIMARY KEY,
+  type VARCHAR(60) NOT NULL,
   subject TEXT NOT NULL,
   section VARCHAR(40) NOT NULL,
   duration INT NOT NULL,
@@ -199,9 +200,10 @@ CREATE TABLE exams (
 );
 
 INSERT INTO
-  exams (subject, section, duration, instructions, text, link, difficulty)
+  exams (type, subject, section, duration, instructions, text, link, difficulty)
 VALUES
   (
+    'sat',
     'math',
     'nocalc',
     25,
@@ -211,6 +213,7 @@ VALUES
    'Medium'
   ),
   (
+    'sat',
     'english',
     'reading',
     65,
@@ -220,6 +223,7 @@ VALUES
     'High'
   ),
   (
+    'sat',
     'english',
     'writing',
     35,
@@ -417,178 +421,178 @@ INSERT INTO
 VALUES
   (
     'One character argues with another character who intrudes on her home.',
-    2
+    1
   ),
   (
     'One character receives a surprising request from another character.',
-    2
+    1
   ),
   (
     'One character reminisces about choices she has made over the years.',
-    2
+    1
   ),
   (
     'One character criticizes another character for pursuing an unexpected course of action.',
-    2
+    1
   ),
   (
     'A careful analysis of a traditional practice',
-    3
+    2
   ),
   (
     'A detailed depiction of a meaningful encounter',
-    3
+    2
   ),
   (
     'A definitive response to a series of questions',
-    3
+    2
   ),
   (
     'A cheerful recounting of an amusing anecdote',
-    3
+    2
   ),
-  ('frankly.', 4),
-  ('confidently.', 4),
-  ('without mediation.', 4),
-  ('with precision.', 4),
+  ('frankly.', 3),
+  ('confidently.', 3),
+  ('without mediation.', 3),
+  ('with precision.', 3),
   (
     'She will consider his proposal inappropriate.',
-    5
+    4
   ),
   (
     'She will mistake his earnestness for immaturity.',
-    5
+    4
   ),
   (
     'She will consider his unscheduled visit an imposition.',
-    5
+    4
   ),
   (
     'She will underestimate the sincerity of his emotions.',
-    5
+    4
   ),
-  ('Line 33 ("His voice... refined")', 6),
-  ('Lines 49-61 ("You... mind")', 6),
-  ('Lines 63-64 ("Please... proposal")', 6),
-  ('Lines 71-72 ("Eager... face")', 6),
-  ('affection but not genuine love.', 7),
-  ('objectivity but not complete impartiality.', 7),
-  ('amusement but not mocking disparagement.', 7),
-  ('respect but not utter deference.', 7),
-  ('describe a culture.', 8),
-  ('criticize a tradition.', 8),
-  ('question a suggestion.', 8),
-  ('analyze a reaction.', 8),
-  ('appearance.', 9),
-  ('custom.', 9),
-  ('structure.', 9),
-  ('nature.', 9),
+  ('Line 33 ("His voice... refined")', 5),
+  ('Lines 49-61 ("You... mind")', 5),
+  ('Lines 63-64 ("Please... proposal")', 5),
+  ('Lines 71-72 ("Eager... face")', 5),
+  ('affection but not genuine love.', 6),
+  ('objectivity but not complete impartiality.', 6),
+  ('amusement but not mocking disparagement.', 6),
+  ('respect but not utter deference.', 6),
+  ('describe a culture.', 7),
+  ('criticize a tradition.', 7),
+  ('question a suggestion.', 7),
+  ('analyze a reaction.', 7),
+  ('appearance.', 8),
+  ('custom.', 8),
+  ('structure.', 8),
+  ('nature.', 8),
   (
     'He fears that his own parents will disapprove of Naomi.',
-    10
+    9
   ),
   (
     'He worries that Naomi will reject him and marry someone else.',
-    10
+    9
   ),
   (
     'He has been offered an attractive job in another country.',
-    10
+    9
   ),
   (
     'He knows that Chie is unaware of his feelings for Naomi.',
-    10
+    9
   ),
-  ('Line 39 ("I dont... you")', 11),
-  ('Lines 39-42 ("Normally... community")', 11),
-  ('Lines 58-59 ("Depending... Japan")', 11),
-  ('Lines 72-73 ("I see... you")', 11);
+  ('Line 39 ("I dont... you")', 10),
+  ('Lines 39-42 ("Normally... community")', 10),
+  ('Lines 58-59 ("Depending... Japan")', 10),
+  ('Lines 72-73 ("I see... you")', 10);
 
 INSERT INTO answers (content, question_id)
 VALUES
-  ('2', 12),
-  ('4', 12),
-  ('9', 12),
-  ('10', 12),
-  ('-1 + 12i', 13),
-  ('-1 - 6i', 13),
-  ('15 + 12i', 13),
-  ('15 - 6i', 13),
-  ('9mp', 14),
-  ('20mp', 14),
-  ('5m + 4p', 14),
-  ('4m + 5p', 14),
-  ('Kathy will complete the repairs within 108 days.', 15),
-  ('Kathy starts each week with 108 phones to fix.', 15),
-  ('Kathy repairs phones at a rate of 108 per hour.', 15),
-  ('Kathy repairs phones at a rate of 108 per day.', 15),
-  ('0', 16),
-  ('1', 16),
-  ('2', 16),
-  ('4', 16),
-  ('(0, 7)', 17),
-  ('(1, 7)', 17),
-  ('(7, 7)', 17),
-  ('(14, 2)', 17),
-  ('100', 18),
-  ('50', 18),
-  ('49', 18),
-  ('16', 18),
+  ('2', 11),
+  ('4', 11),
+  ('9', 11),
+  ('10', 11),
+  ('-1 + 12i', 12),
+  ('-1 - 6i', 12),
+  ('15 + 12i', 12),
+  ('15 - 6i', 12),
+  ('9mp', 13),
+  ('20mp', 13),
+  ('5m + 4p', 13),
+  ('4m + 5p', 13),
+  ('Kathy will complete the repairs within 108 days.', 14),
+  ('Kathy starts each week with 108 phones to fix.', 14),
+  ('Kathy repairs phones at a rate of 108 per hour.', 14),
+  ('Kathy repairs phones at a rate of 108 per day.', 14),
+  ('0', 15),
+  ('1', 15),
+  ('2', 15),
+  ('4', 15),
+  ('(0, 7)', 16),
+  ('(1, 7)', 16),
+  ('(7, 7)', 16),
+  ('(14, 2)', 16),
+  ('100', 17),
+  ('50', 17),
+  ('49', 17),
+  ('16', 17),
+  ('6', 18),
+  ('15', 18),
+  ('20', 18),
+  ('23', 18),
+  ('2', 19),
   ('6', 19),
-  ('15', 19),
-  ('20', 19),
-  ('23', 19),
-  ('2', 20),
-  ('6', 20),
-  ('16', 20),
-  ('80', 20),
-  ('0.002', 21),
-  ('200', 21),
-  ('2,000', 21),
-  ('20,000', 21);
+  ('16', 19),
+  ('80', 19),
+  ('0.002', 20),
+  ('200', 20),
+  ('2,000', 20),
+  ('20,000', 20);
 
 INSERT INTO answers (content, question_id)
 VALUES
+('NO CHANGE', 21),
+('defeat', 21),
+('outperform', 21),
+('outweigh', 21),
 ('NO CHANGE', 22),
-('defeat', 22),
-('outperform', 22),
-('outweigh', 22),
+('supplement and convert it into gas to use as fuel in electricity production.', 22),
+('supplement, while sweet whey is more desirable as a food additive for humans.', 22),
+('supplement, which provides an important element of their diet', 22),
 ('NO CHANGE', 23),
-('supplement and convert it into gas to use as fuel in electricity production.', 23),
-('supplement, while sweet whey is more desirable as a food additive for humans.', 23),
-('supplement, which provides an important element of their diet', 23),
+('can pollute waterway''s,', 23),
+('could have polluted waterways,', 23),
+('has polluted waterway''s,', 23),
 ('NO CHANGE', 24),
-('can pollute waterway''s,', 24),
-('could have polluted waterways,', 24),
-('has polluted waterway''s,', 24),
-('NO CHANGE', 25),
-('scientists: and', 25),
-('scientists, and', 25),
-('scientists, and,', 25),
-('where it is now.', 26),
-('after sentence 1.', 26),
-('after sentence 2.', 26),
-('after sentence 3.', 26),
-('Yes, because it does not provide a transition from the previous paragraph.', 27),
-('Yes, because it fails to support the main argument of the passage as introduced in the first paragraph.', 27),
-('No, because it continues the explanation of how acid whey can be disposed of safely.', 27),
-('No, because it sets up the argument in the paragraph for the benefits of Greek yogurt.', 27),
+('scientists: and', 24),
+('scientists, and', 24),
+('scientists, and,', 24),
+('where it is now.', 25),
+('after sentence 1.', 25),
+('after sentence 2.', 25),
+('after sentence 3.', 25),
+('Yes, because it does not provide a transition from the previous paragraph.', 26),
+('Yes, because it fails to support the main argument of the passage as introduced in the first paragraph.', 26),
+('No, because it continues the explanation of how acid whey can be disposed of safely.', 26),
+('No, because it sets up the argument in the paragraph for the benefits of Greek yogurt.', 26),
+('NO CHANGE', 27),
+('as', 27),
+('like', 27),
+('for', 27),
 ('NO CHANGE', 28),
-('as', 28),
-('like', 28),
-('for', 28),
+('conatining', 28),
+('contains', 28),
+('will contain', 28),
 ('NO CHANGE', 29),
-('conatining', 29),
-('contains', 29),
-('will contain', 29),
+('In other words,', 29),
+('Therefore,', 29),
+('For instance,', 29),
 ('NO CHANGE', 30),
-('In other words,', 30),
-('Therefore,', 30),
-('For instance,', 30),
-('NO CHANGE', 31),
-('fulfilled', 31),
-('complacent', 31),
-('sufficient', 31);
+('fulfilled', 30),
+('complacent', 30),
+('sufficient', 30);
 
 
 ALTER TABLE
@@ -597,14 +601,14 @@ ADD
   CONSTRAINT questions_exam_id_fkey FOREIGN KEY (exam_id) REFERENCES exams(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 ALTER TABLE
-  users_exams DROP CONSTRAINT users_exams_exam_id_fkey,
+  user_exams DROP CONSTRAINT user_exams_exam_id_fkey,
 ADD
-  CONSTRAINT users_exams_exam_id_fkey FOREIGN KEY (exam_id) REFERENCES exams(id) ON UPDATE CASCADE ON DELETE CASCADE;
+  CONSTRAINT user_exams_exam_id_fkey FOREIGN KEY (exam_id) REFERENCES exams(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 ALTER TABLE
-  users_courses DROP CONSTRAINT users_courses_course_id_fkey,
+  user_courses DROP CONSTRAINT user_courses_course_id_fkey,
 ADD
-  CONSTRAINT users_courses_course_id_fkey FOREIGN KEY (course_id) REFERENCES courses(id) ON UPDATE CASCADE ON DELETE CASCADE;
+  CONSTRAINT user_courses_course_id_fkey FOREIGN KEY (course_id) REFERENCES courses(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 ALTER TABLE
   topics DROP CONSTRAINT topics_course_id_fkey,

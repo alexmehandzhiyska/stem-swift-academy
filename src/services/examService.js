@@ -1,7 +1,8 @@
 const Exam = require('../../models/index').Exam;
 
-const getAll = async (subject) => {
-    const exams = await Exam.findAll({ where: { subject: subject } });
+const getAll = async (examType, subject) => {
+    let exams = await Exam.findAll({ where: { type: examType } });
+    exams = subject ? exams.filter(exam => exam.subject == subject) : exams;
     return exams.map(exam => exam.dataValues);
 }
 

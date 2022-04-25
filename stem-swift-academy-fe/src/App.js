@@ -46,9 +46,9 @@ function App() {
             <Route path="/courses/:courseId" element={<CourseDetails />}></Route> 
             <Route path="/courses/:courseId/topics/:topicId" element={<Topic />}> </Route>
             <Route path="/calendar" element={<StudentCalendar />}></Route>
-            <Route path="/exams" element={<SubjectChoice />}></Route>
-            <Route path="/exams/:subject" element={<AllExams />}></Route>
-            <Route path="/exams/:subject/:examId" element={<ExamDetails />}></Route>
+            <Route path="/exams/:examType" element={<AllExams />}></Route>
+            <Route path="/exams/:examType/subject" element={<SubjectChoice />}></Route>
+            <Route path="/exams/:examType/:examId" element={<ExamDetails />}></Route>
             <Route path="/exams/:subject/:examId/questions" element={<ExamQuestions />}></Route>
             <Route path="/exams/:subject/:examId/results" element={<ExamResults />}></Route>
             <Route path="/students/:studentId" element={<StudentProfile />}></Route>

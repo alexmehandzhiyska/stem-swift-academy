@@ -35,7 +35,7 @@ const ExamCard = ({ exam, subject, allExams, setNewExams }) => {
 
   return (
     <section className="test">
-      <p className="test-name">{exam.section}</p>
+      <p className="test-name">{exam.section ? `${exam.type} ${exam.section}` : `${exam.type} Test`}</p>
       <p className="test-time">{exam.duration} min</p>
 
       {user?.role !== 'student' &&
