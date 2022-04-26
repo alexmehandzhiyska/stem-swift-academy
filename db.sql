@@ -618,7 +618,6 @@ ALTER TABLE
 ADD
   CONSTRAINT topics_course_id_fkey FOREIGN KEY (course_id) REFERENCES courses(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
-
 ALTER TABLE
   answers DROP CONSTRAINT answers_question_id_fkey,
 ADD

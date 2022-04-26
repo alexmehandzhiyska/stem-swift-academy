@@ -18,7 +18,7 @@ const getAll = async(examId, shuffled) => {
 
 const addQuestions = async(examId, questions, subject) => {
     for (const question of questions) {
-        const questionData = await Question.create({ title: question.title, correct_answer: question.correctAnswer, explanation: question.explanation, subject: subject, exam_id: examId });
+        const questionData = await Question.create({ title: question.title, image_url: question.imageUrl, correct_answer: question.correctAnswer, explanation: question.explanation, subject: subject, exam_id: examId });
         const questionId = questionData.dataValues.id;
 
         await Answer.bulkCreate([ 
@@ -37,7 +37,7 @@ const updateQuestions = async(examId, questions, subject) => {
         const questionData = await Question.findOne({ where: { exam_id: examId, title: question.title } });
         const questionId = questionData.dataValues.id;
 
-        await Question.update({ title: question.title, correct_answer: question.correctAnswer, explanation: question.explanation, subject: subject, exam_id: examId }, { where: { id: questionId } });
+        await Question.update({ title: question.title, image_url: question.imageUrl, correct_answer: question.correctAnswer, explanation: question.explanation, subject: subject, exam_id: examId }, { where: { id: questionId } });
 
         await Answer.destroy({ where: { question_id: questionId } });
         await Answer.bulkCreate([

@@ -16,6 +16,10 @@ module.exports = {
           type: Sequelize.STRING(500),
           allowNull: false
       },
+      image_url: {
+        type: Sequelize.STRING(300),
+        allowNull: true
+      },
       correct_answer: {
           type: Sequelize.STRING(200),
           allowNull: false

@@ -23,10 +23,10 @@ const getOne = async (examType, examId) => {
 const createOne = async (exam) => {
   const response = await fetch(`/exams`, {
     method: 'POST',
+    credentials: 'include',
     headers: {
       'Content-Type': 'application/json'
     },
-    credentials: 'include',
     body: JSON.stringify(exam)
   });
 

@@ -23,12 +23,17 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING(500),
         allowNull: false
     },
+    image_url: {
+      type: DataTypes.STRING(300),
+      allowNull: true
+    },
     correct_answer: {
         type: DataTypes.STRING(200),
         allowNull: false
     },
     explanation: {
-        type: DataTypes.STRING(2000)
+        type: DataTypes.STRING(2000),
+        allowNull: true
     },
     subject: {
         type: DataTypes.STRING(30),

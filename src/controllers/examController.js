@@ -27,7 +27,6 @@ const getOne = async(req, res) => {
     }
 }
 
-
 const createOne = async(req, res) => {
     const { type, title, subject, section, instructions, duration, difficulty, link, text, questions } = req.body;
 
@@ -103,7 +102,6 @@ const getScore = async(req, res) => {
 
     try {
         const score = await questionService.getScore(userId, examId);
-        console.log(score);
 
         res.status(200).json(score);
     } catch (error) {
