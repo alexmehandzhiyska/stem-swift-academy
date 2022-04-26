@@ -29,10 +29,10 @@ const getOne = async(req, res) => {
 
 
 const createOne = async(req, res) => {
-    const { subject, section, instructions, duration, difficulty, link, text, questions } = req.body;
+    const { type, title, subject, section, instructions, duration, difficulty, link, text, questions } = req.body;
 
     try {
-        const exam = await examService.createOne(subject, section, instructions, duration, difficulty, link, text);
+        const exam = await examService.createOne(type, title, subject, section, instructions, duration, difficulty, link, text);
         await questionService.addQuestions(exam.id, Object.values(questions), subject);
 
         res.status(201).json(exam);
@@ -44,10 +44,10 @@ const createOne = async(req, res) => {
 
 const updateOne = async(req, res) => {
     const examId = req.params.examId;
-    const { subject, section, instructions, duration, difficulty, link, text, questions } = req.body;
+    const { type, title, subject, section, instructions, duration, difficulty, link, text, questions } = req.body;
 
     try {
-        const exam = await examService.updateOne(examId, subject, section, instructions, duration, difficulty, link, text);
+        const exam = await examService.updateOne(examId, type, title, subject, section, instructions, duration, difficulty, link, text);
         const result = await questionService.updateQuestions(exam.id, Object.values(questions), subject);
 
         res.status(201).json(result);
@@ -114,10 +114,10 @@ const getScore = async(req, res) => {
 router.post('/', createOne);
 router.get('/:examType', getAll);
 router.get('/:examType/:examId', getOne);
-router.put('/:subject/:examId', updateOne);
-router.delete('/:subject/:examId', deleteOne);
-router.get('/:subject/:examId/questions', getQuestions);
-router.post('/:subject/:examId/questions', submitAnswers);
-router.get('/:subject/:examId/results', getScore);
+router.put('/:examType/:examId', updateOne);
+router.delete('/:examType/:examId', deleteOne);
+router.get('/:examType/:examId/questions', getQuestions);
+router.post('/:examType/:examId/questions', submitAnswers);
+router.get('/:examType/:examId/results', getScore);
 
 module.exports = router;

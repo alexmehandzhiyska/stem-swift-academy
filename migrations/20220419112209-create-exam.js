@@ -12,6 +12,10 @@ module.exports = {
         type: Sequelize.STRING(60),
         allowNull: false
       },
+      title: {
+        type: Sequelize.STRING(40),
+        allowNull: false
+      },
       subject: {
         type: Sequelize.STRING(30),
         allowNull: true

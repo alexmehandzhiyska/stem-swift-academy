@@ -17,27 +17,27 @@ const ExamQuestions = () => {
   const [questions, setQuestions] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const { subject, examId } = useParams();
+  const { examType, examId } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
     setIsLoading(true);
 
-    examService.getQuestions(subject, examId, true)
+    examService.getQuestions(examType, examId, true)
       .then(response => {
         setQuestions(response);
       });
-  }, [subject, examId]);
+  }, [examType, examId]);
 
   useEffect(() => {
-    examService.getOne(subject, examId)
+    examService.getOne(examType, examId)
       .then(response => {
         if (response.text) {
           setText(response.text);
         }
         setIsLoading(false);
       });
-  }, [subject, examId]);
+  }, [examType, examId]);
 
   const examSubmitHandler = (survey) => {
     const userAnswers = {};
@@ -47,9 +47,9 @@ const ExamQuestions = () => {
       userAnswers[questionNum] = entry[1];
     }
 
-    examService.submitAnswers(subject, examId, userAnswers)
+    examService.submitAnswers(examType, examId, userAnswers)
       .then(() => {
-        navigate(`/exams/${subject}/${examId}/results`, { state: { userAnswers: userAnswers } });
+        navigate(`/exams/${examType}/${examId}/results`, { state: { userAnswers: userAnswers } });
       })
       .catch(() => {
         errorNotification('There is an error loading the questions. Please try again later!');

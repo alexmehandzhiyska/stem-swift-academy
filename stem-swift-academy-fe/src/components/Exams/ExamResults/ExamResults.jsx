@@ -16,36 +16,33 @@ const ExamResults = () => {
   const { state } = useLocation();
   const userAnswers = state.userAnswers;
 
-  const { subject, examId } = useParams();
+  const { examType, examId } = useParams();
 
   useEffect(() => {
     setIsLoading(true);
 
-    examService.getScore(subject, examId)
+    examService.getScore(examType, examId)
       .then(response => {
-        console.log(response);
         setScore(response);
         setIsLoading(false);
       })
       .catch(() => {
         errorNotification('There is an error with processing your answers. Please try again later!');
       })
-  }, [subject, examId]);
+  }, [examType, examId]);
 
   useEffect(() => {
     setIsLoading(true);
 
-    examService.getQuestions(subject, examId, false)
+    examService.getQuestions(examType, examId, false)
       .then(response => {
-        console.log(response);
-        console.log(userAnswers);
         setQuestions(response);
         setIsLoading(false);
       })
       .catch(() => {
         errorNotification('There was an error loading the questions! Please try again later!');
       });
-  }, [subject, examId]);
+  }, [examType, examId]);
 
   return (
     <>

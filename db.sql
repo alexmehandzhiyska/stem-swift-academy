@@ -200,10 +200,11 @@ CREATE TABLE exams (
 );
 
 INSERT INTO
-  exams (type, subject, section, duration, instructions, text, link, difficulty)
+  exams (type, title, subject, section, duration, instructions, text, link, difficulty)
 VALUES
   (
     'sat',
+    'SAT No calculator exam',
     'math',
     'nocalc',
     25,
@@ -214,6 +215,7 @@ VALUES
   ),
   (
     'sat',
+    'SAT Reading exam',
     'english',
     'reading',
     65,
@@ -224,6 +226,7 @@ VALUES
   ),
   (
     'sat',
+    'SAT Writing test',
     'english',
     'writing',
     35,

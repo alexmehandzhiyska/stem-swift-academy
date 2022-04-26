@@ -11,13 +11,13 @@ const getOne = async (id) => {
     return exam.dataValues;
 }
 
-const createOne = async (subject, section, instructions, duration, difficulty, link, text) => {
-    const exam = await Exam.create({ subject, section, duration, instructions, text, link, difficulty });
+const createOne = async (examType, title, subject, section, instructions, duration, difficulty, link, text) => {
+    const exam = await Exam.create({ type: examType, title, subject, section, duration, instructions, text, link, difficulty });
     return exam.dataValues;
 }
 
-const updateOne = async (examId, subject, section, instructions, duration, difficulty, link, text) => {
-    const exam = await Exam.update({ subject, section, duration, instructions, text, link, difficulty }, { where: { id: examId }, returning: true });
+const updateOne = async (examId, examType, title, subject, section, instructions, duration, difficulty, link, text) => {
+    const exam = await Exam.update({ examType, title, subject, section, duration, instructions, text, link, difficulty }, { where: { id: examId }, returning: true });
     return exam[1][0].dataValues;
 }
 
