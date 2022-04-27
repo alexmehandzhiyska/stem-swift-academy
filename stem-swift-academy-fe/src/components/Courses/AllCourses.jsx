@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { courseService } from '../../services/courseService';
 
 import CourseCard from './CourseCard';
 import LottieAnimation from '../LottieAnimation';
+import { courseService } from '../../services/courseService';
 import { errorNotification } from '../notification';
 
 const AllCourses = () => {
@@ -17,8 +17,8 @@ const AllCourses = () => {
         setCourses(courses);
         setIsLoading(false);
       })
-      .catch((err) => {
-        errorNotification(err);
+      .catch(() => {
+        errorNotification('There was an error loading the courses. Please try again later!');
       });
   }, []);
 
@@ -30,7 +30,7 @@ const AllCourses = () => {
           <h1 className="heading courses-heading">Choose a Course</h1>
 
           <section className="mt-28 flex justify-evenly text-white ">
-            {courses.length === 0 ? <h1 className="heading">No courses yet!</h1> : courses.map(course => <CourseCard key={course.id} course={course}></CourseCard>)}
+            {courses.length === 0 ? <h1 className="heading">There are no courses for you at the moment. Please check again later!</h1> : courses.map(course => <CourseCard key={course.id} course={course}></CourseCard>)}
           </section>
         </section>
       }
