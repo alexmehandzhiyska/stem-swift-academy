@@ -55,9 +55,9 @@ const calculateScore = async(examId, userId, userAnswers) => {
     const questionsData = await Question.findAll({ where: { exam_id: examId } });
 
     const correctAnswers = questionsData
-    .map(question => question.dataValues.correct_answer)
-    .sort((a, b) => a.id - b.id);
-    
+        .sort((a, b) => a.id - b.id)
+        .map(question => question.dataValues.correct_answer);
+
     const score = correctAnswers
         .filter((a, index) => a === userAnswers[index + 1])
         .length
