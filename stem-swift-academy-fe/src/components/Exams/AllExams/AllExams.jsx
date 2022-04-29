@@ -1,22 +1,29 @@
-import { useParams } from "react-router";
 import { useEffect, useState } from "react";
-import { examService } from '../../../services/examService';
-import { errorNotification } from "../../notification";
+import { useParams, useLocation } from "react-router";
+import { Link } from "react-router-dom";
+import { useSelector } from 'react-redux';
 
 import './AllExams.css';
 import ExamCard from "../ExamCard/ExamCard";
+import { examService } from '../../../services/examService';
 import LottieAnimation from "../../LottieAnimation";
+import { errorNotification } from "../../notification";
 
 const AllExams = () => {
   const [exams, setExams] = useState([]);
   const [filteredExams, setFilteredExams] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const { subject } = useParams();
+  const user = useSelector((state) => state.user.value);
+
+  const { examType } = useParams();
+  const { state } = useLocation();
+  const subject = state ? state.subject : null;
 
   useEffect(() => {
     setIsLoading(true);
-    examService.getAll(subject)
+    
+    examService.getAll(examType, subject)
       .then(response => {
         setExams(response);
         setFilteredExams(response);
@@ -26,7 +33,7 @@ const AllExams = () => {
         errorNotification('There is an error loading the exams. Please try again later!');
       });
 
-  }, [subject]);
+  }, [examType, subject]);
 
   const filterExams = (event) => {
     const section = event.target.value;
@@ -51,6 +58,8 @@ const AllExams = () => {
           <article className="tests">
             {filteredExams.length === 0 ? 'No exams yet!' : filteredExams.map(e => <ExamCard key={e.id} exam={e} subject={subject} allExams={filteredExams} setNewExams={setFilteredExams}></ExamCard>)}
           </article>
+
+          {user?.role !== 'student' && <button className="btn px-2 mx-4 mt-10 text-xl"><Link to={`/exams/${examType}/create`}>Create Exam</Link></button>}
         </section>
       }
     </>

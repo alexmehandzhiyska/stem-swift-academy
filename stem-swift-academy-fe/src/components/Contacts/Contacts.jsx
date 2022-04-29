@@ -1,11 +1,11 @@
-import './Contacts.css'
+import "./Contacts.css"
 
 const Contacts = () => {
   return (
     <section className="max-w-full w-screen flex flex-col items-center">
       <h1 className="heading">Contact Us</h1>
 
-      <article className=" contacts my-20 flex">
+      <article className="contacts my-20 flex">
         <section className="contact mx-10 px-10 py-8 text-white bg-blue-500 text-center">
           <h2 className="mb-4 text-3xl font-bold">Visit Us</h2>
           <p className="pt-2 text-lg">Blagoevgrad, Bulgaria, ul. Pirov</p>

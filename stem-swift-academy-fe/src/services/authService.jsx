@@ -1,11 +1,11 @@
-const register = async (name, email, password) => {
+const register = async (user) => {
   const response = await fetch(`/auth/register`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     credentials: 'include',
-    body: JSON.stringify({ name, email, password })
+    body: JSON.stringify(user)
   });
 
   const data = await response.json();
@@ -17,14 +17,14 @@ const register = async (name, email, password) => {
   return data;
 }
 
-const login = async (email, password) => {
+const login = async (user) => {
   const response = await fetch(`/auth/login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     credentials: 'include',
-    body: JSON.stringify({ email, password })
+    body: JSON.stringify(user)
   });
 
   const data = await response.json();

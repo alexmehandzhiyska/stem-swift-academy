@@ -14,12 +14,8 @@ const AllKolbs = () => {
     
     useEffect(() => {
         kolbService.getByUser(userId)
-        .then(response => {
-            setKolbs(response);
-        })
-        .catch(() => {
-            errorNotification('There was an error loading your kolbs. Please try again later!');
-        })
+            .then(response => setKolbs(response))
+            .catch(() => errorNotification('There was an error loading your kolbs. Please try again later!'));
     }, [userId]);
     
     return (
@@ -27,8 +23,8 @@ const AllKolbs = () => {
             <h1 className="heading">Notebook</h1>
 
             <section className="user-kolbs mb-20">
-                {kolbs.length === 0 ? <h1 className="heading">You do not have any notes yet!</h1> : kolbs.map((kolb, id) => 
-                    <article className="flex flex-col text-lg my-10">
+                {kolbs.length === 0 ? <h1 className="heading">You do not have any notes yet!</h1> : kolbs.map((kolb, i) => 
+                    <article key={i} className="flex flex-col text-lg my-10">
                         <table>
                             <tbody>
                                 <tr>

@@ -42,25 +42,26 @@ function App() {
             <Route path="/login" element={<Login />}></Route>
           </Route>
           <Route element={<UserRoute />}>
-            <Route path="/courses" exact element={<AllCourses />}></Route> </Route>
+            <Route path="/courses" exact element={<AllCourses />}></Route> 
             <Route path="/courses/:courseId" element={<CourseDetails />}></Route> 
             <Route path="/courses/:courseId/topics/:topicId" element={<Topic />}> </Route>
             <Route path="/calendar" element={<StudentCalendar />}></Route>
-            <Route path="/exams" element={<SubjectChoice />}></Route>
-            <Route path="/exams/:subject" element={<AllExams />}></Route>
-            <Route path="/exams/:subject/:examId" element={<ExamDetails />}></Route>
-            <Route path="/exams/:subject/:examId/questions" element={<ExamQuestions />}></Route>
-            <Route path="/exams/:subject/:examId/results" element={<ExamResults />}></Route>
+            <Route path="/exams/:examType" element={<AllExams />}></Route>
+            <Route path="/exams/:examType/subject" element={<SubjectChoice />}></Route>
+            <Route path="/exams/:examType/:examId" element={<ExamDetails />}></Route>
+            <Route path="/exams/:examType/:examId/questions" element={<ExamQuestions />}></Route>
+            <Route path="/exams/:examType/:examId/results" element={<ExamResults />}></Route>
             <Route path="/students/:studentId" element={<StudentProfile />}></Route>
             <Route path="/notebooks/:studentId" element={<AllKolbs />}></Route>
             <Route path="/notebooks/:studentId/create" element={<CreateKolbs />}></Route>
-            <Route element={<RoleRoute />}>
-              <Route path="/exams/create" element={<CreateExam mode="create" />}></Route>
-              <Route  path="/exams/:subject/:examId/edit" element={<CreateExam mode="edit" />} ></Route>
+          </Route>
+          <Route element={<RoleRoute />}>
+              <Route path="/exams/:examType/create" element={<CreateExam mode="create" />}></Route>
+              <Route path="/exams/:examType/:examId/edit" element={<CreateExam mode="edit" />} ></Route>
               <Route element={<OwnerRoute />}>
                 <Route path="/users" element={<AllUsers />}> </Route>
               </Route>
-            </Route>
+          </Route>
           <Route path="*" element={<NotFound />}></Route>
         </Routes>
       </Layout>

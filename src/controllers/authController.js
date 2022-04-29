@@ -8,12 +8,7 @@ const register = async(req, res) => {
         const data = await authService.register(name, email, password);
         res.cookie('auth_token', data.token, { httpOnly: true, secure: false });
 
-        res.status(201).json({
-            status: 'success',
-            data: {
-                user: data.user,
-            }
-        });
+        res.status(201).json(data.user);
     } catch (error) {
         console.log(error);
         res.status(400).json(error.message);
@@ -27,12 +22,7 @@ const login = async(req, res) => {
         const data = await authService.login(email, password);
 
         res.cookie('auth_token', data.token, { httpOnly: true, secure: false });
-        res.status(200).json({
-            status: 'success',
-            data: {
-                user: data.user
-            }
-        });
+        res.status(200).json(data.user);
     } catch (error) {
         res.status(400).json(error.message);
     }

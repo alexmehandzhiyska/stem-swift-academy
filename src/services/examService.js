@@ -1,7 +1,8 @@
 const Exam = require('../../models/index').Exam;
 
-const getAll = async (subject) => {
-    const exams = await Exam.findAll({ where: { subject: subject } });
+const getAll = async (examType, subject) => {
+    let exams = await Exam.findAll({ where: { type: examType } });
+    exams = subject ? exams.filter(exam => exam.subject == subject) : exams;
     return exams.map(exam => exam.dataValues);
 }
 
@@ -10,13 +11,13 @@ const getOne = async (id) => {
     return exam.dataValues;
 }
 
-const createOne = async (subject, section, instructions, duration, difficulty, link, text) => {
-    const exam = await Exam.create({ subject, section, duration, instructions, text, link, difficulty });
+const createOne = async (examType, title, subject, section, instructions, duration, difficulty, link, text) => {
+    const exam = await Exam.create({ type: examType, title, subject, section, duration, instructions, text, link, difficulty });
     return exam.dataValues;
 }
 
-const updateOne = async (examId, subject, section, instructions, duration, difficulty, link, text) => {
-    const exam = await Exam.update({ subject, section, duration, instructions, text, link, difficulty }, { where: { id: examId }, returning: true });
+const updateOne = async (examId, examType, title, subject, section, instructions, duration, difficulty, link, text) => {
+    const exam = await Exam.update({ examType, title, subject, section, duration, instructions, text, link, difficulty }, { where: { id: examId }, returning: true });
     return exam[1][0].dataValues;
 }
 

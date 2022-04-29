@@ -8,26 +8,27 @@ const register = async(name, email, password) => {
     const user = result.dataValues;
 
     const token = jwtGenerator(user.id);
-    return { user, token };
+    return { user: { id: user.id, name: user.name, email: user.email, role: user.role }, token };
 }
 
 const login = async(email, password) => {
-    const response = await User.findOne({ where: { email: email } });
-    const user = response.dataValues;
+    const response = await User.findOne({ where: { email: email }});
 
-    if (!user) {
-        throw new Error('Invalid username or password');
+    if (!response) {
+        throw new Error('Invalid email or password');
     }
+    
+    const user = response.dataValues;
 
     const passwordValid = await bcrypt.compare(password, user.password);
 
     if (!passwordValid) {
-        throw new Error('Invalid username or password');
+        throw new Error('Invalid email or password');
     }
 
     const token = jwtGenerator(user.id);
 
-    return { user, token };
+    return { user: { id: user.id, name: user.name, email: user.email, role: user.role }, token };
 }
 
 

@@ -8,13 +8,21 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      type: {
+        type: Sequelize.STRING(60),
+        allowNull: false
+      },
+      title: {
+        type: Sequelize.STRING(40),
+        allowNull: false
+      },
       subject: {
         type: Sequelize.STRING(30),
-        allowNull: false
+        allowNull: true
       },
       section: {
         type: Sequelize.STRING(40),
-        allowNull: false
+        allowNull: true
       },
       duration: {
         type: Sequelize.INTEGER,

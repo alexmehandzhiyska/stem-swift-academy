@@ -16,7 +16,7 @@ const CreateExam = () => {
 
   const questionsArr = Array(10).fill(1);
   const { register, formState: { errors }, handleSubmit } = useForm({ mode: 'onSubmit', reValidateMode: 'onChange' });
-  let { subject, examId } = useParams();
+  let { examType, subject, examId } = useParams();
 
   const mode = examId ? 'edit' : 'create'
   const navigate = useNavigate();
@@ -47,24 +47,27 @@ const CreateExam = () => {
     } else {
       setIsLoading(false);
     }
-  }, [examSubject, examId, mode]);
+  }, [examSubject, examId, mode, subject]);
 
 
   const submitExamHandler = (data) => {
     if (mode === 'edit') {
+      data.type = examType;
       examService.updateOne(examSubject, examId, data)
         .then(() => {
           successNotification('Exam edited successfully!');
-          navigate(`/exams/${examSubject}/${examId}`);
+          navigate(`/exams/${examType}/${examId}`);
         })
         .catch(() => {
           errorNotification('There was an error editing your exam. Please try again later.');
         });
     } else {
+      data.type = examType;
+
       examService.createOne(data)
         .then(() => {
           successNotification('Exam created successfully!');
-          navigate(`/exams/${data.subject}`)
+          navigate(`/exams/${examType}`, { state: { subject: examSubject } });
         })
         .catch(() => {
           errorNotification('There was an error creating your exam. Please try again later.');
@@ -93,11 +96,13 @@ const CreateExam = () => {
             <select className="capitalize" {...register('subject')} defaultValue={mode === 'edit' ? exam.subject : 'english'}  onChange={e => setExamSubject(e.target.value)} name="subject">
               <option value="english">english</option>
               <option value="math">math</option>
+              <option value="medicine">medicine</option>
             </select>
 
             <fieldset className="non-english-inputs flex flex-col items-center">
-              <input name="section" {...register('section', { required: { value: true, message: 'Field is required!' } })} className="exam-input" placeholder="Section" type="text" defaultValue={mode === 'edit' ? exam.section : ''} />
-              {errors.section && <p className="text-blue-500">{errors.section.message}</p>}
+              <input name="subject" {...register('subject')} placeholder="Exam subject (English, Math)" type="text" defaultValue={mode === 'edit' ? exam.section : ''} />
+              <input name="title" {...register('title')} className="exam-input" placeholder="Title" type="text" defaultValue={mode === 'edit' ? exam.title : ''} />
+              <input name="section" {...register('section')} className="exam-input" placeholder="Section" type="text" defaultValue={mode === 'edit' ? exam.section : ''} />
               <input name="instructions" {...register('instructions', { required: { value: true, message: 'Field is required!' } })} className="exam-input" placeholder="Instructions" type="text" defaultValue={mode === 'edit' ? exam.instructions : ''} />
               {errors.instructions && <p className="text-blue-500">{errors.instructions.message}</p>}
               <input name="duration" {...register('duration', { required: { value: true, message: 'Field is required!' } })} className="exam-input" placeholder="Test duration (in minutes)" type="number" defaultValue={mode === 'edit' ? exam.duration : ''} />
@@ -120,6 +125,7 @@ const CreateExam = () => {
 
                 <input {...register(`questions.question-${i + 1}.title`, { required: { value: true, message: 'Field is required!' } })} className="exam-input" type="text" placeholder="Question" name={`questions.question-${i + 1}.title`} defaultValue={mode === 'edit' ? questions[i].title : ''} />
                 {errors[`questions.question-${i + 1}.title`] && <p className="text-blue-500">{errors[`questions.question-${i + 1}.title`].message}</p>}
+                <input {...register(`questions.question-${i + 1}.imageUrl`)} className="exam-input" type="text" placeholder="Image link (if needed to answer the question)" name={`questions.question-${i + 1}.imageUrl`} defaultValue={mode === 'edit' ? questions[i].imageUrl : ''} />
                 <input {...register(`questions.question-${i + 1}.correctAnswer`, { required: { value: true, message: 'Field is required!' } })} className="exam-input" type="text" placeholder="Correct Answer" name={`questions.question-${i + 1}.correctAnswer`} defaultValue={mode === 'edit' ? questions[i].correct_answer : ''} />
                 {errors[`questions.question-${i + 1}.correctAnswer`] && <p className="text-blue-500">{errors[`questions.question-${i + 1}.correctAnswer`].message}</p>}
                 <input {...register(`questions.question-${i + 1}.wrongAnswer1`, { required: { value: true, message: 'Field is required!' } })} className="exam-input" type="text" placeholder="First wrong answer" name={`questions.question-${i + 1}.wrongAnswer1`} defaultValue={mode === 'edit' ? questions[i].choices[0] : ''} />

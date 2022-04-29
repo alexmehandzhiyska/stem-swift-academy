@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { Calendar, Views, momentLocalizer } from 'react-big-calendar'
+import moment from 'moment';
+
+import LottieAnimation from '../LottieAnimation';
+import { errorNotification } from '../notification';
 import { lectureService } from '../../services/lectureService';
 
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import './Calendar.css';
-
-import moment from 'moment';
-import LottieAnimation from '../LottieAnimation';
-import { errorNotification } from '../notification';
 
 const localizer = momentLocalizer(moment);
 const allViews = Object.keys(Views).map(k => Views[k])
@@ -34,7 +34,7 @@ const StudentCalendar = () => {
         setLectures(allTopics);
         setIsLoading(false);
       })
-      .catch(error => {
+      .catch(() => {
         errorNotification('There was an error loading your calendar. Please try again later!');
       });
   }, [])
