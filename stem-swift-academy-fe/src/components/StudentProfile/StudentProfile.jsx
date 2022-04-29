@@ -11,7 +11,7 @@ const StudentProfile = () => {
   const user = stateUser.id ? stateUser : JSON.parse(localStorage.getItem('user'));
 
   const [exams, setExams] = useState([]);
-  const [totalQuestions, setTotalQuestions] = useState([]);
+  const [questions, setQuestions] = useState([]);
   const [subjects, setSubjects] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -23,7 +23,7 @@ const StudentProfile = () => {
         const subjects = response.questions.map(question => question.subject);
         setSubjects([...new Set(subjects)]);
         setExams(response.exams);
-        setTotalQuestions(response.questions);
+        setQuestions(response.questions);
         setIsLoading(false);
       })
       .catch(() => {
@@ -45,7 +45,7 @@ const StudentProfile = () => {
                 key={i}
                 subject={s}
                 exams={exams.filter(e => e.subject === s)}
-                totalQuestions={totalQuestions.filter(question => question.subject === s).length}
+                totalQuestions={questions.filter(question => question.subject === s).length}
               />
             )}
           </article>

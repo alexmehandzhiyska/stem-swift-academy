@@ -18,15 +18,16 @@ const Header = () => {
 
   const [examSubmenuOpened, setExamSubmenuOpened] = useState(false);
 
-  const onLogout = async () => {
-    try {
-      localStorage.removeItem('user');
-      await authService.logout();
-      dispatch(logout());
-      navigate('/');
-    } catch (error) {
-      errorNotification('There was an error logging you out. Please try again later!');
-    }
+  const onLogout = () => {
+    authService.logout()
+      .then(() => {
+        localStorage.removeItem('user');
+        dispatch(logout());
+        navigate('/');
+      })
+      .catch(() => {
+        errorNotification('There was an error logging you out. Please try again later!');
+      });
   }
 
   const guestNav = (
@@ -56,9 +57,7 @@ const Header = () => {
     <header className="flex justify-between px-10 py-1 bg-blue-500 text-white max-w-full">
       <section className="flex items-center">
         <Link to="/" className="flex items-center">
-        <img className="w-56 mx-3"
-          src="https://res.cloudinary.com/drinka/image/upload/v1647941133/sat-academy/images/ssa-logo-shrinked_bgrqz1.png"
-          alt="STEM Swift Academy logo" />
+          <img className="w-56 mx-3" src="https://res.cloudinary.com/drinka/image/upload/v1647941133/sat-academy/images/ssa-logo-shrinked_bgrqz1.png" alt="STEM Swift Academy logo" />
         </Link>
       </section>
 
