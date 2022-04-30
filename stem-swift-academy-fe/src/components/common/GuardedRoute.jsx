@@ -1,5 +1,5 @@
-import { Navigate, Outlet } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { Navigate, Outlet } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const UserRoute = () => {
   let stateUser = useSelector((state) => state.user.value);

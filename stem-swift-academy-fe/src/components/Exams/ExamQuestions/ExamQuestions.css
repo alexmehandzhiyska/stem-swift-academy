@@ -1,5 +1,19 @@
+.survey {
+    max-height: 100vh !important;
+    overflow-y: scroll;
+}
+
 .questions {
     max-width: 100vw;
+}
+
+input[type="radio"] {
+    width: 17px !important;
+    height: 17px !important;
+}
+
+.question-img {
+    max-width: 30vw;
 }
 
 .text,

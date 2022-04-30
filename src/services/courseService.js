@@ -18,7 +18,7 @@ const getAll = async (userId) => {
 
 const getOne = async (courseId) => {
   const course = await Course.findByPk(courseId);
-  const topics = await Topic.findAll({ where: { course_id: courseId } });
+  const topics = await Topic.findAll({ where: { course_id: courseId }, order: [['week_number', 'ASC']] });
   const result = { course: {...course.dataValues, topics: topics.map(topic => topic.dataValues)}};
   return result;
 }

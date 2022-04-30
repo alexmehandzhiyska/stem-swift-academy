@@ -20,15 +20,20 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: 'radiogroup'
     },
     title: {
-        type: DataTypes.STRING(500),
+        type: DataTypes.STRING(1000),
         allowNull: false
+    },
+    image_url: {
+      type: DataTypes.STRING(300),
+      allowNull: true
     },
     correct_answer: {
         type: DataTypes.STRING(200),
         allowNull: false
     },
     explanation: {
-        type: DataTypes.STRING(2000)
+        type: DataTypes.STRING(2000),
+        allowNull: true
     },
     subject: {
         type: DataTypes.STRING(30),

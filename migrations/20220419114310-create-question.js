@@ -13,8 +13,12 @@ module.exports = {
         defaultValue: 'radiogroup'
       },
       title: {
-          type: Sequelize.STRING(500),
+          type: Sequelize.STRING(1000),
           allowNull: false
+      },
+      image_url: {
+        type: Sequelize.STRING(300),
+        allowNull: true
       },
       correct_answer: {
           type: Sequelize.STRING(200),

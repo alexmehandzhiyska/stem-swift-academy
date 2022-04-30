@@ -14,24 +14,24 @@ const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const onSubmit = async (data) => {
-    try {
-      const response = await authService.login(data.email, data.password);
-      const user = { id: response.data.user.id, email: data.email, name: response.data.user.name, role: response.data.user.role };
-      dispatch(login(user));
-      localStorage.setItem('user', JSON.stringify(user));
+  const loginUser = async (data) => {
+    authService.login(data)
+      .then(response => {
+        dispatch(login(response));
+        localStorage.setItem('user', JSON.stringify(response));
 
-      navigate('/');
-    } catch (error) {
-      errorNotification(error.toString());
-    }
+        navigate('/');
+      })
+      .catch(err => {
+        errorNotification(err.toString());
+      });
   }
-
+  
   return (
     <section className="mt-40">
       <h1 className="heading">Log In</h1>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="login-form flex flex-col justify-center items-center text-blue-500" method="POST">
+      <form onSubmit={handleSubmit(loginUser)} className="login-form flex flex-col justify-center items-center text-blue-500" method="POST">
         <article className="my-2">
           <FontAwesomeIcon className="icon" icon={faEnvelopeOpenText}></FontAwesomeIcon>
           <input name="email" {...register('email', { required: { value: true, message: 'Email is required!' } })} className="h-14 pl-16 text-xl bg-transparent border-blue-500 border-b-4 placeholder-blue-500 focus:outline-none" type="email" placeholder="Email" />

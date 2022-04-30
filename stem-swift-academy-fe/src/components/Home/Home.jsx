@@ -1,6 +1,6 @@
 import Banner from './Banner/Banner';
 import Info from './Info/Info';
-import About from './About';
+import About from './About/About';
 import Results from './Results/Results';
 
 const Home = () => {

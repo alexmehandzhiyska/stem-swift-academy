@@ -8,11 +8,12 @@ const register = async(name, email, password) => {
     const user = result.dataValues;
 
     const token = jwtGenerator(user.id);
-    return { user, token };
+    return { user: { id: user.id, name: user.name, email: user.email, role: user.role }, token };
 }
 
 const login = async(email, password) => {
     const response = await User.findOne({ where: { email: email } });
+    
     if (!response) {
         throw new Error('Invalid email or password');
     }
@@ -27,7 +28,7 @@ const login = async(email, password) => {
 
     const token = jwtGenerator(user.id);
 
-    return { user, token };
+    return { user: { id: user.id, name: user.name, email: user.email, role: user.role }, token };
 }
 
 
