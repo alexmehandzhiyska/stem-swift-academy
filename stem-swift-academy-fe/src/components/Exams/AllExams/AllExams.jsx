@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useLocation } from "react-router";
 import { Link } from "react-router-dom";
-import { useSelector } from 'react-redux';
 
 import './AllExams.css';
 import ExamCard from "../ExamCard/ExamCard";
@@ -14,7 +13,7 @@ const AllExams = () => {
   const [filteredExams, setFilteredExams] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const user = useSelector((state) => state.user.value);
+  const user = JSON.parse(localStorage.getItem('user'));
 
   const { examType } = useParams();
   const { state } = useLocation();

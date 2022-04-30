@@ -18,7 +18,7 @@ const QuestionResult = ({ number, question, userAnswer }) => {
     return (   
         <article className="my-20 ml-36">
             <h1 className="my-6 question-title">{number}. {question.title} {!userAnswer && <span className="text-base">(Not answered)</span>}</h1>
-            {question.image_url && <img src={question.image_url} className="question-img"></img>}
+            {question.image_url && <img src={question.image_url} alt="Question" className="question-img"></img>}
 
             <p>{question.choices.map((answer, i) => 
                 <li key={i} className={answer === question.correct_answer ? "text-green-400 text-xl" : answer === userAnswer ? "text-red-500 text-xl" : "text-black text-xl"}>{answer}</li>

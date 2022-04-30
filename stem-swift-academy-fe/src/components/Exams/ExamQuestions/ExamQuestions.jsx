@@ -18,7 +18,7 @@ const ExamQuestions = () => {
   const { examType, examId } = useParams();
   const navigate = useNavigate();
 
-  const { register, formState: { errors }, handleSubmit } = useForm({ mode: 'onSubmit', reValidateMode: 'onChange' });
+  const { register, handleSubmit } = useForm({ mode: 'onSubmit', reValidateMode: 'onChange' });
 
   useEffect(() => {
     setIsLoading(true);
@@ -57,11 +57,11 @@ const ExamQuestions = () => {
           {text && <p className="text pt-10 px-8 text-lg w-1/2">{text}</p>}
 
           <form className={text ? "survey" : "survey min-w-full"} onSubmit={handleSubmit(submitAnswers)}>
-            {questions.length == 0 ? <p>This exam still has no questions</p> : questions.map((question, i) => 
+            {questions.length === 0 ? <p>This exam still has no questions</p> : questions.map((question, i) => 
               <article key={i} className="my-20 mx-20">
                 <p className="font-bold text-xl mb-6">{i + 1}. {question.title}</p>
 
-                {question.image_url && <img src={question.image_url} className="question-img"></img>}
+                {question.image_url && <img src={question.image_url} alt="Question" className="question-img"></img>}
                 {question.choices.map((choice, i1) => 
                   <section key={i1} className="my-2 text-xl">
                     <input type="radio" id={`question${i + 1}${choice}`} value={choice} {...register(`${i + 1}`)} name={`${i + 1}`}/>

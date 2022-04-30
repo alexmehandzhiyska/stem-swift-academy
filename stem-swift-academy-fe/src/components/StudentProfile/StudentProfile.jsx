@@ -20,7 +20,7 @@ const StudentProfile = () => {
 
     userService.getUserExams(user.id)
       .then(response => {
-        const subjects = response.questions.map(question => question.subject);
+        const subjects = response.exams.map(exam => exam.subject);
         setSubjects([...new Set(subjects)]);
         setExams(response.exams);
         setQuestions(response.questions);
