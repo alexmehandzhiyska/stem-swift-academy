@@ -44,6 +44,10 @@ module.exports = (sequelize, DataTypes) => {
     difficulty: {
       type: DataTypes.STRING(30),
       allowNull: false
+    },
+    questions_count: {
+      type: DataTypes.INTEGER,
+      allowNull: false
     }
   }, {
     sequelize,

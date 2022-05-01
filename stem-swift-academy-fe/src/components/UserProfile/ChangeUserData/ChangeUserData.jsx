@@ -6,7 +6,7 @@ import { successNotification, errorNotification } from '../../notification';
 
 import './ChangeUserData.css';
 
-const ChangeUserData = ({ userData, formIsOpened, setFormIsOpened }) => {
+const ChangeUserData = ({ userData, dataIsModified, setDataIsModified, formIsOpened, setFormIsOpened }) => {
     const { register, formState: { errors }, handleSubmit } = useForm({ mode: 'onSubmit', reValidateMode: 'onChange' });
     const user = JSON.parse(localStorage.getItem('user'));
 
@@ -15,9 +15,10 @@ const ChangeUserData = ({ userData, formIsOpened, setFormIsOpened }) => {
     const changeData = (data) => {
         userService.updateOne(user.id, data)
             .then(() => {
+                setDataIsModified(!dataIsModified);
                 setFormIsOpened(false);
                 successNotification('Successfully updated your profile!');
-                navigate(`/users/${user.id}`, { state: { modified: true } });
+                navigate(`/users/${user.id}`);
             })
             .catch(() => {
                 errorNotification('There was a problem updating your profile. Please try again later!');

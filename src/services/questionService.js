@@ -16,9 +16,9 @@ const getAll = async(examId, shuffled) => {
     return questions.sort((a, b) => a.id - b.id);
 };
 
-const addQuestions = async(examId, questions, subject) => {
+const addQuestions = async(examId, questions, examType) => {
     for (const question of questions) {
-        const questionData = await Question.create({ title: question.title, image_url: question.imageUrl, correct_answer: question.correctAnswer, explanation: question.explanation, subject: subject, exam_id: examId });
+        const questionData = await Question.create({ title: question.title, image_url: question.imageUrl, correct_answer: question.correctAnswer, explanation: question.explanation, exam_type: examType, exam_id: examId });
         const questionId = questionData.dataValues.id;
 
         await Answer.bulkCreate([ 

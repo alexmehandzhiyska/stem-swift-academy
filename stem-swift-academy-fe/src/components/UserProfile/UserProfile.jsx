@@ -1,6 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router';
-import { useSelector } from 'react-redux';
 
 import { userService } from '../../services/userService';
 
@@ -10,12 +8,9 @@ import LottieAnimation from '../LottieAnimation';
 import { errorNotification } from '../notification';
 
 const UserProfile = () => {
-  const stateUser = useSelector((state) => state.user.value);
-  const user = stateUser.id ? stateUser : JSON.parse(localStorage.getItem('user'));
+  const user = JSON.parse(localStorage.getItem('user'));
 
-  const { state } = useLocation();
-  const modified = state ? state.modified : false;
-
+  const [dataIsModified, setDataIsModified] = useState(false);
   const [userData, setUserData] = useState(null);
   const [exams, setExams] = useState([]);
   const [questions, setQuestions] = useState([]);
@@ -24,9 +19,11 @@ const UserProfile = () => {
 
   useEffect(() => {
     userService.getOne(user.id)
-      .then((response) => setUserData(response))
+      .then((response) => {
+        setUserData(response);
+      })
       .catch(() => errorNotification('There was an error loading your profile data. Please try again later!'));
-  }, []);
+  }, [dataIsModified]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -35,9 +32,7 @@ const UserProfile = () => {
       .then(response => {
         const examTypes = response.exams.map(exam => exam.type);
         setExamTypes([...new Set(examTypes)]);
-        console.log(examTypes);
         setExams(response.exams);
-        console.log(response.questions);
         setQuestions(response.questions);
         setIsLoading(false);
       })
@@ -45,16 +40,6 @@ const UserProfile = () => {
         errorNotification('There was an error loading your data. Please try again later!');
       });
   }, [user.id]);
-
-  const updateUserData = () => {
-    userService.getOne(user.id)
-      .then((response) => setUserData(response))
-      .catch(() => errorNotification('There was an error loading your profile data. Please try again later!'));
-  }
-
-  if (modified) {
-    updateUserData();
-  }
 
   return (
     <>
@@ -64,10 +49,10 @@ const UserProfile = () => {
           <h1 className="heading">{user.name}'s profile</h1>
 
           <article className="flex justify-center">
-            <UserData userData={userData} />
+            <UserData userData={userData} dataIsModified={dataIsModified} setDataIsModified={setDataIsModified} />
           </article>
 
-          <article className="flex justify-center items-center mb-20">
+          <article className="flex justify-center items-start mb-20">
             {examTypes.map((et, i) =>
               <ExamStatistics
                 key={i}

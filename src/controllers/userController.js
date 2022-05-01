@@ -45,9 +45,11 @@ const getUserExams = async (req, res) => {
     const userId = req.params.userId;
   
     try {
-        const exams = await userService.getUserExams(userId);
+        const result = await userService.getUserExams(userId);
+        
+        const sortedExams = result.exams.sort((a, b) => a.type.localeCompare(b.type));
   
-        res.status(200).json(exams);
+        res.status(200).json({ exams: sortedExams, questions: result.questions });
     } catch (error) {
         console.log(error);
         res.status(400).json(error.message);

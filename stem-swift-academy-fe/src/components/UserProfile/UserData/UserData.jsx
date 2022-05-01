@@ -4,7 +4,7 @@ import ChangeUserData from '../ChangeUserData/ChangeUserData';
 
 import './UserData.css';
 
-const UserData = ({ userData }) => {
+const UserData = ({ userData, dataIsModified, setDataIsModified }) => {
     const [formIsOpened, setFormIsOpened] = useState(false);
 
     return (
@@ -44,7 +44,7 @@ const UserData = ({ userData }) => {
                 </tfoot>
             </table>
 
-            <ChangeUserData userData={userData} formIsOpened={formIsOpened} setFormIsOpened={setFormIsOpened}></ChangeUserData>
+            <ChangeUserData userData={userData} dataIsModified={dataIsModified} setDataIsModified={setDataIsModified} formIsOpened={formIsOpened} setFormIsOpened={setFormIsOpened}></ChangeUserData>
         </>
     );
 }

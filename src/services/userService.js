@@ -15,7 +15,7 @@ const getOne = async (userId) => {
 }
 
 const getUserExams = async (userId) => {
-    const userExamsData = await UserExam.findAll({ where: { user_id: userId }});
+    const userExamsData = await UserExam.findAll({ where: { user_id: userId } });
     const userExamIds = userExamsData.map(exam => exam.dataValues.exam_id);
     let exams = [];
 
