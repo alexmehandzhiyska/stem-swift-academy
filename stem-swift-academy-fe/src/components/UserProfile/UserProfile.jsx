@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams, useLocation } from 'react-router';
+import { useLocation } from 'react-router';
 import { useSelector } from 'react-redux';
 
 import { userService } from '../../services/userService';
@@ -16,20 +16,10 @@ const UserProfile = () => {
   const { state } = useLocation();
   const modified = state ? state.modified : false;
 
-  const updateUserData = () => {
-    userService.getOne(user.id)
-      .then((response) => setUserData(response))
-      .catch(() => errorNotification('There was an error loading your profile data. Please try again later!'));
-  }
-
-  if (modified) {
-    updateUserData();
-  }
-
   const [userData, setUserData] = useState(null);
   const [exams, setExams] = useState([]);
   const [questions, setQuestions] = useState([]);
-  const [subjects, setSubjects] = useState([]);
+  const [examTypes, setExamTypes] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -43,9 +33,11 @@ const UserProfile = () => {
 
     userService.getUserExams(user.id)
       .then(response => {
-        const subjects = response.exams.map(exam => exam.subject);
-        setSubjects([...new Set(subjects)]);
+        const examTypes = response.exams.map(exam => exam.type);
+        setExamTypes([...new Set(examTypes)]);
+        console.log(examTypes);
         setExams(response.exams);
+        console.log(response.questions);
         setQuestions(response.questions);
         setIsLoading(false);
       })
@@ -54,7 +46,15 @@ const UserProfile = () => {
       });
   }, [user.id]);
 
-  
+  const updateUserData = () => {
+    userService.getOne(user.id)
+      .then((response) => setUserData(response))
+      .catch(() => errorNotification('There was an error loading your profile data. Please try again later!'));
+  }
+
+  if (modified) {
+    updateUserData();
+  }
 
   return (
     <>
@@ -68,12 +68,12 @@ const UserProfile = () => {
           </article>
 
           <article className="flex justify-center items-center mb-20">
-            {subjects.map((s, i) =>
+            {examTypes.map((et, i) =>
               <ExamStatistics
                 key={i}
-                subject={s}
-                exams={exams.filter(e => e.subject === s)}
-                totalQuestions={questions.filter(question => question.subject === s).length}
+                type={et}
+                exams={exams.filter(e => e.type === et)}
+                totalQuestions={questions.filter(question => question.exam_type === et).length}
               />
             )}
           </article>

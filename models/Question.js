@@ -35,7 +35,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING(2000),
         allowNull: true
     },
-    subject: {
+    exam_type: {
         type: DataTypes.STRING(30),
         allowNull: false
     },
