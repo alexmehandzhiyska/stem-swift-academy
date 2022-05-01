@@ -1,19 +1,42 @@
 import { useEffect, useState } from 'react';
-import { userService } from '../../services/userService';
+import { useParams, useLocation } from 'react-router';
 import { useSelector } from 'react-redux';
 
+import { userService } from '../../services/userService';
+
 import ExamStatistics from './ExamStatistics';
+import UserData from './UserData/UserData';
 import LottieAnimation from '../LottieAnimation';
 import { errorNotification } from '../notification';
 
-const StudentProfile = () => {
+const UserProfile = () => {
   const stateUser = useSelector((state) => state.user.value);
   const user = stateUser.id ? stateUser : JSON.parse(localStorage.getItem('user'));
 
+  const { state } = useLocation();
+  const modified = state ? state.modified : false;
+
+  const updateUserData = () => {
+    userService.getOne(user.id)
+      .then((response) => setUserData(response))
+      .catch(() => errorNotification('There was an error loading your profile data. Please try again later!'));
+  }
+
+  if (modified) {
+    updateUserData();
+  }
+
+  const [userData, setUserData] = useState(null);
   const [exams, setExams] = useState([]);
   const [questions, setQuestions] = useState([]);
   const [subjects, setSubjects] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    userService.getOne(user.id)
+      .then((response) => setUserData(response))
+      .catch(() => errorNotification('There was an error loading your profile data. Please try again later!'));
+  }, []);
 
   useEffect(() => {
     setIsLoading(true);
@@ -31,6 +54,7 @@ const StudentProfile = () => {
       });
   }, [user.id]);
 
+  
 
   return (
     <>
@@ -39,7 +63,11 @@ const StudentProfile = () => {
         <section>
           <h1 className="heading">{user.name}'s profile</h1>
 
-          <article className="flex justify-center items-center">
+          <article className="flex justify-center">
+            <UserData userData={userData} />
+          </article>
+
+          <article className="flex justify-center items-center mb-20">
             {subjects.map((s, i) =>
               <ExamStatistics
                 key={i}
@@ -62,4 +90,4 @@ const StudentProfile = () => {
   );
 }
 
-export default StudentProfile;
+export default UserProfile;

@@ -30,6 +30,23 @@ module.exports = (sequelize, DataTypes) => {
     role: {
       type: DataTypes.STRING(40),
       defaultValue: 'student'
+    },
+    country: {
+      type: DataTypes.STRING(60),
+      allowNull: true
+    },
+    city: {
+      type: DataTypes.STRING(60),
+      allowNull: true
+    },
+    school: {
+      type: DataTypes.STRING(150),
+      allowNull: true
+    },
+    graduation_year: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      min: 2022
     }
   }, {
     sequelize,

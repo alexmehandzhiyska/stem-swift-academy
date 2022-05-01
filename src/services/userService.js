@@ -11,7 +11,7 @@ const getAll = async (role) => {
 
 const getOne = async (userId) => {
     const userData = await User.findByPk(userId);
-    return userData.dataValues;
+    return { name: userData.name, email: userData.email, role: userData.role, country: userData.country, city: userData.city, school: userData.school, graduationYear: userData.graduation_year };
 }
 
 const getUserExams = async (userId) => {
@@ -46,4 +46,11 @@ const updateUsers = async(users) => {
     return result;
 }
 
-module.exports = { getAll, getOne, getUserExams, updateUsers };
+const updateOne = async (userId, email, country, city, school, graduation_year) => {
+    const currentUser = await User.findByPk(userId);
+    const newUser = await currentUser.update({ email, country, city, school, graduation_year });
+
+    return newUser.dataValues;
+}
+
+module.exports = { getAll, getOne, getUserExams, updateUsers, updateOne };

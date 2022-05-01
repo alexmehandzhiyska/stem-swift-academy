@@ -18,7 +18,7 @@ import Login from "./components/Login/Login";
 import NotFound from "./components/NotFound";
 import Register from "./components/Register/Register";
 import StudentCalendar from "./components/Calendar/Calendar";
-import StudentProfile from "./components/StudentProfile/StudentProfile";
+import UserProfile from "./components/UserProfile/UserProfile";
 import SubjectChoice from "./components/Exams/SubjectChoice/SubjectChoice";
 import CreateKolbs from "./components/Kolbs/CreateKolb/CreateKolb";
 import AllKolbs from "./components/Kolbs/AllKolbs/AllKolbs";
@@ -51,7 +51,7 @@ function App() {
             <Route path="/exams/:examType/:examId" element={<ExamDetails />}></Route>
             <Route path="/exams/:examType/:examId/questions" element={<ExamQuestions />}></Route>
             <Route path="/exams/:examType/:examId/results" element={<ExamResults />}></Route>
-            <Route path="/students/:studentId" element={<StudentProfile />}></Route>
+            <Route path="/users/:studentId" element={<UserProfile />}></Route>
             <Route path="/notebooks/:studentId" element={<AllKolbs />}></Route>
             <Route path="/notebooks/:studentId/create" element={<CreateKolbs />}></Route>
           </Route>

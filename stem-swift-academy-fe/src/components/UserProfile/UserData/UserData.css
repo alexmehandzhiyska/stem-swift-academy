@@ -1,0 +1,9 @@
+.user-data {
+    outline: 8px solid rgb(238, 221, 235);
+    outline-offset: 4px;
+}
+
+.change-data-btn {
+    width: 8vw;
+    height: 4vh;
+}
