@@ -4,12 +4,18 @@ import { faCalendarCheck, faClock } from '@fortawesome/free-solid-svg-icons';
 
 import { formatDate } from '../../utils';
 
+import Aos from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from 'react';
+
 const CourseCard = ({ course }) => {
+  useEffect(() => Aos.init({ duration: 1000 }), [])
+  
   const startDate = formatDate(course.start_date);
   const endDate = formatDate(course.end_date);
 
   return (
-    <article className="course flex flex-col items-center px-10 py-16 bg-blue-500 rounded-3xl">
+    <article data-aos="flip-left" className="course flex flex-col items-center px-10 py-16 bg-blue-500 rounded-3xl">
       <h1 className="mb-2 text-center text-3xl">{course.duration} Months Course</h1>
 
       <section className="flex items-center self-start text-xl pt-5">
