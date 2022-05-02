@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react';
 
 import { userService } from '../../services/userService';
-
-import ExamStatistics from './ExamStatistics';
 import UserData from './UserData/UserData';
 import LottieAnimation from '../LottieAnimation';
 import { errorNotification } from '../notification';
+
+import ExamStatistics from './ExamStatistics';
+
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 
 const UserProfile = () => {
   const user = JSON.parse(localStorage.getItem('user'));
@@ -16,6 +19,8 @@ const UserProfile = () => {
   const [questions, setQuestions] = useState([]);
   const [examTypes, setExamTypes] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => Aos.init({ duration: 500 }), []);
 
   useEffect(() => {
     userService.getOne(user.id)
@@ -46,9 +51,8 @@ const UserProfile = () => {
       {isLoading && <LottieAnimation />}
       {!isLoading && exams.length > 0 &&
         <section>
-          <h1 className="heading">{user.name}'s profile</h1>
-
-          <article className="flex justify-center">
+          <article data-aos="zoom-in" className="flex flex-col items-center justify-center">
+            <h1 data-aos="zoom-in" className="heading">{user.name}'s profile</h1>
             <UserData userData={userData} dataIsModified={dataIsModified} setDataIsModified={setDataIsModified} />
           </article>
 
@@ -66,7 +70,7 @@ const UserProfile = () => {
       }
 
       {!isLoading && exams.length === 0 &&
-        <section>
+        <section data-aos="zoom-in">
           <h1 className="heading">{user.name}'s profile</h1>
           <h1 className="heading mt-40">No exams yet!</h1>
         </section>

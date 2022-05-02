@@ -1,12 +1,16 @@
-import { useEffect, useState } from "react";
-import { useParams, useLocation } from "react-router";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { useParams, useLocation } from 'react-router';
+import { Link } from 'react-router-dom';
+
+import ExamCard from '../ExamCard/ExamCard';
+import { examService } from '../../../services/examService';
+import LottieAnimation from '../../LottieAnimation';
+import { errorNotification } from '../../notification';
+
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 
 import './AllExams.css';
-import ExamCard from "../ExamCard/ExamCard";
-import { examService } from '../../../services/examService';
-import LottieAnimation from "../../LottieAnimation";
-import { errorNotification } from "../../notification";
 
 const AllExams = () => {
   const [exams, setExams] = useState([]);
@@ -18,6 +22,8 @@ const AllExams = () => {
   const { examType } = useParams();
   const { state } = useLocation();
   const subject = state ? state.subject : null;
+
+  useEffect(() => Aos.init({ duration: 500 }), []);
 
   useEffect(() => {
     setIsLoading(true);
@@ -45,7 +51,7 @@ const AllExams = () => {
     <>
       {isLoading && <LottieAnimation />}
       {!isLoading &&
-        <section className="flex flex-col items-center">
+        <section data-aos="fade-in" className="flex flex-col items-center">
           <h1 className="exam-heading heading capitalize">{subject} Practice Tests</h1>
 
           <select onChange={filterExams} name="subject-select" className="capitalize">

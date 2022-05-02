@@ -2,13 +2,15 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router';
 import { useForm } from 'react-hook-form';
+
 import { examService } from '../../../services/examService';
+import LottieAnimation from '../../LottieAnimation';
 import { errorNotification } from '../../notification';
 
-import LottieAnimation from '../../LottieAnimation';
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 
-import '../../../../node_modules/survey-react/modern.css';
-import './ExamQuestions.css'
+import './ExamQuestions.css';
 
 const ExamQuestions = () => {
   const [text, setText] = useState('');
@@ -20,6 +22,8 @@ const ExamQuestions = () => {
 
   const { register, handleSubmit } = useForm({ mode: 'onSubmit', reValidateMode: 'onChange' });
 
+  useEffect(() => Aos.init({ duration: 500 }), []);
+  
   useEffect(() => {
     setIsLoading(true);
 
@@ -53,7 +57,7 @@ const ExamQuestions = () => {
     <>
       {isLoading && <LottieAnimation />}
       {!isLoading &&
-        <section className="questions flex justify-between max-h-screen">
+        <section data-aos="fade-in" className="questions flex justify-between max-h-screen">
           {text && <p className="text pt-10 px-8 text-lg w-1/2">{text}</p>}
 
           <form className={text ? "survey" : "survey min-w-full"} onSubmit={handleSubmit(submitAnswers)}>

@@ -1,13 +1,16 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { useParams, useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
-import { useLocation } from 'react-router';
 
 import { examService } from '../../../services/examService';
 import { errorNotification } from '../../notification';
 
 import LottieAnimation from '../../LottieAnimation';
-import './ExamDetails.css'
+
+import Aos from 'aos';
+import 'aos/dist/aos.css';
+
+import './ExamDetails.css';
 
 const ExamDetails = () => {
   const [exam, setExam] = useState({});
@@ -16,6 +19,8 @@ const ExamDetails = () => {
   const { examType, examId } = useParams();
   const { state } = useLocation();
   const subject = state ? state.subject : null;
+
+  useEffect(() => Aos.init({ duration: 500 }), []);
 
   useEffect(() => {
     setIsLoading(true);
@@ -34,7 +39,7 @@ const ExamDetails = () => {
     <>
       {isLoading && <LottieAnimation />}
       {!isLoading &&
-        <section className="section-start">
+        <section data-aos="fade-in" className="section-start">
           <article className="section-header">
             <h1 className="heading">{exam.title}</h1>
             <h3 className="subheading">{exam.duration} minutes | 10 questions | <span className="capitalize">{exam.difficulty}</span> difficulty</h3>

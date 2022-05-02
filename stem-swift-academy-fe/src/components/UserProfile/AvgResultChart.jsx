@@ -11,7 +11,7 @@ const AvgResultChart = ({ avgPercent }) => {
   ];
 
   return (
-    <>
+    <article className="pie-chart">
       <PieChart className="mt-10" width={600} height={300}>
         <Pie
           data={data}
@@ -26,7 +26,7 @@ const AvgResultChart = ({ avgPercent }) => {
           ))}
         </Pie>
       </PieChart>
-    </>
+    </article>
   );
 }
 

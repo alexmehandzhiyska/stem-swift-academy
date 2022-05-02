@@ -1,7 +1,14 @@
+import { useEffect } from 'react';
+
 import AvgResultChart from './AvgResultChart';
 import SectionRadarChart from './SectionRadarChart/SectionRadarChart';
 
+import Aos from 'aos';
+import 'aos/dist/aos.css';
+
 const ExamStatistics = ({ type, exams, totalQuestions }) => {
+  useEffect(() => Aos.init({ duration: 1000 }), []);
+
   const results = exams.map(exam => exam.score / exam.questions_count);
   const avgScore = results.reduce((sum, result) => sum + result, 0) / exams.length;
   const avgPercent = avgScore * 100;
@@ -11,7 +18,7 @@ const ExamStatistics = ({ type, exams, totalQuestions }) => {
       <section className="flex flex-col items-center">
         <h1 className="uppercase mt-10 text-2xl font-semibold">{type}</h1>
 
-        <AvgResultChart exams={exams} avgPercent={avgPercent}></AvgResultChart>
+        <AvgResultChart exams={exams} avgPercent={Number(avgPercent.toFixed(1))}></AvgResultChart>
         
         <article className="my-5">
           {type === 'sat' && 
@@ -22,7 +29,9 @@ const ExamStatistics = ({ type, exams, totalQuestions }) => {
         </article>
 
         {type === 'sat' && 
-          <SectionRadarChart exams={exams.filter(exam => exam.type === 'sat')}></SectionRadarChart>
+          <article data-aos="zoom-in">
+            <SectionRadarChart exams={exams.filter(exam => exam.type === 'sat')}></SectionRadarChart>
+          </article>
         }
       </section>
     </>

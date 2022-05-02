@@ -91,7 +91,7 @@ option {
     text-align: center;
 }
 
-.recharts-wrapper {
+.pie-chart .recharts-wrapper {
     z-index: -1;
 }
 

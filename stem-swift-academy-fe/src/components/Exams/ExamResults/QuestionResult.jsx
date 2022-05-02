@@ -4,7 +4,7 @@ import { faCaretRight, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import './ExamResults.css'
+import './ExamResults.css';
 
 const QuestionResult = ({ number, question, userAnswer }) => {
     const [explanationIsToggled, setExplanationIsToggled] = useState(false);
