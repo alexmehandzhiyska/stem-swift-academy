@@ -48,7 +48,7 @@ const Header = () => {
       </li>
       <li className="nav-item px-2 mx-4 text-xl"><Link to="/courses">Courses</Link></li>
       {user?.role === 'student' && <li className="nav-item px-2 mx-4 text-xl"><Link to="/calendar">Calendar</Link></li>}
-      {user?.role === 'student' && <li className="nav-item px-2 mx-4 text-xl"><Link to={`/students/${user?.id}`}>My Profile</Link></li>}
+      {user?.role === 'student' && <li className="nav-item px-2 mx-4 text-xl"><Link to={`/users/${user?.id}`}>My Profile</Link></li>}
       {user?.role === 'owner' && <li className="nav-item px-2 mx-4 text-xl"> <Link to="/users">Users</Link></li>}
       <li className="logout-btn nav-item px-2 mx-4 text-xl cursor-pointer" onClick={onLogout}>Logout</li>
     </>

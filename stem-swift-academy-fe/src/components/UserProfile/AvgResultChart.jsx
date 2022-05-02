@@ -4,10 +4,10 @@ import { PieChart, Pie, Cell } from 'recharts';
 
 const COLORS = ['#3B82F6', '#EEDDEB', '#FFBB28', '#FF8042'];
 
-const AvgResultChart = ({ exams, avgScore }) => {
+const AvgResultChart = ({ avgPercent }) => {
   const data = [
-    { name: 'Correct Answers Percent', value: avgScore * 10 },
-    { name: 'Wrong Answers Percent', value: 100 - (avgScore * 10) }
+    { name: 'Correct Answers Percent', value: avgPercent },
+    { name: 'Wrong Answers Percent', value: 100 - avgPercent }
   ];
 
   return (

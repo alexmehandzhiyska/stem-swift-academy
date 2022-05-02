@@ -1,27 +1,37 @@
 import { useEffect, useState } from 'react';
+
 import { userService } from '../../services/userService';
-import { useSelector } from 'react-redux';
 
 import ExamStatistics from './ExamStatistics';
+import UserData from './UserData/UserData';
 import LottieAnimation from '../LottieAnimation';
 import { errorNotification } from '../notification';
 
-const StudentProfile = () => {
-  const stateUser = useSelector((state) => state.user.value);
-  const user = stateUser.id ? stateUser : JSON.parse(localStorage.getItem('user'));
+const UserProfile = () => {
+  const user = JSON.parse(localStorage.getItem('user'));
 
+  const [dataIsModified, setDataIsModified] = useState(false);
+  const [userData, setUserData] = useState(null);
   const [exams, setExams] = useState([]);
   const [questions, setQuestions] = useState([]);
-  const [subjects, setSubjects] = useState([]);
+  const [examTypes, setExamTypes] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    userService.getOne(user.id)
+      .then((response) => {
+        setUserData(response);
+      })
+      .catch(() => errorNotification('There was an error loading your profile data. Please try again later!'));
+  }, [dataIsModified]);
 
   useEffect(() => {
     setIsLoading(true);
 
     userService.getUserExams(user.id)
       .then(response => {
-        const subjects = response.exams.map(exam => exam.subject);
-        setSubjects([...new Set(subjects)]);
+        const examTypes = response.exams.map(exam => exam.type);
+        setExamTypes([...new Set(examTypes)]);
         setExams(response.exams);
         setQuestions(response.questions);
         setIsLoading(false);
@@ -31,7 +41,6 @@ const StudentProfile = () => {
       });
   }, [user.id]);
 
-
   return (
     <>
       {isLoading && <LottieAnimation />}
@@ -39,13 +48,17 @@ const StudentProfile = () => {
         <section>
           <h1 className="heading">{user.name}'s profile</h1>
 
-          <article className="flex justify-center items-center">
-            {subjects.map((s, i) =>
+          <article className="flex justify-center">
+            <UserData userData={userData} dataIsModified={dataIsModified} setDataIsModified={setDataIsModified} />
+          </article>
+
+          <article className="flex justify-center items-start mb-20">
+            {examTypes.map((et, i) =>
               <ExamStatistics
                 key={i}
-                subject={s}
-                exams={exams.filter(e => e.subject === s)}
-                totalQuestions={questions.filter(question => question.subject === s).length}
+                type={et}
+                exams={exams.filter(e => e.type === et)}
+                totalQuestions={questions.filter(question => question.exam_type === et).length}
               />
             )}
           </article>
@@ -62,4 +75,4 @@ const StudentProfile = () => {
   );
 }
 
-export default StudentProfile;
+export default UserProfile;

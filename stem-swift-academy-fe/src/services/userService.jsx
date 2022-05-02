@@ -50,4 +50,23 @@ const updateUsers = async (users) => {
     return data;
 }
 
-export const userService = { getAll, getOne, getUserExams, updateUsers };
+const updateOne = async (userId, user) => {
+    const response = await fetch(`/users/${userId}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include',
+      body: JSON.stringify(user)
+    });
+  
+    const data = await response.json();
+  
+    if (!response.ok) {
+      throw new Error(data);
+    }
+  
+    return data;
+  }
+
+export const userService = { getAll, getOne, getUserExams, updateUsers, updateOne };

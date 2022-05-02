@@ -11,8 +11,9 @@ const getOne = async (id) => {
     return exam.dataValues;
 }
 
-const createOne = async (examType, title, subject, section, instructions, duration, difficulty, link, text) => {
-    const exam = await Exam.create({ type: examType, title, subject, section, duration, instructions, text, link, difficulty });
+const createOne = async (examType, title, subject, section, instructions, duration, difficulty, link, text, questions_count) => {
+    console.log(questions_count);
+    const exam = await Exam.create({ type: examType, title, subject, section, duration, instructions, text, link, difficulty, questions_count });
     return exam.dataValues;
 }
 

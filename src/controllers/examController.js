@@ -31,8 +31,8 @@ const createOne = async(req, res) => {
     const { type, title, subject, section, instructions, duration, difficulty, link, text, questions } = req.body;
 
     try {
-        const exam = await examService.createOne(type, title, subject, section, instructions, duration, difficulty, link, text);
-        await questionService.addQuestions(exam.id, Object.values(questions), subject);
+        const exam = await examService.createOne(type, title, subject, section, instructions, duration, difficulty, link, text, Object.keys(questions).length);
+        await questionService.addQuestions(exam.id, Object.values(questions), type);
 
         res.status(201).json(exam);
     } catch (error) {

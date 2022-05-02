@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const userService = require('../services/userService');
 
-const getAll = async(req, res) => {
+const getAll = async (req, res) => {
     const page = req.query.page;
     const limit = req.query.limit;
     const role = req.query.role;
@@ -29,21 +29,13 @@ const getAll = async(req, res) => {
     }
 }
 
-const getOne = async(req, res) => {
+const getOne = async (req, res) => {
     const userId = req.params.userId;
 
     try {
         const user = await userService.getOne(userId);
 
-        res.status(200).json({
-            status: 'success',
-            data: {
-                user: {
-                    email: user.email,
-                    name: user.name,
-                }
-            }
-        })
+        res.status(200).json(user);
     } catch (error) {
         res.status(400).json(error.message);
     }
@@ -53,9 +45,11 @@ const getUserExams = async (req, res) => {
     const userId = req.params.userId;
   
     try {
-        const exams = await userService.getUserExams(userId);
+        const result = await userService.getUserExams(userId);
+        
+        const sortedExams = result.exams.sort((a, b) => a.type.localeCompare(b.type));
   
-        res.status(200).json(exams);
+        res.status(200).json({ exams: sortedExams, questions: result.questions });
     } catch (error) {
         console.log(error);
         res.status(400).json(error.message);
@@ -74,9 +68,23 @@ const updateRoles = async(req, res) => {
     }
 }
 
+const updateOne = async (req, res) => {
+    console.log('in update');
+    const userId = req.params.userId;
+    const { email, country, city, school, graduation_year } = req.body;
+
+    try {
+        const updatedUser = await userService.updateOne(userId, email, country, city, school, graduation_year);
+        res.status(201).json(updatedUser);
+    } catch (error) {
+        res.status(400).json(error.message);
+    }
+}
+
 router.get('/', getAll);
 router.patch('/', updateRoles);
 router.get('/:userId', getOne);
+router.patch('/:userId', updateOne);
 router.get('/:userId/exams', getUserExams);
 
 module.exports = router;
