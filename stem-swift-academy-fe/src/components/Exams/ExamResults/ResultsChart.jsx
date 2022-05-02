@@ -1,5 +1,5 @@
 import React from 'react';
-import { PieChart, Pie, Cell } from 'recharts';
+import { PieChart, Pie, Cell, Tooltip } from 'recharts';
 
 
 const COLORS = ['#3B82F6', '#EEDDEB', '#FFBB28', '#FF8042'];
@@ -24,6 +24,8 @@ const ResultsChart = ({ score }) => {
           <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
         ))}
       </Pie>
+      
+      <Tooltip />
     </PieChart>
   );
 }
