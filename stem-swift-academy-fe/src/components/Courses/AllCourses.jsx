@@ -35,7 +35,7 @@ const AllCourses = () => {
           <h1 data-aos="zoom-in" className="heading courses-heading">Choose a Course</h1>
 
           <section className="mt-28 flex justify-evenly text-white ">
-            {courses.length === 0 ? <h1 data-aos="zoom-in" className="heading">There are no courses for you at the moment. Please check again later!</h1> : courses.map(course => <CourseCard key={course.id} course={course}></CourseCard>)}
+            {courses.length === 0 ? <h1 data-aos="fade-in" className="heading">There are no courses for you at the moment. Please check again later!</h1> : courses.map(course => <CourseCard key={course.id} course={course}></CourseCard>)}
           </section>
         </section>
       }
