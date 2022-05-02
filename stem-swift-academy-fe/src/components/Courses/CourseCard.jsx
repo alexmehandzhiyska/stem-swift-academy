@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarCheck, faClock } from '@fortawesome/free-solid-svg-icons';
@@ -6,7 +7,6 @@ import { formatDate } from '../../utils';
 
 import Aos from 'aos';
 import 'aos/dist/aos.css';
-import { useEffect } from 'react';
 
 const CourseCard = ({ course }) => {
   useEffect(() => Aos.init({ duration: 1000 }), [])
