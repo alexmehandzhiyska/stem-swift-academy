@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react'
-import { Calendar, Views, momentLocalizer } from 'react-big-calendar'
+import React, { useEffect, useState } from 'react';
+import { Calendar, Views, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 
+import { lectureService } from '../../services/lectureService';
 import LottieAnimation from '../LottieAnimation';
 import { errorNotification } from '../notification';
-import { lectureService } from '../../services/lectureService';
+
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import './Calendar.css';
@@ -15,6 +18,8 @@ const allViews = Object.keys(Views).map(k => Views[k])
 const StudentCalendar = () => {
   const [lectures, setLectures] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => Aos.init({ duration: 500 }), []);
 
   useEffect(() => {
     setIsLoading(true);
@@ -43,15 +48,18 @@ const StudentCalendar = () => {
     <>
       {isLoading && <LottieAnimation />}
       {!isLoading &&
-        <Calendar
-          events={lectures}
-          views={allViews}
-          step={60}
-          showMultiDayTimes
-          defaultDate={new Date(2021, 11, 12)}
-          localizer={localizer}
-          className='calendar'
-        />
+        <section data-aos="fade-in">
+          <Calendar
+            events={lectures}
+            views={allViews}
+            step={60}
+            showMultiDayTimes
+            defaultDate={new Date(2021, 11, 12)}
+            localizer={localizer}
+            className='calendar'
+          />
+        </section>
+        
       }
     </>
   )

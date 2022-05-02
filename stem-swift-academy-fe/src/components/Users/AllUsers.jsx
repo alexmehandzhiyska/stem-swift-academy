@@ -5,7 +5,11 @@ import { errorNotification, successNotification, saveConfirmNotification } from 
 
 import UserCard from './UserCard';
 import LottieAnimation from '../LottieAnimation';
-import './AllUsers.css'
+
+import Aos from 'aos';
+import 'aos/dist/aos.css';
+
+import './AllUsers.css';
 
 const AllUsers = () => {
   const [users, setUsers] = useState([]);
@@ -16,6 +20,8 @@ const AllUsers = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
+
+  useEffect(() => Aos.init({ duration: 500 }), []);
 
   useEffect(() => {
     setIsLoading(true);
@@ -59,7 +65,7 @@ const AllUsers = () => {
     <>
       {isLoading && <LottieAnimation />}
       {!isLoading &&
-        <section className="flex flex-col items-center">
+        <section data-aos="fade-in" className="flex flex-col items-center">
           <h1 className="heading users-heading">All Users</h1>
 
           <select onChange={(e) => setUsersRole(e.target.value)} defaultValue={usersRole} name="subject-select" className="capitalize">
