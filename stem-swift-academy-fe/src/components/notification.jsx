@@ -10,7 +10,7 @@ export const errorNotification = (title = 'Error!') => {
     didOpen: () => {
       MySwal.clickConfirm()
     }
-  }).then(() => MySwal.fire(title, '', 'error'));
+  }).then(() => MySwal.fire(title, '', 'error'))
 }
 
 export const successNotification = (title = 'Success!') => {
@@ -44,6 +44,18 @@ export const saveConfirmNotification = async (title = 'Are you sure?') => {
     cancelButtonColor: '#3085d6',
     confirmButtonText: 'Save',
     cancelButtonText: 'Don\'t save'
+  });
+  return result.isConfirmed;
+}
+
+export const warningNotification = async (title = 'Warning!') => {
+  const result = await MySwal.fire({
+    title: <p>{title}</p>,
+    icon: 'warning',
+    showConfirmButton: true,
+    showCancelButton: false,
+    confirmButtonColor: '#3085d6',
+    confirmButtonText: 'Ok',
   });
   return result.isConfirmed;
 }

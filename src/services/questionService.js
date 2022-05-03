@@ -1,6 +1,7 @@
 const _ = require('lodash');
 const Question = require('../../models/index').Question;
 const Answer = require('../../models/index').Answer;
+const Exam = require('../../models/index').Exam;
 const UserExam = require('../../models/index').UserExam;
 
 const getAll = async(examId, shuffled) => {
@@ -51,7 +52,7 @@ const updateQuestions = async(examId, questions, subject) => {
     return { status: 'success' };
 }
 
-const calculateScore = async(examId, userId, userAnswers) => {
+const calculateScore = async (examId, userId, userAnswers) => {
     const questionsData = await Question.findAll({ where: { exam_id: examId } });
 
     const correctAnswers = questionsData

@@ -40,7 +40,7 @@ const ExamCard = ({ exam, subject, allExams, setNewExams }) => {
 
       {user?.role !== 'student' &&
         <article className='admin-tools'>
-          <Link to={`/exams/${exam.type}/${exam.id}/edit`}><FontAwesomeIcon icon={faEdit} className="mx-3 text-3xl text-blue-500"></FontAwesomeIcon></Link>
+          <Link to={`/exams/${exam.type}/${exam.id}/edit`}><FontAwesomeIcon icon={faEdit} className="mx-3 text-3xl text-blue-500 transition-colors duration-500 hover:text-green-500"></FontAwesomeIcon></Link>
           <FontAwesomeIcon icon={faTrash} onClick={deleteExamHandler} className="mx-3 text-3xl text-blue-500 transition-colors duration-500 hover:text-red-500"></FontAwesomeIcon>
         </article>
       }

@@ -113,6 +113,7 @@ const CreateExam = () => {
               {errors.instructions && <p className="text-blue-500">{errors.instructions.message}</p>}
               <input name="duration" {...register('duration', { required: { value: true, message: 'Field is required!' } })} className="exam-input" placeholder="Test duration (in minutes)" type="number" defaultValue={mode === 'edit' ? exam.duration : ''} />
               {errors.duration && <p className="text-blue-500">{errors.duration.message}</p>}
+              <input name="time" {...register('time')} className="exam-input" placeholder="Test starting time (if fixed)" type="datetime-local" defaultValue={mode === 'edit' ? exam.time : ''} />
               <input name="difficulty" {...register('difficulty', { required: { value: true, message: 'Field is required!' } })} className="exam-input" placeholder="Test difficulty (Low, Medium or High)" type="text" defaultValue={mode === 'edit' ? exam.difficulty : ''} />
               {errors.difficulty && <p className="text-blue-500">{errors.difficulty.message}</p>}
               <input name="pdfLink" {...register('pdfLink')} className="exam-input" placeholder="PDF link" type="text" defaultValue={mode === 'edit' ? exam.link : ''} />

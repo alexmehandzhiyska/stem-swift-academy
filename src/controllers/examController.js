@@ -16,10 +16,11 @@ const getAll = async(req, res) => {
 }
 
 const getOne = async(req, res) => {
+    const userId = req.user.user;
     const examId = req.params.examId;
 
     try {
-        const exam = await examService.getOne(examId);
+        const exam = await examService.getOne(userId, examId);
 
         res.status(200).json(exam);
     } catch (error) {
@@ -28,10 +29,10 @@ const getOne = async(req, res) => {
 }
 
 const createOne = async(req, res) => {
-    const { type, title, subject, section, instructions, duration, difficulty, link, text, questions } = req.body;
+    const { type, title, subject, section, instructions, duration, time, difficulty, link, text, questions } = req.body;
 
     try {
-        const exam = await examService.createOne(type, title, subject, section, instructions, duration, difficulty, link, text, Object.keys(questions).length);
+        const exam = await examService.createOne(type, title, subject, section, instructions, duration, time, difficulty, link, text, Object.keys(questions).length);
         await questionService.addQuestions(exam.id, Object.values(questions), type);
 
         res.status(201).json(exam);
