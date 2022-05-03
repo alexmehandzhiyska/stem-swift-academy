@@ -2,10 +2,10 @@ const router = require('express').Router();
 const authService = require('../services/authService');
 
 const register = async(req, res) => {
-    const { name, email, password } = req.body;
+    const { name, email, password, country, city, school, graduationYear } = req.body;
 
     try {
-        const data = await authService.register(name, email, password);
+        const data = await authService.register(name, email, password, country, city, school, graduationYear);
         res.cookie('auth_token', data.token, { httpOnly: true, secure: false });
 
         res.status(201).json(data.user);

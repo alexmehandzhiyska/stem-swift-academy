@@ -9,7 +9,7 @@ const UserData = ({ userData, dataIsModified, setDataIsModified }) => {
 
     return (
         <>
-            <table className="user-data flex flex-col border-4 px-4 border-blue-500 border-solid text-xl w-1/4 my-10">
+            <table className="user-data flex flex-col border-4 px-4 border-blue-500 border-solid text-xl w-1/3 my-10">
                 <tbody className="mt-4">
                     <tr>
                         <td className="pl-10 py-1">Email: </td>

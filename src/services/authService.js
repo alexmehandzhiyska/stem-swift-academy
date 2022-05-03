@@ -2,9 +2,9 @@ const bcrypt = require('bcrypt');
 const User = require('../../models/index').User;
 const jwtGenerator = require('../utils/jwt');
 
-const register = async(name, email, password) => {
+const register = async(name, email, password, country, city, school, graduationYear) => {
     const decodedPassword = await bcrypt.hash(password, 10);
-    const result = await User.create({ name, email, password: decodedPassword });
+    const result = await User.create({ name, email, password: decodedPassword, country, city, school, graduation_year: graduationYear });
     const user = result.dataValues;
 
     const token = jwtGenerator(user.id);
