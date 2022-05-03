@@ -49,6 +49,10 @@ const ExamQuestions = () => {
         }
 
         setIsLoading(false);
+      })
+      .catch((err) => {
+        errorNotification(err.message);
+        navigate('/');
       });
   }, [examType, examId]);
 

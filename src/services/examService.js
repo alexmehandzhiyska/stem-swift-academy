@@ -14,6 +14,11 @@ const getOne = async (id) => {
     if (exam.timed) {
         const currentTime = moment().format();
         const startTime = moment(exam.start_time).format();
+
+        if(moment(currentTime).diff(startTime) < 0) {
+            throw new Error('The exam has not started yet!');
+        }
+        
         const endTime = moment(startTime).add(exam.duration, 'm').format();
         
         const remainingTime = moment(endTime).diff(currentTime, 'miliseconds');

@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { useParams, useLocation } from 'react-router';
+import { useParams, useLocation, useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 
 import { examService } from '../../../services/examService';
-import { errorNotification } from '../../notification';
+import { warningNotification } from '../../notification';
 
 import LottieAnimation from '../../LottieAnimation';
 
@@ -20,6 +20,8 @@ const ExamDetails = () => {
   const { state } = useLocation();
   const subject = state ? state.subject : null;
 
+  const navigate = useNavigate();
+
   useEffect(() => Aos.init({ duration: 500 }), []);
 
   useEffect(() => {
@@ -30,8 +32,9 @@ const ExamDetails = () => {
         setExam(response);
         setIsLoading(false);
       })
-      .catch(() => {
-        errorNotification('There is an error loading the exam details. Please try again later!');
+      .catch(async (err) => {
+        await warningNotification(err.message);
+        navigate('/');
       });
   }, [examId, examType]);
 

@@ -13,6 +13,7 @@ const getAll = async (examType, subject) => {
 const getOne = async (examType, examId) => {
   const response = await fetch(`/exams/${examType}/${examId}`);
   const data = await response.json();
+  console.log(data);
 
   if (!response.ok) {
     throw new Error(data);
