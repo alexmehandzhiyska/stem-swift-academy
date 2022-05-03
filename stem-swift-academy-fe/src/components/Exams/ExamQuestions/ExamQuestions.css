@@ -1,4 +1,5 @@
 .survey {
+    min-width: 50vw;
     max-height: 100vh !important;
     margin-bottom: 5em;
     overflow-y: scroll;
@@ -29,8 +30,10 @@ input[type="radio"] {
 }
 
 .text {
-    word-wrap: normal;
+    word-wrap: break-word;
+    word-break: normal;
     min-width: 50vw;
+    max-width: 50vw;
 }
 
 .timer {

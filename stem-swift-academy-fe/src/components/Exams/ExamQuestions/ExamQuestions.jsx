@@ -58,7 +58,6 @@ const ExamQuestions = () => {
   }, [examType, examId]);
 
   useEffect(async () => {
-    console.log('has ended');
     if (hasEnded) {
       await warningNotification('The exam has ended. Your answers will be submitted to your teacher.')
       const data = getValues();
