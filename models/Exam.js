@@ -31,9 +31,17 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(40),
       allowNull: true
     },
+    start_time: {
+      type: DataTypes.DATE,
+      allowNull: true
+    },
     duration: {
       type: DataTypes.INTEGER,
       allowNull: false
+    },
+    timed: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
     },
     instructions: {
       type: DataTypes.STRING(500),

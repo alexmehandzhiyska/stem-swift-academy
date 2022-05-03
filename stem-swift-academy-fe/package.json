@@ -34,6 +34,9 @@
         "react-router": "^6.0.1",
         "react-router-dom": "^6.0.1",
         "react-scripts": "4.0.3",
+        "react-timecode": "^1.2.0",
+        "react-timer-hook": "^3.0.5",
+        "react-timer-wrapper": "^0.4.1",
         "recharts": "^2.1.6",
         "redux": "^4.1.2",
         "survey-react": "^1.9.1",
@@ -41,6 +44,7 @@
         "sweetalert2-react": "^0.8.3",
         "sweetalert2-react-content": "^4.2.0",
         "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17",
+        "use-timer": "^2.0.1",
         "web-vitals": "^1.1.2"
     },
     "scripts": {

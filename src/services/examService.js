@@ -1,3 +1,4 @@
+const moment = require('moment');
 const Exam = require('../../models/index').Exam;
 
 const getAll = async (examType, subject) => {
@@ -7,12 +8,22 @@ const getAll = async (examType, subject) => {
 }
 
 const getOne = async (id) => {
-    const exam = await Exam.findByPk(id);
-    return exam.dataValues;
+    const examData = await Exam.findByPk(id);
+    const exam = examData.dataValues;
+
+    if (exam.timed) {
+        const currentTime = moment().format();
+        const startTime = moment(exam.start_time).format();
+        const endTime = moment(startTime).add(exam.duration, 'm').format();
+        
+        const remainingTime = moment(endTime).diff(currentTime, 'miliseconds');
+        exam.remainingTime = remainingTime;
+    }
+
+    return exam;
 }
 
 const createOne = async (examType, title, subject, section, instructions, duration, difficulty, link, text, questions_count) => {
-    console.log(questions_count);
     const exam = await Exam.create({ type: examType, title, subject, section, duration, instructions, text, link, difficulty, questions_count });
     return exam.dataValues;
 }
