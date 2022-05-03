@@ -1,5 +1,6 @@
 const moment = require('moment');
 const Exam = require('../../models/index').Exam;
+const UserExam = require('../../models/index').UserExam;
 
 const getAll = async (examType, subject) => {
     let exams = await Exam.findAll({ where: { type: examType } });
@@ -7,21 +8,31 @@ const getAll = async (examType, subject) => {
     return exams.map(exam => exam.dataValues);
 }
 
-const getOne = async (id) => {
-    const examData = await Exam.findByPk(id);
+const getOne = async (userId, examId) => {
+    const examData = await Exam.findByPk(examId);
     const exam = examData.dataValues;
 
     if (exam.timed) {
+        const userExamData = await UserExam.findOne({ where: { user_id: userId, exam_id: examId } });
+
+        if (userExamData) {
+            throw new Error('You have already submitted this exam. You are not allowed to solve it more than one time!');
+        }
+
         const currentTime = moment().format();
         const startTime = moment(exam.start_time).format();
 
         if(moment(currentTime).diff(startTime) < 0) {
-            throw new Error('The exam has not started yet!');
+            throw new Error('This exam has not started yet!');
         }
         
         const endTime = moment(startTime).add(exam.duration, 'm').format();
-        
         const remainingTime = moment(endTime).diff(currentTime, 'miliseconds');
+
+        if (remainingTime <= 0) {
+            throw new Error('This exam has already ended!');
+        }
+
         exam.remainingTime = remainingTime;
     }
 

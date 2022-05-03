@@ -16,10 +16,11 @@ const getAll = async(req, res) => {
 }
 
 const getOne = async(req, res) => {
+    const userId = req.user.user;
     const examId = req.params.examId;
 
     try {
-        const exam = await examService.getOne(examId);
+        const exam = await examService.getOne(userId, examId);
 
         res.status(200).json(exam);
     } catch (error) {
