@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 
 import { examService } from '../../../services/examService';
 import LottieAnimation from '../../LottieAnimation';
-import { errorNotification } from '../../notification';
+import { errorNotification, warningNotification } from '../../notification';
 import ExamTimer from './ExamTimer';
 
 import Aos from 'aos';
@@ -17,13 +17,14 @@ import './ExamQuestions.css';
 const ExamQuestions = () => {
   const [text, setText] = useState('');
   const [remainingTime, setRemainingTime] = useState(null);
+  const [hasEnded, setHasEnded] = useState(false);
   const [questions, setQuestions] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const { examType, examId } = useParams();
   const navigate = useNavigate();
 
-  const { register, handleSubmit } = useForm({ mode: 'onSubmit', reValidateMode: 'onChange' });
+  const { register, handleSubmit, getValues } = useForm({ mode: 'onSubmit', reValidateMode: 'onChange' });
 
   useEffect(() => Aos.init({ duration: 500 }), []);
   useEffect(() => document.body.classList.add('scroll-hidden'), []);
@@ -56,6 +57,16 @@ const ExamQuestions = () => {
       });
   }, [examType, examId]);
 
+  useEffect(async () => {
+    console.log('has ended');
+    if (hasEnded) {
+      await warningNotification('The exam has ended. Your answers will be submitted to your teacher.')
+      const data = getValues();
+      submitAnswers(data);
+    }
+  }, [hasEnded]);
+  
+
   const submitAnswers = (data) => {
     examService.submitAnswers(examType, examId, data)
       .then(() => {
@@ -80,7 +91,7 @@ const ExamQuestions = () => {
               {remainingTime && 
                 <article className="timer flex text-xl">
                   <FontAwesomeIcon icon={faClock} className="timer-icon mr-5"></FontAwesomeIcon>
-                  <ExamTimer initialTime={remainingTime}></ExamTimer>
+                  <ExamTimer initialTime={remainingTime} setHasEnded={setHasEnded}></ExamTimer>
                 </article>
               }
               

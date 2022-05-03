@@ -39,8 +39,9 @@ const getOne = async (userId, examId) => {
     return exam;
 }
 
-const createOne = async (examType, title, subject, section, instructions, duration, difficulty, link, text, questions_count) => {
-    const exam = await Exam.create({ type: examType, title, subject, section, duration, instructions, text, link, difficulty, questions_count });
+const createOne = async (examType, title, subject, section, instructions, duration, time, difficulty, link, text, questions_count) => {
+    const timed = time ? true : false;
+    const exam = await Exam.create({ type: examType, title, subject, section, duration, timed, start_time: time, instructions, text, link, difficulty, questions_count });
     return exam.dataValues;
 }
 
