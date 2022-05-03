@@ -1,9 +1,15 @@
+import { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 
+import Aos from 'aos';
+import 'aos/dist/aos.css';
+
 const About = () => {
+  useEffect(() => Aos.init({ duration: 1000 }), []);
+  
   return (
-    <section className="mt-10">
+    <section data-aos="zoom-in" className="mt-10">
       <h1 className="heading">About us</h1>
 
       <ul className="flex flex-col justify-center">

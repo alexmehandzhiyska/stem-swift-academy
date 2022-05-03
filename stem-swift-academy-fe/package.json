@@ -17,6 +17,7 @@
         "@visx/mock-data": "^2.1.2",
         "@visx/scale": "^2.2.2",
         "@visx/shape": "^2.4.0",
+        "aos": "^2.3.4",
         "autoprefixer": "^9.8.8",
         "cypress": "^9.5.4",
         "lodash": "^4.17.21",
