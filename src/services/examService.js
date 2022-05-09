@@ -1,9 +1,10 @@
 const moment = require('moment');
 const Exam = require('../../models/index').Exam;
 const UserExam = require('../../models/index').UserExam;
+const UserCourse = require('../../models/index').UserCourse;
 
 const getAll = async (examType, subject) => {
-    let exams = await Exam.findAll({ where: { type: examType } });
+    let exams = await Exam.findAll({ where: { type: examType, timed: false } });
     exams = subject ? exams.filter(exam => exam.subject == subject) : exams;
     return exams.map(exam => exam.dataValues);
 }
@@ -14,9 +15,10 @@ const getOne = async (userId, examId) => {
 
     if (exam.timed) {
         const userExamData = await UserExam.findOne({ where: { user_id: userId, exam_id: examId } });
+        const userCourseData = await UserCourse.findOne({ where: { user_id: userId, course_id: exam.course_id } });
 
-        if (userExamData) {
-            throw new Error('You have already submitted this exam. You are not allowed to solve it more than one time!');
+        if (!userCourseData) {
+            throw new Error('You are not allowed to see this exam because you are not registered for the course!');
         }
 
         const currentTime = moment().format();
@@ -31,6 +33,10 @@ const getOne = async (userId, examId) => {
 
         if (remainingTime <= 0) {
             throw new Error('This exam has already ended!');
+        }
+
+        if (userExamData) {
+            throw new Error('You have already submitted this exam. You are not allowed to solve it more than one time!');
         }
 
         exam.remainingTime = remainingTime;

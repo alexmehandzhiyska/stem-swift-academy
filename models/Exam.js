@@ -56,6 +56,16 @@ module.exports = (sequelize, DataTypes) => {
     questions_count: {
       type: DataTypes.INTEGER,
       allowNull: false
+    },
+    course_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'courses',
+        key: 'id',
+        onUpdate: 'cascade',
+        onDelete: 'cascade'
+      }
     }
   }, {
     sequelize,
