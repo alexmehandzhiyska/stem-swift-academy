@@ -1,5 +1,4 @@
 const { Op } = require('sequelize');
-const Course = require('../../models/index').Course;
 const UserCourse = require('../../models/index').UserCourse;
 const Topic = require('../../models/index').Topic;
 

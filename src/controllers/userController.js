@@ -51,7 +51,6 @@ const getUserExams = async (req, res) => {
   
         res.status(200).json({ exams: sortedExams, questions: result.questions });
     } catch (error) {
-        console.log(error);
         res.status(400).json(error.message);
     }
   }
@@ -69,7 +68,6 @@ const updateRoles = async(req, res) => {
 }
 
 const updateOne = async (req, res) => {
-    console.log('in update');
     const userId = req.params.userId;
     const { email, country, city, school, graduation_year } = req.body;
 
