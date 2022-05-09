@@ -20,7 +20,9 @@ const Week = ({ courseId, i, topics }) => {
       <article className={infoToggled ? "lectures-shown" : "hidden"}>
         {topics.map(lecture =>
           <p key={lecture.id} className="pl-6 font-bold text-lg">
-            <Link to={`/courses/${courseId}/topics/${lecture.id}`}>{lecture.subject[0].toUpperCase() + lecture.subject.slice(1)}: <span className="font-normal underline">{lecture.title}</span></Link>
+            {lecture.exam_link && <a href={lecture.exam_link}>{lecture.subject[0].toUpperCase() + lecture.subject.slice(1)}: <span className="font-normal underline">{lecture.title}</span></a>}
+            
+            {lecture.recording_link && <Link to={`/courses/${courseId}/topics/${lecture.id}`} state={ { recording_link: lecture.recording_link } }>{lecture.subject[0].toUpperCase() + lecture.subject.slice(1)}: <span className="font-normal underline">{lecture.title}</span></Link>}
           </p>
         )}
       </article>

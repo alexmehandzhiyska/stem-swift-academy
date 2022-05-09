@@ -42,7 +42,7 @@ module.exports = (sequelize, DataTypes) => {
     exam_id: {
         type: DataTypes.INTEGER,
         references: {
-            model: 'Exam',
+            model: 'exams',
             key: 'id',
             onUpdate: 'cascade',
             onDelete: 'cascade'

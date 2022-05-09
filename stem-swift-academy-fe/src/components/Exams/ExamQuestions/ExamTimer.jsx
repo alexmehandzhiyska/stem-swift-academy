@@ -10,7 +10,6 @@ const ExamTimer = ({ initialTime, setHasEnded }) => {
         setTime(timeObj.duration - timeObj.time);
 
         if (timeObj.duration - timeObj.time <= 0) {
-            console.log('end');
             setHasEnded(true);
         }
     }

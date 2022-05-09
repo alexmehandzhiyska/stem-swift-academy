@@ -31,6 +31,14 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.DATE,
         allowNull: false
     },
+    recording_link: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    exam_link: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
     time: {
         type: DataTypes.INTEGER,
         default: 4
@@ -38,7 +46,7 @@ module.exports = (sequelize, DataTypes) => {
     course_id: {
         type: DataTypes.INTEGER,
         references: {
-            model: 'Course',
+            model: 'courses',
             key: 'id',
             onUpdate: 'cascade',
             onDelete: 'cascade'

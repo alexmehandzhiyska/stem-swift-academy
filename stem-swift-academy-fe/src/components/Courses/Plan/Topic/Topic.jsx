@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { useParams, useLocation } from 'react-router';
 import { errorNotification } from '../../../notification';
 import { lectureService } from '../../../../services/lectureService';
 import { formatDate } from '../../../../utils';
@@ -12,6 +12,9 @@ const Topic = () => {
 
   const [topic, setTopic] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+
+  const { state } = useLocation();
+  const recordingLink = state.recording_link;
 
   useEffect(() => {
     setIsLoading(true);
@@ -30,9 +33,9 @@ const Topic = () => {
     <>
       {isLoading && <LottieAnimation />}
       {!isLoading && topic &&
-        <section class="flex flex-col items-center">
+        <section className="flex flex-col items-center">
           <h1 className="heading">{topic.title} - {formatDate(topic.date)}</h1>
-          <iframe className="topic-video" src="https://www.youtube.com/embed/I5z7oCalPnQ" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe className="topic-video" src={recordingLink} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
         </section>
       }
     </>
