@@ -29,7 +29,7 @@ module.exports = {
       },
       subject: {
           type: Sequelize.STRING(30),
-          allowNull: false
+          allowNull: true
       },
       exam_id: {
           type: Sequelize.INTEGER,
