@@ -16,7 +16,7 @@ const ExamTimer = ({ initialTime, setHasEnded }) => {
 
     return (
         <section>
-            <Timer active={true} duration={duration} onStart={() => console.log('started')} onTimeUpdate={(timeObj) => updateTime(timeObj)} />
+            <Timer active={true} duration={duration} onTimeUpdate={(timeObj) => updateTime(timeObj)} />
             <Timecode time={time} />
         </section>
     );

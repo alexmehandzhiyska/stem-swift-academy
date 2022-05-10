@@ -10,7 +10,6 @@ const getAll = async(req, res) => {
 
         res.status(200).json(courses);
     } catch (error) {
-        console.log(error);
         res.status(400).json(error.message);
     }
 }
@@ -23,7 +22,6 @@ const getOne = async(req, res) => {
 
         res.status(200).json(course);
     } catch (error) {
-        console.log(error);
         res.status(400).json(error.message);
     }
 }
@@ -36,7 +34,6 @@ const getLectures = async(req, res) => {
 
         res.status(200).json(lectures);
     } catch (error) {
-        console.log(error);
         res.status(400).json(error.message);
     }
 }
@@ -49,7 +46,6 @@ const getLecture = async(req, res) => {
 
         res.status(200).json(topic);
     } catch (error) {
-        console.log(error);
         res.status(400).json(error);
     }
 }
@@ -63,7 +59,6 @@ const registerUser = async(req, res) => {
 
         res.status(201).json(result);
     } catch (error) {
-        console.log(error);
         res.status(400).json(error.message);
     }
 }

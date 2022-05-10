@@ -11,6 +11,7 @@ const getAll = async(req, res) => {
 
         res.status(200).json(exams);
     } catch (error) {
+        console.log(error);
         res.status(400).json(error.message);
     }
 }
@@ -37,7 +38,6 @@ const createOne = async(req, res) => {
 
         res.status(201).json(exam);
     } catch (error) {
-        console.log(error);
         res.status(400).json(error.message);
     }
 }
@@ -52,7 +52,6 @@ const updateOne = async(req, res) => {
 
         res.status(201).json(result);
     } catch (error) {
-        console.log(error);
         res.status(400).json(error.message);
     }
 }
@@ -77,7 +76,6 @@ const getQuestions = async(req, res) => {
 
         res.status(200).json(questions);
     } catch (error) {
-        console.log(error);
         res.status(400).json(error.message);
     }
 }
@@ -92,7 +90,6 @@ const submitAnswers = async(req, res) => {
 
         res.status(201).json(score)
     } catch (error) {
-        console.log(error);
         res.status(400).json(error.message);
     }
 }

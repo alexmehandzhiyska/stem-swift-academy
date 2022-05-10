@@ -5,6 +5,7 @@ const UserCourse = require('../../models/index').UserCourse;
 
 const getAll = async (examType, subject) => {
     let exams = await Exam.findAll({ where: { type: examType, timed: false } });
+    console.log(exams);
     exams = subject ? exams.filter(exam => exam.subject == subject) : exams;
     return exams.map(exam => exam.dataValues);
 }
