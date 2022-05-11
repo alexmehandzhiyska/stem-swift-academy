@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import { useParams, useLocation } from 'react-router';
-import { errorNotification } from '../../../notification';
+import { useParams, useLocation, useNavigate } from 'react-router';
+
 import { lectureService } from '../../../../services/lectureService';
 import { formatDate } from '../../../../utils';
 import LottieAnimation from '../../../LottieAnimation';
+import { warningNotification } from '../../../notification';
 
 import './Topic.css';
 
@@ -16,6 +17,8 @@ const Topic = () => {
   const { state } = useLocation();
   const recordingLink = state.recording_link;
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     setIsLoading(true);
 
@@ -24,8 +27,9 @@ const Topic = () => {
         setTopic(topic);
         setIsLoading(false);
       })
-      .catch(() => {
-        errorNotification('There was an error loading the topic. Please try again later!');
+      .catch(async (err) => {
+        await warningNotification(err.message);
+        navigate(`/courses/${courseId}`);
       })
   }, [courseId, topicId]);
 

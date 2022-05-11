@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
-import { useSelector } from 'react-redux';
 import { examService } from '../../../services/examService';
 import { deleteConfirmNotification, errorNotification, successNotification } from '../../notification';
 

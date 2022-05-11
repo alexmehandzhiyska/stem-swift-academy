@@ -51,7 +51,7 @@ const CreateExam = () => {
     } else {
       setIsLoading(false);
     }
-  }, [examSubject, examId, mode, examSubject]);
+  }, [examSubject, examId, mode]);
 
   const submitExam = (data) => {
     data.type = examType;

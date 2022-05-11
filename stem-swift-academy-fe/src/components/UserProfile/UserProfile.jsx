@@ -28,7 +28,7 @@ const UserProfile = () => {
         setUserData(response);
       })
       .catch(() => errorNotification('There was an error loading your profile data. Please try again later!'));
-  }, [dataIsModified]);
+  }, [dataIsModified, user.id]);
 
   useEffect(() => {
     setIsLoading(true);

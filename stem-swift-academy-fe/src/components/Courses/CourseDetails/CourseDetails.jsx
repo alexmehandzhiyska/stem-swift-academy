@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-import Plan from '../Plan/Plan';
+import { courseService } from '../../../services/courseService';
 import LottieAnimation from '../../LottieAnimation';
 import { errorNotification, successNotification } from '../../notification';
-import { courseService } from '../../../services/courseService';
+import Plan from '../Plan/Plan';
 
 import Aos from 'aos';
 import 'aos/dist/aos.css';

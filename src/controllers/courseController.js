@@ -41,13 +41,14 @@ const getLectures = async(req, res) => {
 
 const getLecture = async(req, res) => {
     const topicId = req.params.topicId;
+    const userId = req.user.user;
 
     try {
-        const topic = await lectureService.getOne(topicId);
+        const topic = await lectureService.getOne(userId, topicId);
 
         res.status(200).json(topic);
     } catch (error) {
-        res.status(400).json(error);
+        res.status(400).json(error.message);
     }
 }
 

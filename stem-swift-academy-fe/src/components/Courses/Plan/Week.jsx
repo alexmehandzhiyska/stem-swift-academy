@@ -21,7 +21,7 @@ const Week = ({ courseId, week, topics }) => {
       <article className={infoToggled ? "lectures-shown" : "hidden"}>
         {topics.map(lecture =>
           <p key={lecture.id} className="pl-6 font-bold text-lg">
-            {!lecture.exam_link && !lecture.recording_link && <p>{lecture.subject[0].toUpperCase() + lecture.subject.slice(1)}: <span className="font-normal">{lecture.title} - {formatDate(lecture.start_time)}</span></p>}
+            {!lecture.exam_link && !lecture.recording_link && <span>{lecture.subject[0].toUpperCase() + lecture.subject.slice(1)}: <span className="font-normal">{lecture.title} - {formatDate(lecture.start_time)}</span></span>}
             {lecture.exam_link && <a href={lecture.exam_link}>{lecture.subject[0].toUpperCase() + lecture.subject.slice(1)}: <span className="font-normal underline">{lecture.title} - {formatDate(lecture.start_time)} - {formatTime(lecture.start_time)}</span> </a>}
             
             {lecture.recording_link && <Link to={`/courses/${courseId}/topics/${lecture.id}`} state={ { recording_link: lecture.recording_link } }>{lecture.subject[0].toUpperCase() + lecture.subject.slice(1)}: <span className="font-normal underline">{lecture.title} - {formatDate(lecture.start_time)}</span></Link>}
