@@ -27,7 +27,7 @@ const SectionRadarChart = ({ exams }) => {
         <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data}>
           <PolarGrid />
           <PolarAngleAxis dataKey="subject" />
-          <PolarRadiusAxis />
+          <PolarRadiusAxis domain={[0, 100]}/>
           <Radar name="Result in %" dataKey="A" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
           <Tooltip />
         </RadarChart>

@@ -4,24 +4,24 @@ import { AuthProvider } from "./contexts/authContext";
 
 import AllCourses from "./components/Courses/AllCourses";
 import AllExams from "./components/Exams/AllExams/AllExams";
+import AllKolbs from "./components/Kolbs/AllKolbs/AllKolbs";
 import AllUsers from "./components/Users/AllUsers";
 import Contacts from "./components/Contacts/Contacts";
 import CourseDetails from "./components/Courses/CourseDetails/CourseDetails";
 import CreateExam from "./components/Exams/CreateExam/CreateExam";
+import CreateKolbs from "./components/Kolbs/CreateKolb/CreateKolb";
 import Home from "./components/Home/Home";
 import ExamDetails from "./components/Exams/ExamDetails/ExamDetails";
 import ExamQuestions from "./components/Exams/ExamQuestions/ExamQuestions";
 import ExamResults from "./components/Exams/ExamResults/ExamResults";
 import Layout from "./components/layout/Layout";
-import Topic from "./components/Courses/Plan/Topic/Topic";
 import Login from "./components/Login/Login";
 import NotFound from "./components/NotFound";
 import Register from "./components/Register/Register";
 import StudentCalendar from "./components/Calendar/Calendar";
-import UserProfile from "./components/UserProfile/UserProfile";
 import SubjectChoice from "./components/Exams/SubjectChoice/SubjectChoice";
-import CreateKolbs from "./components/Kolbs/CreateKolb/CreateKolb";
-import AllKolbs from "./components/Kolbs/AllKolbs/AllKolbs";
+import Topic from "./components/Courses/Plan/Topic/Topic";
+import UserProfile from "./components/UserProfile/UserProfile";
 
 import {
   UserRoute,

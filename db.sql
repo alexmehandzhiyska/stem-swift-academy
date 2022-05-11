@@ -320,16 +320,76 @@ VALUES
 
 INSERT INTO questions (title, correct_answer, explanation, subject, exam_id)
 VALUES
-  ('If (x - 1) / 3 = k and k = 3, what is the value of x?', '10', 'Since k = 3, one can substitute 3 for k in the equation (x - 1) / 3 = k, which gives (x - 1) / 3 = 3. Multiplying both sides of (x - 1) / 3 by 3 gives x - 1 = 9 and then adding 1 to both sides of x - 1 = 9 gives x = 10. Choices A, B, and C are incorrect because the result of subtracting 1 from the value and dividing by 3 is not the given value of k, which is 3.', 'math', 1),
-  ('For i = √-1, what is the sum (7 + 3i) + (-8 + 9i)?', '-1 + 12i', 'To calculate 7 + 3i + (-8 + 9i), add the real parts of each complex number, 7 + (-8) = -1, and then add the imaginary parts, 3i + 9i = 12i. The result is -1 + 12i. Choices B, C, and D are incorrect and likely result from common errors that arise when adding complex numbers. For example, choice B is the result of adding 3i and -9i, and choice C is the result of adding 7 and 8.', 'math', 1),
-  ('On Saturday afternoon, Armand sent m text messages each hour for 5 hours, and Tyrone sent p text messages each hour for 4 hours. Which of the following represents the total number of messages sent by Armand and Tyrone on Saturday afternoon?', '5m + 4p', 'The total number of text messages sent by Armand can be found by multiplying his rate of texting, in number of text messages sent per hour, by the total number of hours he spent sending them; that is m texts/hour * 5 hours = 5m texts. Similarly, the total number of text messages sent by Tyrone is his hourly rate of texting multiplied by the 4 hours he spent texting: p texts/hour x 4 hours = 4p texts. The total number of text messages sent by Armand and Tyrone is the sum of the total number of messages sent by Armand and the total number of messages sent by Tyrone: 5m + 4p. Choice A is incorrect and arises from adding the coefficients and multiplying the variables of 5m and 4p. Choice B is incorrect and is the result of multiplying 5m and 4p. The total number of messages sent by Armand and Tyrone should be the sum of 5m and 4p, not the product of these terms. Choice D is incorrect because it multiplies Armand''s number of hours spent texting by Tyrone''s hourly rate of texting, and vice versa. This mix-up results in an expression that does not equal the total number of messages sent by Armand and Tyrone.', 'math', 1),
-  ('Kathy is a repair technician for a phone company. Each week, she receives a batch of phones that need repairs. The number of phones that she has left to fix at the end of each day can be estimated with the equation P = 108 - 23d, where P is the number of phones left and d is the number of days she has worked that week. What is the meaning of the value 108 in this equation?', 'Kathy starts each week with 108 phones to fix.', 'The value 108 in the equation is the value of P in P = 108 - 23d when d = 0. When d = 0, Kathy has worked 0 days that week. In other words, 108 is the number of phones left before Kathy has started work for the week. Therefore, the meaning of the value 108 in the equation is that Kathy starts each week with 108 phones to fix. Choice A is incorrect because Kathy will complete the repairs when P = 0. Since P = 108 - 23d, thiw will occur when 0 = 108 - 23d or when d = 108 / 23, not when d = 108. Therefore, the value 108 in the equation does not represent the number of days it will take Kathy to complete the repairs. Choices C and D are incorrect because the number 23 in P = 108 - 23d indicates that the number of phones left will decrease by 23 for each increase in the value of d by 1; in other words, Kathy is repairing phones at a rate of 23 per day, not 108 per hour (choice C), or 108 per day (choice D).', 'math', 1),
-  ('If a / b = 2, what is the value of 4b / a?', '2', 'Since a / b = 2, it follows that b / a = 1 / 2. Multiplying both sides of the equation by 4 gives 4(b / a) = 4 (1 / 2), or 4b / a = 2. Choice A is incorrect because if 4b / a = 0, then a / b would be undefined. Choice B is incorrect because if 4b / a = 1, then a / b = 4. Choice D is incorrect because if 4b / a = 4, then a / b = 1.', 'math', 1),
-  ('A line in the xy-plane passes through the origin and has a slope of 1 / 7. Which of the following points lies on the line?', '(14, 2)', 'In the xy-plane, all lines that pass through the origin are of the form y = mx, where m is the slope of the line. Therefore, the equation of this line is y = (1 / 7)x or x = 7y. A point with coordinates (a, b) will lie on the line if and only if a = 7b. Of the given choices, only choice D, (14, 2), satisfies this condition: 14 = 7(2). Choice A is incorrect because the line determined by the origin (0, 0) and (0, 7) is the vertical line with equation x = 0; that is, the y-axis. The slope of the y-axis is undefined, not 1 / 7. Therefore, the point (0, 7) does not lie on the line that passes the origin and has slope 1/7. Choices B and C are incorrect because neither of the ordered pairs has a y-coordinate that is 1/7 the value of the corresponding x-coordinate.', 'math', 1),
-  ('If a = 5√2 and 2a = √(2x), what is the value of x?', '100', 'Since a = 5√2, one can substitute 5√2 for a in 2a = √(2x), giving 10√2 = √(2x). Squaring each side of 10√2 = √(2x) gives 200 = 2x. This gives x = 100.', 'math', 1),
-  ('If y = kx, where k is a constant, and y = 24 when x = 6, what is the value of y when x = 5?', '20', 'Substituting 6 for y in y = kx gives 24 = (k)(6), which gives k = 4. Hence, y = 4x. Therefore, when x = 5, the value of y is (4)(5) = 20. None of the other choices for y is correct because y is a function of x, and so there is only one y-value for a given x-value. Choices A, B, and D are incorrect. Choice A is the result of substituting 6 for y and substituting 5 for x in the equation y = kx, when solving for k. Choice B results from substituting 3 for k and 5 for x in the equation y = kx, when solving for y. Choice D results from using y = k + x instead of y = kx.', 'math', 1),
-  ('If 16 + 4x is 10 more than 14, what is the value of 8x?', '16', 'The description "16 + 4x is 10 more than 14" can be written as the equation 16 + 4x = 10 + 14, which is equivalent to 16 + 4x = 24. Subtracting 16 from each side gives 4x = 8. Since 8x is 2 times 4x, multiplying both sides of 4x = 8 by 2 gives 8x = 16. Therefore, the value of 8x is 16. Choice A is incorrect because it is the value of x, not 8x. Choices B and D are incorrect and may be the result of errors made when solving the equation 16 + 4x = 10 + 14 for x. For example, choice D could be the result of subtracting 16 from the left side of the equation and adding 16 to the right side of the equation 16 + 4x = 10 + 14, giving 4x = 40 and 8x = 80.', 'math', 1),
-  ('A hospital stores one type of medicine in 2-decagram containers. Based on the information given in the box above, how many 1-milligram doses are there in one 2-decagram container? (1 decagram = 10 grams)', '20,000', 'Since there are 10 grams in 1 decagram, there are 2 x 10 = 20 grams in 2 decagrams. Since there are 1,000 milligrams in 1 gram, there are 20 x 1,000 = 20,000 milligrams in 20 grams. Therefore, 20,000 1-milligram doses of the medicine can be stored in a 2-decagram container. Choice A is incorrect; 0.002 is the number of grams in 2 milligrams. Choice B is incorrect; it could result from multiplying by 1m000 and dividing by 10 instead of multiplying by both 1,000 and 10 when converting from decagrams to milligrams. Choice C is incorrect; 2,000 is the number of milligrams in 2 grams, not the number of milligrams in 2 decagrams.', 'math', 1);
+  (
+    'If (x - 1) / 3 = k and k = 3, what is the value of x?', 
+    '10', 
+    'Since k = 3, one can substitute 3 for k in the equation (x - 1) / 3 = k, which gives (x - 1) / 3 = 3. Multiplying both sides of (x - 1) / 3 by 3 gives x - 1 = 9 and then adding 1 to both sides of x - 1 = 9 gives x = 10. Choices A, B, and C are incorrect because the result of subtracting 1 from the value and dividing by 3 is not the given value of k, which is 3.',
+    'math',
+    1
+  ),
+  (
+    'For i = √-1, what is the sum (7 + 3i) + (-8 + 9i)?',
+    '-1 + 12i',
+    'To calculate 7 + 3i + (-8 + 9i), add the real parts of each complex number, 7 + (-8) = -1, and then add the imaginary parts, 3i + 9i = 12i. The result is -1 + 12i. Choices B, C, and D are incorrect and likely result from common errors that arise when adding complex numbers. For example, choice B is the result of adding 3i and -9i, and choice C is the result of adding 7 and 8.',
+    'math',
+    1
+  ),
+  (
+    'On Saturday afternoon, Armand sent m text messages each hour for 5 hours, and Tyrone sent p text messages each hour for 4 hours. Which of the following represents the total number of messages sent by Armand and Tyrone on Saturday afternoon?',
+    '5m + 4p',
+    'The total number of text messages sent by Armand can be found by multiplying his rate of texting, in number of text messages sent per hour, by the total number of hours he spent sending them; that is m texts/hour * 5 hours = 5m texts. Similarly, the total number of text messages sent by Tyrone is his hourly rate of texting multiplied by the 4 hours he spent texting: p texts/hour x 4 hours = 4p texts. The total number of text messages sent by Armand and Tyrone is the sum of the total number of messages sent by Armand and the total number of messages sent by Tyrone: 5m + 4p. Choice A is incorrect and arises from adding the coefficients and multiplying the variables of 5m and 4p. Choice B is incorrect and is the result of multiplying 5m and 4p. The total number of messages sent by Armand and Tyrone should be the sum of 5m and 4p, not the product of these terms. Choice D is incorrect because it multiplies Armand''s number of hours spent texting by Tyrone''s hourly rate of texting, and vice versa. This mix-up results in an expression that does not equal the total number of messages sent by Armand and Tyrone.',
+    'math',
+    1
+  ),
+  (
+    'Kathy is a repair technician for a phone company. Each week, she receives a batch of phones that need repairs. The number of phones that she has left to fix at the end of each day can be estimated with the equation P = 108 - 23d, where P is the number of phones left and d is the number of days she has worked that week. What is the meaning of the value 108 in this equation?',
+    'Kathy starts each week with 108 phones to fix.', 
+    'The value 108 in the equation is the value of P in P = 108 - 23d when d = 0. When d = 0, Kathy has worked 0 days that week. In other words, 108 is the number of phones left before Kathy has started work for the week. Therefore, the meaning of the value 108 in the equation is that Kathy starts each week with 108 phones to fix. Choice A is incorrect because Kathy will complete the repairs when P = 0. Since P = 108 - 23d, thiw will occur when 0 = 108 - 23d or when d = 108 / 23, not when d = 108. Therefore, the value 108 in the equation does not represent the number of days it will take Kathy to complete the repairs. Choices C and D are incorrect because the number 23 in P = 108 - 23d indicates that the number of phones left will decrease by 23 for each increase in the value of d by 1; in other words, Kathy is repairing phones at a rate of 23 per day, not 108 per hour (choice C), or 108 per day (choice D).',
+    'math', 
+    1
+  ),
+  (
+    'If a / b = 2, what is the value of 4b / a?',
+    '2',
+    'Since a / b = 2, it follows that b / a = 1 / 2. Multiplying both sides of the equation by 4 gives 4(b / a) = 4 (1 / 2), or 4b / a = 2. Choice A is incorrect because if 4b / a = 0, then a / b would be undefined. Choice B is incorrect because if 4b / a = 1, then a / b = 4. Choice D is incorrect because if 4b / a = 4, then a / b = 1.',
+    'math', 
+    1
+  ),
+  (
+    'A line in the xy-plane passes through the origin and has a slope of 1 / 7. Which of the following points lies on the line?', 
+    '(14, 2)', 
+    'In the xy-plane, all lines that pass through the origin are of the form y = mx, where m is the slope of the line. Therefore, the equation of this line is y = (1 / 7)x or x = 7y. A point with coordinates (a, b) will lie on the line if and only if a = 7b. Of the given choices, only choice D, (14, 2), satisfies this condition: 14 = 7(2). Choice A is incorrect because the line determined by the origin (0, 0) and (0, 7) is the vertical line with equation x = 0; that is, the y-axis. The slope of the y-axis is undefined, not 1 / 7. Therefore, the point (0, 7) does not lie on the line that passes the origin and has slope 1/7. Choices B and C are incorrect because neither of the ordered pairs has a y-coordinate that is 1/7 the value of the corresponding x-coordinate.', 
+    'math', 
+    1
+  ),
+  (
+    'If a = 5√2 and 2a = √(2x), what is the value of x?', 
+    '100', 
+    'Since a = 5√2, one can substitute 5√2 for a in 2a = √(2x), giving 10√2 = √(2x). Squaring each side of 10√2 = √(2x) gives 200 = 2x. This gives x = 100.', 
+    'math', 
+    1
+  ),
+  (
+    'If y = kx, where k is a constant, and y = 24 when x = 6, what is the value of y when x = 5?', 
+    '20',
+    'Substituting 6 for y in y = kx gives 24 = (k)(6), which gives k = 4. Hence, y = 4x. Therefore, when x = 5, the value of y is (4)(5) = 20. None of the other choices for y is correct because y is a function of x, and so there is only one y-value for a given x-value. Choices A, B, and D are incorrect. Choice A is the result of substituting 6 for y and substituting 5 for x in the equation y = kx, when solving for k. Choice B results from substituting 3 for k and 5 for x in the equation y = kx, when solving for y. Choice D results from using y = k + x instead of y = kx.', 
+    'math', 
+    1
+  ),
+  (
+    'If 16 + 4x is 10 more than 14, what is the value of 8x?', 
+    '16', 
+    'The description "16 + 4x is 10 more than 14" can be written as the equation 16 + 4x = 10 + 14, which is equivalent to 16 + 4x = 24. Subtracting 16 from each side gives 4x = 8. Since 8x is 2 times 4x, multiplying both sides of 4x = 8 by 2 gives 8x = 16. Therefore, the value of 8x is 16. Choice A is incorrect because it is the value of x, not 8x. Choices B and D are incorrect and may be the result of errors made when solving the equation 16 + 4x = 10 + 14 for x. For example, choice D could be the result of subtracting 16 from the left side of the equation and adding 16 to the right side of the equation 16 + 4x = 10 + 14, giving 4x = 40 and 8x = 80.', 
+    'math', 
+    1
+  ),
+  (
+    'A hospital stores one type of medicine in 2-decagram containers. Based on the information given in the box above, how many 1-milligram doses are there in one 2-decagram container? (1 decagram = 10 grams)', 
+    '20,000', 
+    'Since there are 10 grams in 1 decagram, there are 2 x 10 = 20 grams in 2 decagrams. Since there are 1,000 milligrams in 1 gram, there are 20 x 1,000 = 20,000 milligrams in 20 grams. Therefore, 20,000 1-milligram doses of the medicine can be stored in a 2-decagram container. Choice A is incorrect; 0.002 is the number of grams in 2 milligrams. Choice B is incorrect; it could result from multiplying by 1m000 and dividing by 10 instead of multiplying by both 1,000 and 10 when converting from decagrams to milligrams. Choice C is incorrect; 2,000 is the number of milligrams in 2 grams, not the number of milligrams in 2 decagrams.', 
+    'math', 
+    1
+  );
 
 INSERT INTO questions (title, correct_answer, explanation, subject, exam_id)
 VALUES
@@ -355,7 +415,7 @@ VALUES
   3
 ),
 (
-  'Thich is the correct option?',
+  'Which is the correct option?',
   'scientists, and',
   'Choice C utilizes proper punctuation for items listed in a series. In this case those items are nouns: "Yogurt manufacturers, food scientists, and government officials." Choices A and B are incorrect because both fail to recognize that the items are a part of a series. Since a comma is used after "manufacturers," a semicolon or colon should not be used after "scientists." Choice D is incorrect because the comma after "and" is unnecessary and deviates from grammatical conventions for presenting items in a series.',
   'english',

@@ -4,6 +4,7 @@ import LottieAnimation from '../../LottieAnimation';
 import './Plan.css';
 
 const Plan = ({ courseId, weeklyLectures, topics }) => {
+  
   const groupTopics = () => {
     const content = [];
 

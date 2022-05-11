@@ -51,7 +51,6 @@ const getUserExams = async (req, res) => {
   
         res.status(200).json({ exams: sortedExams, questions: result.questions });
     } catch (error) {
-        console.log(error);
         res.status(400).json(error.message);
     }
   }
