@@ -54,7 +54,7 @@ const StudentCalendar = () => {
             views={allViews}
             step={60}
             showMultiDayTimes
-            defaultDate={new Date(2021, 11, 12)}
+            defaultDate={new Date()}
             localizer={localizer}
             className='calendar'
           />

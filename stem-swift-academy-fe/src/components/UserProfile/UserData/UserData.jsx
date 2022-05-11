@@ -18,22 +18,22 @@ const UserData = ({ userData, dataIsModified, setDataIsModified }) => {
 
                     <tr>
                         <td className="pl-10 py-1">Country: </td>
-                        <td className="pl-8 py-1">{userData.country}</td>
+                        <td className="pl-8 py-1">{userData.country ? userData.country : 'Unknown'}</td>
                     </tr>
 
                     <tr>
                         <td className="pl-10 py-1">City: </td>
-                        <td className="pl-8 py-1">{userData.city}</td>
+                        <td className="pl-8 py-1">{userData.city ? userData.city : 'Unknown'}</td>
                     </tr>
 
                     <tr>
                         <td className="pl-10 py-1">School: </td>
-                        <td className="pl-8 py-1">{userData.school}</td>
+                        <td className="pl-8 py-1">{userData.school ? userData.school : 'Unknown'}</td>
                     </tr>
 
                     <tr>
                         <td className="pl-10 py-1">Graduation Year: </td>
-                        <td className="pl-8 py-1">{userData.graduationYear}</td>
+                        <td className="pl-8 py-1">{userData.graduationYear ? userData.graduationYear : 'Unknown'}</td>
                     </tr>
                 </tbody>
 

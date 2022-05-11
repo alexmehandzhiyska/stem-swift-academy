@@ -25,8 +25,8 @@ module.exports = {
           allowNull: false
       },
       time: {
-          type: Sequelize.INTEGER,
-          default: 4
+          type: Sequelize.DATE,
+          default: Date.now()
       },
       course_id: {
           type: Sequelize.INTEGER,

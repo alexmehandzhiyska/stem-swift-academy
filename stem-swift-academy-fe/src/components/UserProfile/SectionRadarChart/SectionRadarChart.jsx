@@ -18,7 +18,7 @@ const SectionRadarChart = ({ exams }) => {
         return { 
             subject: sectionScore[0],
             A: avgPercent,
-            fullMark: 200
+            fullMark: 100
         } 
     });
 

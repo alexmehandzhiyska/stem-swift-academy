@@ -40,8 +40,8 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true
     },
     time: {
-        type: DataTypes.INTEGER,
-        default: 4
+        type: DataTypes.DATE,
+        default: new Date()
     },
     course_id: {
         type: DataTypes.INTEGER,

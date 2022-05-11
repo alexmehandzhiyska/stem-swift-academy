@@ -4,9 +4,13 @@
 }
 
 .rbc-event {
-  background-color: #cacaca;
+  background: #cacaca;
 }
 .rbc-calendar *,
 .rbc-toolbar button {
   color: #3b82f6;
+}
+
+.rbc-event.rbc-selected {
+  background: rgb(238, 221, 235);
 }
