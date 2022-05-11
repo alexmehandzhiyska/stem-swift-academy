@@ -34,7 +34,7 @@ const Topic = () => {
       {isLoading && <LottieAnimation />}
       {!isLoading && topic &&
         <section className="flex flex-col items-center">
-          <h1 className="heading">{topic.title} - {formatDate(topic.date)}</h1>
+          <h1 className="heading">{topic.title} - {formatDate(topic.start_time)}</h1>
           <iframe className="topic-video" src={recordingLink} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
         </section>
       }

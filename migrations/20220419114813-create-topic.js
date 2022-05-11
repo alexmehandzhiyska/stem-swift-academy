@@ -20,13 +20,13 @@ module.exports = {
           type: Sequelize.INTEGER,
           allowNull: false
       },
-      date: {
+      start_time: {
           type: Sequelize.DATE,
           allowNull: false
       },
-      time: {
-          type: Sequelize.DATE,
-          default: Date.now()
+      duration: {
+        type: Sequelize.INTEGER,
+        defaultValue: 1
       },
       course_id: {
           type: Sequelize.INTEGER,

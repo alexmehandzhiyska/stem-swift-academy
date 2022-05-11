@@ -112,14 +112,11 @@ const getScore = async(req, res) => {
 
 const generateResultsCsv = () => {
     models.sequelize.query("COPY (SELECT * FROM User) TO '/tmp/test.csv' DELIMITER ',' CSV HEADER;")
-    // models.sequelize.query("COPY (SELECT * FROM User) TO '/tmp/exam-results.csv' DELIMITER ',' CSV HEADER;")
-    // models.sequelize.query("COPY (SELECT * FROM User) TO '/Users/alexandrinamehandzhiyska/Desktop/noit-final/exam-results.csv' DELIMITER ',' CSV HEADER;");
     // sequelize.query("COPY (SELECT user_id, exam_id, email, name, ceil(cast(score as decimal)÷ / questions_count * 100) AS score_percent FROM user_exams JOIN users ON user_exams.user_id = users.id JOIN exams ON user_exams.exam_id = exams.id where ceil(cast(score as decimal) / questions_count * 100) >= 80) TO '/Users/alexandrinamehandzhiyska/Desktop/noit-final/exam-results.csv' DELIMITER ',' CSV HEADER;");
     return 'success';
 }
 
 schedule.scheduleJob('0 12 * * * *', () => {
-    console.log('scheduled');
     generateResultsCsv();
 });
 

@@ -1,4 +1,5 @@
 'use strict';
+const { DASHBOARD_INITIALIZE } = require('adminjs');
 const {
   Model
 } = require('sequelize');
@@ -27,9 +28,13 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false
     },
-    date: {
+    start_time: {
         type: DataTypes.DATE,
         allowNull: false
+    },
+    duration: {
+      type: DataTypes.INTEGER,
+      defaultValue: 1
     },
     recording_link: {
       type: DataTypes.STRING,
@@ -39,9 +44,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: true
     },
-    time: {
-        type: DataTypes.DATE,
-        default: new Date()
+    duration: {
+      type: DataTypes.INTEGER,
+      default: 1
     },
     course_id: {
         type: DataTypes.INTEGER,
