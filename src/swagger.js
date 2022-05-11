@@ -80,15 +80,15 @@ const swaggerOptions = {
           tags: ['Exams']
         }
       },
-      '/exams/{subject}': {
+      '/exams/{examType}': {
         'get': {
-          description: 'Get all exams for the chosen subject',
+          description: 'Get all exams for the chosen exam type',
           parameters: [{
             in: 'path',
-            name: 'subject',
+            name: 'examType',
             type: 'string',
             required: true,
-            description: 'The subject for the exams (english or math)'
+            description: 'The exam type (SAT, USMLE, etc.)'
           }],
           responses: {
             '200': {
@@ -97,11 +97,16 @@ const swaggerOptions = {
                 'application/json': {
                   schema: {
                     type: 'array',
+                    required: ['type', 'title', 'duration', 'instructions', 'difficulty', 'questions_count', 'timed'],
                     items: {
                       properties: {
                         id: {
                           type: 'number',
                           description: 'The id of the newly created exam.'
+                        },
+                        type: {
+                          type: 'string',
+                          description: 'The type of the newly created exam (SAT, USMLE, etc.)'
                         },
                         subject: {
                             type: 'string',
@@ -111,13 +116,13 @@ const swaggerOptions = {
                           type: 'string',
                           description: 'The section of the newly created exam.'
                         },
-                        instructions: {
-                          type: 'string',
-                          description: 'The instructions of the newly created exam.'
-                        },
                         duration: {
                           type: 'number',
                           description: 'The duration of the newly created exam in minutes.'
+                        },
+                        instructions: {
+                          type: 'string',
+                          description: 'The instructions of the newly created exam.'
                         },
                         text: {
                           type: 'string',
@@ -130,19 +135,40 @@ const swaggerOptions = {
                         difficulty: {
                           type: 'string',
                           description: 'The difficulty of the newly created exam.'
+                        },
+                        questions_count: {
+                          type: 'number',
+                          description: 'The number of questions inside of the newly created exam.'
+                        },
+                        timed: {
+                          type: 'boolean',
+                          description: 'A boolean indicating whether the exam should be timed (if it\'s a final exam), or not (if it\'s a practice exam).'
+                        },
+                        start_time: {
+                          type: 'datetime',
+                          description: 'The starting time of the newly created exam.'
+                        },
+                        course_id: {
+                          type: 'number',
+                          description: 'The id of the course which the exam belongs to (if there is one).'
                         }
                       }
                     },
                     example: [
                       {
                         id: 1,
+                        type: 'sat',
                         subject: 'english',
                         section: 'writing',
-                        instructions: 'Read the text and answer the questions.',
                         duration: 120,
+                        instructions: 'Read the text and answer the questions.',
                         text: 'Akira came in directly...',
                         link: 'https://satsuite.collegeboard.org/media/pdf/sat-practice-test-1.pdf',
-                        difficulty: 'High'
+                        difficulty: 'high',
+                        questions_count: 10,
+                        timed: true,
+                        start_date: '2022-01-04 02:00:00+02',
+                        course_id: 1
                       },
                       {
                         id: 2,
@@ -151,10 +177,10 @@ const swaggerOptions = {
                         instructions: 'Solve the problems',
                         duration: 180,
                         link: 'https://satsuite.collegeboard.org/media/pdf/sat-practice-test-1.pdf',
-                        difficulty: 'Medium'
+                        difficulty: 'medium',
+                        questions_count: 10
                       }
                     ]
-                   
                   }
                 }
                 
@@ -164,16 +190,16 @@ const swaggerOptions = {
           tags: ['Exams']
         },
       },
-      '/exams/{subject}/{examId}': {
+      '/exams/{examType}/{examId}': {
         'get': {
           description: 'Retrieve an exam by id',
           parameters: [
             {
               in: 'path',
-              name: 'subject',
+              name: 'examType',
               type: 'string',
               required: true,
-              description: 'The subject for the exams (english or math)'
+              description: 'The type of the exams (SAT, USMLE, etc.)'
             },
             {
               in: 'path',
@@ -203,10 +229,10 @@ const swaggerOptions = {
           parameters: [
             {
               in: 'path',
-              name: 'subject',
+              name: 'examType',
               type: 'string',
               required: true,
-              description: 'The subject for the exams (english or math)',
+              description: 'The type of the exams (SAT, USMLE, etc.)',
             },
             {
               in: 'path',
@@ -244,10 +270,10 @@ const swaggerOptions = {
           parameters: [
             {
               in: 'path',
-              name: 'subject',
+              name: 'examType',
               type: 'string',
               required: true,
-              description: 'The subject for the exams (english or math)'
+              description: 'The type of the exams (SAT, USMLE, etc.)'
             },
             {
               in: 'path',
@@ -285,10 +311,10 @@ const swaggerOptions = {
           parameters: [
             {
               in: 'path',
-              name: 'subject',
+              name: 'examType',
               type: 'string',
               required: true,
-              description: 'The subject for the exams (english or math)'
+              description: 'The type of the exams (SAT, USMLE, etc.)'
             },
             {
               in: 'path',
@@ -306,16 +332,16 @@ const swaggerOptions = {
           tags: ['Exams']
         }
       },
-      '/exams/{subject}/{examId}/questions': {
+      '/exams/{examType}/{examId}/questions': {
         'get': {
           description: 'Get all questions for the selected exam',
           parameters: [
             {
               in: 'path',
-              name: 'subject',
+              name: 'examType',
               type: 'string',
               required: true,
-              description: 'The subject for the exams (english or math)'
+              description: 'The type of the exams (SAT, USMLE, etc.)'
             },
             {
               in: 'path',
@@ -341,18 +367,59 @@ const swaggerOptions = {
             }
           },
           tags: ['Exams']
+        },
+        'post': {
+          description: 'Submit exam answers.',
+          parameters: [
+            {
+              in: 'path',
+              name: 'examType',
+              type: 'string',
+              required: true,
+              description: 'The type of the exams (SAT, USMLE, etc.)'
+            },
+            {
+              in: 'path',
+              name: 'examId',
+              type: 'string',
+              required: true,
+              description: 'The id of the exam that should be retrieved.'
+            }
+          ],
+          responses: {
+            '200': {
+              description: 'Returns the user score',
+              content: {
+                'application/json': {
+                  schema: {
+                    type: 'object',
+                    properties: {
+                      score: {
+                        type: 'number',
+                        description: 'The score of the user.'
+                      }
+                    },
+                    example: {
+                      score: 4
+                    }
+                  }
+                }
+              }
+            }
+          },
+          tags: ['Exams']
         }
       },
-      '/exams/{subject}/{examId}/results': {
+      '/exams/{examType}/{examId}/results': {
         'get': {
           description: 'Get the results for the selected exam achieved by the current user',
           parameters: [
             {
               in: 'path',
-              name: 'subject',
+              name: 'examType',
               type: 'string',
               required: true,
-              description: 'The subject for the exams (english or math)'
+              description: 'The type of the exams (SAT, USMLE, etc.)'
             },
             {
               in: 'path',
@@ -450,6 +517,40 @@ const swaggerOptions = {
           tags: ['Courses']
         }
       },
+      '/courses/{courseId}/lectures/{lectureId}': {
+        'get': {
+          description: 'Get lecture by id',
+          parameters: [
+            {
+              in: 'path',
+              name: 'courseId',
+              type: 'number',
+              required: true,
+              description: 'The id of the selected course'
+            },
+            {
+              in: 'path',
+              name: 'lectureId',
+              type: 'number',
+              required: true,
+              description: 'The id of the selected lecture'
+            }
+          ],
+          responses: {
+            200: {
+              description: 'Returns the selected lecture.',
+              content: {
+                'application/json': {
+                  schema: {
+                    '$ref': '#/components/schemas/Lecture'
+                  }
+                }
+              }
+            }
+          },
+          tags: ['Courses']
+        }
+      },
       '/courses/{courseId}/register': {
         'post': {
           description: 'Register user for a chosen course',
@@ -489,7 +590,7 @@ const swaggerOptions = {
           tags: ['Courses']
         }
       },
-      '/auth': {
+      '/users': {
         'get': {
           description: 'Get all users',
           responses: {
@@ -524,32 +625,6 @@ const swaggerOptions = {
                     items: {
                       '$ref': '#/components/schemas/User'
                     }
-                  }
-                }
-              }
-            }
-          },
-          tags: ['Users']
-        }
-      },
-      '/auth/{userId}': {
-        'get': {
-          description: 'Get user info',
-          parameters: [{
-            in: 'path',
-            name: 'courseId',
-            type: 'string',
-            required: true,
-            description: 'The id of the selected course'
-          }],
-          responses: {
-            '200': {
-              description: 'Returns the data for the user',
-              content: {
-                'application/json': {
-                  type: 'object',
-                  schema: {
-                    '$ref': '#/components/schemas/User'
                   }
                 }
               }
@@ -607,7 +682,7 @@ const swaggerOptions = {
               }
             }
           },
-          tags: ['Users']
+          tags: ['Auth']
         }
       },
       '/auth/login': {
@@ -669,7 +744,7 @@ const swaggerOptions = {
               }
             }
           },
-          tags: ['Users']
+          tags: ['Auth']
         }
       },
       '/auth/logout': {
@@ -680,15 +755,15 @@ const swaggerOptions = {
               description: 'Returns status success'
             }
           },
-          tags: ['Users']
+          tags: ['Auth']
         }
       },
-      '/students/{studentId}': {
+      '/users/{userId}': {
         'get': {
           description: 'Get the student\'s information by student id',
           parameters: [{
             in: 'path',
-            name: 'studentId',
+            name: 'userId',
             type: 'string',
             required: true,
             description: 'The id of the current student'
@@ -698,7 +773,7 @@ const swaggerOptions = {
               description: 'Returns all the exams and scores of the current user'
             }
           },
-          tags: ['Students']
+          tags: ['Users']
         }
       }
     },

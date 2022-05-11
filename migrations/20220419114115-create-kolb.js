@@ -9,7 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       question: {
-        type: Sequelize.STRING(100),
+        type: Sequelize.STRING(200),
         allowNull: false
       },
       correct_answer: {

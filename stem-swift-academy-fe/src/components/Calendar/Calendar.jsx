@@ -29,11 +29,11 @@ const StudentCalendar = () => {
         const allTopics = response;
 
         allTopics.forEach(t => {
-          t.start = new Date(t.start_time.slice(0, 10));
-          t.start.setUTCHours(t.time + 12, 0, 0);
+          t.start = new Date(t.start_time);
 
-          t.end = new Date(t.start_time.slice(0, 10));
-          t.end.setUTCHours(t.time + 15, 0, 0);
+          const endTime = new Date(t.start_time);
+          endTime.setTime(endTime.getTime() + t.duration * 60 * 60 * 1000);
+          t.end = endTime;
         });
 
         setLectures(allTopics);
