@@ -15,28 +15,24 @@ const About = () => {
       <ul className="flex flex-col justify-center">
         <li className="my-4 px-32 flex items-center text-blue-500 text-xl font-semibold">
           <FontAwesomeIcon icon={faStar} size="4x" />
-          <p className="ml-6 font-semibold">STEM Swift Academy provides you the opportunity to excel in your final year exams using a professionally
-            prepared study plan, depending on the revision period you have.</p>
+          <p className="ml-6 font-semibold">STEM Swift Academy provides you the opportunity to excel in your exams through a unique and personalized learning experience.</p>
         </li>
 
-        <li className="my-4 ml-2 px-32 flex items-center text-blue-500 text-xl font-semibold">
+        <li className="my-6 ml-2 px-32 flex items-center text-blue-500 text-xl font-semibold">
           <FontAwesomeIcon icon={faStar} size="3x" />
-          <p className="ml-9 font-semibold">Choose between study plans for 1, 3, and 4 months which cover all the content of the SAT
-            Math and Reading and Writing sections and have different intensity</p>
+          <p className="ml-9 font-semibold">Watch online live courses with qualified and experienced tutors in English, Math, Medicine, and other subjects.</p>
         </li>
 
 
-        <li className="my-4 ml-5 px-32 flex items-center text-blue-500 text-xl font-semibold">
+        <li className="my-8 ml-5 px-32 flex items-center text-blue-500 text-xl font-semibold">
           <FontAwesomeIcon icon={faStar} size="2x" />
-          <p className="ml-11 font-semibold">Take advantage of the flashcard decks for English vocabulary and Math terms, which are
-            prepared by certified mentors in the area of Mathematics and English language.</p>
+          <p className="ml-11 font-semibold">Take advantage of professionally prepared practice exams to refine your skills in the chosen area.</p>
         </li>
 
 
-        <li className="my-4 ml-8 px-32 flex items-center text-blue-500 text-xl font-semibold">
+        <li className="my-8 ml-8 px-32 flex items-center text-blue-500 text-xl font-semibold">
           <FontAwesomeIcon icon={faStar} />
-          <p className="ml-12 pl-1 font-semibold">Go through 20 practice tests, prepared according to the official practice exams of
-            College board</p>
+          <p className="ml-12 pl-1 font-semibold">Study using some of the most efficient study techniques, such as Kolb's experiential cycle, mindmapping, inquiry-based learning, priming, etc.</p>
         </li>
 
       </ul>

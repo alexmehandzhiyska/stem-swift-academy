@@ -9,7 +9,7 @@ export const mockData = {
             password: 'asdasd'
         },
         {
-            email: 'hurmaqni@abv.bg',
+            email: 'hermione@abv.bg',
             password: 'asdasd'
         }
     ]

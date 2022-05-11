@@ -117,7 +117,7 @@ describe('All courses page', () => {
     it('Loads weekly lectures in the correct format', () => {
         cy.visit('/courses');
 
-        cy.get('.course .time-text').each(element => expect(element.text()).to.match(/\d+ lectures x week/));
+        cy.get('.course .time-text').each(element => expect(element.text()).to.match(/\d+ lectures X week/));
     });
 });
 
@@ -146,11 +146,6 @@ describe('Course details page', () => {
     it('Loads course study plan', () => {
         cy.get('.study-plan').should('exist');
         cy.get('.week').should('have.length', 4);
-    });
-
-    it('Course register button is disabled for already registered student', () => {
-        cy.get('.register-btn').should('contain', 'Registered');
-        cy.get('.register-btn').should('be.disabled');
     });
 
     it('Course register button is enabled for non-registered student', () => {
@@ -236,32 +231,32 @@ describe('Route guards', () => {
     });
  
     it('Exams page does NOT load when user is NOT logged in', () => {
-        cy.visit('/exams');
+        cy.visit('/exams/sat');
         cy.url().should('include', '/login');
     });   
  
     it('Exam subjects page does NOT load when user is NOT logged in', () => {
-        cy.visit('/exams/english');
+        cy.visit('/exams/sat');
         cy.url().should('include', '/login');
     });   
 
     it('Exam details page does NOT load when user is NOT logged in', () => {
-        cy.visit('/exams/english/7');
+        cy.visit('/exams/sat/2');
         cy.url().should('include', '/login');
     }); 
   
     it('Exam questions page does NOT load when user is NOT logged in', () => {
-        cy.visit('/exams/english/7/questions');
+        cy.visit('/exams/sat/2/questions');
         cy.url().should('include', '/login');
     });  
 
     it('Exam results page does NOT load when user is NOT logged in', () => {
-        cy.visit('/exams/english/7/results');
+        cy.visit('/exams/sat/2/results');
         cy.url().should('include', '/login');
     });
 
     it('Student profile page does NOT load when user is NOT logged in', () => {
-        cy.visit('/students/2');
+        cy.visit('/users/2');
         cy.url().should('include', '/login');
     });  
 
@@ -281,7 +276,7 @@ describe('Route guards', () => {
         cy.get('input[name=email]').type(mockData.users[2].email);
         cy.get('input[name=password]').type(`${mockData.users[2].password}{enter}`); 
 
-        cy.visit('/exams/create');
+        cy.visit('/exams/sat/create');
         cy.url().should('not.include', '/exams/create');
     });
 
@@ -291,8 +286,8 @@ describe('Route guards', () => {
         cy.get('input[name=email]').type(mockData.users[2].email);
         cy.get('input[name=password]').type(`${mockData.users[2].password}{enter}`); 
 
-        cy.visit('/exams/english/7/edit');
-        cy.url().should('not.include', '/exams/english/7/edit');
+        cy.visit('/exams/sat/2/edit');
+        cy.url().should('not.include', '/exams/sat/2/edit');
     });
 
     it('Users page does NOT load when user is NOT owner', () => {
