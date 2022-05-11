@@ -81,8 +81,6 @@ const ExamQuestions = () => {
       {isLoading && <LottieAnimation />}
       {!isLoading &&
         <section data-aos="fade-in" className="questions flex flex-col">
-          
-
           <article className="flex justify-between max-h-screen">
             {text && <p className="text pt-10 px-8 text-lg w-1/2">{text}</p>}
 

@@ -16,7 +16,7 @@ const CourseCard = ({ course }) => {
 
   return (
     <article data-aos="flip-left" className="course flex flex-col items-center px-10 py-16 bg-blue-500 rounded-3xl">
-      <h1 className="mb-2 text-center text-3xl">{course.duration} Months Course</h1>
+      <h1 className="mb-2 text-center text-3xl">{course.duration} Months SAT Course</h1>
 
       <section className="flex items-center self-start text-xl pt-5">
         <FontAwesomeIcon icon={faCalendarCheck} className="mr-3"></FontAwesomeIcon>

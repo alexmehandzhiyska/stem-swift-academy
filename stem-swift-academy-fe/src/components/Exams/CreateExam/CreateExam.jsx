@@ -12,7 +12,7 @@ import { errorNotification, successNotification } from '../../notification';
 const CreateExam = () => {
   const questionsArr = Array(10).fill(1);
 
-  let { examType, subject, examId } = useParams();
+  let { examType, examId } = useParams();
   const examTypeInfo = examTypes.find(et => et.name === examType.toUpperCase());
 
   const [exam, setExam] = useState(null);
@@ -48,11 +48,10 @@ const CreateExam = () => {
         })
         .catch(() => errorNotification('There was an error loading the exam data. Please try again later!'));
 
-      setExamSubject(subject);
     } else {
       setIsLoading(false);
     }
-  }, [examSubject, examId, mode, subject]);
+  }, [examSubject, examId, mode, examSubject]);
 
   const submitExam = (data) => {
     data.type = examType;
@@ -61,7 +60,7 @@ const CreateExam = () => {
       examService.updateOne(examSubject, examId, data)
         .then(() => {
           successNotification('Exam edited successfully!');
-          navigate(`/exams/${examType}/${examId}`);
+          navigate(`/exams/${examType}/${examId}`, { state: { subject: examSubject } });
         })
         .catch(() => {
           errorNotification('There was an error editing your exam. Please try again later.');

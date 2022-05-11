@@ -24,7 +24,7 @@ input[type="radio"] {
 }
 
 .text {
-    height: 83vh;
+    height: 90vh;
     overflow-y: scroll;
     max-width: 50vw;
 }

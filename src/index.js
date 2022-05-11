@@ -2,8 +2,6 @@ const express = require('express');
 const app = express();
 const path = require('path');
 
-const sequelize = require('../config/database');
-
 const AdminJS = require('adminjs')
 const AdminJSExpress = require('@adminjs/express')
 const AdminJSSequelize = require('@adminjs/sequelize')

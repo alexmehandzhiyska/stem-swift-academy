@@ -1,4 +1,5 @@
 const moment = require('moment');
+const { default: log } = require('tailwindcss/lib/util/log');
 const Exam = require('../../models/index').Exam;
 const UserExam = require('../../models/index').UserExam;
 const UserCourse = require('../../models/index').UserCourse;
@@ -46,7 +47,9 @@ const getOne = async (userId, examId) => {
 }
 
 const createOne = async (examType, title, subject, section, instructions, duration, time, difficulty, link, text, questions_count) => {
+    time = time ? time : null;
     const timed = time ? true : false;
+    
     const exam = await Exam.create({ type: examType, title, subject, section, duration, timed, start_time: time, instructions, text, link, difficulty, questions_count });
     return exam.dataValues;
 }

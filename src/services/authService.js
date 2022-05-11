@@ -4,6 +4,8 @@ const jwtGenerator = require('../utils/jwt');
 
 const register = async(name, email, password, country, city, school, graduationYear) => {
     const decodedPassword = await bcrypt.hash(password, 10);
+    
+    graduationYear = graduationYear ? graduationYear : null;
     const result = await User.create({ name, email, password: decodedPassword, country, city, school, graduation_year: graduationYear });
     const user = result.dataValues;
 

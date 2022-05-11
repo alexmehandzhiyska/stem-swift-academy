@@ -7,8 +7,8 @@ const Plan = ({ courseId, weeklyLectures, topics }) => {
   const groupTopics = () => {
     const content = [];
 
-    for (let i = 0; i < topics.length / weeklyLectures; i++) {
-      content.push(<Week key={i} courseId={courseId} i={i + 1} topics={topics.slice(i, i + weeklyLectures)}></Week>);
+    for (let i = 0, j = 0; i < topics.length / weeklyLectures; i++, j += weeklyLectures) {
+      content.push(<Week key={i} courseId={courseId} week={i + 1} topics={topics.slice(j, j + weeklyLectures)}></Week>);
     }
 
     return content;

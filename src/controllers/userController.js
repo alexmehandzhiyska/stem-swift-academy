@@ -69,7 +69,6 @@ const updateRoles = async(req, res) => {
 }
 
 const updateOne = async (req, res) => {
-    console.log('in update');
     const userId = req.params.userId;
     const { email, country, city, school, graduation_year } = req.body;
 
