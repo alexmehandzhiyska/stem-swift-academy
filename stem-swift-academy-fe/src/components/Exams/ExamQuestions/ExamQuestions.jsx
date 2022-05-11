@@ -69,6 +69,7 @@ const ExamQuestions = () => {
   const submitAnswers = (data) => {
     examService.submitAnswers(examType, examId, data)
       .then(() => {
+        document.body.classList.remove('scroll-hidden')
         navigate(`/exams/${examType}/${examId}/results`, { state: { userAnswers: data } });
       })
       .catch(() => {
