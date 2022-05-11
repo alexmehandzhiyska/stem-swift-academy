@@ -59,6 +59,11 @@ The pages which are accessible to all logged-in users are:
 
 - view all users
 - modify user roles
+
+### 👨‍💻 Developers only
+
+- swagger with all schemas and endpoints - /api-docs
+- admin panel - /admin
   <br/>
   <br/>
 
@@ -81,22 +86,25 @@ The pages which are accessible to all logged-in users are:
 
 ## 📚 Libraries
 
-1. [Cloudinary](https://cloudinary.com/) - file storage cloud API
-2. [Google Maps API](https://mapsplatform.google.com/) - integrated google map
-3. [Heroku](https://heroku.com/) - app deployment
-4. [Lodash](https://www.npmjs.com/package/lodash) - additional JS functions
-5. [Nodemailer](https://nodemailer.com/about/) - custom confirmation emails
-6. [Cypress](https://www.cypress.io/) - e2e tests
-7. [React Big Calendar](https://www.npmjs.com/package/react-big-calendar?activeTab=versions) - calendar page for students' events
-8. [React Hook Form](https://react-hook-form.com/) - custom forms
-9. [React Lottie](https://www.npmjs.com/package/react-lottie) - loading animations
-10. [Recharts](https://recharts.org/en-US/) - statistics charts
-11. [Redux](https://redux.js.org/) - state management
-12. [MomentJS](https://momentjs.com/) - date manipulation
-13. [Swagger](https://swagger.io/) - REST API endpoints and schema description
-14. [Sweetalert2](https://sweetalert2.github.io/) - custom notifications
-15. [AOS](https://michalsnik.github.io/aos/) - text animations
-16. [React timer wrapper](https://ryanhefner.github.io/react-timer-wrapper/) - exam timers
+
+1. [AdminJS](https://adminjs.co/) - admin panel
+2. [AOS](https://michalsnik.github.io/aos/) - text animations
+3. [Cloudinary](https://cloudinary.com/) - file storage cloud API
+4. [Cypress](https://www.cypress.io/) - e2e tests
+5. [Google Maps API](https://mapsplatform.google.com/) - integrated google map
+6. [Heroku](https://heroku.com/) - app deployment
+7. [Lodash](https://www.npmjs.com/package/lodash) - additional JS functions
+8. [MomentJS](https://momentjs.com/) - date manipulation
+9. [Nodemailer](https://nodemailer.com/about/) - custom confirmation emails
+10. [React Big Calendar](https://www.npmjs.com/package/react-big-calendar?activeTab=versions) - calendar page for students' events
+11. [React Hook Form](https://react-hook-form.com/) - custom forms
+12. [React Lottie](https://www.npmjs.com/package/react-lottie) - loading animations
+13. [React timer wrapper](https://ryanhefner.github.io/react-timer-wrapper/) - exam timers
+14. [Recharts](https://recharts.org/en-US/) - statistics charts
+15. [Redux](https://redux.js.org/) - state management
+16. [Swagger](https://swagger.io/) - REST API endpoints and schema description
+17. [Sweetalert2](https://sweetalert2.github.io/) - custom notifications
+
     <br />
     <br />
 
