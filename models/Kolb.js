@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     question: {
-      type: DataTypes.STRING(500),
+      type: DataTypes.STRING(1000),
       allowNull: false
     },
     correct_answer: {
