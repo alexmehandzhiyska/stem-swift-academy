@@ -55,7 +55,7 @@ if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, "../stem-swift-academy-fe/build")));
 }
 
-app.use(routes);
+app.use('/api', routes);
 app.use(adminJs.options.rootPath, router)
 
 models.sequelize.authenticate()
