@@ -1,5 +1,5 @@
 const getAll = async () => {
-  const response = await fetch(`/courses`, { credentials: 'include' });
+  const response = await fetch(`/api/courses`, { credentials: 'include' });
   const data = await response.json();
   
   if (!response.ok) {
@@ -11,7 +11,7 @@ const getAll = async () => {
 }
 
 const getOne = async (courseId) => {
-  const response = await fetch(`/courses/${courseId}`);
+  const response = await fetch(`/api/courses/${courseId}`);
   const data = await response.json();
 
   if (!response.ok) {
@@ -22,14 +22,14 @@ const getOne = async (courseId) => {
 }
 
 const getCourses = async (userId) => {
-  const response = await fetch(`/courses?userId=${userId}`);
+  const response = await fetch(`/api/courses?userId=${userId}`);
   const data = await response.json();
 
   return data;
 }
 
 const registerUser = async (courseId, userId) => {
-  const response = await fetch(`/courses/${courseId}/register`, {
+  const response = await fetch(`/api/courses/${courseId}/register`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

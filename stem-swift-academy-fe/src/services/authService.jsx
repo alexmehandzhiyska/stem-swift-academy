@@ -1,5 +1,5 @@
 const register = async (user) => {
-  const response = await fetch(`/auth/register`, {
+  const response = await fetch(`/api/auth/register`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -18,7 +18,7 @@ const register = async (user) => {
 }
 
 const login = async (user) => {
-  const response = await fetch(`/auth/login`, {
+  const response = await fetch(`/api/auth/login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -37,7 +37,7 @@ const login = async (user) => {
 }
 
 const logout = async () => {
-  const response = await fetch(`/auth/logout`, { credentials: 'include' });
+  const response = await fetch(`/api/auth/logout`, { credentials: 'include' });
   if (!response.ok) {
     throw new Error(response.status);
   }
