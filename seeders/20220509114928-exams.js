@@ -58,7 +58,7 @@ module.exports = {
         instructions: 'Solve each problem and choose the best answer from the choices provided',
         link: 'https://satsuite.collegeboard.org/media/pdf/sat-practice-test-1.pdf',
         difficulty: 'medium',
-        questions_count: 10,
+        questions_count: 5,
         timed: false,
         created_at: '2022-04-25 23:41:00.707+03',
         updated_at: '2022-04-25 23:41:00.707+03'
@@ -70,7 +70,7 @@ module.exports = {
         duration: 90,
         instructions: 'Read the questions, analize the situations presented, and choose the most appropriate ansewr to each question.',
         difficulty: 'high',
-        questions_count: 10,
+        questions_count: 5,
         timed: false,
         created_at: '2022-04-25 23:41:00.707+03',
         updated_at: '2022-04-25 23:41:00.707+03'

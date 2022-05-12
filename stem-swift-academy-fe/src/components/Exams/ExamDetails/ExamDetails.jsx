@@ -45,7 +45,7 @@ const ExamDetails = () => {
         <section data-aos="fade-in" className="section-start">
           <article className="section-header">
             <h1 className="heading">{exam.title}</h1>
-            <h3 className="subheading">{exam.duration} minutes | 10 questions | <span className="capitalize">{exam.difficulty}</span> difficulty</h3>
+            <h3 className="subheading">{exam.duration} minutes | {exam.questions_count} questions | <span className="capitalize">{exam.difficulty}</span> difficulty</h3>
           </article>
 
           <article className="directions">
