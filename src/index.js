@@ -59,7 +59,7 @@ app.use('/api', routes);
 app.use(adminJs.options.rootPath, router);
 
 app.get('*', (request, response) => {
-    response.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+    response.sendFile(path.join(__dirname, 'stem-swift-academy-fe/build', 'index.html'));
 });
 
 models.sequelize.authenticate()
