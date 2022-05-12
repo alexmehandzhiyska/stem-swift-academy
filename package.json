@@ -9,7 +9,7 @@
     },
     "scripts": {
         "start": "nodemon ./src/index.js",
-        "heroku-postbuild": "cd stem-swift-academy-fe && npm install && npm run build",
+        "heroku-postbuild": "cd stem-swift-academy-fe && npm run build",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "repository": {
