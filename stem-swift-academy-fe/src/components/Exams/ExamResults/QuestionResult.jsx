@@ -31,7 +31,7 @@ const QuestionResult = ({ number, question, userAnswer }) => {
             </section>
 
             <p className={explanationIsToggled ? "block mt-5" : "hidden"}>{question.explanation}</p>
-            <button className="btn add-btn mt-5 px-2" onClick={() => navigate(`/notebooks/${userId}/create`, { state: { question: question.title, correctAnswer: question.correct_answer, userAnswer: userAnswer} })}>Add to notebook</button>
+            <button className="btn add-btn mt-5 px-2" onClick={() => navigate('/notebook/create', { state: { question: question.title, correctAnswer: question.correct_answer, userAnswer: userAnswer} })}>Add to notebook</button>
             
         </article>
     );

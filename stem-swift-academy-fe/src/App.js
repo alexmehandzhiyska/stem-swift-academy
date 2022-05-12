@@ -52,8 +52,8 @@ function App() {
             <Route path="/exams/:examType/:examId/questions" element={<ExamQuestions />}></Route>
             <Route path="/exams/:examType/:examId/results" element={<ExamResults />}></Route>
             <Route path="/users/:studentId" element={<UserProfile />}></Route>
-            <Route path="/notebooks/:studentId" element={<AllKolbs />}></Route>
-            <Route path="/notebooks/:studentId/create" element={<CreateKolbs />}></Route>
+            <Route path="/notebook" element={<AllKolbs />}></Route>
+            <Route path="/notebook/create" element={<CreateKolbs />}></Route>
           </Route>
           <Route element={<RoleRoute />}>
               <Route path="/exams/:examType/create" element={<CreateExam mode="create" />}></Route>

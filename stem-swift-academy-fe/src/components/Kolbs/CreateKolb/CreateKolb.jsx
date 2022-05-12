@@ -24,7 +24,7 @@ const CreateKolbs = () => {
 
         kolbService.createOne(content, userId)
         .then(() => {
-            navigate(`/notebooks/${userId}`);
+            navigate('/notebook');
         })
         .catch(() => {
             errorNotification('There was an error creating your kolb. Please try again later!');

@@ -117,7 +117,7 @@ const CreateExam = () => {
               {errors.duration && <p className="text-blue-500">{errors.duration.message}</p>}
               
               <input name="time" {...register('time')} className="exam-input" placeholder="Test starting time (if fixed)" type="datetime-local" defaultValue={mode === 'edit' ? exam.time : ''} />
-              <input name="questions-count" type="number" className="exam-input" min={5} max={100} placeholder="Questions count (default - 5 questions)" onBlur={(e) => setQuestionsArr(Array(Number(e.target.value)).fill(1))} required />
+              <input name="questions-count" type="number" className="exam-input" min={5} max={100} placeholder="Questions count (default - 5 questions)" defaultValue={mode === 'edit' ? exam.questions_count : ''}  onBlur={(e) => setQuestionsArr(Array(Number(e.target.value)).fill(1))} required />
 
               <input name="difficulty" {...register('difficulty', { required: { value: true, message: 'Field is required!' } })} className="exam-input" placeholder="Test difficulty (Low, Medium or High)" type="text" defaultValue={mode === 'edit' ? exam.difficulty : ''} />
               {errors.difficulty && <p className="text-blue-500">{errors.difficulty.message}</p>}

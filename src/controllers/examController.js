@@ -109,9 +109,9 @@ const getScore = async(req, res) => {
     }
 }
 
-schedule.scheduleJob('0 40 10 * * *', () => {
-    examService.generateResultsCsv();
-});
+// schedule.scheduleJob('0 40 10 * * *', () => {
+//     examService.generateResultsCsv();
+// });
 
 router.post('/', createOne);
 router.get('/:examType', getAll);
