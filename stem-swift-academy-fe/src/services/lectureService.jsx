@@ -1,5 +1,5 @@
 const getAll = async () => {
-  const response = await fetch(`/courses/lectures`, { credentials: 'include' });
+  const response = await fetch(`/api/courses/lectures`, { credentials: 'include' });
   const data = await response.json();
 
   if (!response.ok) {
@@ -10,7 +10,7 @@ const getAll = async () => {
 }
 
 const getOne = async (courseId, topicId) => {
-  const response = await fetch(`/courses/${courseId}/lectures/${topicId}`);
+  const response = await fetch(`/api/courses/${courseId}/lectures/${topicId}`);
   const data = await response.json();
 
   if (!response.ok) {
