@@ -27,7 +27,7 @@ module.exports = {
       explanation: {
           type: Sequelize.STRING(2000)
       },
-      subject: {
+      exam_type: {
           type: Sequelize.STRING(30),
           allowNull: true
       },
