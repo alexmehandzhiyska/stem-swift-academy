@@ -1,5 +1,5 @@
 const moment = require('moment');
-const { default: log } = require('tailwindcss/lib/util/log');
+const models = require('../../models/index');
 const Exam = require('../../models/index').Exam;
 const UserExam = require('../../models/index').UserExam;
 const UserCourse = require('../../models/index').UserCourse;
@@ -65,4 +65,30 @@ const deleteOne = async (id) => {
     return result;
 }
 
-module.exports = { getAll, getOne, createOne, updateOne, deleteOne };
+const generateResultsCsv = async () => {
+    const today = new Date();
+
+    const allExamsData = await Exam.findAll();
+    const allExams = allExamsData.map(exam => exam.dataValues);
+
+    const todayExams = allExams.filter(exam => moment(exam.start_time).format('dd') == moment(today).format('dd') && moment(exam.start_time).format('MMM') == moment(today).format('MMM'));
+
+    // models.sequelize.query("COPY (SELECT * FROM User) TO '/tmp/test.csv' DELIMITER ',' CSV HEADER;")
+    // models.sequelize.query(`COPY 
+    //     (SELECT user_id, exam_id, email, name, ceil(cast(score as decimal) / questions_count * 100) AS score_percent 
+    //     FROM user_exams 
+    //     JOIN users ON user_exams.user_id = users.id 
+    //     JOIN exams ON user_exams.exam_id = exams.id 
+    //     WHERE exams.id IN(:examIds) AND ceil(cast(score as decimal) / questions_count * 100) >= 80)
+    //     TO '/Users/alexandrinamehandzhiyska/Desktop/noit-final/exam-results.csv' DELIMITER ',' CSV HEADER;`, { replacements: { examIds: todayExams.map(e => e.id) } });
+
+    models.sequelize.query(`COPY 
+        (SELECT user_id, exam_id, email, name, ceil(cast(score as decimal) / questions_count * 100) AS score_percent 
+        FROM user_exams 
+        JOIN users ON user_exams.user_id = users.id 
+        JOIN exams ON user_exams.exam_id = exams.id 
+        WHERE exams.id IN(:examIds) AND ceil(cast(score as decimal) / questions_count * 100) >= 70)
+        TO '/users/alexandrinamehandzhiyska/Desktop/noit-final/exam-results.csv' DELIMITER ',' CSV HEADER;`, { replacements: { examIds: todayExams.map(e => e.id) } });
+};
+
+module.exports = { getAll, getOne, createOne, updateOne, deleteOne, generateResultsCsv };
