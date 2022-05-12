@@ -28,7 +28,7 @@ const registerUser = async (courseId, userId) => {
   const user = await User.findByPk(userId);
   const course = await Course.findByPk(courseId);
 
-  await sendEmail(user.dataValues, course.dataValues);
+  // await sendEmail(user.dataValues, course.dataValues);
   return result.dataValues;
 }
 
