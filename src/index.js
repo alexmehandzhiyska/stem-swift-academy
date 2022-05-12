@@ -56,7 +56,11 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.use('/api', routes);
-app.use(adminJs.options.rootPath, router)
+app.use(adminJs.options.rootPath, router);
+
+app.get('*', (request, response) => {
+    response.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
 
 models.sequelize.authenticate()
     .then(() => {
