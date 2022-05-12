@@ -85,7 +85,7 @@ const ExamQuestions = () => {
           <article className="flex justify-between max-h-screen">
             {text && <p className="text pt-10 px-8 text-lg w-1/2">{text}</p>}
 
-            <form className={text ? "survey" : "survey min-w-full"} onSubmit={handleSubmit(submitAnswers)}>
+            <form className={text ? "test-body test-sm" : "test-body test-lg"} onSubmit={handleSubmit(submitAnswers)}>
               {remainingTime && 
                 <article className="timer flex text-xl">
                   <FontAwesomeIcon icon={faClock} className="timer-icon mr-5"></FontAwesomeIcon>

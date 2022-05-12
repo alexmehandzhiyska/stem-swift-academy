@@ -20,6 +20,7 @@ const createOne = async(req, res) => {
         const kolb = await kolbService.createOne(content, userId);
         res.status(201).json(kolb);
     } catch (error) {
+        console.log(error);
         res.status(400).json(error.message);
     }
 }

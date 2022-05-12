@@ -729,6 +729,126 @@ module.exports = {
         created_at: '2022-04-25 23:41:00.707+03',
         updated_at: '2022-04-25 23:41:00.707+03'
       },
+      {
+        content: '0.002d + 0.09s',
+        question_id: 31,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
+      {
+        content: '0.002d - 0.09s',
+        question_id: 31,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
+      {
+        content: '0.09d + 0.002s',
+        question_id: 31,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
+      {
+        content: '0.09d - 0.002s',
+        question_id: 31,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
+      {
+        content: '300',
+        question_id: 32,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
+      {
+        content: '350',
+        question_id: 32,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
+      {
+        content: '400',
+        question_id: 32,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
+      {
+        content: '450',
+        question_id: 32,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
+      {
+        content: '-1',
+        question_id: 33,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
+      {
+        content: '5',
+        question_id: 33,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
+      {
+        content: '8',
+        question_id: 33,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
+      {
+        content: '9',
+        question_id: 33,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
+      {
+        content: '0',
+        question_id: 34,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
+      {
+        content: '150',
+        question_id: 34,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
+      {
+        content: '250',
+        question_id: 34,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
+      {
+        content: '400',
+        question_id: 34,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
+      {
+        content: '2',
+        question_id: 35,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
+      {
+        content: '3',
+        question_id: 35,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
+      {
+        content: '5',
+        question_id: 35,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
+      {
+        content: '6',
+        question_id: 35,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
    ], {});
   },
 

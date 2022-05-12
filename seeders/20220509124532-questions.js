@@ -272,6 +272,51 @@ module.exports = {
         exam_id: 3,
         created_at: '2022-04-25 23:41:00.707+03',
         updated_at: '2022-04-25 23:41:00.707+03'
+      },
+      {
+        title: 'A musician has a new song available for downloading or streaming. The musician earns $0.09 each time the song is downloaded and $0.002 each time the song is streamed. Which of the following expressions represents the amount, in dollars, that the musician earns if the song is downloaded d times and streamed s times?',
+        correct_answer: '0.09d - 0.002s',
+        explanation: 'Since the musician earns $0.09 for each download, the musician earns 0.09d dollars when the song is downloaded d times. Similarly, since the musician earns $0.002 each time the song is streamed, the musician earns 0.002s dollars when the song is streamed s times. Therefore, the musician earns a total of 0.09d + 0.002s dollars when the song is downloaded d times and streamed s times. Choice A is incorrect because the earnings for each download and the earnings for time streamed are interchanged in the expression. Choices B and D are incorrect because in both answer choices, the musician will lose money when a song is either downloaded or streamed. However, the musician only earns money, not loses money, when the song is downloaded or streamed.',
+        exam_type: 'sat',
+        exam_id: 4,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
+      {
+        title: 'A quality control manager at a factory selects 7 lightbulbs at random for inspection out of every 400 lightbulbs produced. At this rate, how many lightbulbs will be inspected if the factory produces 20,000 lightbulbs?',
+        correct_answer: '350',
+        explanation: 'The quality control manager selects 7 lightbulbs at random for inspection out of every 400 lightbulbs produced. A quantity of 20,000 lightbulbs is equal to 20,000 / 400 = 50 batches of 400 lightbulbs. Therefore, at the rate of 7 lightbulbs per 400 lightbulbs produced, the quality control manager will inspect a total of 50 x 7 = 350 lightbulbs. Choices A, C, and D are incorrect and may result from calculation errors ormisunderstanding of the proportional relationship.',
+        exam_type: 'sat',
+        exam_id: 4,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
+      {
+        title: 'When 4 times the number x is added to 12, the result is 8. What number results when 2 times x is added to 7 ?',
+        correct_answer: '5',
+        explanation: 'When 4 times the number x is added to 12, the result is 12 + 4x. Since this result is equal to 8, the equation 12 + 4x = 8 must be true. Subtracting 12 from each side of 12 + 4x = 8 gives 4x = −4, and then dividing both sides of 4x = −4 by 4 gives x = −1. Therefore, 2 times x added to 7, or 7 + 2x, is equal to 7 + 2(−1) = 5. Choice A is incorrect because −1 is the value of x, not the value of 7 + 2x. Choices C and D are incorrect and may result from calculation errors.',
+        exam_type: 'sat',
+        exam_id: 4,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
+      {
+        title: 'In a video game, each player starts the game with k points and loses 2 points each time a task is not completed. If a player who gains no additional points and fails to complete 100 tasks has a score of 200 points, what is the value of k ?',
+        correct_answer: '400',
+        explanation: 'Since a player starts with k points and loses 2 points each time a task is not completed, the player’s score will be k − 2n after n tasks are not completed (and no additional points are gained). Since a player who fails to complete 100 tasks has a score of 200 points, the equation 200 = k − 100(2) must be true. This equation can be solved by adding 200 to each side, giving k = 400. Choices A, B, and C are incorrect and may result from errors in setting up or solving the equation relating the player’s score to the number of tasks the player fails to complete. For example, choice A may result from subtracting 200 from the left-hand side of 200 = k − 100(2) and adding 200 to the righthand side.',
+        exam_type: 'sat',
+        exam_id: 4,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
+      {
+        title: 'A function f satisfies f(2) = 3 and f(3) = 5. A function g satisfies g(3) = 2 and g(5) = 6. What is the value of f g( (3)) ?',
+        correct_answer: '3',
+        explanation: 'It is given that g(3) = 2. Therefore, to find the value of f(g(3)), substitute 2 for g(3): f(g(3)) = f(2) = 3. Choices A, C, and D are incorrect and may result from misunderstandings about function notation.',
+        exam_type: 'sat',
+        exam_id: 4,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
       }
    ], {});
   },

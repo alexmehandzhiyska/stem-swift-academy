@@ -1,8 +1,15 @@
-.survey {
-    min-width: 50vw;
+.test-body {
     max-height: 100vh !important;
     margin-bottom: 5em;
     overflow-y: scroll;
+}
+
+.test-sm {
+    min-width: 50vw;
+}
+
+.test-lg {
+    min-width: 100vw;
 }
 
 .scroll-hidden {
