@@ -4,10 +4,10 @@ import { PieChart, Pie, Cell, Tooltip } from 'recharts';
 
 const COLORS = ['#3B82F6', '#EEDDEB', '#FFBB28', '#FF8042'];
 
-const ResultsChart = ({ score }) => {
+const ResultsChart = ({ score, questionsCount }) => {
   const data = [
     { name: 'Correct Answers', value: score },
-    { name: 'Wrong Answers', value: 10 - score }
+    { name: 'Wrong Answers', value: questionsCount - score }
   ];
 
   return (

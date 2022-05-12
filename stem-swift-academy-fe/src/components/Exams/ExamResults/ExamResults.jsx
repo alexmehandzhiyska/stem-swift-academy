@@ -55,7 +55,7 @@ const ExamResults = () => {
           <section data-aos="fade-in" className="flex flex-col justify-center items-center">
             <h1 className="heading">Your result: {score} / {questions.length}</h1>
 
-            <ResultsChart score={score} className="relative"></ResultsChart>
+            <ResultsChart score={score} questionsCount={questions.length} className="relative"></ResultsChart>
             <h1 className="heading result-heading">{score / questions.length * 100}%</h1>
           </section>
 

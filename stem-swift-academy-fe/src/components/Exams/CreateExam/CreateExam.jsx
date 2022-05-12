@@ -10,19 +10,18 @@ import LottieAnimation from '../../LottieAnimation';
 import { errorNotification, successNotification } from '../../notification';
 
 const CreateExam = () => {
-  const questionsArr = Array(10).fill(1);
-
   let { examType, examId } = useParams();
   const examTypeInfo = examTypes.find(et => et.name === examType.toUpperCase());
-
+  
   const [exam, setExam] = useState(null);
   const [questions, setQuestions] = useState([]);
+  const [questionsArr, setQuestionsArr] = useState(Array(5).fill(1));
   const [examSubject, setExamSubject] = useState(examTypeInfo.defaultSubject);
   const [charsLeft, setCharsLeft] = useState(5000);
   const [isLoading, setIsLoading] = useState(true);
-
+  
   const { register, formState: { errors }, handleSubmit, setValue } = useForm({ mode: 'onSubmit', reValidateMode: 'onChange' });
-
+  
   const mode = examId ? 'edit' : 'create';
   const navigate = useNavigate();
 
@@ -66,6 +65,8 @@ const CreateExam = () => {
           errorNotification('There was an error editing your exam. Please try again later.');
         });
     } else {
+      console.log(data);
+
       examService.createOne(data)
         .then(() => {
           successNotification('Exam created successfully!');
@@ -108,13 +109,19 @@ const CreateExam = () => {
               <input name="subject" {...register('subject')} placeholder="Exam subject (English, Math)" type="text" defaultValue={mode === 'edit' ? exam.section : ''} />
               <input name="title" {...register('title')} className="exam-input" placeholder="Title" type="text" defaultValue={mode === 'edit' ? exam.title : ''} />
               <input name="section" {...register('section')} className="exam-input" placeholder="Section" type="text" defaultValue={mode === 'edit' ? exam.section : ''} />
+
               <input name="instructions" {...register('instructions', { required: { value: true, message: 'Field is required!' } })} className="exam-input" placeholder="Instructions" type="text" defaultValue={mode === 'edit' ? exam.instructions : ''} />
               {errors.instructions && <p className="text-blue-500">{errors.instructions.message}</p>}
+
               <input name="duration" {...register('duration', { required: { value: true, message: 'Field is required!' } })} className="exam-input" placeholder="Test duration (in minutes)" type="number" defaultValue={mode === 'edit' ? exam.duration : ''} />
               {errors.duration && <p className="text-blue-500">{errors.duration.message}</p>}
+              
               <input name="time" {...register('time')} className="exam-input" placeholder="Test starting time (if fixed)" type="datetime-local" defaultValue={mode === 'edit' ? exam.time : ''} />
+              <input name="questions-count" type="number" className="exam-input" min={5} max={100} placeholder="Questions count (default - 5 questions)" onBlur={(e) => setQuestionsArr(Array(Number(e.target.value)).fill(1))} required />
+
               <input name="difficulty" {...register('difficulty', { required: { value: true, message: 'Field is required!' } })} className="exam-input" placeholder="Test difficulty (Low, Medium or High)" type="text" defaultValue={mode === 'edit' ? exam.difficulty : ''} />
               {errors.difficulty && <p className="text-blue-500">{errors.difficulty.message}</p>}
+
               <input name="pdfLink" {...register('pdfLink')} className="exam-input" placeholder="PDF link" type="text" defaultValue={mode === 'edit' ? exam.link : ''} />
             </fieldset>
 
