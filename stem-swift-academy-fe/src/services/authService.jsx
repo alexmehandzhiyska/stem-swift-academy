@@ -57,7 +57,7 @@ const getAll = async () => {
 }
 
 const getOne = async (userId) => {
-  const response = await fetch(`/auth/${userId}`);
+  const response = await fetch(`/api/auth/${userId}`);
   const data = await response.json();
 
   if (!response.ok) {
@@ -68,7 +68,7 @@ const getOne = async (userId) => {
 }
 
 const updateUsers = async (users) => {
-  const response = await fetch(`/auth`, {
+  const response = await fetch(`/api/auth`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json'

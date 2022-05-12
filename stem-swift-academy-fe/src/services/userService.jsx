@@ -1,5 +1,5 @@
 const getAll = async (page, role) => {
-    const response = await fetch(`/users?page=${page}&limit=10&role=${role}`);
+    const response = await fetch(`/api/users?page=${page}&limit=10&role=${role}`);
     const data = await response.json();
   
     if (!response.ok) {
@@ -10,7 +10,7 @@ const getAll = async (page, role) => {
 }
   
 const getOne = async (userId) => {
-    const response = await fetch(`/users/${userId}`);
+    const response = await fetch(`/api/users/${userId}`);
     const data = await response.json();
 
     if (!response.ok) {
@@ -21,7 +21,7 @@ const getOne = async (userId) => {
 }
 
 const getUserExams = async (userId) => {
-    const response = await fetch(`/users/${userId}/exams`);
+    const response = await fetch(`/api/users/${userId}/exams`);
     const data = await response.json();
   
     if (!response.ok) {
@@ -32,7 +32,7 @@ const getUserExams = async (userId) => {
 }
   
 const updateUsers = async (users) => {
-    const response = await fetch(`/users`, {
+    const response = await fetch(`/api/users`, {
         method: 'PATCH',
         headers: {
         'Content-Type': 'application/json'
@@ -51,7 +51,7 @@ const updateUsers = async (users) => {
 }
 
 const updateOne = async (userId, user) => {
-    const response = await fetch(`/users/${userId}`, {
+    const response = await fetch(`/api/users/${userId}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'
