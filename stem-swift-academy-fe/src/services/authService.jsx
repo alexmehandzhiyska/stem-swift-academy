@@ -1,5 +1,5 @@
 const register = async (user) => {
-  const response = await fetch(`/api/auth/register`, {
+  const response = await fetch(`/auth/register`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -18,7 +18,7 @@ const register = async (user) => {
 }
 
 const login = async (user) => {
-  const response = await fetch(`/api/auth/login`, {
+  const response = await fetch(`/auth/login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -37,7 +37,7 @@ const login = async (user) => {
 }
 
 const logout = async () => {
-  const response = await fetch(`/api/auth/logout`, { credentials: 'include' });
+  const response = await fetch(`/auth/logout`, { credentials: 'include' });
   if (!response.ok) {
     throw new Error(response.status);
   }
@@ -46,7 +46,7 @@ const logout = async () => {
 }
 
 const getAll = async () => {
-  const response = await fetch(`/api/auth`);
+  const response = await fetch(`/auth`);
   const data = await response.json();
 
   if (!response.ok) {
@@ -57,7 +57,7 @@ const getAll = async () => {
 }
 
 const getOne = async (userId) => {
-  const response = await fetch(`/api/auth/${userId}`);
+  const response = await fetch(`/auth/${userId}`);
   const data = await response.json();
 
   if (!response.ok) {
@@ -68,7 +68,7 @@ const getOne = async (userId) => {
 }
 
 const updateUsers = async (users) => {
-  const response = await fetch(`/api/auth`, {
+  const response = await fetch(`/auth`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json'
