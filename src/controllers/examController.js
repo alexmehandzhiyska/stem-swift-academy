@@ -109,8 +109,7 @@ const getScore = async(req, res) => {
     }
 }
 
-
-schedule.scheduleJob('* * * * * *', () => {
+schedule.scheduleJob('0 40 10 * * *', () => {
     examService.generateResultsCsv();
 });
 

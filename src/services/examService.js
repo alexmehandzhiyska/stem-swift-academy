@@ -4,9 +4,11 @@ const Exam = require('../../models/index').Exam;
 const UserExam = require('../../models/index').UserExam;
 const UserCourse = require('../../models/index').UserCourse;
 
+const { exec } = require("child_process");
+
+
 const getAll = async (examType, subject) => {
     let exams = await Exam.findAll({ where: { type: examType, timed: false } });
-    console.log(exams);
     exams = subject ? exams.filter(exam => exam.subject == subject) : exams;
     return exams.map(exam => exam.dataValues);
 }
@@ -71,24 +73,15 @@ const generateResultsCsv = async () => {
     const allExamsData = await Exam.findAll();
     const allExams = allExamsData.map(exam => exam.dataValues);
 
-    const todayExams = allExams.filter(exam => moment(exam.start_time).format('dd') == moment(today).format('dd') && moment(exam.start_time).format('MMM') == moment(today).format('MMM'));
+    const todayExams = allExams
+        .filter(exam => moment(exam.start_time).format('dd') == moment(today).format('dd') && moment(exam.start_time).format('MMM') == moment(today).format('MMM'))
+        .map(exam => exam.id);
 
-    // models.sequelize.query("COPY (SELECT * FROM User) TO '/tmp/test.csv' DELIMITER ',' CSV HEADER;")
-    // models.sequelize.query(`COPY 
-    //     (SELECT user_id, exam_id, email, name, ceil(cast(score as decimal) / questions_count * 100) AS score_percent 
-    //     FROM user_exams 
-    //     JOIN users ON user_exams.user_id = users.id 
-    //     JOIN exams ON user_exams.exam_id = exams.id 
-    //     WHERE exams.id IN(:examIds) AND ceil(cast(score as decimal) / questions_count * 100) >= 80)
-    //     TO '/Users/alexandrinamehandzhiyska/Desktop/noit-final/exam-results.csv' DELIMITER ',' CSV HEADER;`, { replacements: { examIds: todayExams.map(e => e.id) } });
+    const query = `COPY (SELECT user_id, exam_id, email, name, ceil(cast(score as decimal) / questions_count * 100) AS score_percent FROM user_exams JOIN users ON user_exams.user_id = users.id JOIN exams ON user_exams.exam_id = exams.id WHERE exam_id IN (${todayExams.join(', ')}) AND ceil(cast(score as decimal) / questions_count * 100) >= 70) TO '/users/alexandrinamehandzhiyska/Desktop/noit-final/exam-results.csv' DELIMITER ',' CSV HEADER;`;
 
-    models.sequelize.query(`COPY 
-        (SELECT user_id, exam_id, email, name, ceil(cast(score as decimal) / questions_count * 100) AS score_percent 
-        FROM user_exams 
-        JOIN users ON user_exams.user_id = users.id 
-        JOIN exams ON user_exams.exam_id = exams.id 
-        WHERE exams.id IN(:examIds) AND ceil(cast(score as decimal) / questions_count * 100) >= 70)
-        TO '/users/alexandrinamehandzhiyska/Desktop/noit-final/exam-results.csv' DELIMITER ',' CSV HEADER;`, { replacements: { examIds: todayExams.map(e => e.id) } });
+    exec(`psql -c \"\\${query}\" \"postgresql://postgres:admin@localhost:5432/stemswiftacademy\"`, (a, b, c) => {
+        console.log('success');
+    });
 };
 
 module.exports = { getAll, getOne, createOne, updateOne, deleteOne, generateResultsCsv };
