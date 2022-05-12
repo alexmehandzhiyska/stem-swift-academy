@@ -40,7 +40,7 @@ const Header = () => {
   const userNav = (
     <>
       <li className="nav-item px-2 mx-4 text-xl">
-        <Link to="/exams">Practice Exams</Link>
+        <Link to="/exams/sat/subject">Practice Exams</Link>
         <FontAwesomeIcon icon={faAngleDown} className="ml-3" onClick={() => setExamSubmenuOpened(!examSubmenuOpened)}></FontAwesomeIcon>
         <ul className={`${examSubmenuOpened ? 'flex z-10' : 'hidden z-10'} flex-col absolute bg-blue-500 -mt-1 pt-4`}>
           {examTypes.map((examType, i) => <li key={i} className="py-2 pl-5 pr-20" onClick={() => setExamSubmenuOpened(false)}><Link to={`/exams/${examType.endpoint}`}>{examType.name}</Link></li>)}
