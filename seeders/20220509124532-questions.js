@@ -317,7 +317,49 @@ module.exports = {
         exam_id: 4,
         created_at: '2022-04-25 23:41:00.707+03',
         updated_at: '2022-04-25 23:41:00.707+03'
-      }
+      },
+      {
+        title: 'An otherwise healthy 45-year-old man comes to the physician because of a 3-week history of progressive epigastric heartburn and a 4.5-kg (10-lb) weight loss. The pain tends to be more severe at night and occurs 1 to 3 hours after meals during the day. He has had similar episodes with lesser intensity during the past year. Abdominal examination shows tenderness to deep palpation. Test of the stool for occult blood is positive. Endoscopy shows a bleeding 3-cm ulcer in the antrum of the stomach. A photomicrograph of Steiner silver-stained tissue (400x) from a biopsy of the gastric mucosa adjacent to the ulcer is shown. Which of the following processes is most likely to be involved?',
+        image_url: 'https://res.cloudinary.com/drinka/image/upload/v1651045842/sat-academy/exam-images/usmle/19_jpwgds.png',
+        correct_answer: 'Elaboration of proteases and urease with local tissue destruction',
+        exam_type: 'usmle',
+        exam_id: 5,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
+      {
+        title: 'A 14-year-old boy is brought to the emergency department after being hit with a baseball bat on the lateral side of his leg immediately below the knee. He is unable to dorsiflex his foot. Which of the following nerves is most likely injured?',
+        correct_answer: 'Common fibular (peroneal)',
+        exam_type: 'usmle',
+        exam_id: 5,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
+      {
+        title: 'A 26-year-old woman is brought to the emergency department because of an 8-hour history of severe back and abdominal pain and mild but persistent vaginal bleeding. Ultrasonography of the abdomen shows a 2-cm ectopic pregnancy in the ampulla. The ampulla has ruptured into the surrounding tissue. Fluid from this rupture will most likely be found in which of the following locations?',
+        correct_answer: 'Pouch of Douglas',
+        exam_type: 'usmle',
+        exam_id: 5,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
+      {
+        title: 'A 36-year-old man with profound intellectual disability is brought to the physician by staff at his facility because of increasing abdominal girth during the past 2 weeks. He is unable to speak, and no medical history is currently available. Physical examination shows a protuberant abdomen with a fluid wave and shifting dullness. There are no signs of trauma to the area. Laboratory studies show no abnormalities. A CT scan of the abdomen is shown. Fluid is present in which of the following areas as indicated by the arrow?',
+        image_url: 'https://res.cloudinary.com/drinka/image/upload/v1651046079/sat-academy/exam-images/usmle/48_sswbhs.png',
+        correct_answer: 'Omental bursa (lesser sac)',
+        exam_type: 'usmle',
+        exam_id: 5,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
+      {
+        title: 'A 45-year-old man comes to the physician because of right shoulder pain that began after he chopped wood 2 days ago. Examination of the right upper extremity shows no obvious bone deformities or point tenderness. The pain is reproduced when the patient is asked to externally rotate the shoulder against resistance; there is no weakness. In addition to the teres minor, inflammation of which of the following tendons is most likely in this patient?',
+        correct_answer: 'Infraspinatus',
+        exam_type: 'usmle',
+        exam_id: 5,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
    ], {});
   },
 

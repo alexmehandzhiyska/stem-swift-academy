@@ -849,6 +849,126 @@ module.exports = {
         created_at: '2022-04-25 23:41:00.707+03',
         updated_at: '2022-04-25 23:41:00.707+03'
       },
+      {
+        content: 'Elaboration of proteases and urease with local tissue destruction',
+        question_id: 36,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
+      {
+        content: 'Hyperacidity and gastric ulcer development',
+        question_id: 36,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
+      {
+        content: 'Ingestion of preformed toxins in contaminated well water',
+        question_id: 36,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
+      {
+        content: 'Spirochete invasion of gastric cells',
+        question_id: 36,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
+      {
+        content: 'Common fibular (peroneal)',
+        question_id: 37,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
+      {
+        content: 'Femoral',
+        question_id: 37,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
+      {
+        content: 'Obturator',
+        question_id: 37,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
+      {
+        content: 'Sural',
+        question_id: 37,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
+      {
+        content: 'Lesser peritoneal cavity',
+        question_id: 38,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
+      {
+        content: 'Mesometrium',
+        question_id: 38,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
+      {
+        content: 'Pouch of Douglas',
+        question_id: 38,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
+      {
+        content: 'Uterine cavity',
+        question_id: 38,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
+      {
+        content: 'Epiploic foramen',
+        question_id: 39,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
+      {
+        content: 'Gastrosplenic ligament',
+        question_id: 39,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
+      {
+        content: 'Hepatorenal pouch (of Morison)',
+        question_id: 39,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
+      {
+        content: 'Omental bursa (lesser sac)',
+        question_id: 39,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
+      {
+        content: 'Infraspinatus',
+        question_id: 40,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
+      {
+        content: 'Pectoralis',
+        question_id: 40,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
+      {
+        content: 'Subscapularis',
+        question_id: 40,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
+      {
+        content: 'Supraspinatus',
+        question_id: 40,
+        created_at: '2022-04-25 23:41:00.707+03',
+        updated_at: '2022-04-25 23:41:00.707+03'
+      },
    ], {});
   },
 
