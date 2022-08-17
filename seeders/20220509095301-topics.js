@@ -200,7 +200,7 @@ module.exports = {
         start_time: '2022-07-19',
         duration: 2,
         course_id: 2,
-        exam_link: 'http://localhost:3000/exams/sat/1',
+        exam_id: 1,
         created_at: '2022-04-25 23:41:00.707+03',
         updated_at: '2022-04-25 23:41:00.707+03'
       }

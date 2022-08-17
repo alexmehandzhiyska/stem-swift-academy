@@ -13,9 +13,9 @@ module.exports = {
       ),
       queryInterface.addColumn(
         'topics',
-        'exam_link',
+        'exam_id',
         {
-          type: Sequelize.STRING,
+          type: Sequelize.INTEGER,
           allowNull: true
         }
       )
@@ -25,7 +25,7 @@ module.exports = {
   async down (queryInterface, Sequelize) {
     return Promise.all([
       queryInterface.removeColumn('topics', 'recording_link'),
-      queryInterface.removeColumn('topics', 'exam_link')
+      queryInterface.removeColumn('topics', 'exam_id')
     ]);
   }
 };
