@@ -9,10 +9,6 @@ import './ExamResults.css';
 const QuestionResult = ({ number, question, userAnswer }) => {
     const [explanationIsToggled, setExplanationIsToggled] = useState(false);
     
-    const stateUser = useSelector((state) => state.user.value);
-    const user = stateUser.id ? stateUser : JSON.parse(localStorage.getItem('user'));
-    const userId = user.id;
-
     const navigate = useNavigate();
 
     return (   

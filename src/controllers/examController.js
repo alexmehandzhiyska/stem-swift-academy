@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const schedule = require('node-schedule');
 
 const examService = require('../services/examService');
 const questionService = require('../services/questionService');
