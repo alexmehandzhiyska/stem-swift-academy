@@ -23,7 +23,7 @@ const CourseDetails = () => {
 
   const formatDate = (date) => date.slice(0, 10).split('-').reverse().join('.');
 
-  const { courseId } = useParams();
+  const { courseType, courseId } = useParams();
 
   useEffect(() => Aos.init({ duration: 500 }), []);
 
@@ -110,7 +110,7 @@ const CourseDetails = () => {
 
           <article className="my-10 flex justify-center">
             <button onClick={registerForCourse} className={`register-btn mx-2 my-5 px-20 py-2 bg-blue-500 text-white border-2 border-blue-500 rounded-full text-lg hover:bg-white hover:text-blue-500 hover:border-blue-500 transition ${isRegistered ? 'registered' : ''}`} disabled={isRegistered}>{isRegistered ? 'Registered' : 'Register'}</button>
-            <Link to="/courses"><button className="mx-2 my-5 py-2 px-20 bg-white text-blue-500 border-blue-500 border-2 border-solid rounded-full text-lg hover:bg-blue-500 hover:text-white transition">Back</button></Link>
+            <Link to={`/courses/${courseType}`}><button className="mx-2 my-5 py-2 px-20 bg-white text-blue-500 border-blue-500 border-2 border-solid rounded-full text-lg hover:bg-blue-500 hover:text-white transition">Back</button></Link>
           </article>
         </section>
       }

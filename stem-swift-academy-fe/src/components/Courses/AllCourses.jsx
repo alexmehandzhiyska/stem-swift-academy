@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router';
 
 import CourseCard from './CourseCard';
 import LottieAnimation from '../LottieAnimation';
@@ -11,6 +12,8 @@ import 'aos/dist/aos.css';
 const AllCourses = () => {
   const [courses, setCourses] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  
+  const { courseType } = useParams();
 
   useEffect(() => Aos.init({ duration: 1000 }), []);
 
@@ -35,7 +38,7 @@ const AllCourses = () => {
           <h1 data-aos="zoom-in" className="heading courses-heading">Choose a Course</h1>
 
           <section className="mt-28 flex justify-evenly text-white ">
-            {courses.length === 0 ? <h1 data-aos="fade-in" className="heading">There are no courses for you at the moment. Please check again later!</h1> : courses.map(course => <CourseCard key={course.id} course={course}></CourseCard>)}
+            {courses.length === 0 ? <h1 data-aos="fade-in" className="heading">There are no courses for you at the moment. Please check again later!</h1> : courses.map(course => <CourseCard key={course.id} course={{...course, type: courseType}}></CourseCard>)}
           </section>
         </section>
       }

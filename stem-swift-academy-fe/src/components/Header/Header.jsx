@@ -6,7 +6,7 @@ import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 import { logout } from '../../store';
 import { authService } from '../../services/authService';
-import { examTypes } from '../../constants';
+import { examTypes, courseTypes } from '../../constants';
 import { errorNotification } from '../notification';
 import { useState } from 'react';
 
@@ -17,6 +17,7 @@ const Header = () => {
   const dispatch = useDispatch();
 
   const [examSubmenuOpened, setExamSubmenuOpened] = useState(false);
+  const [courseSubmenuOpened, setCourseSubmenuOpened] = useState(false);
 
   const onLogout = () => {
     authService.logout()
@@ -46,7 +47,14 @@ const Header = () => {
           {examTypes.map((examType, i) => <li key={i} className="py-2 pl-5 pr-20" onClick={() => setExamSubmenuOpened(false)}><Link to={`/exams/${examType.endpoint}`}>{examType.name}</Link></li>)}
         </ul>
       </li>
-      <li className="nav-item px-2 mx-4 text-xl"><Link to="/courses">Courses</Link></li>
+
+      <li className="nav-item px-2 mx-4 text-xl">
+        <Link to="/courses">Courses</Link>
+        <FontAwesomeIcon icon={faAngleDown} className="ml-3" onClick={() => setCourseSubmenuOpened(!courseSubmenuOpened)}></FontAwesomeIcon>
+        <ul className={`${courseSubmenuOpened ? 'flex z-10' : 'hidden z-10'} flex-col absolute bg-blue-500 -mt-1 pt-4`}>
+          {courseTypes.map((courseType, i) => <li key={i} className="py-2 pl-5 pr-20" onClick={() => setCourseSubmenuOpened(false)}><Link to={`/courses/${courseType.endpoint}`}>{courseType.name}</Link></li>)}
+        </ul>
+      </li>
       {user?.role === 'student' && <li className="nav-item px-2 mx-4 text-xl"><Link to="/calendar">Calendar</Link></li>}
       {user?.role === 'student' && <li className="nav-item px-2 mx-4 text-xl"><Link to='/notebook'>Notebook</Link></li>}
       {user?.role === 'student' && <li className="nav-item px-2 mx-4 text-xl"><Link to={`/users/${user?.id}`}>My Profile</Link></li>}

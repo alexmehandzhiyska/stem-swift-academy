@@ -42,9 +42,9 @@ function App() {
             <Route path="/login" element={<Login />}></Route>
           </Route>
           <Route element={<UserRoute />}>
-            <Route path="/courses" exact element={<AllCourses />}></Route> 
-            <Route path="/courses/:courseId" element={<CourseDetails />}></Route> 
-            <Route path="/courses/:courseId/topics/:topicId" element={<Topic />}> </Route>
+            <Route path="/courses/:courseType" exact element={<AllCourses />}></Route> 
+            <Route path="/courses/:courseType/:courseId" element={<CourseDetails />}></Route> 
+            <Route path="/courses/:courseType/:courseId/topics/:topicId" element={<Topic />}> </Route>
             <Route path="/calendar" element={<StudentCalendar />}></Route>
             <Route path="/exams/:examType" element={<AllExams />}></Route>
             <Route path="/exams/:examType/subject" element={<SubjectChoice />}></Route>

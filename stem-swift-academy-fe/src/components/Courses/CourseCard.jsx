@@ -28,7 +28,7 @@ const CourseCard = ({ course }) => {
         <p className="time-text">{course.weekly_lectures} lectures X week</p>
       </section>
 
-      <Link to={`/courses/${course.id}`}><button className="mt-4 text-center btn secondary-btn">Full Information</button></Link>
+      <Link to={`/courses/${course.type}/${course.id}`}><button className="mt-4 text-center btn secondary-btn">Full Information</button></Link>
     </article>
   );
 }

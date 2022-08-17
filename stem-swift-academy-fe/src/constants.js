@@ -17,6 +17,17 @@ const examTypes = [
         endpoint: 'usmle',
         defaultSubject: 'medicine'
     }
-]
+];
 
-export { baseUrl, subjects, examTypes };
+const courseTypes = [
+    {
+        name: 'SAT',
+        endpoint: 'sat'
+    },
+    {
+        name: 'USMLE',
+        endpoint: 'usmle'
+    }
+];
+
+export { baseUrl, subjects, examTypes, courseTypes };

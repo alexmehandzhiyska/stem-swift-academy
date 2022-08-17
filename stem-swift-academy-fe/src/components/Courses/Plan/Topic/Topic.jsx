@@ -17,6 +17,8 @@ const Topic = () => {
   const { state } = useLocation();
   const recordingLink = state.recording_link;
 
+  const { courseType } = useParams();
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -29,7 +31,7 @@ const Topic = () => {
       })
       .catch(async (err) => {
         await warningNotification(err.message);
-        navigate(`/courses/${courseId}`);
+        navigate(`/courses/${courseType}/${courseId}`);
       })
   }, [courseId, topicId]);
 
